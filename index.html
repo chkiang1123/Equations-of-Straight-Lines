@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equations of Straight Lines — Step by Step</title>
+<meta name="description" content="Learn the equation of a straight line step by step: point-slope form, two-point form, intercept form, slope-intercept form, general form, and intersections — with interactive graphs.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --bg:#f6f7fb;
+  --bg2:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#f0f2f8;
+  --ink:#12172a;
+  --ink-2:#3c445e;
+  --ink-3:#6a7290;
+  --line:#e2e6f0;
+  --brand:#3b5bdb;
+  --brand-2:#5c7cfa;
+  --brand-soft:#eaefff;
+  --accent:#e8590c;
+  --accent-soft:#fff0e6;
+  --good:#0f9d58;
+  --good-soft:#e6f7ee;
+  --bad:#d93025;
+  --bad-soft:#fdecea;
+  --grid:#e7eaf4;
+  --axis:#98a2c0;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.18);
+  --code-bg:#f2f4fa;
+}
+html[data-theme="dark"]{
+  --bg:#0d1017;
+  --bg2:#141822;
+  --surface:#161b26;
+  --surface-2:#1d2331;
+  --ink:#e9edf7;
+  --ink-2:#b9c2d8;
+  --ink-3:#8590ab;
+  --line:#252c3d;
+  --brand:#7c93ff;
+  --brand-2:#91a6ff;
+  --brand-soft:#1b2338;
+  --accent:#ff9448;
+  --accent-soft:#2a1d12;
+  --good:#4ade80;
+  --good-soft:#12291c;
+  --bad:#ff6b6b;
+  --bad-soft:#2b1516;
+  --grid:#1e2534;
+  --axis:#4a5570;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -14px rgba(0,0,0,.7);
+  --code-bg:#1d2331;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ============ PROGRESS + NAV ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand),var(--accent));z-index:100;transition:width .1s linear}
+header.nav{
+  position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--bg2) 88%,transparent);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1120px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.logo .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:14px;font-weight:800}
+.pills{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none;padding:2px}
+.pills::-webkit-scrollbar{display:none}
+.pill{
+  font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);
+  color:var(--ink-3);text-decoration:none;white-space:nowrap;transition:.15s;background:var(--surface)
+}
+.pill:hover{color:var(--brand);border-color:var(--brand-2)}
+.pill.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.tbtn{
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:9px;
+  width:34px;height:32px;cursor:pointer;font-size:15px;display:grid;place-items:center
+}
+.tbtn:hover{border-color:var(--brand-2);color:var(--brand)}
+
+/* ============ HERO ============ */
+.hero{padding:64px 0 44px;background:
+  radial-gradient(900px 420px at 8% -10%, color-mix(in srgb,var(--brand) 14%,transparent), transparent 60%),
+  radial-gradient(700px 380px at 96% 0%, color-mix(in srgb,var(--accent) 12%,transparent), transparent 62%);
+  border-bottom:1px solid var(--line)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 13px;border-radius:999px;border:1px solid color-mix(in srgb,var(--brand) 22%,transparent)}
+h1{font-size:clamp(30px,4.6vw,50px);line-height:1.12;letter-spacing:-.028em;margin:18px 0 14px;font-weight:800}
+.hero p.lead{font-size:18px;color:var(--ink-2);max-width:660px;margin:0}
+.hero-cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:11px;font-weight:650;
+  font-size:14.5px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.15s
+}
+.btn.primary{background:var(--brand);color:#fff;box-shadow:0 6px 18px -8px var(--brand)}
+.btn.primary:hover{background:var(--brand-2);transform:translateY(-1px)}
+.btn.ghost{border-color:var(--line);color:var(--ink-2);background:var(--surface)}
+.btn.ghost:hover{border-color:var(--brand-2);color:var(--brand)}
+
+/* ============ SECTIONS ============ */
+section.blk{padding:52px 0;border-bottom:1px solid var(--line)}
+.steptag{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.steptag .n{width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:13px;font-weight:800;border:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+h2{font-size:clamp(23px,2.9vw,32px);letter-spacing:-.02em;margin:6px 0 12px;font-weight:750;line-height:1.22}
+h3{font-size:18px;margin:30px 0 10px;font-weight:700;letter-spacing:-.01em}
+h4{font-size:15px;margin:20px 0 8px;font-weight:700;color:var(--ink-2)}
+p{margin:11px 0}
+.muted{color:var(--ink-3)}
+.small{font-size:13.5px}
+
+/* ============ CARD ============ */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);margin:18px 0}
+.card.tight{padding:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid2.wide{grid-template-columns:1.05fr .95fr}
+@media(max-width:860px){.grid2,.grid2.wide{grid-template-columns:1fr}}
+
+/* ============ MATH ============ */
+.formula{
+  background:var(--code-bg);border:1px solid var(--line);border-left:3px solid var(--brand);
+  border-radius:12px;padding:16px 20px;margin:16px 0;text-align:center;
+  font-size:19px;font-family:"Cambria Math","Times New Roman",Georgia,serif;overflow-x:auto
+}
+.formula.big{font-size:22px}
+.formula .lbl{display:block;font-family:inherit;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:9px;font-family:-apple-system,sans-serif}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.18;margin:0 .18em;position:relative;top:-.06em}
+.frac .num{border-bottom:1.6px solid currentColor;padding:0 .32em .07em}
+.frac .den{padding:.07em .32em 0}
+var,.v{font-style:italic;font-family:"Cambria Math","Times New Roman",Georgia,serif}
+sub{font-size:.68em}
+sup{font-size:.68em}
+code{background:var(--code-bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.9em;
+  font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+
+/* ============ STEPS LIST ============ */
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:16px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:12px 0 12px 46px;border-bottom:1px dashed var(--line)}
+ol.steps>li:last-child{border-bottom:0}
+ol.steps>li::before{
+  content:counter(s);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:9px;
+  background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:13.5px;
+  border:1px solid color-mix(in srgb,var(--brand) 22%,transparent)
+}
+
+ul.clean{margin:12px 0;padding-left:20px}
+ul.clean li{margin:7px 0}
+
+/* ============ CALLOUTS ============ */
+.note{border-radius:12px;padding:14px 18px;margin:16px 0;font-size:14.6px;border:1px solid var(--line);background:var(--surface-2)}
+.note .h{font-weight:750;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;display:flex;gap:7px;align-items:center}
+.note.tip{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand) 22%,transparent)}
+.note.tip .h{color:var(--brand)}
+.note.warn{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 25%,transparent)}
+.note.warn .h{color:var(--accent)}
+.note.ok{background:var(--good-soft);border-color:color-mix(in srgb,var(--good) 28%,transparent)}
+.note.ok .h{color:var(--good)}
+
+/* ============ TABLE ============ */
+.tbl-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.4px;min-width:520px}
+th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--surface-2);font-weight:700;font-size:12.6px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:color-mix(in srgb,var(--brand) 4%,transparent)}
+td.mono,th.mono{font-family:"Cambria Math",Georgia,serif;font-size:15px}
+
+/* ============ DETAILS / SOLUTION ============ */
+details.sol{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);margin:12px 0;overflow:hidden}
+details.sol>summary{cursor:pointer;padding:11px 16px;font-weight:650;font-size:14px;color:var(--brand);
+  list-style:none;display:flex;align-items:center;gap:9px;user-select:none}
+details.sol>summary::-webkit-details-marker{display:none}
+details.sol>summary::before{content:"▸";transition:.2s;font-size:12px}
+details.sol[open]>summary::before{transform:rotate(90deg)}
+details.sol[open]>summary{border-bottom:1px solid var(--line)}
+details.sol .body{padding:15px 18px;font-size:14.6px;background:var(--surface)}
+details.sol .body p:first-child{margin-top:0}
+details.sol .body p:last-child{margin-bottom:0}
+
+/* ============ PLOT ============ */
+.plotbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+svg.plot{width:100%;height:auto;display:block;border-radius:11px;background:var(--surface);touch-action:none;cursor:crosshair}
+svg.plot.static{cursor:default}
+.plot-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.eqout{font-family:"Cambria Math",Georgia,serif;font-size:19px;font-weight:600;color:var(--brand)}
+.eqout .sm{font-size:13px;color:var(--ink-3);font-family:-apple-system,sans-serif;font-weight:500}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-3)}
+.legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+/* ============ CONTROLS ============ */
+.ctrl{margin:12px 0}
+.ctrl label{display:flex;justify-content:space-between;align-items:center;font-size:13.4px;font-weight:600;color:var(--ink-2);margin-bottom:5px}
+.ctrl label b{font-family:"Cambria Math",Georgia,serif;font-size:15px;color:var(--brand)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;
+  background:linear-gradient(90deg,var(--brand) var(--p,50%),var(--line) var(--p,50%));outline:none;margin:6px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;
+  background:var(--surface);border:3px solid var(--brand);cursor:grab;box-shadow:0 1px 5px rgba(0,0,0,.2)}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--surface);border:3px solid var(--brand);cursor:grab}
+input[type=number],input[type=text]{
+  width:100%;padding:8px 11px;border-radius:9px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);font-size:14.4px;font-family:"SF Mono",ui-monospace,Menlo,monospace
+}
+input[type=number]:focus,input[type=text]:focus{outline:none;border-color:var(--brand-2);box-shadow:0 0 0 3px var(--brand-soft)}
+.inrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:10px;margin:10px 0}
+.inrow .f{display:flex;flex-direction:column;gap:4px}
+.inrow .f span{font-size:12px;color:var(--ink-3);font-weight:600}
+.chipline{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 4px}
+.chip{font-size:12.6px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink-3);cursor:pointer;transition:.15s;font-weight:600}
+.chip:hover{border-color:var(--brand-2);color:var(--brand)}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+
+/* ============ QUIZ ============ */
+.q{border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;background:var(--surface)}
+.q .qhead{font-weight:650;font-size:15.4px;margin-bottom:12px;display:flex;gap:10px}
+.q .qnum{flex:none;width:26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:11px 14px;border:1px solid var(--line);border-radius:10px;
+  cursor:pointer;background:var(--surface);transition:.13s;font-size:14.6px}
+.opt:hover{border-color:var(--brand-2);background:var(--brand-soft)}
+.opt .k{flex:none;width:23px;height:23px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);
+  display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--ink-3)}
+.opt.correct{border-color:var(--good);background:var(--good-soft)}
+.opt.correct .k{background:var(--good);color:#fff;border-color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt.locked{cursor:default}
+.opt .m{font-family:"Cambria Math",Georgia,serif;font-size:15.4px}
+.qexp{margin-top:12px;padding:12px 15px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);
+  font-size:14px;display:none}
+.qexp.show{display:block}
+.score{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;border-radius:14px;
+  background:var(--brand-soft);border:1px solid color-mix(in srgb,var(--brand) 22%,transparent);margin-top:18px}
+.score .big{font-size:30px;font-weight:800;color:var(--brand);font-family:"Cambria Math",Georgia,serif}
+
+/* ============ FOOTER ============ */
+footer{padding:40px 0 60px;color:var(--ink-3);font-size:13.4px;text-align:center}
+footer a{color:var(--brand)}
+
+/* ============ MISC ============ */
+.tocard{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:20px 0}
+.mini{border:1px solid var(--line);border-radius:13px;padding:16px;background:var(--surface);box-shadow:var(--shadow)}
+.mini .t{font-weight:700;font-size:14px;margin-bottom:7px;display:flex;gap:8px;align-items:center}
+.mini .t .ic{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-size:13px;background:var(--brand-soft);color:var(--brand)}
+.mini p{font-size:13.4px;color:var(--ink-3);margin:5px 0}
+.center{text-align:center}
+.yr{scroll-margin-top:88px}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="dot">y</span> Equations of Straight Lines</div>
+    <nav class="pills" id="pills">
+      <a class="pill" href="#warmup">Warm-up</a>
+      <a class="pill" href="#idea">Big Idea</a>
+      <a class="pill" href="#step1">1 · Point-slope</a>
+      <a class="pill" href="#step2">2 · Two-point</a>
+      <a class="pill" href="#step3">3 · Intercept</a>
+      <a class="pill" href="#step4">4 · Slope-intercept</a>
+      <a class="pill" href="#step5">5 · Special lines</a>
+      <a class="pill" href="#step6">6 · General form</a>
+      <a class="pill" href="#step7">7 · Intersections</a>
+      <a class="pill" href="#practice">Practice</a>
+      <a class="pill" href="#cheat">Cheat sheet</a>
+    </nav>
+    <button class="tbtn" id="theme" title="Toggle light / dark">◐</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">Chapter 3 · Book 4A</span>
+    <h1>The Equation of a<br>Straight Line, Step&nbsp;by&nbsp;Step</h1>
+    <p class="lead">Every straight line can be described by an equation. This page walks you through the whole idea — from one simple pattern all the way to intersecting lines — with graphs you can drag and play with.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#warmup">Start from the beginning →</a>
+      <a class="btn ghost" href="#practice">Jump to practice</a>
+    </div>
+
+    <div class="tocard">
+      <div class="mini"><div class="t"><span class="ic">1</span>5 forms, 1 idea</div><p>Point-slope, two-point, intercept, slope-intercept — all built from the same principle.</p></div>
+      <div class="mini"><div class="t"><span class="ic">2</span>Move the sliders</div><p>Watch the slope and intercept change the line in real time.</p></div>
+      <div class="mini"><div class="t"><span class="ic">3</span>Check yourself</div><p>10 questions with instant feedback and full working.</p></div>
+    </div>
+
+    <div class="card">
+      <h4 style="margin-top:0">The opening problem (from the chapter)</h4>
+      <p class="small">Jason and Calvin run on the <em>same straight track</em>. They start together; Calvin is <b>100 m ahead</b>. Jason catches Calvin after <b>200 s</b>, at a point <b>700 m</b> from the starting line.</p>
+      <div class="grid2" style="margin-top:14px">
+        <div>
+          <p class="small"><b>Jason:</b> starts at 0 m, reaches 700 m in 200 s → speed = 700 ÷ 200 = 3.5 m/s.</p>
+          <div class="formula" style="margin:8px 0">y = 3.5<span class="v">x</span></div>
+        </div>
+        <div>
+          <p class="small"><b>Calvin:</b> starts 100 m ahead, same finish → speed = (700 − 100) ÷ 200 = 3 m/s.</p>
+          <div class="formula" style="margin:8px 0">y = 3<span class="v">x</span> + 100</div>
+        </div>
+      </div>
+      <p class="small muted" style="margin-bottom:0">Both travel graphs are straight lines, and the equations <em>are</em> the equations of those lines. That is what this chapter is about: <b>turning a picture of a line into an equation — and back again.</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WARM-UP ================= -->
+<section class="blk yr" id="warmup">
+  <div class="wrap">
+    <div class="steptag"><span class="n">0</span> Warm-up · what you already know</div>
+    <h2>Four tools we will reuse the whole way</h2>
+    <p>Before building equations, make sure these four are automatic. Everything later is just these, rearranged.</p>
+
+    <div class="tocard">
+      <div class="mini">
+        <div class="t"><span class="ic">↔</span>Distance</div>
+        <p>Between A(<span class="v">x</span><sub>1</sub>, <span class="v">y</span><sub>1</sub>) and B(<span class="v">x</span><sub>2</sub>, <span class="v">y</span><sub>2</sub>):</p>
+        <div class="formula" style="font-size:15px;padding:9px;margin:8px 0">AB = √[(<span class="v">x</span><sub>2</sub>−<span class="v">x</span><sub>1</sub>)² + (<span class="v">y</span><sub>2</sub>−<span class="v">y</span><sub>1</sub>)²]</div>
+        <p>Pythagoras, nothing more.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">📐</span>Slope</div>
+        <p>Rise over run, with <span class="v">x</span><sub>1</sub> ≠ <span class="v">x</span><sub>2</sub>:</p>
+        <div class="formula" style="font-size:15px;padding:9px;margin:8px 0"><span class="v">m</span> = <span class="frac"><span class="num"><span class="v">y</span><sub>2</sub> − <span class="v">y</span><sub>1</sub></span><span class="den"><span class="v">x</span><sub>2</sub> − <span class="v">x</span><sub>1</sub></span></span></div>
+        <p>Vertical line → undefined. Horizontal line → 0.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">◐</span>Mid-point</div>
+        <p>Halfway between A and B:</p>
+        <div class="formula" style="font-size:15px;padding:9px;margin:8px 0">(<span class="frac"><span class="num"><span class="v">x</span><sub>1</sub>+<span class="v">x</span><sub>2</sub></span><span class="den">2</span></span>, <span class="frac"><span class="num"><span class="v">y</span><sub>1</sub>+<span class="v">y</span><sub>2</sub></span><span class="den">2</span></span>)</div>
+        <p>Just the average of the coordinates.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">∥</span>Parallel / ⟂</div>
+        <p>Two slopes decide everything:</p>
+        <div class="formula" style="font-size:15px;padding:9px;margin:8px 0">
+          <span class="v">m</span><sub>1</sub> = <span class="v">m</span><sub>2</sub> → ∥<br>
+          <span class="v">m</span><sub>3</sub> × <span class="v">m</span><sub>4</sub> = −1 → ⟂
+        </div>
+        <p>Careful: a vertical line has no slope, so neither rule applies.</p>
+      </div>
+    </div>
+
+    <div class="note tip">
+      <div class="h">Worked mini-example</div>
+      For P(2, −9) and Q(−4, −1):<br>
+      Slack of PQ = <span class="frac"><span class="num">−1 − (−9)</span><span class="den">−4 − 2</span></span> = <span class="frac"><span class="num">8</span><span class="den">−6</span></span> = −<span class="frac"><span class="num">4</span><span class="den">3</span></span> &nbsp;·&nbsp;
+      PQ = √[(−4−2)² + (−1+9)²] = √(36+64) = √100 = <b>10</b>
+    </div>
+
+    <details class="sol">
+      <summary>Quick check — try these yourself (answers inside)</summary>
+      <div class="body">
+        <p><b>(a)</b> Distance between A(2, 9) and B(2, −12) → 21 units (a vertical segment: just 9 − (−12)).</p>
+        <p><b>(b)</b> Distance between A(0, −3) and B(−12, 2) → √(144 + 25) = <b>13</b>.</p>
+        <p><b>(c)</b> Slope through A(0, 4), B(3, −1) → <span class="frac"><span class="num">−1−4</span><span class="den">3−0</span></span> = −<span class="frac"><span class="num">5</span><span class="den">3</span></span>.</p>
+        <p><b>(d)</b> P(<span class="v">k</span>, −2), Q(1, −5), PQ = 5: (<span class="v">k</span>−1)² + 9 = 25 → (<span class="v">k</span>−1)² = 16 → <span class="v">k</span> = <b>5</b> or <b>−3</b>.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= BIG IDEA ================= -->
+<section class="blk yr" id="idea">
+  <div class="wrap">
+    <div class="steptag"><span class="n">★</span> The one big idea</div>
+    <h2>A line is a rule that links <span class="v">x</span> and <span class="v">y</span></h2>
+    <p>Here is the whole chapter in one sentence: <b>a straight line is the set of all points whose coordinates satisfy one equation.</b></p>
+    <p>Take the line below, <span class="eqout" style="font-size:17px">y = 2x + 1</span>. A point is on this line exactly when “its <span class="v">y</span>-coordinate equals 2 × its <span class="v">x</span>-coordinate, plus 1”. That's it.</p>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head">
+          <span class="eqout">y = 2x + 1</span>
+          <span class="small muted">Click anywhere on the grid to test a point</span>
+        </div>
+        <svg class="plot" id="plotIdea" viewBox="0 0 640 440"></svg>
+        <div id="ideaMsg" class="note" style="margin:12px 0 0;font-size:14px">Click a lattice point on the grid. Green = it satisfies the equation, red = it does not.</div>
+      </div>
+      <div>
+        <h3 style="margin-top:0">Class activity</h3>
+        <p class="small">Which of these points lie on the line <span class="v">L</span>: <span class="eqout" style="font-size:16px">y = 2x + 1</span>? Substitute and see.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Point</th><th class="mono">Substitute</th><th>On L?</th></tr></thead>
+            <tbody>
+              <tr><td>A(1, 3)</td><td class="mono">2(1)+1 = 3</td><td style="color:var(--good);font-weight:700">✓ yes</td></tr>
+              <tr><td>B(2, 4)</td><td class="mono">2(2)+1 = 5 ≠ 4</td><td style="color:var(--bad);font-weight:700">✗ no</td></tr>
+              <tr><td>C(2, 5)</td><td class="mono">2(2)+1 = 5</td><td style="color:var(--good);font-weight:700">✓ yes</td></tr>
+              <tr><td>D(−1, 1)</td><td class="mono">2(−1)+1 = −1 ≠ 1</td><td style="color:var(--bad);font-weight:700">✗ no</td></tr>
+              <tr><td>E(−1, −1)</td><td class="mono">2(−1)+1 = −1</td><td style="color:var(--good);font-weight:700">✓ yes</td></tr>
+              <tr><td>F(−2, −3)</td><td class="mono">2(−2)+1 = −3</td><td style="color:var(--good);font-weight:700">✓ yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note tip" style="margin-bottom:0">
+          <div class="h">What you should notice</div>
+          For points on <span class="v">L</span>, the <span class="v">y</span>-coordinate is always “2 × the <span class="v">x</span>-coordinate, plus 1”. One equation captures <em>infinitely many</em> points.
+        </div>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <div class="h">Two facts worth remembering</div>
+      (i) Through one point P there are <b>infinitely many</b> straight lines.<br>
+      (ii) But through P with a <b>given slope</b> there is <b>exactly one</b> straight line. That is why slope + one point is always enough to pin a line down.
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 1 : POINT-SLOPE ================= -->
+<section class="blk yr" id="step1">
+  <div class="wrap">
+    <div class="steptag"><span class="n">1</span> Form 1 of 5</div>
+    <h2>Point-slope form — the master form</h2>
+    <p>Suppose a line passes through A(<span class="v">x</span><sub>1</sub>, <span class="v">y</span><sub>1</sub>) and has slope <span class="v">m</span>. Let P(<span class="v">x</span>, <span class="v">y</span>) be <em>any</em> other point on that line. Then the slope of AP must equal <span class="v">m</span>:</p>
+
+    <ol class="steps">
+      <li>Slope of AP = slope of the line = <span class="v">m</span>.</li>
+      <li>Using the slope formula on A and P: <span class="frac"><span class="num"><span class="v">y</span> − <span class="v">y</span><sub>1</sub></span><span class="den"><span class="v">x</span> − <span class="v">x</span><sub>1</sub></span></span> = <span class="v">m</span>.</li>
+      <li>Multiply both sides by (<span class="v">x</span> − <span class="v">x</span><sub>1</sub>) → <b><span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="v">m</span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)</b>.</li>
+    </ol>
+
+    <div class="formula big">
+      <span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="v">m</span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)
+      <span class="lbl">Point-slope form</span>
+    </div>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head">
+          <span class="eqout" id="psEq">y + 1 = −3(x − 3)</span>
+          <span class="small muted">Drag the sliders →</span>
+        </div>
+        <svg class="plot static" id="plotPS" viewBox="0 0 640 440"></svg>
+        <div class="small muted" id="psHint" style="margin-top:8px">The blue point is A, the fixed point the line must pass through.</div>
+      </div>
+      <div>
+        <div class="ctrl">
+          <label>Slope <span class="v">m</span> <b id="psMv">−3</b></label>
+          <input type="range" id="psM" min="-4" max="4" step="0.5" value="-3">
+        </div>
+        <div class="ctrl">
+          <label>Point A — <span class="v">x</span><sub>1</sub> <b id="psXv">3</b></label>
+          <input type="range" id="psX" min="-6" max="6" step="1" value="3">
+        </div>
+        <div class="ctrl">
+          <label>Point A — <span class="v">y</span><sub>1</sub> <b id="psYv">−1</b></label>
+          <input type="range" id="psY" min="-6" max="6" step="1" value="-1">
+        </div>
+
+        <h3>Textbook Example 3.1</h3>
+        <p class="small">A line passes through (3, −1) with slope −3. Find its equation.</p>
+        <details class="sol" open>
+          <summary>Show working</summary>
+          <div class="body">
+            <p><b>Step 1.</b> Write the point-slope form.</p>
+            <p class="center"><span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="v">m</span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)</p>
+            <p><b>Step 2.</b> Substitute <span class="v">m</span> = −3, (<span class="v">x</span><sub>1</sub>, <span class="v">y</span><sub>1</sub>) = (3, −1).</p>
+            <p class="center"><span class="v">y</span> − (−1) = −3(<span class="v">x</span> − 3)</p>
+            <p><b>Step 3.</b> Expand and tidy up.</p>
+            <p class="center"><span class="v">y</span> + 1 = −3<span class="v">x</span> + 9 → <b><span class="v">y</span> = −3<span class="v">x</span> + 8</b></p>
+            <p class="small muted">Answer can also be written <span class="mono">3x + y − 8 = 0</span>.</p>
+          </div>
+        </details>
+
+        <div class="note warn" style="margin-bottom:0">
+          <div class="h">Common mistake</div>
+          If the point is (3, −1), then <span class="v">x</span> − <span class="v">x</span><sub>1</sub> becomes <span class="v">x</span> − 3 and <span class="v">y</span> − (−1) becomes <span class="v">y</span> + 1. Keep the minus signs.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 2 : TWO-POINT ================= -->
+<section class="blk yr" id="step2">
+  <div class="wrap">
+    <div class="steptag"><span class="n">2</span> Form 2 of 5</div>
+    <h2>Two-point form — when you are given two dots</h2>
+    <p>Two points are enough, because two points <em>determine</em> the slope. So we make a slope first, then reuse Step 1.</p>
+
+    <ol class="steps">
+      <li>Find the slope: <span class="v">m</span> = <span class="frac"><span class="num"><span class="v">y</span><sub>2</sub> − <span class="v">y</span><sub>1</sub></span><span class="den"><span class="v">x</span><sub>2</sub> − <span class="v">x</span><sub>1</sub></span></span>.</li>
+      <li>Pick <em>either</em> point — A or B, it does not matter — and apply the point-slope form.</li>
+    </ol>
+
+    <div class="formula big">
+      <span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="frac"><span class="num"><span class="v">y</span><sub>2</sub> − <span class="v">y</span><sub>1</sub></span><span class="den"><span class="v">x</span><sub>2</sub> − <span class="v">x</span><sub>1</sub></span></span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)
+      <span class="lbl">Two-point form — same idea as point-slope, slope written out</span>
+    </div>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head">
+          <span class="eqout" id="tpEq">y = −x + 3</span>
+          <span class="small muted">Edit the coordinates →</span>
+        </div>
+        <svg class="plot static" id="plotTP" viewBox="0 0 640 440"></svg>
+      </div>
+      <div>
+        <p class="small"><b>Point A</b> and <b>Point B</b> — change any number and watch the line re-fit itself.</p>
+        <div class="inrow">
+          <label class="f"><span>A · x₁</span><input type="number" id="tpX1" value="-2" step="1"></label>
+          <label class="f"><span>A · y₁</span><input type="number" id="tpY1" value="5" step="1"></label>
+        </div>
+        <div class="inrow">
+          <label class="f"><span>B · x₂</span><input type="number" id="tpX2" value="4" step="1"></label>
+          <label class="f"><span>B · y₂</span><input type="number" id="tpY2" value="-1" step="1"></label>
+        </div>
+        <div class="chipline">
+          <span class="chip" data-tp="-2,5,4,-1">(−2,5) → (4,−1)</span>
+          <span class="chip" data-tp="1,10,-3,2">(1,10) → (−3,2)</span>
+          <span class="chip" data-tp="8,-8,-6,-1">(8,−8) → (−6,−1)</span>
+          <span class="chip" data-tp="0,0,4,8">Origin → (4,8)</span>
+        </div>
+
+        <h3>Textbook Example 3.2</h3>
+        <p class="small">A(−2, 5) and B(4, −1) — find the equation of the line through both.</p>
+        <details class="sol" open>
+          <summary>Show working</summary>
+          <div class="body">
+            <p><b>Step 1.</b> Slope:</p>
+            <p class="center"><span class="v">m</span> = <span class="frac"><span class="num">−1 − 5</span><span class="den">4 − (−2)</span></span> = <span class="frac"><span class="num">−6</span><span class="den">6</span></span> = −1</p>
+            <p><b>Step 2.</b> Take A(−2, 5) and use point-slope:</p>
+            <p class="center"><span class="v">y</span> − 5 = −1[<span class="v">x</span> − (−2)] → <span class="v">y</span> − 5 = −(<span class="v">x</span> + 2)</p>
+            <p><b>Step 3.</b> Simplify:</p>
+            <p class="center"><span class="v">y</span> − 5 = −<span class="v">x</span> − 2 → <b><span class="v">y</span> = −<span class="v">x</span> + 3</b></p>
+            <p class="small muted">Using B(4, −1) instead gives the same line — try it.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 3 : INTERCEPT ================= -->
+<section class="blk yr" id="step3">
+  <div class="wrap">
+    <div class="steptag"><span class="n">3</span> Form 3 of 5</div>
+    <h2>Intercept form — when you are given where the line cuts the axes</h2>
+    <p>If a line cuts the <span class="v">x</span>-axis at (<span class="v">a</span>, 0) and the <span class="v">y</span>-axis at (0, <span class="v">b</span>), then we already have <b>two points</b> — so this is really Step 2 in disguise.</p>
+
+    <div class="formula big">
+      <span class="frac"><span class="num"><span class="v">x</span></span><span class="den"><span class="v">a</span></span></span> + <span class="frac"><span class="num"><span class="v">y</span></span><span class="den"><span class="v">b</span></span></span> = 1
+      <span class="lbl">Intercept form · a = x-intercept, b = y-intercept</span>
+    </div>
+
+    <details class="sol">
+      <summary>Where does this come from? (2 lines of algebra)</summary>
+      <div class="body">
+        <p>Take the two points (<span class="v">a</span>, 0) and (0, <span class="v">b</span>). The slope is</p>
+        <p class="center"><span class="frac"><span class="num"><span class="v">b</span> − 0</span><span class="den">0 − <span class="v">a</span></span></span> = −<span class="frac"><span class="num"><span class="v">b</span></span><span class="den"><span class="v">a</span></span></span></p>
+        <p>Point-slope with (<span class="v">a</span>, 0): <span class="v">y</span> − 0 = −<span class="frac"><span class="num"><span class="v">b</span></span><span class="den"><span class="v">a</span></span></span>(<span class="v">x</span> − <span class="v">a</span>). Divide through by <span class="v">b</span> and rearrange:</p>
+        <p class="center"><span class="frac"><span class="num"><span class="v">x</span></span><span class="den"><span class="v">a</span></span></span> + <span class="frac"><span class="num"><span class="v">y</span></span><span class="den"><span class="v">b</span></span></span> = 1</p>
+      </div>
+    </details>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head"><span class="eqout" id="icEq">y = −2x − 10</span><span class="small muted">Drag the intercepts →</span></div>
+        <svg class="plot static" id="plotIC" viewBox="0 0 640 440"></svg>
+      </div>
+      <div>
+        <div class="ctrl"><label>x-intercept <span class="v">a</span> <b id="icAv">−5</b></label><input type="range" id="icA" min="-10" max="10" step="1" value="-5"></div>
+        <div class="ctrl"><label>y-intercept <span class="v">b</span> <b id="icBv">−10</b></label><input type="range" id="icB" min="-10" max="10" step="1" value="-10"></div>
+
+        <h3>Textbook Example 3.3</h3>
+        <p class="small">A line cuts the axes at −5 and −10. Find its equation in slope-intercept form.</p>
+        <details class="sol" open>
+          <summary>Show working</summary>
+          <div class="body">
+            <p><b>Step 1.</b> Intercept form with <span class="v">a</span> = −5, <span class="v">b</span> = −10:</p>
+            <p class="center"><span class="frac"><span class="num"><span class="v">x</span></span><span class="den">−5</span></span> + <span class="frac"><span class="num"><span class="v">y</span></span><span class="den">−10</span></span> = 1</p>
+            <p><b>Step 2.</b> Isolate <span class="v">y</span>: move the <span class="v">x</span> term over, then multiply by −10.</p>
+            <p class="center"><span class="frac"><span class="num"><span class="v">y</span></span><span class="den">−10</span></span> = <span class="frac"><span class="num"><span class="v">x</span></span><span class="den">5</span></span> + 1</p>
+            <p class="center"><b><span class="v">y</span> = −2<span class="v">x</span> − 10</b></p>
+          </div>
+        </details>
+        <div class="note tip" style="margin-bottom:0"><div class="h">Watch the signs</div>Substitute each intercept into the <em>matching</em> position: <span class="v">x</span>-intercept always under <span class="v">x</span>, <span class="v">y</span>-intercept always under <span class="v">y</span>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 4 : SLOPE-INTERCEPT ================= -->
+<section class="blk yr" id="step4">
+  <div class="wrap">
+    <div class="steptag"><span class="n">4</span> Form 4 of 5</div>
+    <h2>Slope-intercept form — the one everyone recognises</h2>
+    <p>Take the point-slope form and feed it the <span class="v">y</span>-intercept (0, <span class="v">c</span>):</p>
+    <p class="center" style="font-family:'Cambria Math',Georgia,serif;font-size:17px">
+      <span class="v">y</span> − <span class="v">c</span> = <span class="v">m</span>(<span class="v">x</span> − 0) &nbsp;⟹&nbsp; <b><span class="v">y</span> = <span class="v">m</span><span class="v">x</span> + <span class="v">c</span></b>
+    </p>
+
+    <div class="formula big">
+      <span class="v">y</span> = <span class="v">m</span><span class="v">x</span> + <span class="v">c</span>
+      <span class="lbl">Slope-intercept form · slope = m, y-intercept = c</span>
+    </div>
+
+    <div class="card">
+      <div class="plot-head"><span class="eqout" id="siEq">y = 1.5x + 2</span><span class="small muted">This is the playground — move both sliders</span></div>
+      <svg class="plot static" id="plotSI" viewBox="0 0 640 440"></svg>
+      <div class="grid2" style="margin-top:14px">
+        <div class="ctrl"><label>Slope <span class="v">m</span> <b id="siMv">1.5</b></label><input type="range" id="siM" min="-4" max="4" step="0.25" value="1.5"></div>
+        <div class="ctrl"><label>y-intercept <span class="v">c</span> <b id="siCv">2</b></label><input type="range" id="siC" min="-6" max="6" step="0.5" value="2"></div>
+      </div>
+      <div class="legend" style="margin-top:6px">
+        <span><i style="background:var(--brand)"></i>the line y = mx + c</span>
+        <span><i style="background:var(--accent)"></i>y-intercept (0, c)</span>
+        <span><i style="background:var(--good)"></i>“rise over run” triangle</span>
+      </div>
+      <div class="note" id="siMsg" style="margin-bottom:0;font-size:14px">Positive <span class="v">m</span> → line rises to the right. Negative <span class="v">m</span> → falls. <span class="v">m</span> = 0 → horizontal.</div>
+    </div>
+
+    <div class="grid2">
+      <div class="card tight">
+        <h4 style="margin-top:0">Reading a line straight off the equation</h4>
+        <p class="small">For <span class="mono">y = <span class="v">m</span><span class="v">x</span> + <span class="v">c</span></span>, the number in front of <span class="v">x</span> is the slope and the standalone number is the <span class="v">y</span>-intercept.</p>
+        <ul class="clean small">
+          <li><span class="mono">y = 2x − 3</span> → slope 2, y-intercept −3</li>
+          <li><span class="mono">y = −6x + 12</span> → slope −6, y-intercept 12</li>
+          <li><span class="mono">y = −<span class="frac"><span class="num">1</span><span class="den">3</span></span>x − 21</span> → slope −⅓, y-intercept −21</li>
+        </ul>
+      </div>
+      <div class="card tight">
+        <h4 style="margin-top:0">Straight lines through the origin</h4>
+        <p class="small">If the y-intercept is 0, the equation collapses to:</p>
+        <div class="formula" style="margin:10px 0"><span class="v">y</span> = <span class="v">m</span><span class="v">x</span></div>
+        <p class="small muted" style="margin-bottom:0">The origin O(0, 0) is on every such line. Note that this is <em>not</em> the same as <span class="mono">y = mx + c</span> with any non-zero <span class="v">c</span> — the line misses the origin by <span class="v">c</span> units.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 5 : SPECIAL LINES ================= -->
+<section class="blk yr" id="step5">
+  <div class="wrap">
+    <div class="steptag"><span class="n">5</span> Special cases</div>
+    <h2>Horizontal and vertical lines</h2>
+    <p>These two look odd only because one of them has no slope at all.</p>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head"><span class="eqout" id="spEq">y = 3 &nbsp;·&nbsp; x = −2</span><span class="small muted">Move both lines →</span></div>
+        <svg class="plot static" id="plotSP" viewBox="0 0 640 440"></svg>
+      </div>
+      <div>
+        <div class="ctrl"><label>Horizontal line <span class="v">y</span> = <span class="v">k</span> <b id="spKv">3</b></label><input type="range" id="spK" min="-7" max="7" step="1" value="3"></div>
+        <div class="ctrl"><label>Vertical line <span class="v">x</span> = <span class="v">h</span> <b id="spHv">−2</b></label><input type="range" id="spH" min="-7" max="7" step="1" value="-2"></div>
+
+        <div class="tbl-wrap" style="margin-top:14px">
+          <table>
+            <thead><tr><th>Line</th><th>Equation</th><th>Slope</th></tr></thead>
+            <tbody>
+              <tr><td>Horizontal (y-intercept <span class="v">k</span>)</td><td class="mono">y = k</td><td>0</td></tr>
+              <tr><td>Vertical (x-intercept <span class="v">h</span>)</td><td class="mono">x = h</td><td>undefined</td></tr>
+              <tr><td>x-axis</td><td class="mono">y = 0</td><td>0</td></tr>
+              <tr><td>y-axis</td><td class="mono">x = 0</td><td>undefined</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note tip" style="margin-bottom:0">
+          <div class="h">The handy shortcut</div>
+          If a horizontal line passes through (<span class="v">a</span>, <span class="v">b</span>), its equation is <b><span class="v">y</span> = <span class="v">b</span></b>.<br>
+          If a vertical line passes through (<span class="v">a</span>, <span class="v">b</span>), its equation is <b><span class="v">x</span> = <span class="v">a</span></b>.<br>
+          You only ever copy one of the two numbers.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 6 : GENERAL FORM ================= -->
+<section class="blk yr" id="step6">
+  <div class="wrap">
+    <div class="steptag"><span class="n">6</span> Form 5 of 5</div>
+    <h2>General form — the shape that fits every line</h2>
+    <p>Every line we have met so far can be written as:</p>
+    <div class="formula big">
+      A<span class="v">x</span> + B<span class="v">y</span> + C = 0
+      <span class="lbl">General form · A, B, C are constants, A and B not both zero</span>
+    </div>
+    <p>This is the tidy, standard way to write an answer, and it handles vertical lines too (which <span class="mono">y = mx + c</span> cannot).</p>
+
+    <h3>Reading the features straight out of the general form</h3>
+    <p>Rewrite A<span class="v">x</span> + B<span class="v">y</span> + C = 0 to make <span class="v">y</span> the subject, assuming A ≠ 0 and B ≠ 0:</p>
+    <p class="center" style="font-family:'Cambria Math',Georgia,serif">
+      B<span class="v">y</span> = −A<span class="v">x</span> − C &nbsp;⟹&nbsp; <span class="v">y</span> = −<span class="frac"><span class="num">A</span><span class="den">B</span></span><span class="v">x</span> − <span class="frac"><span class="num">C</span><span class="den">B</span></span>
+    </p>
+    <p>For the <span class="v">x</span>-intercept put <span class="v">y</span> = 0; for the <span class="v">y</span>-intercept put <span class="v">x</span> = 0.</p>
+
+    <div class="formula">
+      x-intercept = −<span class="frac"><span class="num">C</span><span class="den">A</span></span> &nbsp;&nbsp;·&nbsp;&nbsp;
+      y-intercept = −<span class="frac"><span class="num">C</span><span class="den">B</span></span> &nbsp;&nbsp;·&nbsp;&nbsp;
+      slope = −<span class="frac"><span class="num">A</span><span class="den">B</span></span>
+    </div>
+
+    <div class="grid2 wide">
+      <div class="plotbox">
+        <div class="plot-head"><span class="eqout" id="gfEq">3x + 4y − 24 = 0</span><span class="small muted">Edit A, B, C →</span></div>
+        <svg class="plot static" id="plotGF" viewBox="0 0 640 440"></svg>
+      </div>
+      <div>
+        <div class="inrow">
+          <label class="f"><span>A</span><input type="number" id="gfA" value="3" step="1"></label>
+          <label class="f"><span>B</span><input type="number" id="gfB" value="4" step="1"></label>
+          <label class="f"><span>C</span><input type="number" id="gfC" value="-24" step="1"></label>
+        </div>
+        <div class="chipline">
+          <span class="chip" data-gf="3,4,-24">3x + 4y − 24 = 0</span>
+          <span class="chip" data-gf="1,-4,-8">x − 4y − 8 = 0</span>
+          <span class="chip" data-gf="2,-3,18">2x − 3y + 18 = 0</span>
+          <span class="chip" data-gf="4,5,0">4x + 5y = 0</span>
+          <span class="chip" data-gf="1,0,-5">x − 5 = 0 (vertical)</span>
+        </div>
+        <div class="tbl-wrap" style="margin-top:4px">
+          <table>
+            <thead><tr><th class="mono">Equation of L</th><th>x-intercept</th><th>y-intercept</th><th>Slope</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">3x + y − 12 = 0</td><td>4</td><td>12</td><td>−3</td></tr>
+              <tr><td class="mono">x − 4y − 8 = 0</td><td>8</td><td>−2</td><td>1</td></tr>
+              <tr><td class="mono">2x − 3y + 18 = 0</td><td>−9</td><td>6</td><td>2</td></tr>
+              <tr><td class="mono">4x + 5y = 0</td><td>0</td><td>0</td><td>−⅘</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>Two cases to keep in mind</h3>
+    <div class="grid2">
+      <div class="card tight"><h4 style="margin-top:0">A = 0, B ≠ 0</h4><p class="small">Then B<span class="v">y</span> + C = 0 → <span class="mono">y = −C/B</span> — a <b>horizontal</b> line, slope 0.</p></div>
+      <div class="card tight"><h4 style="margin-top:0">A ≠ 0, B = 0</h4><p class="small">Then A<span class="v">x</span> + C = 0 → <span class="mono">x = −C/A</span> — a <b>vertical</b> line, slope undefined.</p></div>
+    </div>
+
+    <h3>Slope and inclination</h3>
+    <p>The <b>inclination</b> θ of a line is the angle measured anticlockwise from the positive <span class="v">x</span>-axis to the line, with 0° ≤ θ &lt; 180°. For any non-vertical line:</p>
+    <div class="formula">slope = tan θ &nbsp;&nbsp;·&nbsp;&nbsp; θ = tan<sup>−1</sup>(slope)</div>
+    <div class="note tip">
+      <div class="h">Textbook Example 3.12</div>
+      For L: 2<span class="v">x</span> − 3<span class="v">y</span> = 0, the slope is ⅔. So tan θ = ⅔ → <b>θ = 33.7°</b> (3 s.f.). A line with the same inclination is <em>parallel</em> to L.
+    </div>
+
+    <div class="grid2">
+      <div class="card tight">
+        <h4 style="margin-top:0">Worked: Example 3.9 (HKDSE 2016 Q25)</h4>
+        <p class="small">L₁: <span class="mono">hx + ky + 45 = 0</span> and L₂: <span class="mono">4x + 6y + 15 = 0</span> are perpendicular and meet on the <span class="v">x</span>-axis. Find <span class="v">h</span> and <span class="v">k</span>.</p>
+        <details class="sol">
+          <summary>Show working</summary>
+          <div class="body">
+            <p><b>Same x-intercept:</b> <span class="frac"><span class="num">−45</span><span class="den">h</span></span> = <span class="frac"><span class="num">−15</span><span class="den">4</span></span> → <b><span class="v">h</span> = 12</b></p>
+            <p><b>Perpendicular:</b> slope of L₁ × slope of L₂ = −1</p>
+            <p class="center">(−<span class="frac"><span class="num">12</span><span class="den"><span class="v">k</span></span></span>) × (−<span class="frac"><span class="num">4</span><span class="den">6</span></span>) = −1 → <b><span class="v">k</span> = −8</b></p>
+            <p><b>Check (−1, 5):</b> 12(−1) − 8(5) + 45 = −7 ≠ 0, so (−1, 5) does <b>not</b> lie on L₁.</p>
+          </div>
+        </details>
+      </div>
+      <div class="card tight">
+        <h4 style="margin-top:0">Worked: perpendicular bisector (Example 3.7)</h4>
+        <p class="small">A(0, 6), B(12, −2). Find the perpendicular bisector of AB.</p>
+        <details class="sol">
+          <summary>Show working</summary>
+          <div class="body">
+            <p><b>Mid-point:</b> (6, 2).</p>
+            <p><b>Slope of AB:</b> <span class="frac"><span class="num">−2−6</span><span class="den">12−0</span></span> = −⅔.</p>
+            <p><b>Perpendicular slope:</b> <span class="v">m</span> × (−⅔) = −1 → <span class="v">m</span> = 3/2.</p>
+            <p><b>Point-slope through (6, 2):</b> <span class="v">y</span> − 2 = <span class="frac"><span class="num">3</span><span class="den">2</span></span>(<span class="v">x</span> − 6)</p>
+            <p class="center"><b><span class="v">y</span> = <span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="v">x</span> − 7</b></p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 7 : INTERSECTIONS ================= -->
+<section class="blk yr" id="step7">
+  <div class="wrap">
+    <div class="steptag"><span class="n">7</span> Two lines together</div>
+    <h2>Intersections of two straight lines</h2>
+    <p>Given two lines, only three things can happen. The slopes and intercepts tell you which — <em>before</em> you solve anything.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Case</th><th>Slopes</th><th>y-intercepts</th><th>Points of intersection</th><th>Picture</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="v">m</span><sub>1</sub> ≠ <span class="v">m</span><sub>2</sub></td><td>—</td><td><b>1</b></td><td>Two lines crossing</td></tr>
+          <tr><td>2</td><td><span class="v">m</span><sub>1</sub> = <span class="v">m</span><sub>2</sub></td><td><span class="v">c</span><sub>1</sub> ≠ <span class="v">c</span><sub>2</sub></td><td><b>0</b></td><td>Parallel lines</td></tr>
+          <tr><td>3</td><td><span class="v">m</span><sub>1</sub> = <span class="v">m</span><sub>2</sub></td><td><span class="v">c</span><sub>1</sub> = <span class="v">c</span><sub>2</sub></td><td><b>infinite</b></td><td>Coincident (same line)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="small muted">For vertical lines the same three outcomes occur, but decided by the <span class="v">x</span>-intercepts instead: different <span class="v">x</span>-intercepts → 0 points; same <span class="v">x</span>-intercept → infinitely many. A vertical line and a non-vertical line always meet in exactly 1 point.</p>
+
+    <div class="card">
+      <div class="plot-head"><span class="eqout" id="ixEq">L₁: x + 3y + 7 = 0 · L₂: 2x − y − 21 = 0</span><span class="small muted">Type coefficients →</span></div>
+      <svg class="plot static" id="plotIX" viewBox="0 0 640 440"></svg>
+      <div class="grid2" style="margin-top:14px">
+        <div>
+          <h4 style="margin-top:0">Line 1</h4>
+          <div class="inrow">
+            <label class="f"><span>A₁</span><input type="number" id="ixA1" value="1" step="1"></label>
+            <label class="f"><span>B₁</span><input type="number" id="ixB1" value="3" step="1"></label>
+            <label class="f"><span>C₁</span><input type="number" id="ixC1" value="7" step="1"></label>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Line 2</h4>
+          <div class="inrow">
+            <label class="f"><span>A₂</span><input type="number" id="ixA2" value="2" step="1"></label>
+            <label class="f"><span>B₂</span><input type="number" id="ixB2" value="-1" step="1"></label>
+            <label class="f"><span>C₂</span><input type="number" id="ixC2" value="-21" step="1"></label>
+          </div>
+        </div>
+      </div>
+      <div class="chipline">
+        <span class="chip" data-ix="1,3,7,2,-1,-21">meet at one point</span>
+        <span class="chip" data-ix="1,-2,5,2,-4,10">coincident (infinite)</span>
+        <span class="chip" data-ix="1,1,-1,2,2,7">parallel (none)</span>
+      </div>
+      <div class="note" id="ixMsg" style="margin-bottom:0">The verdict appears here.</div>
+    </div>
+
+    <h3>How to actually find the intersection point</h3>
+    <p class="small">Solve the two equations as simultaneous equations. Textbook Example 3.13(c):</p>
+    <details class="sol" open>
+      <summary>Show working: L₁: x + 3y + 7 = 0 and L₂: 2x − y − 21 = 0</summary>
+      <div class="body">
+        <p>x + 3y + 7 = 0 &nbsp;…(1)<br>2x − y − 21 = 0 &nbsp;…(2)</p>
+        <p><b>Eliminate x:</b> compute 2×(1) − (2):</p>
+        <p class="center">(2x + 6y + 14) − (2x − y − 21) = 0 → 7y + 35 = 0 → <span class="v">y</span> = −5</p>
+        <p><b>Substitute back</b> into (1): x + 3(−5) + 7 = 0 → <span class="v">x</span> = 8</p>
+        <p class="center">Intersection point = <b>(8, −5)</b> ✓</p>
+        <p class="small muted">Slopes: −⅓ and 2 are different → exactly one intersection, as expected.</p>
+      </div>
+    </details>
+
+    <div class="grid2">
+      <div class="card tight">
+        <h4 style="margin-top:0">Example 3.15 — "do not intersect"</h4>
+        <p class="small">L₁: 2x − 3y + 12 = 0 and L₂: kx + 6y + 21 = 0 do not intersect. Find k.</p>
+        <details class="sol">
+          <summary>Show working</summary>
+          <div class="body">
+            <p>No intersection → parallel → equal slopes:</p>
+            <p class="center">−<span class="frac"><span class="num">2</span><span class="den">−3</span></span> = −<span class="frac"><span class="num"><span class="v">k</span></span><span class="den">6</span></span> → <b><span class="v">k</span> = −4</b></p>
+            <p class="small muted">The y-intercepts differ (−4 vs −3.5), so the lines really are distinct.</p>
+          </div>
+        </details>
+      </div>
+      <div class="card tight">
+        <h4 style="margin-top:0">Example 3.14 — intersecting a given line</h4>
+        <p class="small">L₁: x − 3y + 18 = 0 meets the vertical line L₂: x = −9 at P. Find P.</p>
+        <details class="sol">
+          <summary>Show working</summary>
+          <div class="body">
+            <p>Substitute x = −9 into L₁:</p>
+            <p class="center">(−9) − 3y + 18 = 0 → −3y + 9 = 0 → <span class="v">y</span> = 3</p>
+            <p>So <b>P(−9, 3)</b>. And since L₁ cuts the axes at A(−18, 0) and B(0, 6), the mid-point of AB is (−9, 3) — so P is the mid-point of AB.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRACTICE ================= -->
+<section class="blk yr" id="practice">
+  <div class="wrap">
+    <div class="steptag"><span class="n">✓</span> Check your understanding</div>
+    <h2>Practice — 10 questions</h2>
+    <p class="muted">Pick an answer to see instantly whether it is right, plus the full working.</p>
+    <div id="quiz"></div>
+    <div class="score">
+      <div><div class="small muted">Score</div><div class="big"><span id="sc">0</span> / <span id="tot">10</span></div></div>
+      <button class="btn ghost" id="reset">Reset quiz</button>
+      <div class="small muted" id="scMsg">Answer the questions above.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHEAT SHEET ================= -->
+<section class="blk yr" id="cheat">
+  <div class="wrap">
+    <div class="steptag"><span class="n">Σ</span> Summary</div>
+    <h2>One-page cheat sheet</h2>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>What you are given</th><th>Form to use</th><th class="mono">Equation</th></tr></thead>
+        <tbody>
+          <tr><td>Slope <span class="v">m</span> + one point (<span class="v">x</span><sub>1</sub>, <span class="v">y</span><sub>1</sub>)</td><td>Point-slope</td><td class="mono"><span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="v">m</span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)</td></tr>
+          <tr><td>Two points</td><td>Two-point</td><td class="mono"><span class="v">y</span> − <span class="v">y</span><sub>1</sub> = <span class="frac"><span class="num"><span class="v">y</span><sub>2</sub>−<span class="v">y</span><sub>1</sub></span><span class="den"><span class="v">x</span><sub>2</sub>−<span class="v">x</span><sub>1</sub></span></span>(<span class="v">x</span> − <span class="v">x</span><sub>1</sub>)</td></tr>
+          <tr><td>x-intercept <span class="v">a</span> + y-intercept <span class="v">b</span></td><td>Intercept</td><td class="mono"><span class="frac"><span class="num"><span class="v">x</span></span><span class="den"><span class="v">a</span></span></span> + <span class="frac"><span class="num"><span class="v">y</span></span><span class="den"><span class="v">b</span></span></span> = 1</td></tr>
+          <tr><td>Slope <span class="v">m</span> + y-intercept <span class="v">c</span></td><td>Slope-intercept</td><td class="mono"><span class="v">y</span> = <span class="v">m</span><span class="v">x</span> + <span class="v">c</span></td></tr>
+          <tr><td>Any line at all</td><td>General</td><td class="mono">A<span class="v">x</span> + B<span class="v">y</span> + C = 0</td></tr>
+          <tr><td>Horizontal through (<span class="v">a</span>, <span class="v">b</span>)</td><td>—</td><td class="mono"><span class="v">y</span> = <span class="v">b</span></td></tr>
+          <tr><td>Vertical through (<span class="v">a</span>, <span class="v">b</span>)</td><td>—</td><td class="mono"><span class="v">x</span> = <span class="v">a</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card tight">
+        <h4 style="margin-top:0">Reading features out of A<span class="v">x</span> + B<span class="v">y</span> + C = 0</h4>
+        <ul class="clean small" style="margin-bottom:0">
+          <li>slope = −A/B</li>
+          <li>x-intercept = −C/A</li>
+          <li>y-intercept = −C/B</li>
+          <li>inclination: tan θ = slope</li>
+        </ul>
+      </div>
+      <div class="card tight">
+        <h4 style="margin-top:0">Relationships</h4>
+        <ul class="clean small" style="margin-bottom:0">
+          <li>Parallel: <span class="v">m</span><sub>1</sub> = <span class="v">m</span><sub>2</sub></li>
+          <li>Perpendicular: <span class="v">m</span><sub>1</sub>·<span class="v">m</span><sub>2</sub> = −1</li>
+          <li>Perpendicular bisector of AB: through the mid-point of AB, with slope = −1 ÷ (slope of AB)</li>
+          <li>2 lines: different slopes → 1 point; same slope &amp; different intercept → 0; same slope &amp; same intercept → infinite</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note ok">
+      <div class="h">The three-step recipe that always works</div>
+      <b>1.</b> Find the slope (from a point + a point, or a parallel/perpendicular relationship).<br>
+      <b>2.</b> Find one point on the line (given, mid-point, an intercept, or a bit of geometry).<br>
+      <b>3.</b> Drop them into the point-slope form and tidy up.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built as an interactive study guide for <b>Chapter 3 — Equations of Straight Lines</b>.</p>
+    <p class="small">All examples and answers follow the chapter's worked examples and exercises. Redraw, drag, and re-test as many times as you like — that is the point.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   PLOT ENGINE — maps maths coordinates to SVG pixels
+   ============================================================ */
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent){
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+
+class Plot {
+  constructor(svg, opt={}){
+    this.svg = svg;
+    this.xmin = opt.xmin ?? -10; this.xmax = opt.xmax ?? 10;
+    this.ymin = opt.ymin ?? -8;  this.ymax = opt.ymax ?? 8;
+    this.w = 640; this.h = 440; this.pad = 34;
+    svg.setAttribute("viewBox", `0 0 ${this.w} ${this.h}`);
+    svg.setAttribute("preserveAspectRatio","xMidYMid meet");
+  }
+  X(x){ return this.pad + (x - this.xmin)/(this.xmax-this.xmin)*(this.w-2*this.pad); }
+  Y(y){ return this.h-this.pad - (y - this.ymin)/(this.ymax-this.ymin)*(this.h-2*this.pad); }
+  invX(px){ return this.xmin + (px-this.pad)/(this.w-2*this.pad)*(this.xmax-this.xmin); }
+  invY(py){ return this.ymin + (this.h-this.pad-py)/(this.h-2*this.pad)*(this.ymax-this.ymin); }
+  reset(){ this.svg.innerHTML = ""; this.grid(); }
+  grid(){
+    const g = el("g",{},this.svg);
+    // grid lines
+    for (let x=Math.ceil(this.xmin); x<=this.xmax; x++){
+      el("line",{x1:this.X(x),y1:this.Y(this.ymin),x2:this.X(x),y2:this.Y(this.ymax),
+        stroke:"var(--grid)","stroke-width":1},g);
+    }
+    for (let y=Math.ceil(this.ymin); y<=this.ymax; y++){
+      el("line",{x1:this.X(this.xmin),y1:this.Y(y),x2:this.X(this.xmax),y2:this.Y(y),
+        stroke:"var(--grid)","stroke-width":1},g);
+    }
+    // axes
+    el("line",{x1:this.X(this.xmin),y1:this.Y(0),x2:this.X(this.xmax),y2:this.Y(0),
+      stroke:"var(--axis)","stroke-width":1.6},g);
+    el("line",{x1:this.X(0),y1:this.Y(this.ymin),x2:this.X(0),y2:this.Y(this.ymax),
+      stroke:"var(--axis)","stroke-width":1.6},g);
+    // ticks + numbers
+    for (let x=Math.ceil(this.xmin); x<=this.xmax; x++){
+      if (x===0) continue;
+      el("text",{x:this.X(x),y:this.Y(0)+15,"text-anchor":"middle","font-size":10.5,
+        fill:"var(--ink-3)"},g).textContent = x;
+    }
+    for (let y=Math.ceil(this.ymin); y<=this.ymax; y++){
+      if (y===0) continue;
+      el("text",{x:this.X(0)-7,y:this.Y(y)+3.6,"text-anchor":"end","font-size":10.5,
+        fill:"var(--ink-3)"},g).textContent = y;
+    }
+    el("text",{x:this.X(0)-9,y:this.Y(0)+15,"text-anchor":"end","font-size":10.5,fill:"var(--ink-3)"},g).textContent="O";
+    // arrows
+    el("polygon",{points:`${this.X(this.xmax)},${this.Y(0)} ${this.X(this.xmax)-8},${this.Y(0)-4.5} ${this.X(this.xmax)-8},${this.Y(0)+4.5}`,fill:"var(--axis)"},g);
+    el("polygon",{points:`${this.X(0)},${this.Y(this.ymax)} ${this.X(0)-4.5},${this.Y(this.ymax)+8} ${this.X(0)+4.5},${this.Y(this.ymax)+8}`,fill:"var(--axis)"},g);
+    el("text",{x:this.X(this.xmax)-4,y:this.Y(0)-10,"text-anchor":"end","font-size":12,fill:"var(--axis)","font-style":"italic"},g).textContent="x";
+    el("text",{x:this.X(0)+9,y:this.Y(this.ymax)+12,"font-size":12,fill:"var(--axis)","font-style":"italic"},g).textContent="y";
+    this.g = g;
+    return g;
+  }
+  line(m,c,o={}){
+    const col = o.color || "var(--brand)";
+    const wdt = o.width || 3;
+    const pts = [];
+    const yAt = x => m*x+c;
+    for (const x of [this.xmin, this.xmax]){
+      const y = yAt(x);
+      if (y >= this.ymin-1e-9 && y <= this.ymax+1e-9) pts.push([x,y]);
+    }
+    if (Math.abs(m) > 1e-12){
+      for (const y of [this.ymin, this.ymax]){
+        const x = (y-c)/m;
+        if (x >= this.xmin-1e-9 && x <= this.xmax+1e-9) pts.push([x,y]);
+      }
+    }
+    if (pts.length < 2) return;
+    // pick farthest pair
+    let a=pts[0], b=pts[1], best=-1;
+    for (let i=0;i<pts.length;i++) for (let j=i+1;j<pts.length;j++){
+      const d = Math.hypot(pts[i][0]-pts[j][0], pts[i][1]-pts[j][1]);
+      if (d>best){ best=d; a=pts[i]; b=pts[j]; }
+    }
+    const ln = el("line",{x1:this.X(a[0]),y1:this.Y(a[1]),x2:this.X(b[0]),y2:this.Y(b[1]),
+      stroke:col,"stroke-width":wdt,"stroke-linecap":"round"}, this.svg);
+    if (o.dash) ln.setAttribute("stroke-dasharray", o.dash);
+    if (o.label){
+      const t = el("text",{x:this.X(b[0])-6,y:this.Y(b[1])+16,"text-anchor":"end",
+        "font-size":13,"font-weight":700,fill:col}, this.svg);
+      t.textContent = o.label;
+    }
+  }
+  vline(x,o={}){
+    const col = o.color || "var(--accent)";
+    const ln = el("line",{x1:this.X(x),y1:this.Y(this.ymin),x2:this.X(x),y2:this.Y(this.ymax),
+      stroke:col,"stroke-width":o.width||3,"stroke-linecap":"round"}, this.svg);
+    if (o.dash) ln.setAttribute("stroke-dasharray", o.dash);
+    if (o.label){
+      const t = el("text",{x:this.X(x)+7,y:this.Y(this.ymax)+16,"font-size":13,"font-weight":700,fill:col}, this.svg);
+      t.textContent = o.label;
+    }
+  }
+  hline(y,o={}){
+    const col = o.color || "var(--good)";
+    const ln = el("line",{x1:this.X(this.xmin),y1:this.Y(y),x2:this.X(this.xmax),y2:this.Y(y),
+      stroke:col,"stroke-width":o.width||3,"stroke-linecap":"round"}, this.svg);
+    if (o.dash) ln.setAttribute("stroke-dasharray", o.dash);
+    if (o.label){
+      const t = el("text",{x:this.X(this.xmax)-6,y:this.Y(y)-9,"text-anchor":"end","font-size":13,"font-weight":700,fill:col}, this.svg);
+      t.textContent = o.label;
+    }
+  }
+  point(x,y,o={}){
+    const col = o.color || "var(--accent)";
+    const c = el("circle",{cx:this.X(x),cy:this.Y(y),r:o.r||6,fill:col,
+      stroke:"var(--surface)","stroke-width":2.2}, this.svg);
+    if (o.label){
+      const t = el("text",{x:this.X(x)+11,y:this.Y(y)-9,"font-size":13,"font-weight":700,fill:col}, this.svg);
+      t.textContent = o.label;
+    }
+    return c;
+  }
+  dotted(x1,y1,x2,y2,o={}){
+    el("line",{x1:this.X(x1),y1:this.Y(y1),x2:this.X(x2),y2:this.Y(y2),
+      stroke:o.color||"var(--ink-3)","stroke-width":1.6,"stroke-dasharray":"4 4"}, this.svg);
+  }
+  seg(x1,y1,x2,y2,o={}){
+    el("line",{x1:this.X(x1),y1:this.Y(y1),x2:this.X(x2),y2:this.Y(y2),
+      stroke:o.color||"var(--good)","stroke-width":o.width||3,"stroke-linecap":"round"}, this.svg);
+  }
+}
+
+/* ---------- number formatting ---------- */
+function nf(v, d=2){
+  const r = Math.round(v*Math.pow(10,d))/Math.pow(10,d);
+  return (Object.is(r,-0)?0:r).toString().replace(/-/g,"−");
+}
+function eqStr(m,c){ // y = mx + c  as pretty HTML
+  let s = "y = ";
+  if (m===0) return s + nf(c);
+  if (m===1) s += "x";
+  else if (m===-1) s += "−x";
+  else s += nf(m) + "x";
+  if (c!==0) s += (c>0 ? " + " : " − ") + nf(Math.abs(c));
+  return s;
+}
+function setRangeFill(inp){
+  const min=+inp.min, max=+inp.max, v=+inp.value;
+  inp.style.setProperty("--p", ((v-min)/(max-min)*100)+"%");
+}
+
+/* ============================================================
+   0) BIG IDEA — click to test
+   ============================================================ */
+(function(){
+  const svg = document.getElementById("plotIdea");
+  const msg = document.getElementById("ideaMsg");
+  const p = new Plot(svg,{xmin:-6,xmax:6,ymin:-6,ymax:6});
+  function draw(){
+    p.reset();
+    p.line(2,1,{color:"var(--brand)",width:3.2,label:"y = 2x + 1"});
+    p.point(0,1,{color:"var(--accent)",label:"(0, 1)"});
+  }
+  draw();
+  svg.addEventListener("click", e=>{
+    const r = svg.getBoundingClientRect();
+    const px = (e.clientX - r.left)/r.width*640;
+    const py = (e.clientY - r.top)/r.height*440;
+    const x = Math.round(p.invX(px)), y = Math.round(p.invY(py));
+    if (x<-6||x>6||y<-6||y>6) return;
+    draw();
+    const on = (y === 2*x+1);
+    p.point(x,y,{color: on?"var(--good)":"var(--bad)", r:7, label:`(${x}, ${y})`});
+    msg.innerHTML = on
+      ? `<b style="color:var(--good)">✓ Yes!</b> (${x}, ${y}) lies on the line, because 2(${x}) + 1 = ${2*x+1} = y.`
+      : `<b style="color:var(--bad)">✗ Not on the line.</b> For x = ${x} the equation demands y = 2(${x}) + 1 = <b>${2*x+1}</b>, not ${y}.`;
+    msg.style.borderColor = on ? "var(--good)" : "var(--bad)";
+  });
+})();
+
+/* ============================================================
+   1) POINT-SLOPE
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotPS");
+  const p = new Plot(svg,{xmin:-10,xmax:10,ymin:-8,ymax:8});
+  const M=document.getElementById("psM"), X=document.getElementById("psX"), Y=document.getElementById("psY");
+  const Mv=document.getElementById("psMv"),Xv=document.getElementById("psXv"),Yv=document.getElementById("psYv");
+  const eq=document.getElementById("psEq");
+  function upd(){
+    const m=+M.value, x1=+X.value, y1=+Y.value;
+    Mv.textContent = nf(m); Xv.textContent = nf(x1); Yv.textContent = nf(y1);
+    [M,X,Y].forEach(setRangeFill);
+    const c = y1 - m*x1;
+    p.reset();
+    p.line(m,c,{color:"var(--brand)",width:3.2});
+    p.point(x1,y1,{color:"var(--accent)",r:6.5,label:`(${nf(x1)}, ${nf(y1)})`});
+    if (m!==0){
+      const sx = x1>=0 ? x1-2.4 : x1+2.4;
+      const sy = y1;
+      p.dotted(sx,sy,x1,sy,{color:"var(--good)"});
+      p.dotted(x1,sy,x1,y1,{color:"var(--good)"});
+    }
+    // point-slope string
+    const xs = x1===0 ? "x" : `(x ${x1>0?"−":"+"} ${nf(Math.abs(x1))})`;
+    const ys = y1===0 ? "y" : `y ${y1>0?"−":"+"} ${nf(Math.abs(y1))}`;
+    eq.innerHTML = `${ys} = ${nf(m)}${xs}`;
+  }
+  [M,X,Y].forEach(i=>i.addEventListener("input",upd));
+  upd();
+})();
+
+/* ============================================================
+   2) TWO-POINT
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotTP");
+  const p = new Plot(svg,{xmin:-10,xmax:10,ymin:-8,ymax:8});
+  const ids=["tpX1","tpY1","tpX2","tpY2"].map(i=>document.getElementById(i));
+  const eq=document.getElementById("tpEq");
+  function upd(){
+    const [x1,y1,x2,y2]=ids.map(i=>+i.value||0);
+    p.reset();
+    if (x1===x2){
+      p.vline(x1,{color:"var(--brand)",label:`x = ${nf(x1)}`});
+      eq.innerHTML = `x = ${nf(x1)} <span class="sm">(vertical — slope undefined)</span>`;
+    } else {
+      const m=(y2-y1)/(x2-x1), c=y1-m*x1;
+      p.line(m,c,{color:"var(--brand)",width:3.2});
+      eq.innerHTML = eqStr(m, c) + ` <span class="sm">· m = ${nf(m,3)}</span>`;
+    }
+    p.point(x1,y1,{color:"var(--accent)",r:6,label:`A(${nf(x1)}, ${nf(y1)})`});
+    p.point(x2,y2,{color:"var(--good)",r:6,label:`B(${nf(x2)}, ${nf(y2)})`});
+    if (x1!==x2) p.line(0,y1,{color:"var(--ink-3)",width:1.2,dash:"5 5"});
+  }
+  ids.forEach(i=>i.addEventListener("input",upd));
+  document.querySelectorAll("[data-tp]").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      const v=ch.dataset.tp.split(",").map(Number);
+      ids.forEach((i,k)=>i.value=v[k]);
+      document.querySelectorAll("[data-tp]").forEach(o=>o.classList.remove("on"));
+      ch.classList.add("on");
+      upd();
+    });
+  });
+  upd();
+})();
+
+/* ============================================================
+   3) INTERCEPT
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotIC");
+  const p = new Plot(svg,{xmin:-12,xmax:12,ymin:-12,ymax:12});
+  const A=document.getElementById("icA"), B=document.getElementById("icB");
+  const Av=document.getElementById("icAv"), Bv=document.getElementById("icBv");
+  const eq=document.getElementById("icEq");
+  function upd(){
+    const a=+A.value, b=+B.value;
+    Av.textContent=nf(a); Bv.textContent=nf(b);
+    [A,B].forEach(setRangeFill);
+    p.reset();
+    if (a===0||b===0){
+      eq.innerHTML = `<span class="sm">An intercept of 0 means the line passes through the origin.</span>`;
+    } else {
+      const m=-b/a, c=b;
+      p.line(m,c,{color:"var(--brand)",width:3.2});
+      eq.innerHTML = eqStr(m,c);
+    }
+    p.point(a,0,{color:"var(--accent)",r:6,label:`(${nf(a)}, 0)`});
+    p.point(0,b,{color:"var(--good)",r:6,label:`(0, ${nf(b)})`});
+  }
+  [A,B].forEach(i=>i.addEventListener("input",upd));
+  upd();
+})();
+
+/* ============================================================
+   4) SLOPE-INTERCEPT
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotSI");
+  const p = new Plot(svg,{xmin:-10,xmax:10,ymin:-8,ymax:8});
+  const M=document.getElementById("siM"), C=document.getElementById("siC");
+  const Mv=document.getElementById("siMv"), Cv=document.getElementById("siCv");
+  const eq=document.getElementById("siEq"), msg=document.getElementById("siMsg");
+  function upd(){
+    const m=+M.value, c=+C.value;
+    Mv.textContent=nf(m); Cv.textContent=nf(c);
+    [M,C].forEach(setRangeFill);
+    p.reset();
+    p.line(m,c,{color:"var(--brand)",width:3.4});
+    p.point(0,c,{color:"var(--accent)",r:6.5,label:`(0, ${nf(c)})`});
+    eq.innerHTML = eqStr(m,c);
+    if (m!==0){
+      const sx=2;
+      const y0=m*sx+c;
+      p.seg(sx,c,sx,y0,{color:"var(--good)",width:2.4});
+      p.seg(sx,y0,sx+1,y0,{color:"var(--good)",width:2.4});
+      // triangle from (0,c)
+      p.dotted(0,c,3,c,{color:"var(--good)"});
+      p.dotted(3,c,3,m*3+c,{color:"var(--good)"});
+      p.seg(0,c,3,c,{color:"var(--good)",width:2.2});
+      p.seg(3,c,3,3*m+c,{color:"var(--good)",width:2.2});
+    }
+    msg.innerHTML = m>0
+      ? `Slope <b>${nf(m)}</b> is positive → as x increases by 1, y increases by ${nf(m)}. The line rises to the right.`
+      : m<0
+      ? `Slope <b>${nf(m)}</b> is negative → as x increases by 1, y <em>decreases</em> by ${nf(Math.abs(m))}. The line falls to the right.`
+      : `Slope is <b>0</b> → horizontal line, constant y = ${nf(c)}.`;
+    msg.style.borderColor = "";
+  }
+  [M,C].forEach(i=>i.addEventListener("input",upd));
+  upd();
+})();
+
+/* ============================================================
+   5) SPECIAL LINES
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotSP");
+  const p = new Plot(svg,{xmin:-8,xmax:8,ymin:-8,ymax:8});
+  const K=document.getElementById("spK"), H=document.getElementById("spH");
+  const Kv=document.getElementById("spKv"), Hv=document.getElementById("spHv");
+  const eq=document.getElementById("spEq");
+  function upd(){
+    const k=+K.value, h=+H.value;
+    Kv.textContent=nf(k); Hv.textContent=nf(h);
+    [K,H].forEach(setRangeFill);
+    p.reset();
+    p.hline(k,{color:"var(--good)",label:`y = ${nf(k)}`});
+    p.vline(h,{color:"var(--accent)",label:`x = ${nf(h)}`});
+    p.point(h,k,{color:"var(--brand)",r:6,label:`(${nf(h)}, ${nf(k)})`});
+    eq.innerHTML = `y = ${nf(k)} <span class="sm">· slope 0</span> &nbsp;·&nbsp; x = ${nf(h)} <span class="sm">· slope undefined</span>`;
+  }
+  [K,H].forEach(i=>i.addEventListener("input",upd));
+  upd();
+})();
+
+/* ============================================================
+   6) GENERAL FORM
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotGF");
+  const p = new Plot(svg,{xmin:-12,xmax:12,ymin:-10,ymax:10});
+  const A=document.getElementById("gfA"), B=document.getElementById("gfB"), C=document.getElementById("gfC");
+  const eq=document.getElementById("gfEq");
+  function upd(){
+    const a=+A.value||0, b=+B.value||0, c=+C.value||0;
+    p.reset();
+    eq.innerHTML = fmt(a,b,c);
+    if (a===0 && b===0){ eq.innerHTML += ` <span class="sm">(not a line)</span>`; return; }
+    if (b===0){
+      p.vline(-c/a,{color:"var(--brand)",label:`x = ${nf(-c/a)}`});
+      p.point(-c/a,0,{color:"var(--accent)",r:5.5});
+      return;
+    }
+    const m=-a/b, yint=-c/b;
+    p.line(m,yint,{color:"var(--brand)",width:3.2});
+    p.point(0,yint,{color:"var(--accent)",r:5.5,label:`(0, ${nf(yint)})`});
+    if (a!==0){
+      const xi=-c/a;
+      p.point(xi,0,{color:"var(--good)",r:5.5,label:`(${nf(xi)}, 0)`});
+    }
+  }
+  function fmt(a,b,c){
+    const s=[];
+    if (a!==0) s.push((a===1?"":a===-1?"−":nf(a))+"x");
+    if (b!==0){
+      const t=(Math.abs(b)===1?"":nf(Math.abs(b)))+"y";
+      s.push((s.length? (b>0?" + ":" − ") : (b<0?"−":""))+t);
+    }
+    if (c!==0) s.push((s.length? (c>0?" + ":" − ") : (c<0?"−":""))+nf(Math.abs(c)));
+    return (s.length?s.join(""):"0") + " = 0";
+  }
+  [A,B,C].forEach(i=>i.addEventListener("input",upd));
+  document.querySelectorAll("[data-gf]").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      const v=ch.dataset.gf.split(",").map(Number);
+      A.value=v[0];B.value=v[1];C.value=v[2];
+      document.querySelectorAll("[data-gf]").forEach(o=>o.classList.remove("on"));
+      ch.classList.add("on");
+      upd();
+    });
+  });
+  upd();
+})();
+
+/* ============================================================
+   7) INTERSECTIONS
+   ============================================================ */
+(function(){
+  const svg=document.getElementById("plotIX");
+  const p = new Plot(svg,{xmin:-14,xmax:14,ymin:-12,ymax:12});
+  const ids=["ixA1","ixB1","ixC1","ixA2","ixB2","ixC2"].map(i=>document.getElementById(i));
+  const eq=document.getElementById("ixEq"), msg=document.getElementById("ixMsg");
+  function lineOf(a,b,c){ // returns {m,c} or {vertical:x} or null
+    if (a===0 && b===0) return null;
+    if (b===0) return {vertical:-c/a};
+    return {m:-a/b, c:-c/b};
+  }
+  function upd(){
+    const [a1,b1,c1,a2,b2,c2]=ids.map(i=>+i.value||0);
+    const L1=lineOf(a1,b1,c1), L2=lineOf(a2,b2,c2);
+    p.reset();
+    eq.innerHTML = `${sym(a1,b1,c1)} &nbsp;·&nbsp; ${sym(a2,b2,c2)}`;
+    if (!L1 || !L2){ msg.textContent="One of them is not a line."; return; }
+    if (L1.vertical!==undefined) p.vline(L1.vertical,{color:"var(--brand)",label:`L₁`});
+    else p.line(L1.m,L1.c,{color:"var(--brand)",width:3});
+    if (L2.vertical!==undefined) p.vline(L2.vertical,{color:"var(--accent)",label:`L₂`});
+    else p.line(L2.m,L2.c,{color:"var(--accent)",width:3});
+
+    // compare
+    const v1 = L1.vertical!==undefined, v2 = L2.vertical!==undefined;
+    let verdict="", pt=null;
+    if (v1 && v2){
+      if (L1.vertical===L2.vertical){ verdict=`<b style="color:var(--good)">Infinitely many points</b> — both are vertical lines with the same x-intercept x = ${nf(L1.vertical)}. They are coincident.`; }
+      else { verdict=`<b style="color:var(--bad)">No intersection</b> — both vertical but with different x-intercepts (x = ${nf(L1.vertical)} vs x = ${nf(L2.vertical)}). They are parallel.`; }
+    } else if (v1 || v2){
+      const x = v1 ? L1.vertical : L2.vertical;
+      const L = v1 ? L2 : L1;
+      const y = L.m*x + L.c;
+      pt=[x,y];
+      verdict=`<b style="color:var(--good)">Exactly 1 point</b> — a vertical line always meets a non-vertical line once, at <b>(${nf(x)}, ${nf(y,3)})</b>.`;
+    } else {
+      if (L1.m===L2.m && L1.c===L2.c){
+        verdict=`<b style="color:var(--good)">Infinitely many points</b> — same slope (${nf(L1.m,3)}) <em>and</em> same y-intercept (${nf(L1.c,3)}). The equations describe the very same line.`;
+      } else if (L1.m===L2.m){
+        verdict=`<b style="color:var(--bad)">No intersection</b> — same slope (${nf(L1.m,3)}) but different y-intercepts (${nf(L1.c,3)} vs ${nf(L2.c,3)}). They are parallel.`;
+      } else {
+        const x=(L2.c-L1.c)/(L1.m-L2.m);
+        const y=L1.m*x+L1.c;
+        pt=[x,y];
+        verdict=`<b style="color:var(--good)">Exactly 1 point</b> — different slopes (${nf(L1.m,3)} vs ${nf(L2.m,3)}), so they cross at <b>(${nf(x,3)}, ${nf(y,3)})</b>.`;
+      }
+    }
+    msg.innerHTML = verdict;
+    msg.style.borderColor = pt ? "var(--good)" : (verdict.includes("No intersection") ? "var(--bad)" : "var(--line)");
+    if (pt) p.point(pt[0],pt[1],{color:"var(--brand)",r:7,label:`(${nf(pt[0],3)}, ${nf(pt[1],3)})`});
+  }
+  function sym(a,b,c){
+    const s=[];
+    if (a!==0) s.push((a===1?"":a===-1?"−":nf(a))+"x");
+    if (b!==0){ const t=(Math.abs(b)===1?"":nf(Math.abs(b)))+"y"; s.push((s.length?(b>0?" + ":" − "):(b<0?"−":""))+t); }
+    if (c!==0) s.push((s.length?(c>0?" + ":" − "):(c<0?"−":""))+nf(Math.abs(c)));
+    return (s.length?s.join(""):"0")+" = 0";
+  }
+  ids.forEach(i=>i.addEventListener("input",upd));
+  document.querySelectorAll("[data-ix]").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      const v=ch.dataset.ix.split(",").map(Number);
+      ids.forEach((i,k)=>i.value=v[k]);
+      document.querySelectorAll("[data-ix]").forEach(o=>o.classList.remove("on"));
+      ch.classList.add("on");
+      upd();
+    });
+  });
+  upd();
+})();
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+const QUESTIONS = [
+  { q:"A line passes through (1, 2) with slope 3. What is its equation?",
+    opts:["y = 3x − 1","y = 3x + 2","y = 3x + 5","y = −3x + 5"], a:0,
+    e:"Point-slope: y − 2 = 3(x − 1) → y − 2 = 3x − 3 → <b>y = 3x − 1</b>." },
+  { q:"Find the equation of the line through A(−2, 5) and B(4, −1).",
+    opts:["y = −x + 3","y = x + 7","y = −2x + 1","y = −x − 3"], a:0,
+    e:"Slope = (−1 − 5)/(4 + 2) = −6/6 = −1. Then y − 5 = −1(x + 2) → <b>y = −x + 3</b>." },
+  { q:"A line has slope −4 and y-intercept 7. Its equation is:",
+    opts:["y = −4x + 7","y = 7x − 4","y = 4x − 7","y = −7x + 4"], a:0,
+    e:"Slope-intercept form y = mx + c with m = −4, c = 7 → <b>y = −4x + 7</b>." },
+  { q:"A line cuts the x-axis at 3 and the y-axis at −6. Its equation is:",
+    opts:["y = 2x − 6","y = −2x − 6","y = 2x + 6","y = 6x − 2"], a:0,
+    e:"Intercept form: x/3 + y/(−6) = 1. Multiply by 6: 2x − y = 6 → <b>y = 2x − 6</b>. Check: y = 0 gives x = 3 ✓." },
+  { q:"For L: 3x + 4y − 24 = 0, the slope, x-intercept and y-intercept are:",
+    opts:["slope −3/4, x-int 8, y-int 6","slope 3/4, x-int 8, y-int 6","slope −3/4, x-int −8, y-int 6","slope −4/3, x-int 8, y-int 6"], a:0,
+    e:"slope = −A/B = −3/4, x-intercept = −C/A = 24/3 = 8, y-intercept = −C/B = 24/4 = 6." },
+  { q:"The distance between P(2, −9) and Q(−4, −1) is:",
+    opts:["10","8","√40","14"], a:0,
+    e:"√[(−4−2)² + (−1+9)²] = √(36 + 64) = √100 = <b>10</b>." },
+  { q:"L₁: y = 2x + 1 and L₂: 4x − 2y + 5 = 0. How many points of intersection are there?",
+    opts:["None — they are parallel","Exactly 1","Infinitely many — same line","2"], a:0,
+    e:"L₂ becomes y = 2x + 2.5. Same slope (2) but different y-intercepts (1 vs 2.5) → parallel → <b>no intersection</b>." },
+  { q:"The point of intersection of L₁: x + 3y + 7 = 0 and L₂: 2x − y − 21 = 0 is:",
+    opts:["(8, −5)","(−5, 8)","(2, −3)","(6, −4)"], a:0,
+    e:"2×(1) − (2): 7y + 35 = 0 → y = −5. Substitute into (1): x − 15 + 7 = 0 → x = 8. So <b>(8, −5)</b>." },
+  { q:"A line passes through (5, 6) and is horizontal. Its equation is:",
+    opts:["y = 6","x = 5","y = 5","x = 6"], a:0,
+    e:"A horizontal line keeps y constant, so copy the y-coordinate: <b>y = 6</b>." },
+  { q:"The slope of a line is √3. Its inclination (to 3 s.f.) is closest to:",
+    opts:["60°","30°","45°","120°"], a:0,
+    e:"tan θ = √3 → θ = 60°. (Inclination is measured anticlockwise from the positive x-axis.)" }
+];
+
+(function(){
+  const host = document.getElementById("quiz");
+  const scEl = document.getElementById("sc"), totEl = document.getElementById("tot"), msg = document.getElementById("scMsg");
+  let answered = new Array(QUESTIONS.length).fill(false), correct = new Array(QUESTIONS.length).fill(false);
+  totEl.textContent = QUESTIONS.length;
+
+  const keys="ABCD";
+  let order = [];               // order[i] = display sequence of original option indices
+  let correctPos = [];          // correctPos[i] = display slot of the right answer
+
+  function shuffle(n){
+    const a=[...Array(n).keys()];
+    for (let i=n-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
+  function buildOrder(){
+    order = QUESTIONS.map(q=>shuffle(q.opts.length));
+    correctPos = QUESTIONS.map((q,i)=>order[i].indexOf(q.a));
+  }
+  function render(){
+    host.innerHTML = "";
+    QUESTIONS.forEach((item,i)=>{
+      const q = document.createElement("div"); q.className="q";
+      const shown = order[i].map((orig,k)=>
+        `<div class="opt" data-i="${i}" data-slot="${k}"><span class="k">${keys[k]}</span><span class="m">${item.opts[orig]}</span></div>`
+      ).join("");
+      q.innerHTML = `<div class="qhead"><span class="qnum">${i+1}</span><span>${item.q}</span></div>
+        <div class="opts">${shown}</div>
+        <div class="qexp" id="exp${i}"><b>Why:</b> ${item.e}</div>`;
+      host.appendChild(q);
+    });
+    host.querySelectorAll(".opt").forEach(o=>{
+      o.addEventListener("click",()=>pick(+o.dataset.i, +o.dataset.slot, o));
+    });
+  }
+  function pick(i,slot,node){
+    if (answered[i]) return;
+    answered[i]=true;
+    const right = slot===correctPos[i];
+    correct[i]=right;
+    const box = node.parentElement;
+    box.querySelectorAll(".opt").forEach(o=>{
+      o.classList.add("locked");
+      if (+o.dataset.slot===correctPos[i]) o.classList.add("correct");
+    });
+    if (!right) node.classList.add("wrong");
+    document.getElementById("exp"+i).classList.add("show");
+    update();
+  }
+  function update(){
+    const n = correct.filter(Boolean).length;
+    const done = answered.filter(Boolean).length;
+    scEl.textContent = n;
+    if (done===QUESTIONS.length){
+      msg.innerHTML = n===QUESTIONS.length
+        ? "<b>Perfect score — you have this chapter.</b>"
+        : n>=8 ? "<b>Strong work.</b> Re-read the sections for the ones you missed."
+        : n>=5 ? "<b>Good start.</b> Go back through Steps 1–4; they carry most of the marks."
+        : "<b>Worth another pass.</b> Work through the steps slowly and use the interactive graphs to check yourself.";
+    } else {
+      msg.textContent = `${done} of ${QUESTIONS.length} answered.`;
+    }
+  }
+  document.getElementById("reset").addEventListener("click",()=>{
+    answered=new Array(QUESTIONS.length).fill(false);
+    correct=new Array(QUESTIONS.length).fill(false);
+    buildOrder(); render(); update();
+  });
+  buildOrder(); render(); update();
+})();
+
+/* ============================================================
+   THEME + NAV + PROGRESS
+   ============================================================ */
+(function(){
+  const root=document.documentElement;
+  const saved = localStorage.getItem("eosl-theme");
+  if (saved) root.setAttribute("data-theme",saved);
+  else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+    root.setAttribute("data-theme","dark");
+  }
+  const redraw = ()=>window.dispatchEvent(new Event("resize"));
+  document.getElementById("theme").addEventListener("click",()=>{
+    const next = root.getAttribute("data-theme")==="dark" ? "light":"dark";
+    root.setAttribute("data-theme",next);
+    localStorage.setItem("eosl-theme",next);
+  });
+
+  const bar=document.getElementById("bar");
+  function onScroll(){
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width = (h>0 ? (window.scrollY/h*100) : 0)+"%";
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  const pills=[...document.querySelectorAll(".pill")];
+  const secs=pills.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window){
+    const io=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if (e.isIntersecting){
+          pills.forEach(p=>p.classList.toggle("active", p.getAttribute("href")==="#"+e.target.id));
+        }
+      });
+    },{rootMargin:"-90px 0px -70% 0px",threshold:0});
+    secs.forEach(s=>io.observe(s));
+  }
+})();
+</script>
+</body>
+</html>
