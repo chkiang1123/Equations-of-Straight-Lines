@@ -4,6 +4,8 @@ An interactive study site that teaches **Chapter 3: Equations of Straight Lines*
 
 Built for students who want to actually *see* why the formulas work — not just memorise them.
 
+> **Live site:** https://straight-line-equation.app.workbuddy.host/
+
 ## What's inside
 
 | Step | Topic | What you get |
