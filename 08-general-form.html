@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The general form — Equations of Straight Lines</title>
+<meta name="description" content="One form that writes down every straight line: Ax + By + C = 0. A See-Think-Wonder case study, the slope and intercept formulas, and two interactive panels.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.7</span></div>
+    <div class="steptag"><span class="n">7</span> Step 7 of 10</div>
+    <h1>The general form</h1>
+    <p class="lead">One form that can write down <em>every</em> straight line that exists &mdash; including the two troublemakers from the last page. No special cases, no &ldquo;except when&hellip;&rdquo;.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 20 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Write any straight line as <b>Ax + By + C = 0</b> and state the rule that <span class="v">A</span> and <span class="v">B</span> are not both zero</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Read the slope <b>&minus;A/B</b> and both intercepts straight off the coefficients</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Explain why this form is called <b>general</b> &mdash; it handles horizontal and vertical lines too</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Recognise that multiplying the whole equation by a number gives a <b>different-looking but identical</b> line</label></li>
+    </ul>
+    <p class="glink">Tick these as you go &mdash; your ticks are saved on this device. Keyword search: <code>general form</code>, <code>Ax + By + C = 0</code>, <code>coefficients of a line</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The machined-edge spec sheet</h3>
+      <p class="scene">A quality-control engineer is handed a spec that gives the tolerance boundary of a machined edge as <b>3x &minus; 4y + 12 = 0</b>. To set up the cutting machine she needs two things: (a) the <span class="role">slope</span>, to compare against the drawing&rsquo;s value of 0.75, and (b) <span class="role">both intercepts</span>, to position the cutting head. The figure shows the boundary line on a grid with its two intercepts marked.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">3x &minus; 4y + 12 = 0</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>boundary edge</span>
+            <span><i style="background:var(--accent)"></i>intercept</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotSpec" aria-label="The line 3x minus 4y plus 12 equals 0, crossing the x-axis at minus 4 and the y-axis at 3"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> &mdash; symbols, points, the shape of the line. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>The equation has an <b>x</b> term, a <b>y</b> term and a plain number all on the <em>same</em> side &mdash; nothing is isolated on its own.</li>
+                <li>The line cuts the <b>x-axis</b> somewhere to the left of the origin and the <b>y-axis</b> somewhere above it.</li>
+                <li>It is <b>sloping upwards</b> as it goes to the right &mdash; so its slope is positive.</li>
+                <li>The two marked intercepts are the places where it crosses each axis.</li>
+                <li>Every term is a simple whole number &mdash; no fractions, no decimals.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? Could there be a faster way than rearranging every time?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>She <em>could</em> rearrange it into <span class="v">y = mx + c</span> every single time, like this:</p>
+              <div class="formula">3x &minus; 4y + 12 = 0 &nbsp;&rArr;&nbsp; &minus;4y = &minus;3x &minus; 12 &nbsp;&rArr;&nbsp; y = <span class="frac"><span class="num">3</span><span class="den">4</span></span>x + 3</div>
+              <p>That works, but it is <b>work every time</b> &mdash; and it hides the slope and intercepts behind a wall of algebra. There <em>should</em> be a way to read the slope and both intercepts straight off the <span class="v">A</span>, <span class="v">B</span> and <span class="v">C</span> that are already sitting there. <b>This page is that formula.</b></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask the questions this page must answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Is there a formula for the slope using just <span class="v">A</span>, <span class="v">B</span> and <span class="v">C</span>?</li>
+                <li>What happens if <span class="v">B = 0</span>? Then there is no <span class="v">y</span> term at all.</li>
+                <li>Why would anyone choose to write equations in this untidy-looking form instead of <span class="v">y = mx + c</span>?</li>
+                <li>Can two different-looking equations describe the <em>same</em> line?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>Reading the line straight off the coefficients</h2>
+    <p>The general form puts everything on one side of the equals sign. No rearranging is needed to recognise it &mdash; you just need the three numbers in front of <span class="v">x</span>, <span class="v">y</span> and the constant.</p>
+
+    <h3>Definition</h3>
+    <p>A straight line written as</p>
+    <div class="formula big">Ax + By + C = 0</div>
+    <p>where <span class="v">A</span>, <span class="v">B</span> and <span class="v">C</span> are numbers and <b><span class="v">A</span> and <span class="v">B</span> are not both zero</b>. (If both were zero you would have <span class="v">C = 0</span>, which is either always true or never true &mdash; not a line at all.)</p>
+
+    <h3>Slope</h3>
+    <p>Start from the definition and collect the <span class="v">y</span> term on its own, exactly as the engineer did:</p>
+    <ol class="steps">
+      <li>Bring everything except the <span class="v">y</span> term to the other side:
+        <div class="formula">By = &minus;Ax &minus; C</div>
+      </li>
+      <li>Divide by <span class="v">B</span> (so this needs <span class="v">B &ne; 0</span>):
+        <div class="formula big">y = <span class="frac"><span class="num">&minus;A</span><span class="den">B</span></span>x &minus; <span class="frac"><span class="num">C</span><span class="den">B</span></span></div>
+      </li>
+      <li>Comparing with <span class="v">y = mx + c</span>, the slope is <b>the coefficient of <span class="v">x</span></b>:</li>
+    </ol>
+    <div class="formula big">m = <span class="frac"><span class="num">&minus;A</span><span class="den">B</span></span></div>
+
+    <h3>Intercepts</h3>
+    <p>The x-intercept is where the line crosses the x-axis, so put <span class="v">y = 0</span>. The y-intercept is where it crosses the y-axis, so put <span class="v">x = 0</span>.</p>
+    <div class="grid2">
+      <div class="card tight">
+        <h4>x-intercept (set y = 0)</h4>
+        <div class="formula">Ax + C = 0 &nbsp;&rArr;&nbsp; x = <span class="frac"><span class="num">&minus;C</span><span class="den">A</span></span></div>
+      </div>
+      <div class="card tight">
+        <h4>y-intercept (set x = 0)</h4>
+        <div class="formula">By + C = 0 &nbsp;&rArr;&nbsp; y = <span class="frac"><span class="num">&minus;C</span><span class="den">B</span></span></div>
+      </div>
+    </div>
+
+    <div class="keyidea">
+      <span class="k">Three numbers, three facts</span>
+      <p>For <b>Ax + By + C = 0</b>: slope <b>m = &minus;A/B</b>, x-intercept <b>&minus;C/A</b>, y-intercept <b>&minus;C/B</b>. Watch the minus signs &mdash; every one of them belongs there.</p>
+    </div>
+
+    <h3>Why it is called <em>general</em></h3>
+    <p>The form <span class="v">y = mx + c</span> quietly assumes a finite slope. It <em>cannot</em> write a vertical line. The general form has no such blind spot:</p>
+    <ul class="clean">
+      <li>If <span class="v">A = 0</span> the equation becomes <span class="v">By + C = 0</span>, i.e. <span class="v">y = &minus;C/B</span> &mdash; a <b>horizontal</b> line. (Exactly the situation from the previous page, where <span class="v">y = k</span> had no slope problem at all.)</li>
+      <li>If <span class="v">B = 0</span> the equation becomes <span class="v">Ax + C = 0</span>, i.e. <span class="v">x = &minus;C/A</span> &mdash; a <b>vertical</b> line. This is the case that <span class="v">y = mx + c</span> simply cannot reach.</li>
+    </ul>
+    <div class="note tip">
+      <div class="h">Tie-back to the last page</div>
+      <p>On the horizontal-and-vertical page you learned that a vertical line must be written as <span class="v">x = h</span> because its slope does not exist. The general form swallows that exception for free: just let <span class="v">B = 0</span>. That is the whole reason it earns the name <em>general</em>.</p>
+    </div>
+
+    <h3>Conventions</h3>
+    <p>To make answers easy to compare, we agree on a tidy standard:</p>
+    <ul class="clean">
+      <li>Write <span class="v">A</span>, <span class="v">B</span> and <span class="v">C</span> as <b>integers</b> (clear any fractions by multiplying through).</li>
+      <li>Prefer <b><span class="v">A &gt; 0</span></b>. If <span class="v">A = 0</span>, prefer <b><span class="v">B &gt; 0</span></b>.</li>
+      <li>Never leave <span class="v">A</span> negative if you can fix it by multiplying the whole equation by &minus;1.</li>
+    </ul>
+
+    <h3>Equivalent equations</h3>
+    <p>Multiplying the entire equation by any non-zero number does not change the line &mdash; it just changes the labels on the coefficients. So these three all describe <b>one</b> line:</p>
+    <div class="formula">3x &minus; 4y + 12 = 0 &nbsp;·&nbsp; 6x &minus; 8y + 24 = 0 &nbsp;·&nbsp; &minus;3x + 4y &minus; 12 = 0</div>
+    <div class="note warn">
+      <div class="h">Two students, two answers, both right</div>
+      <p>If your equation is a whole-number multiple of the answer key, you are not wrong &mdash; you have simply scaled the coefficients. Divide through by the common factor and it will match.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Drive a line with its coefficients</h2>
+    <p>Move <span class="v">A</span>, <span class="v">B</span> and <span class="v">C</span>. Watch the line redraw and the slope and intercepts update live. Then push the sliders to the edges and see what the form can do that <span class="v">y = mx + c</span> cannot.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="gfEq">3x &minus; 4y + 12 = 0</div>
+        </div>
+        <svg class="plot" id="plotGen" aria-label="Interactive line drawn from A, B and C of the general form"></svg>
+        <div class="outmsg" id="gfMsg">Adjust A, B and C. Try B = 0 (a vertical line) or A = 0 (a horizontal line).</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>Coefficient <span class="v">A</span> <b id="gfAv">3</b></label>
+          <input type="range" id="gfA" min="-9" max="9" step="1" value="3">
+        </div>
+        <div class="ctrl">
+          <label>Coefficient <span class="v">B</span> <b id="gfBv">&minus;4</b></label>
+          <input type="range" id="gfB" min="-9" max="9" step="1" value="-4">
+        </div>
+        <div class="ctrl">
+          <label>Coefficient <span class="v">C</span> <b id="gfCv">12</b></label>
+          <input type="range" id="gfC" min="-9" max="9" step="1" value="12">
+        </div>
+        <h4>Live readout</h4>
+        <p class="small">Slope m = &minus;A/B: <span class="eqout small" id="gfSlope"></span></p>
+        <p class="small">x-intercept = &minus;C/A: <span class="eqout small" id="gfXint"></span></p>
+        <p class="small">y-intercept = &minus;C/B: <span class="eqout small" id="gfYint"></span></p>
+        <p class="small">As y = mx + c: <span class="eqout small" id="gfSI"></span></p>
+        <div class="note vio" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Set <span class="v">B = 0</span>. The line goes upright and the slope reads &ldquo;does not exist&rdquo;. Now set <span class="v">A = 0</span> and watch it go flat. Finally set <span class="v">A = 0</span> <em>and</em> <span class="v">B = 0</span> together &mdash; and read the warning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first &mdash; write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; slope and intercepts of 3x + 4y &minus; 12 = 0</summary>
+      <div class="body">
+        <p>Here <span class="v">A = 3</span>, <span class="v">B = 4</span>, <span class="v">C = &minus;12</span>.</p>
+        <p><b>Slope:</b> m = &minus;A/B = &minus;3/4.</p>
+        <p><b>x-intercept:</b> &minus;C/A = &minus;(&minus;12)/3 = 12/3 = <b>4</b>.</p>
+        <p><b>y-intercept:</b> &minus;C/B = &minus;(&minus;12)/4 = 12/4 = <b>3</b>.</p>
+        <p>Check: the line passes through (4, 0) and (0, 3). Slope = (3 &minus; 0)/(0 &minus; 4) = &minus;3/4 &mdash; correct.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; write y = 2x &minus; 5 in general form</summary>
+      <div class="body">
+        <p>Bring every term to one side:</p>
+        <div class="formula">y = 2x &minus; 5 &nbsp;&rArr;&nbsp; 2x &minus; y &minus; 5 = 0</div>
+        <p>Now <span class="v">A = 2</span> (positive, good), <span class="v">B = &minus;1</span>, <span class="v">C = &minus;5</span>. As a check: m = &minus;A/B = &minus;2/(&minus;1) = 2, which matches the original slope.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; write x/3 + y/4 = 1 in general form</summary>
+      <div class="body">
+        <p>There is a fraction on every term. Clear them by multiplying the whole equation by 12 (the lowest common multiple of 3 and 4):</p>
+        <div class="formula">12<span class="mono" style="font-size:1em">·</span><span class="frac"><span class="num">x</span><span class="den">3</span></span> + 12<span class="frac"><span class="num">y</span><span class="den">4</span></span> = 12 &nbsp;&rArr;&nbsp; 4x + 3y = 12</div>
+        <p>Bring the 12 over:</p>
+        <div class="formula">4x + 3y &minus; 12 = 0</div>
+        <p>Check the intercepts: x-intercept = &minus;(&minus;12)/4 = 3, and y-intercept = &minus;(&minus;12)/3 = 4 &mdash; exactly the &ldquo;a = 3, b = 4&rdquo; of the intercept form.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; for what k does kx + 3y &minus; 6 = 0 have slope 2?</summary>
+      <div class="body">
+        <p>Use the slope formula with <span class="v">A = k</span>, <span class="v">B = 3</span>:</p>
+        <div class="formula">m = <span class="frac"><span class="num">&minus;A</span><span class="den">B</span></span> = <span class="frac"><span class="num">&minus;k</span><span class="den">3</span></span> = 2</div>
+        <p>So &minus;k/3 = 2 &nbsp;&rArr;&nbsp; &minus;k = 6 &nbsp;&rArr;&nbsp; <b>k = &minus;6</b>.</p>
+        <p>Check: &minus;(&minus;6)/3 = 6/3 = 2. Correct.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 5 &mdash; classify 2x + 5 = 0 and 3y &minus; 9 = 0</summary>
+      <div class="body">
+        <p><b>(a)</b> 2x + 5 = 0. Here <span class="v">A = 2</span>, <span class="v">B = 0</span>. With <span class="v">B = 0</span> the line is vertical: x = &minus;C/A = &minus;5/2 = <b>&minus;2.5</b>. Its slope does not exist.</p>
+        <p><b>(b)</b> 3y &minus; 9 = 0. Here <span class="v">A = 0</span>, <span class="v">B = 3</span>. With <span class="v">A = 0</span> the line is horizontal: y = &minus;C/B = &minus;(&minus;9)/3 = <b>3</b>. Its slope is 0.</p>
+        <p>This is the whole point of the general form: the same machinery handles both, with no special rule.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>The subtle bit</div>
+    <h2>Same line, different outfit</h2>
+    <p>Below is one fixed line, <span class="v">3x &minus; 4y + 12 = 0</span>. Pick a multiplier. The line must <em>not</em> move &mdash; only the equation printed underneath changes.</p>
+
+    <div class="plotbox">
+      <div class="plot-head">
+        <div class="eqout" id="eqEq">3x &minus; 4y + 12 = 0</div>
+        <div class="legend"><span><i style="background:var(--accent)"></i>the line (fixed)</span></div>
+      </div>
+      <svg class="plot static" id="plotEquiv" aria-label="One fixed line 3x minus 4y plus 12 equals 0, with equivalent equations shown"></svg>
+      <div class="chipline" id="eqBtns"></div>
+      <div class="outmsg" id="eqMsg">&nbsp;</div>
+    </div>
+
+    <div class="note ok">
+      <div class="h">The insight</div>
+      <p>Multiplying every coefficient by the same non-zero number changes the <em>appearance</em> of the equation but not the line it describes. The graph above never moves. So if your answer is a whole-number multiple of the key, you were right &mdash; scale it back to compare.</p>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">m = A/B</td><td>The minus sign on the slope is missed</td><td>Always write <b>m = &minus;A/B</b> &mdash; the minus belongs there</td></tr>
+          <tr><td class="mono">x-intercept = C/A</td><td>The minus on the intercepts is forgotten</td><td>Both intercepts are <b>&minus;C</b> over something: &minus;C/A and &minus;C/B</td></tr>
+          <tr><td class="mono">leaving &minus;3x + 2y = 5, or x + (2/3)y = 4</td><td>A left negative, or fractions left in</td><td>Multiply through so A is positive and all coefficients are integers</td></tr>
+          <tr><td class="mono">0x + 0y + 5 = 0 as a "line"</td><td>Both A and B set to zero</td><td>A and B must not both be zero &mdash; that describes no line at all</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first &mdash; then open each one.</p>
+      <ol>
+        <li>Find the slope and both intercepts of <span class="v">2x &minus; 5y + 10 = 0</span>.
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>A = 2, B = &minus;5, C = 10. Slope m = &minus;A/B = &minus;2/(&minus;5) = <b>2/5</b>. x-intercept = &minus;C/A = &minus;10/2 = <b>&minus;5</b>. y-intercept = &minus;C/B = &minus;10/(&minus;5) = <b>2</b>.</p>
+          </div></details>
+        </li>
+        <li>Write <span class="v">y = &minus;3x + 7</span> in general form.
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>Bring all terms to one side: 3x + y &minus; 7 = 0. (Here A = 3 &gt; 0, which is the preferred form.)</p>
+          </div></details>
+        </li>
+        <li>What kind of line is <span class="v">4x &minus; 9 = 0</span>, and why?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>B = 0, so it is <b>vertical</b>: x = 9/4 = 2.25. The slope does not exist. This is exactly the case y = mx + c cannot express.</p>
+          </div></details>
+        </li>
+        <li>Are <span class="v">x &minus; 2y + 4 = 0</span> and <span class="v">&minus;2x + 4y &minus; 8 = 0</span> the same line?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>Multiply the first by &minus;2: &minus;2x + 4y &minus; 8 = 0. That is exactly the second equation, so <b>yes, the same line</b> &mdash; just scaled by &minus;2.</p>
+          </div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning &mdash; and it is saved privately on this device.</p>
+      <h4>1. In your own words: why is Ax + By + C = 0 called the <em>general</em> form, and what makes it general?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="07-horizontal-vertical.html">Horizontal &amp; vertical lines</a> &middot; <a href="index.html">Course map</a> &middot; <a href="09-slope-and-inclination.html">Slope and inclination</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. case-study figure: the machined edge ================= */
+(function(){
+  var svg = document.getElementById("plotSpec");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-6, xmax:6, ymin:-4, ymax:6, stepX:1, stepY:1, labelStepX:2, labelStepY:2});
+  p.reset();
+  p.line(0.75, 3, {color:"var(--brand)", width:3.2});
+  p.point(-4, 0, {color:"var(--accent)", r:7, label:"(-4, 0)", labelDx:10, labelDy:-11});
+  p.point(0, 3, {color:"var(--accent)", r:7, label:"(0, 3)", labelDx:10, labelDy:-11});
+  p.text(4.2, 5.6, "3x - 4y + 12 = 0", {anchor:"start", size:12.5, color:"var(--brand)", weight:700});
+})();
+
+/* ================= 2. interactive 1: coefficients drive the line ================= */
+(function(){
+  var svg = document.getElementById("plotGen");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-10, xmax:10, ymin:-8, ymax:8});
+  var A = document.getElementById("gfA"), B = document.getElementById("gfB"), C = document.getElementById("gfC");
+  var Av = document.getElementById("gfAv"), Bv = document.getElementById("gfBv"), Cv = document.getElementById("gfCv");
+  var EQ = document.getElementById("gfEq"), MSG = document.getElementById("gfMsg");
+  var SL = document.getElementById("gfSlope"), XI = document.getElementById("gfXint");
+  var YI = document.getElementById("gfYint"), SI = document.getElementById("gfSI");
+
+  function draw(){
+    var a = +A.value, b = +B.value, c = +C.value;
+    Av.textContent = nf(a); Bv.textContent = nf(b); Cv.textContent = nf(c);
+    EQ.innerHTML = eqGeneral(a, b, c);
+    p.reset();
+    if (a === 0 && b === 0){
+      SL.textContent = "—";
+      XI.textContent = "—";
+      YI.textContent = "—";
+      SI.textContent = "—";
+      MSG.innerHTML = "<b style='color:var(--bad)'>This is not a line.</b> With A = 0 and B = 0 the equation collapses to " + eqGeneral(0,0,c) + ", which is either always true or never true — it pins down no line. Adjust a slider so at least one of A or B is non-zero.";
+      MSG.style.borderColor = "var(--bad)";
+      return;
+    }
+    // draw the line
+    if (b === 0){
+      // vertical: x = -C/A
+      var xv = (a !== 0) ? -c / a : 0;
+      p.vline(xv, {color:"var(--brand)", width:3.2, label:"x = " + nf(xv)});
+    } else {
+      var m = -a / b, cc = -c / b;
+      p.line(m, cc, {color:"var(--brand)", width:3.2});
+    }
+    SL.innerHTML = (b === 0) ? "does not exist" : fracHTML(-a, b);
+    XI.innerHTML = (a === 0) ? "does not exist" : fracHTML(-c, a);
+    YI.innerHTML = (b === 0) ? "does not exist" : fracHTML(-c, b);
+    if (b === 0){
+      SI.innerHTML = "cannot be written as y = mx + c (B = 0)";
+    } else {
+      SI.innerHTML = eqLine(-a / b, -c / b);
+    }
+    if (b === 0){
+      MSG.innerHTML = "B = 0, so the line is <b>vertical</b> at x = " + nf((a!==0)? -c/a : 0) + ". Its slope does not exist — the case y = mx + c cannot reach.";
+      MSG.style.borderColor = "var(--line)";
+    } else if (a === 0){
+      MSG.innerHTML = "A = 0, so the line is <b>horizontal</b> at y = " + nf(-c/b) + " with slope 0.";
+      MSG.style.borderColor = "var(--line)";
+    } else {
+      MSG.innerHTML = "A line with slope " + (b!==0 ? fracHTML(-a,b) : "—") + " and y-intercept " + ((b!==0)? nf(-c/b) : "—") + ".";
+      MSG.style.borderColor = "var(--line)";
+    }
+  }
+
+  [A, B, C].forEach(function(inp){
+    inp.addEventListener("input", function(){
+      [A, B, C].forEach(setRangeFill);
+      draw();
+    });
+    setRangeFill(inp);
+  });
+  draw();
+})();
+
+/* ================= 3. interactive 2: equivalent equations ================= */
+(function(){
+  var svg = document.getElementById("plotEquiv");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-6, xmax:6, ymin:-6, ymax:6});
+  var baseA = 3, baseB = -4, baseC = 12;
+  var EQ = document.getElementById("eqEq"), MSG = document.getElementById("eqMsg");
+  var host = document.getElementById("eqBtns");
+  var mults = [1, 2, -1, 3];
+  var cur = 0;
+
+  mults.forEach(function(k, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (i === 0 ? " on" : "");
+    b.textContent = "× " + nf(k);
+    b.addEventListener("click", function(){
+      cur = i;
+      Array.prototype.forEach.call(host.children, function(ch, j){ ch.className = "chip" + (j === i ? " on" : ""); });
+      draw();
+    });
+    host.appendChild(b);
+  });
+
+  function draw(){
+    var k = mults[cur];
+    p.reset();
+    // the line itself: m = -A/B = -3/-4 = 0.75, c = -C/B = -12/-4 = 3
+    p.line(0.75, 3, {color:"var(--brand)", width:3.2});
+    p.point(-4, 0, {color:"var(--accent)", r:6});
+    p.point(0, 3, {color:"var(--accent)", r:6});
+    var a = baseA * k, b = baseB * k, c = baseC * k;
+    EQ.innerHTML = eqGeneral(a, b, c);
+    MSG.innerHTML = "This is the same line as 3x − 4y + 12 = 0, just multiplied by <b>" + nf(k) + "</b>. The graph above has not moved — only the coefficients changed. Different outfit, identical line.";
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

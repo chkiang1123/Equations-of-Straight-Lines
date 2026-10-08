@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheat sheet and self-assessment — Equations of Straight Lines</title>
+<meta name="description" content="Every form of the equation of a straight line on one page, how to convert between them, which one to reach for, and a self-assessment checklist.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3 &middot; summary</span></div>
+    <div class="steptag"><span class="n">&#931;</span> Summary</div>
+    <h1>Cheat sheet and self-assessment</h1>
+    <p class="lead">
+      Every form on one page, how to convert between them, and an honest checklist of what you should now be able to do.
+      This page is designed to be printed and pinned up.
+    </p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 8 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Print-friendly</span>
+    </div>
+    <p style="margin-top:20px">
+      <button class="btn primary sm" data-print>Print this page</button>
+      <a class="btn sm" href="11-practice.html">Back to the practice test</a>
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">See how <b>all five forms</b> describe one single line</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Convert confidently <b>between any two forms</b></label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Know <b>which form to reach for</b> in a given question</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Run an honest <b>self-assessment</b> of the whole chapter</label></li>
+    </ul>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>Five equations, one line</h3>
+      <p class="scene">Below are five equations that five different students wrote for the <b>same</b> straight line. Nothing has been simplified &mdash; this is exactly what each of them handed in.</p>
+
+      <div class="tbl-wrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>Student</th><th>What they wrote</th><th>Which form</th></tr></thead>
+          <tbody>
+            <tr><td>Anita</td><td class="mono">y &minus; 2 = 2(x &minus; 3)</td><td>point-slope</td></tr>
+            <tr><td>Bilal</td><td class="mono">(y &minus; 2)/(x &minus; 3) = (6 &minus; 2)/(5 &minus; 3)</td><td>two-point</td></tr>
+            <tr><td>Chen</td><td class="mono">x/2 + y/(&minus;4) = 1</td><td>intercept</td></tr>
+            <tr><td>Dana</td><td class="mono">y = 2x &minus; 4</td><td>slope-intercept</td></tr>
+            <tr><td>Eli</td><td class="mono">2x &minus; y &minus; 4 = 0</td><td>general</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">all five equations draw this one line</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>y = 2x &minus; 4</span>
+            <span><i style="background:var(--accent)"></i>points every form must pass through</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotFive" aria-label="One straight line with five marked points, including both intercepts"></svg>
+      </div>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">What is actually written there?</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Five completely different-looking pieces of algebra.</li>
+                <li>The number <b>2</b> appears in every single one of them.</li>
+                <li>The number <b>&minus;4</b> (or &minus;4 hidden as a denominator) appears in three of them.</li>
+                <li>Only one has <span class="v">y</span> isolated on the left; only one has everything on the left.</li>
+                <li>Two of them are written as fractions.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What pattern might connect them?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>Every one of them is built from the same two facts: <b>the slope is 2</b>, and <b>the line passes through certain fixed points</b>.</p>
+              <p>Anita and Bilal are using different anchor points. Chen is using the two intercepts. Dana has simplified to <span class="v">y</span> = <span class="v">mx</span> + <span class="v">c</span>. Eli has pushed everything to one side.</p>
+              <p>So a &ldquo;different answer&rdquo; usually just means &ldquo;a different form of the same answer&rdquo;. To check, I should be able to convert any one of them into any other.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What would you want to be able to do with these?</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>What this whole page answers</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Can I turn any one of these into any other, on demand?</li>
+                <li>How do I read the slope straight off Eli&rsquo;s form, without rearranging it?</li>
+                <li>Which form is actually the best one to hand in?</li>
+                <li>Which form can do everything, with no exceptions?</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="note ok">
+        <div class="h">Spoiler, in one sentence</div>
+        <p>All five expand to <b>y = 2x &minus; 4</b>. They are the same line written five ways, and every one of them is a correct answer &mdash;
+        unless the question specifically asks for a particular form.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MASTER TABLE ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#931;</span> Reference</div>
+    <h2>The five forms, side by side</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Form</th><th>Equation</th><th>Tells you at a glance</th><th>Cannot handle</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Point-slope</b></td>
+            <td class="mono">y &minus; y&#8321; = m(x &minus; x&#8321;)</td>
+            <td>the slope and one point it passes through</td>
+            <td>vertical lines</td>
+          </tr>
+          <tr>
+            <td><b>Two-point</b></td>
+            <td class="mono"><span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">x &minus; x&#8321;</span></span> = <span class="frac"><span class="num">y&#8322; &minus; y&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span></td>
+            <td>two points it passes through, and the slope</td>
+            <td>vertical lines</td>
+          </tr>
+          <tr>
+            <td><b>Intercept</b></td>
+            <td class="mono">x/a + y/b = 1</td>
+            <td>both intercepts immediately: (a, 0) and (0, b)</td>
+            <td>lines through the origin, horizontal, vertical</td>
+          </tr>
+          <tr>
+            <td><b>Slope-intercept</b></td>
+            <td class="mono">y = mx + c</td>
+            <td>the slope and the y-intercept</td>
+            <td>vertical lines</td>
+          </tr>
+          <tr>
+            <td><b>General</b></td>
+            <td class="mono">Ax + By + C = 0</td>
+            <td>nothing at a glance &mdash; but it can write <em>every</em> line</td>
+            <td>nothing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Vertical lines are always written directly as <span class="mono">x = h</span>, and horizontal lines as <span class="mono">y = k</span>.</p>
+
+    <div class="keyidea">
+      <span class="k">If you only remember three formulas</span>
+      <p>slope = rise &divide; run &nbsp;&middot;&nbsp; y &minus; y&#8321; = m(x &minus; x&#8321;) &nbsp;&middot;&nbsp; m = &minus;A/B</p>
+    </div>
+  </section>
+
+  <!-- ================= CONVERSIONS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#8646;</span> Conversions</div>
+    <h2>Getting from any form to any other</h2>
+    <div class="grid2">
+      <div>
+        <h3>To slope-intercept &mdash; y = mx + c</h3>
+        <ol class="steps">
+          <li><b>From point-slope</b>: expand the bracket, then move the constant across.</li>
+          <li><b>From two-point</b>: work out the slope first, then treat it as point-slope.</li>
+          <li><b>From intercept</b>: multiply out and rearrange &mdash; the slope comes out as &minus;b/a and the intercept as b.</li>
+          <li><b>From general</b>: <span class="v">By</span> = &minus;<span class="v">Ax</span> &minus; <span class="v">C</span>, so <span class="v">y</span> = &minus;(<span class="v">A</span>/<span class="v">B</span>)<span class="v">x</span> &minus; <span class="v">C</span>/<span class="v">B</span>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>To general &mdash; Ax + By + C = 0</h3>
+        <ol class="steps">
+          <li><b>From slope-intercept</b>: move everything to one side.</li>
+          <li><b>Clear fractions</b> by multiplying through by the denominator.</li>
+          <li><b>Prefer A positive</b> &mdash; if A is negative, multiply the whole equation by &minus;1.</li>
+          <li><b>Cancel any common factor</b> so A, B and C are the smallest possible integers.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="note tip">
+      <div class="h">The universal move</div>
+      <p>When in doubt, aim for <span class="v">y</span> = <span class="v">mx</span> + <span class="v">c</span>. Every form except the vertical line can be
+      rearranged into it, and once you are there you can read off the slope and the intercept instantly, and convert onward to anything else.</p>
+    </div>
+  </section>
+
+  <!-- ================= QUICK FACTS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#9881;</span> Quick facts</div>
+    <h2>The numbers you need on speed dial</h2>
+    <div class="tocard">
+      <div class="mini">
+        <div class="t"><span class="ic">d</span>Distance between two points</div>
+        <p class="mono">&radic;((x&#8322; &minus; x&#8321;)&sup2; + (y&#8322; &minus; y&#8321;)&sup2;)</p>
+        <p class="small">Pythagoras on the rise and the run.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">M</span>Midpoint</div>
+        <p class="mono">((x&#8321; + x&#8322;)/2, (y&#8321; + y&#8322;)/2)</p>
+        <p class="small">Average each coordinate separately.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">m</span>Slope</div>
+        <p class="mono">(y&#8322; &minus; y&#8321;) / (x&#8322; &minus; x&#8321;)</p>
+        <p class="small">Same order on the top and the bottom.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">&#8741;</span>Parallel lines</div>
+        <p class="mono">m&#8321; = m&#8322;</p>
+        <p class="small">Equal slopes, different intercepts.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">&#8869;</span>Perpendicular lines</div>
+        <p class="mono">m&#8321; &times; m&#8322; = &minus;1</p>
+        <p class="small">Flip the fraction and change the sign.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">I</span>From the general form</div>
+        <p class="mono">m = &minus;A/B</p>
+        <p class="small">x-intercept &minus;C/A, y-intercept &minus;C/B.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">&#952;</span>Inclination</div>
+        <p class="mono">m = tan &theta;</p>
+        <p class="small">0&deg; to 180&deg;, measured anticlockwise from +x. Add 180&deg; when m is negative.</p>
+      </div>
+      <div class="mini">
+        <div class="t"><span class="ic">X</span>Intersections</div>
+        <p class="mono">solve both together</p>
+        <p class="small">Different slopes &rarr; one point. Same slope &rarr; none. Same line &rarr; infinitely many.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHICH FORM ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">?</span> Decisions</div>
+    <h2>Which form should I use?</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>If the question gives you&hellip;</th><th>Reach for</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>a slope and one point</td><td class="mono">point-slope</td><td>one line of working, no need to find anything first</td></tr>
+          <tr><td>two points</td><td class="mono">two-point, then simplify</td><td>work out the slope first, then reuse it</td></tr>
+          <tr><td>both intercepts</td><td class="mono">intercept</td><td>no calculation needed at all</td></tr>
+          <tr><td>a graph to read off</td><td class="mono">slope-intercept</td><td>both numbers are visible on the picture</td></tr>
+          <tr><td>an awkward equation to analyse</td><td class="mono">general form</td><td>slope and intercepts come from A, B and C directly</td></tr>
+          <tr><td>two points with the same x</td><td class="mono">x = h, written directly</td><td>there is no slope, so no form with m can work</td></tr>
+          <tr><td>&ldquo;write it in general form&rdquo;</td><td class="mono">rearrange and clear fractions</td><td>do what the question says, even if it is uglier</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF ASSESSMENT ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#10003;</span> Self-assessment</div>
+    <h2>Can you do all of this?</h2>
+    <p class="muted">Be honest. Anything you cannot tick yet, go back and redo that page&rsquo;s case study &mdash; do not just re-read the page.</p>
+
+    <div class="selfcheck">
+      <h3>&#10003; The whole chapter, as a checklist</h3>
+      <div class="goal-check"><input type="checkbox" data-goal="s1" id="s1"><label for="s1">Find the <b>distance</b> and the <b>midpoint</b> of two points, and the <b>slope</b> of the line through them. <span class="small muted">(<a href="01-prerequisites.html">page 0</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s2" id="s2"><label for="s2">Explain what it means for a point to <b>satisfy</b> the equation of a line, and test a point by substitution. <span class="small muted">(<a href="02-what-is-an-equation.html">page 1</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s3" id="s3"><label for="s3">Derive and use the <b>point-slope form</b>, including with fractional slopes. <span class="small muted">(<a href="03-point-slope.html">page 2</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s4" id="s4"><label for="s4">Write the equation of a line from <b>two points</b>, and spot when it must be vertical. <span class="small muted">(<a href="04-two-point.html">page 3</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s5" id="s5"><label for="s5">Use and convert the <b>intercept form</b>, and say which lines it cannot describe. <span class="small muted">(<a href="05-intercept-form.html">page 4</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s6" id="s6"><label for="s6">Read the slope and intercept off a graph, and write <b>y = mx + c</b>. <span class="small muted">(<a href="06-slope-intercept.html">page 5</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s7" id="s7"><label for="s7">Write <b>horizontal</b> and <b>vertical</b> lines, and say why the vertical one has no slope. <span class="small muted">(<a href="07-horizontal-vertical.html">page 6</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s8" id="s8"><label for="s8">Get the slope and both intercepts straight out of <b>Ax + By + C = 0</b>. <span class="small muted">(<a href="08-general-form.html">page 7</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s9" id="s9"><label for="s9">Move between <b>slope and inclination</b>, including the 180&deg; rule for negative slopes. <span class="small muted">(<a href="09-slope-and-inclination.html">page 8</a>)</span></label></div>
+      <div class="goal-check"><input type="checkbox" data-goal="s10" id="s10"><label for="s10">Solve two line equations together and classify the <b>three cases</b>. <span class="small muted">(<a href="10-intersection.html">page 9</a>)</span></label></div>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Last one. Two minutes.</p>
+      <h4>1. In one paragraph: what is &ldquo;the equation of a straight line&rdquo;, in your own words?</h4>
+      <div data-write="exit1" data-ph="The equation of a line is..." data-rows="4"></div>
+      <h4>2. Which single idea from this course will you still remember in a year?</h4>
+      <div data-write="exit2" data-ph="The one idea I will keep is..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Everything on this site works with no internet connection.</p>
+    <p><a href="index.html">Course map</a> &middot; <a href="11-practice.html">Practice test</a> &middot; <a href="01-prerequisites.html">Start again from page 0</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  var svg = document.getElementById("plotFive");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-6, xmax:7, ymin:-7, ymax:7});
+  p.reset();
+  p.line(2, -4, {color:"var(--brand)", width:3.4});
+  [[0,-4],[2,0],[3,2],[5,6],[-1,-6]].forEach(function(pt){
+    p.point(pt[0], pt[1], {color:"var(--accent)", r:6,
+      label:"(" + nf(pt[0]) + ", " + nf(pt[1]) + ")", labelDx:11, labelDy:-11});
+  });
+  p.dotted(0, -4, 0, 0, {color:"var(--ink-3)"});
+  p.dotted(2, 0, 0, 0, {color:"var(--ink-3)"});
+  p.text(1, 6.2, "every one of the five equations passes through all of these points",
+    {size:12, color:"var(--ink-3)", weight:600});
+})();
+</script>
+</body>
+</html>

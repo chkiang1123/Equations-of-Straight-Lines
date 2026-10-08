@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slope and inclination — Equations of Straight Lines</title>
+<meta name="description" content="Slope is a number, but it is also an angle. Connect the two with m = tan θ, a See-Think-Wonder case study, a landmark table and two interactive panels.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.8</span></div>
+    <div class="steptag"><span class="n">8</span> Step 8 of 10</div>
+    <h1>Slope and inclination</h1>
+    <p class="lead">Slope is a number, but it is also an <em>angle</em>. Connecting the two makes both ideas easier to picture &mdash; and it explains why a vertical line has no slope at all.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 20 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Define the <b>inclination</b> <span class="v">&theta;</span> of a line and state the rule <span class="v">m = tan &theta;</span></label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Work out the slope or the inclination from the other, including the <b>&plusmn;180&deg;</b> adjustment for negative slopes</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Explain the four cases from horizontal through vertical, and why a <b>90&deg;</b> line has no slope</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Use the angle language to see parallel and perpendicular lines at a glance</label></li>
+    </ul>
+    <p class="glink">Tick these as you go &mdash; your ticks are saved on this device. Keyword search: <code>inclination</code>, <code>m = tan theta</code>, <code>angle of a line</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The surveyor&rsquo;s two roads</h3>
+      <p class="scene">A surveyor records the angle each of two new roads makes with the horizontal: <b>road A is at 30&deg;</b> and <b>road B is at 135&deg;</b>. The figure draws both lines through the origin with their angles marked.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">road A: 30&deg; &nbsp;&middot;&nbsp; road B: 135&deg;</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>road A (30&deg;)</span>
+            <span><i style="background:var(--accent)"></i>road B (135&deg;)</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotRoads" aria-label="Two lines through the origin: one at 30 degrees climbing gently to the right, one at 135 degrees climbing to the left"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> &mdash; the two lines, their directions, the marked angles. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>One road <b>climbs gently</b> as it goes right &mdash; it is closer to flat than to upright.</li>
+                <li>The other road <b>climbs to the left</b> (equivalently, it descends as you move right).</li>
+                <li>Both angles are measured from the <b>positive horizontal direction</b>, swinging <b>anticlockwise</b>.</li>
+                <li>135&deg; is <em>past</em> a right angle &mdash; it has gone beyond 90&deg;.</li>
+                <li>Both roads start from the same point (the origin) in the diagram.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? How should the angle connect to the slope you already know?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>A bigger angle near 90&deg; should mean a <b>steeper</b> road. If 45&deg; is exactly halfway between flat and upright, its slope ought to be <b>1</b> (rise equals run). And once the angle passes 90&deg;, the road is going <em>down</em> to the right &mdash; so its slope must become <b>negative</b>. The angle and the slope are two views of the same tilt.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask the questions this page must answer.</p>
+          <div data-write="wonder" data-ph="I am curious about..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>What is the slope at <em>exactly</em> 30&deg;?</li>
+                <li>Why does 135&deg; give a <em>negative</em> number for the slope?</li>
+                <li>What happens at exactly 90&deg; &mdash; straight up?</li>
+                <li>Can I go backwards: given a slope, find its angle?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>An angle instead of a number</h2>
+
+    <h3>Definition of inclination</h3>
+    <p>The <b>inclination</b> <span class="v">&theta;</span> of a line is the angle measured <b>anticlockwise</b> from the positive direction of the x-axis to the line:</p>
+    <div class="formula big">0&deg; &le; &theta; &lt; 180&deg;</div>
+    <p class="small muted">Note the strict upper bound: an angle of 180&deg; would point along the positive x-axis again, which is the same direction as 0&deg;, so we stop just short of it.</p>
+
+    <h3>Why m = tan &theta;</h3>
+    <p>Look at a line through the origin making angle <span class="v">&theta;</span> with the x-axis. Walk a distance of 1 along the x-direction; the vertical climb is exactly the tangent of the angle.</p>
+    <div class="grid2">
+      <div>
+        <ol class="steps">
+          <li>Take any point on the line at run = 1 to the right. Its height is <b>tan &theta;</b> by the right-triangle definition.</li>
+          <li>But slope means <b>rise / run</b>. With run = 1, slope = tan &theta; / 1.</li>
+          <li>So the slope of the line is simply the tangent of its inclination.</li>
+        </ol>
+      </div>
+      <div>
+        <svg class="plot static" id="plotTan" aria-label="A right triangle on a line through the origin showing rise equals tan theta when the run is 1"></svg>
+        <p class="small muted center">rise / run = tan &theta; / 1 = tan &theta;.</p>
+      </div>
+    </div>
+    <div class="formula big">m = tan &theta;</div>
+
+    <h3>The four cases</h3>
+    <ul class="clean">
+      <li><b>&theta; = 0&deg;</b> &rArr; the line is horizontal, <b>m = 0</b>.</li>
+      <li><b>0&deg; &lt; &theta; &lt; 90&deg;</b> &rArr; the line <b>rises</b> to the right, <b>m &gt; 0</b>.</li>
+      <li><b>&theta; = 90&deg;</b> &rArr; tan 90&deg; <b>does not exist</b>, so the line is <b>vertical</b> and the slope does not exist.</li>
+      <li><b>90&deg; &lt; &theta; &lt; 180&deg;</b> &rArr; the line <b>falls</b> to the right, <b>m &lt; 0</b>.</li>
+    </ul>
+    <div class="note warn">
+      <div class="h">"Does not exist", not "infinity"</div>
+      <p>tan 90&deg; is not a number &mdash; you cannot divide by zero. So a vertical line has <b>no slope</b>, not an "infinite" one. This is the same fact you met on the horizontal-and-vertical page.</p>
+    </div>
+
+    <h3>Landmark angles</h3>
+    <p>These are worth memorising; they turn up everywhere.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Angle &theta;</th><th>tan &theta; (exact)</th><th>tan &theta; (approx)</th><th>What the line does</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">0&deg;</td><td class="mono">0</td><td class="mono">0</td><td>horizontal, flat</td></tr>
+          <tr><td class="mono">30&deg;</td><td class="mono">1/&radic;3</td><td class="mono">0.577</td><td>gentle rise</td></tr>
+          <tr><td class="mono">45&deg;</td><td class="mono">1</td><td class="mono">1</td><td>rise = run</td></tr>
+          <tr><td class="mono">60&deg;</td><td class="mono">&radic;3</td><td class="mono">1.732</td><td>steep rise</td></tr>
+          <tr><td class="mono">90&deg;</td><td class="mono">does not exist</td><td class="mono">—</td><td>vertical</td></tr>
+          <tr><td class="mono">120&deg;</td><td class="mono">&minus;&radic;3</td><td class="mono">&minus;1.732</td><td>steep fall</td></tr>
+          <tr><td class="mono">135&deg;</td><td class="mono">&minus;1</td><td class="mono">&minus;1</td><td>fall = run</td></tr>
+          <tr><td class="mono">150&deg;</td><td class="mono">&minus;1/&radic;3</td><td class="mono">&minus;0.577</td><td>gentle fall</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Going backwards: &theta; = tan&#8315;&sup1;(m)</h3>
+    <p>Given a slope, the inclination is the inverse tangent &mdash; but a calculator returns an angle between &minus;90&deg; and 90&deg;. For a negative slope that answer is <em>negative</em>, which is not a valid inclination. The fix:</p>
+    <div class="formula big">&theta; = <span style="font-style:italic">tan</span>&#8315;&sup1;(m), &nbsp; then add 180&deg; if m &lt; 0</div>
+    <p>This lands the answer safely in the interval <span class="v">[0&deg;, 180&deg;)</span>. For example, <span class="v">m = &minus;1</span> gives tan&#8315;&sup1;(&minus;1) = &minus;45&deg;, and adding 180&deg; yields <b>135&deg;</b>.</p>
+
+    <h3>Parallel and perpendicular, in this language</h3>
+    <p>Two lines are <b>parallel</b> exactly when their inclinations are equal (they point the same way). They are <b>perpendicular</b> when their inclinations differ by 90&deg;. From <span class="v">m = tan &theta;</span> it follows that perpendicular lines satisfy <b>m&#8321;m&#8322; = &minus;1</b> &mdash; the rule you already know, now seen as a statement about angles.</p>
+
+    <div class="note tip">
+      <div class="h">Roads are percentages</div>
+      <p>A road&rsquo;s steepness is often given as a <b>percentage gradient</b>, which is just <b>100 &times; m</b>. A slope of 0.12 is a 12% hill. So a 100% gradient is a slope of 1 &mdash; a 45&deg; road.</p>
+    </div>
+
+    <div class="keyidea">
+      <span class="k">Slope is the tangent of the angle</span>
+      <p>A line&rsquo;s slope is the tangent of the angle it makes with the positive x-axis: <b>m = tan &theta;</b>. Horizontal means &theta; = 0&deg;; vertical means &theta; = 90&deg; and no slope; past 90&deg; the slope goes negative.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Spin the inclination</h2>
+    <p>Drag the slider to choose an inclination <span class="v">&theta;</span> from 0&deg; to 179&deg;. Watch the line turn, the marked angle grow, and the slope update. Stop on 90&deg; and see what breaks.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="inclEq">y = 0.58x</div>
+        </div>
+        <svg class="plot" id="plotIncl" aria-label="Interactive line through the origin at a chosen inclination, with the angle marked"></svg>
+        <div class="outmsg" id="inclMsg">The line has inclination 30&deg; and slope 0.577.</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>Inclination <span class="v">&theta;</span> <b id="inclTv">30&deg;</b></label>
+          <input type="range" id="inclT" min="0" max="179" step="1" value="30">
+        </div>
+        <h4>Live readout</h4>
+        <p class="small">&theta; = <span class="eqout small" id="inclTheta"></span></p>
+        <p class="small">tan &theta; = <span class="eqout small" id="inclTan"></span></p>
+        <p class="small">slope m = <span class="eqout small" id="inclM"></span></p>
+        <p class="small">equation: <span class="eqout small" id="inclForm"></span></p>
+        <div class="note vio" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Slide to 90&deg;. The line turns upright and the slope reads &ldquo;does not exist&rdquo;. Slide to 135&deg; and watch the slope become negative.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first &mdash; write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; slope of a line with inclination 60&deg;</summary>
+      <div class="body">
+        <p>m = tan 60&deg; = <b>&radic;3 &asymp; 1.73</b>.</p>
+        <p>The line is steep and rising, as expected for an angle close to 90&deg;.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; inclination of a line with slope &minus;1</summary>
+      <div class="body">
+        <p>tan&#8315;&sup1;(&minus;1) = &minus;45&deg;. Since m &lt; 0, add 180&deg;:</p>
+        <div class="formula">&theta; = &minus;45&deg; + 180&deg; = <b>135&deg;</b></div>
+        <p>Check: tan 135&deg; = &minus;1. Correct, and 135&deg; is in [0&deg;, 180&deg;).</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; inclination of y = (1/&radic;3)x</summary>
+      <div class="body">
+        <p>The slope is m = 1/&radic;3. We recognise tan 30&deg; = 1/&radic;3, so</p>
+        <div class="formula">&theta; = tan&#8315;&sup1;(1/&radic;3) = <b>30&deg;</b></div>
+        <p>(No adjustment needed because m &gt; 0.)</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; inclination of x + y = 0</summary>
+      <div class="body">
+        <p>Rewrite: y = &minus;x, so m = &minus;1. As in Example 2, &theta; = <b>135&deg;</b>.</p>
+        <p>The line falls to the right &mdash; consistent with an angle past 90&deg;.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 5 &mdash; two lines at 40&deg; and 130&deg;</summary>
+      <div class="body">
+        <p>The inclinations differ by 130&deg; &minus; 40&deg; = <b>90&deg;</b>, so the lines are <b>perpendicular</b>.</p>
+        <p>Check with slopes: tan 40&deg; &times; tan 130&deg; &asymp; 0.839 &times; (&minus;1.192) &asymp; <b>&minus;1</b>. The product is &minus;1, confirming perpendicularity.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>The converter</div>
+    <h2>Slope &harr; inclination, both ways</h2>
+    <p>Type a slope and read its inclination (with the &plusmn;180&deg; rule applied). The reverse readout confirms you get the same slope back from that angle.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="convEq">y = 2x</div>
+        </div>
+        <svg class="plot" id="plotConv" aria-label="Interactive line drawn from a typed slope, with its inclination shown"></svg>
+        <div class="outmsg" id="convMsg">Slope 2 gives inclination about 63&deg;.</div>
+      </div>
+      <div class="card tight">
+        <div class="inrow">
+          <div class="f">
+            <span>Slope m</span>
+            <input type="number" id="convM" min="-6" max="6" step="0.1" value="2">
+          </div>
+        </div>
+        <h4>Readout</h4>
+        <p class="small">inclination &theta; = <span class="eqout small" id="convTheta"></span></p>
+        <p class="small">tan &theta; (check) = <span class="eqout small" id="convTan"></span></p>
+        <p class="small">reverse: slope from &theta; = <span class="eqout small" id="convBack"></span></p>
+        <div class="note ok" style="margin-top:12px">
+          <div class="h">Note</div>
+          <p>No finite slope gives exactly 90&deg; &mdash; that would need the line to be vertical (infinite slope). The converter stays safe for every number you can type here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">measuring the angle clockwise</td><td>Inclination is always anticlockwise from the +x axis</td><td>Spin the other way; 0&deg; points right, 90&deg; points up</td></tr>
+          <tr><td class="mono">answering &minus;45&deg; for slope &minus;1</td><td>The calculator gave a negative angle, not a valid inclination</td><td>Add 180&deg; when m &lt; 0, giving 135&deg;</td></tr>
+          <tr><td class="mono">"tan 90&deg; is infinity"</td><td>Infinity is not a number; the slope simply does not exist</td><td>For a vertical line, write <b>does not exist</b></td></tr>
+          <tr><td class="mono">slope 0 means &theta; = 180&deg;</td><td>180&deg; is not a valid inclination (it equals 0&deg; in direction)</td><td>slope 0 means <b>&theta; = 0&deg;</b>, a horizontal line</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first &mdash; then open each one.</p>
+      <ol>
+        <li>What is the slope of a line whose inclination is 45&deg;?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>m = tan 45&deg; = <b>1</b>.</p>
+          </div></details>
+        </li>
+        <li>A line has slope &minus;&radic;3. What is its inclination?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>tan&#8315;&sup1;(&minus;&radic;3) = &minus;60&deg;. Since m &lt; 0, add 180&deg;: &theta; = 120&deg;. Check tan 120&deg; = &minus;&radic;3. (<b>120&deg;</b>.)</p>
+          </div></details>
+        </li>
+        <li>A line is vertical. What can you say about its inclination and its slope?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>Its inclination is <b>90&deg;</b>. tan 90&deg; does not exist, so its <b>slope does not exist</b>.</p>
+          </div></details>
+        </li>
+        <li>Two lines have inclinations 25&deg; and 115&deg;. Are they perpendicular? Why or why not?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>115&deg; &minus; 25&deg; = 90&deg;, so the inclinations differ by 90&deg; &mdash; <b>yes, they are perpendicular</b>. Equivalently tan 25&deg; &times; tan 115&deg; &asymp; &minus;1.</p>
+          </div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning &mdash; and it is saved privately on this device.</p>
+      <h4>1. In your own words: why is the slope of a line equal to the tangent of its inclination?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="08-general-form.html">The general form</a> &middot; <a href="index.html">Course map</a> &middot; <a href="10-intersection.html">Where two lines meet</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. case-study figure: two roads ================= */
+(function(){
+  var svg = document.getElementById("plotRoads");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-6, xmax:6, ymin:-6, ymax:6, stepX:1, stepY:1, labelStepX:2, labelStepY:2});
+  p.reset();
+  // road A at 30 deg: m = tan30 = 0.5774
+  p.line(0.5774, 0, {color:"var(--brand)", width:3.2, label:"A"});
+  // road B at 135 deg: m = tan135 = -1
+  p.line(-1, 0, {color:"var(--accent)", width:3.2, label:"B"});
+  // reference horizontal ray
+  p.dotted(0, 0, 5, 0, {color:"var(--ink-3)"});
+  // angle arcs
+  p.arc(0, 0, 1.4, 0, 30, {color:"var(--brand)"});
+  p.arc(0, 0, 2.0, 0, 135, {color:"var(--accent)"});
+  p.text(2.5, 0.45, "30°", {anchor:"start", size:12, color:"var(--brand)", weight:700});
+  p.text(-1.3, 1.25, "135°", {anchor:"middle", size:12, color:"var(--accent)", weight:700});
+  p.point(0, 0, {color:"var(--ink-2)", r:4});
+})();
+
+/* ================= 2. derivation figure: rise/run triangle ================= */
+(function(){
+  var svg = document.getElementById("plotTan");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:6, ymin:-1, ymax:4});
+  p.reset();
+  var th = 30 * Math.PI / 180;
+  var x = Math.cos(th), y = Math.sin(th); // point at run=1, rise=tan30
+  p.line(0, 0, {color:"var(--brand)", width:3});
+  p.seg(0, 0, 1, 0, {color:"var(--ink-2)"});
+  p.seg(1, 0, 1, y, {color:"var(--accent)", dash:"4 4"});
+  p.dotted(0, 0, 1, 0, {color:"var(--grid)"});
+  p.point(1, y, {color:"var(--accent)", r:6, label:"(1, tan θ)", labelDx:10, labelDy:-6});
+  p.text(0.5, -0.4, "run = 1", {anchor:"middle", size:11.5, color:"var(--ink-2)"});
+  p.text(1.35, y/2, "rise = tan θ", {anchor:"start", size:11.5, color:"var(--accent)"});
+  p.arc(0, 0, 0.6, 0, 30, {color:"var(--brand)"});
+  p.text(0.85, 0.28, "θ", {anchor:"middle", size:12, color:"var(--brand)", weight:700});
+})();
+
+/* ================= 3. interactive 1: inclination slider ================= */
+(function(){
+  var svg = document.getElementById("plotIncl");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var T = document.getElementById("inclT");
+  var Tv = document.getElementById("inclTv");
+  var EQ = document.getElementById("inclEq"), MSG = document.getElementById("inclMsg");
+  var TH = document.getElementById("inclTheta"), TN = document.getElementById("inclTan");
+  var M = document.getElementById("inclM"), FM = document.getElementById("inclForm");
+
+  function draw(){
+    var th = +T.value;
+    Tv.textContent = th + "°";
+    TH.innerHTML = th + "°";
+    p.reset();
+    p.dotted(0, 0, 7, 0, {color:"var(--ink-3)"}); // horizontal reference ray
+    if (th === 90){
+      p.vline(0, {color:"var(--brand)", width:3.2});
+      TN.innerHTML = "does not exist";
+      M.innerHTML = "does not exist";
+      FM.innerHTML = "x = 0 (vertical)";
+      EQ.innerHTML = "x = 0";
+      MSG.innerHTML = "<b>Vertical — the slope does not exist.</b> tan 90° is not a number, so θ = 90° cannot give a slope.";
+      MSG.style.borderColor = "var(--line)";
+      return;
+    }
+    var m = Math.tan(th * Math.PI / 180);
+    p.line(m, 0, {color:"var(--brand)", width:3.2});
+    p.arc(0, 0, 1.6, 0, th, {color:"var(--accent)", width:2});
+    var tm = nf(m, 3);
+    TN.innerHTML = tm;
+    M.innerHTML = tm;
+    FM.innerHTML = (Math.abs(m) < 1e-9) ? "y = 0" : eqLine(m, 0);
+    EQ.innerHTML = (Math.abs(m) < 1e-9) ? "y = 0" : eqLine(m, 0);
+    MSG.innerHTML = "The line has inclination " + th + "° and slope " + tm + (m < 0 ? " (negative — it falls to the right)." : ".");
+    MSG.style.borderColor = "var(--line)";
+  }
+
+  T.addEventListener("input", function(){ setRangeFill(T); draw(); });
+  setRangeFill(T);
+  draw();
+})();
+
+/* ================= 4. interactive 2: slope <-> inclination converter ================= */
+(function(){
+  var svg = document.getElementById("plotConv");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var M = document.getElementById("convM");
+  var EQ = document.getElementById("convEq"), MSG = document.getElementById("convMsg");
+  var TH = document.getElementById("convTheta"), TN = document.getElementById("convTan");
+  var BK = document.getElementById("convBack");
+
+  function draw(){
+    var m = parseFloat(M.value);
+    if (!isFinite(m)) m = 0;
+    p.reset();
+    p.dotted(0, 0, 7, 0, {color:"var(--ink-3)"});
+    if (m > 1e6 || m < -1e6){
+      p.vline(0, {color:"var(--brand)", width:3.2});
+      TH.innerHTML = "90° (vertical)";
+      TN.innerHTML = "does not exist";
+      BK.innerHTML = "does not exist";
+      EQ.innerHTML = "x = 0";
+      MSG.innerHTML = "An enormous slope approaches a vertical line (inclination 90°, slope does not exist).";
+      return;
+    }
+    var th = Math.atan(m) * 180 / Math.PI;
+    if (m < 0) th = th + 180;
+    var thRound = Math.round(th);
+    p.line(m, 0, {color:"var(--brand)", width:3.2});
+    p.arc(0, 0, 1.6, 0, th, {color:"var(--accent)", width:2});
+    TH.innerHTML = thRound + "°";
+    TN.innerHTML = nf(Math.tan(th * Math.PI / 180), 3);
+    BK.innerHTML = nf(m, 3);
+    EQ.innerHTML = (Math.abs(m) < 1e-9) ? "y = 0" : eqLine(m, 0);
+    MSG.innerHTML = "Slope " + nf(m, 3) + " gives inclination about " + thRound + "°. Reading the slope back from that angle returns " + nf(m, 3) + ".";
+  }
+
+  M.addEventListener("input", draw);
+  draw();
+})();
+</script>
+</body>
+</html>

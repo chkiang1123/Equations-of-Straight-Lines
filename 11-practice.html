@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice and self-test — Equations of Straight Lines</title>
+<meta name="description" content="Ten mixed questions covering every form of the equation of a straight line, with instant feedback, full working and a pointer back to the page to revise.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3 &middot; all sections</span></div>
+    <div class="steptag"><span class="n">10</span> Step 10 of 10</div>
+    <h1>Practice and self-test</h1>
+    <p class="lead">
+      Ten questions, mixed across everything in the course. Every one comes with full working and a pointer back to
+      the page you should revisit if it tripped you up. Your answers and your best score are saved on this device.
+    </p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 25 minutes</b></span>
+      <span><b>10</b> questions</span>
+      <span>Instant feedback + full working</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Solve one <b>multi-step real problem</b> that needs several ideas at once</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Test yourself on all <b>five forms</b> of the equation of a line</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Use the explanations to <b>work out what to revise</b>, rather than just marking right and wrong</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Leave with an honest picture of <b>where you stand</b></label></li>
+    </ul>
+  </div>
+
+  <!-- ================= CASE STUDY (SYNTHESIS) ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The delivery drone</h3>
+      <p class="scene">
+        A delivery drone flies in a perfectly straight line from the depot at <b>(1, 2)</b> to the drop point at <b>(9, 8)</b>,
+        with distances in kilometres. A straight river runs along the line <b>y = 2x &minus; 6</b>, and the drone is not
+        allowed to cross it below the town bridge.
+      </p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">flight path and the river</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>drone&rsquo;s path</span>
+            <span><i style="background:var(--accent)"></i>the river</span>
+            <span><i style="background:var(--good)"></i>halfway point</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotDrone" aria-label="A drone path from (1,2) to (9,8) crossing a river line"></svg>
+      </div>
+
+      <p class="small muted">Before you reach for a formula, spend a minute with the picture. This problem needs several ideas from different pages &mdash; spot them first.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">What is actually on the grid?</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Two fixed points: the depot (1,&nbsp;2) and the drop point (9,&nbsp;8).</li>
+                <li>One straight path joining them, sloping up to the right.</li>
+                <li>A second line, the river, steeper than the path &mdash; it is going up more sharply.</li>
+                <li>The two lines <b>cross once</b>, somewhere in the middle of the picture.</li>
+                <li>A halfway marker sits on the path, just before the crossing.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">Which tools does this problem need, and in what order?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>The path is fixed by <b>two points</b> &mdash; so I can find its slope, then its equation. That is the two-point method.</p>
+              <p>The crossing is a point lying on <b>both</b> lines at once, so it is a pair of simultaneous equations: an intersection.</p>
+              <p>&ldquo;How far did it fly&rdquo; is a <b>distance</b> question, and &ldquo;where is halfway&rdquo; is a <b>midpoint</b> question.</p>
+              <p>So this one scenario quietly uses four different pages of the course. That is what a real exam question does.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What exactly are you being asked to find?</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>The three questions to answer</summary>
+            <div class="body">
+              <ol>
+                <li><b>Where</b> does the drone cross the river?</li>
+                <li><b>How far</b> does the drone fly in total?</li>
+                <li>Has it passed the <b>halfway point</b> by the time it crosses?</li>
+              </ol>
+              <p class="small muted">Try all three on paper now. Full solutions are at the bottom of this page &mdash; do not skip ahead.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#10003;</span> Self-test</div>
+    <h2>Ten questions</h2>
+    <p>Take these in one go, without looking anything up. The option order is shuffled, so do not memorise letters &mdash;
+    read carefully every time. Your choices and your best score are remembered on this device.</p>
+
+    <div class="note tip">
+      <div class="h">How to use the feedback</div>
+      <p>Every explanation ends by naming the page to revisit. If you get three or more wrong on one topic, go back and
+      redo that page&rsquo;s case study rather than simply repeating the quiz.</p>
+    </div>
+
+    <div id="quizHost"></div>
+
+    <div class="score" id="quizScore"></div>
+
+    <p style="margin-top:16px">
+      <button class="btn sm" id="quizReset">Reset and shuffle the questions</button>
+    </p>
+  </section>
+
+  <!-- ================= SOLUTIONS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">&#9733;</span> Solutions</div>
+    <h2>The drone problem, worked out</h2>
+    <p>Check your three answers against these. If a method is unclear, the page names send you straight back.</p>
+
+    <details class="sol">
+      <summary>Solution 1 &mdash; where does the drone cross the river?</summary>
+      <div class="body">
+        <p><b>Step 1.</b> Equation of the path. Slope from (1,&nbsp;2) to (9,&nbsp;8):</p>
+        <div class="formula">m = <span class="frac"><span class="num">8 &minus; 2</span><span class="den">9 &minus; 1</span></span> = <span class="frac"><span class="num">6</span><span class="den">8</span></span> = <span class="frac"><span class="num">3</span><span class="den">4</span></span></div>
+        <p>Using the point-slope form with (1,&nbsp;2): <span class="v">y</span> &minus; 2 = <span class="frac"><span class="num">3</span><span class="den">4</span></span>(<span class="v">x</span> &minus; 1), so</p>
+        <div class="formula">y = <span class="frac"><span class="num">3</span><span class="den">4</span></span>x + <span class="frac"><span class="num">5</span><span class="den">4</span></span></div>
+        <p><b>Step 2.</b> Set the two equations equal, because the crossing lies on both:</p>
+        <div class="formula"><span class="frac"><span class="num">3</span><span class="den">4</span></span>x + <span class="frac"><span class="num">5</span><span class="den">4</span></span> = 2x &minus; 6</div>
+        <p>Multiply by 4: 3<span class="v">x</span> + 5 = 8<span class="v">x</span> &minus; 24, so 5<span class="v">x</span> = 29 and <span class="v">x</span> = 5.8. Then <span class="v">y</span> = 2(5.8) &minus; 6 = 5.6.</p>
+        <div class="formula">the drone crosses the river at (5.8, 5.6)</div>
+        <p class="small muted">Revise: <a href="04-two-point.html">two-point form</a> and <a href="10-intersection.html">intersections</a>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Solution 2 &mdash; how far did the drone fly?</summary>
+      <div class="body">
+        <p>Use the distance formula on the depot and the drop point:</p>
+        <div class="formula">AB = &radic;((9 &minus; 1)&sup2; + (8 &minus; 2)&sup2;) = &radic;(64 + 36) = &radic;100 = 10</div>
+        <p>So it flies <b>10 km</b>. Notice this is the same right-angled triangle as the slope: the run is 8 and the rise is 6.</p>
+        <p class="small muted">Revise: <a href="01-prerequisites.html">prerequisites</a>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Solution 3 &mdash; had it passed the halfway point?</summary>
+      <div class="body">
+        <p>The midpoint of the journey is</p>
+        <div class="formula">(<span class="frac"><span class="num">1 + 9</span><span class="den">2</span></span>, <span class="frac"><span class="num">2 + 8</span><span class="den">2</span></span>) = (5, 5)</div>
+        <p>The crossing is at (5.8, 5.6). Since 5.8 &gt; 5, the drone <b>has</b> passed the halfway point by the time it reaches the river &mdash; but only just.</p>
+        <p class="small muted">Revise: <a href="01-prerequisites.html">midpoints</a>.</p>
+      </div>
+    </details>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection on how the test went.</p>
+      <h4>1. Which question caught you out, and why? What will you do differently next time?</h4>
+      <div data-write="exit1" data-ph="The question that caught me out was..." data-rows="4"></div>
+      <h4>2. Which three pages do you most want to redo, and in what order?</h4>
+      <div data-write="exit2" data-ph="I want to redo..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Your answers and best score are stored in this browser only. Nothing is uploaded anywhere.</p>
+    <p><a href="index.html">Course map</a> &middot; <a href="12-cheatsheet.html">Cheat sheet</a> &middot; <a href="01-prerequisites.html">Revise page 0</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. the drone figure ================= */
+(function(){
+  var svg = document.getElementById("plotDrone");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:11, ymin:-9, ymax:11});
+  p.reset();
+  p.line(2, -6, {color:"var(--accent)", width:3, label:"river"});
+  p.line(0.75, 1.25, {color:"var(--brand)", width:3.2});
+  p.seg(1, 2, 9, 8, {color:"var(--brand)", width:4});
+  p.point(1, 2, {color:"var(--brand)", r:7, label:"depot (1, 2)", labelDx:10, labelDy:-11});
+  p.point(9, 8, {color:"var(--brand)", r:7, label:"drop (9, 8)", labelDx:-8, labelDy:-12, anchor:"end"});
+  p.point(5, 5, {color:"var(--good)", r:6, label:"halfway (5, 5)", labelDx:10, labelDy:-11});
+  p.point(5.8, 5.6, {color:"var(--bad)", r:5.5, label:"", labelDx:0});
+  p.dotted(5.8, 5.6, 5.8, 0, {color:"var(--bad)"});
+  p.dotted(5.8, 5.6, 0, 5.6, {color:"var(--bad)"});
+  p.text(5.8, -1.4, "crossing", {size:11.5, color:"var(--bad)"});
+})();
+
+/* ================= 2. the ten questions ================= */
+(function(){
+  var QUESTIONS = [
+    {
+      q: "What is the distance between the points (1, 2) and (7, 10)?",
+      opts: ["8", "10", "12", "14"],
+      a: 1,
+      e: "The run is 6 and the rise is 8, so the distance is &radic;(6&sup2; + 8&sup2;) = &radic;100 = 10. " +
+         "This is the 3-4-5 triangle doubled. Revise: <a href='01-prerequisites.html'>Prerequisites</a>."
+    },
+    {
+      q: "What is the slope of the line passing through (&minus;2, 3) and (4, &minus;1)?",
+      opts: ["&minus;<span class='frac'><span class='num'>2</span><span class='den'>3</span></span>",
+             "<span class='frac'><span class='num'>2</span><span class='den'>3</span></span>",
+             "&minus;<span class='frac'><span class='num'>3</span><span class='den'>2</span></span>",
+             "<span class='frac'><span class='num'>3</span><span class='den'>2</span></span>"],
+      a: 0,
+      e: "m = (&minus;1 &minus; 3) / (4 &minus; (&minus;2)) = (&minus;4)/6 = &minus;2/3. Keep the same order on top and bottom. " +
+         "Revise: <a href='01-prerequisites.html'>Prerequisites</a>."
+    },
+    {
+      q: "What is the midpoint of the segment joining (&minus;2, 3) and (4, &minus;1)?",
+      opts: ["(1, 1)", "(2, 1)", "(1, 2)", "(3, 1)"],
+      a: 0,
+      e: "Average the two x&rsquo;s and the two y&rsquo;s separately: ((&minus;2 + 4)/2, (3 + (&minus;1))/2) = (1, 1). " +
+         "Revise: <a href='01-prerequisites.html'>Prerequisites</a>."
+    },
+    {
+      q: "Which is the equation of the line with slope 3 passing through the point (2, 5)?",
+      opts: ["y = 3x + 1", "y = 3x &minus; 1", "y = &minus;3x + 11", "y = 3x + 5"],
+      a: 1,
+      e: "Point-slope gives y &minus; 5 = 3(x &minus; 2), so y &minus; 5 = 3x &minus; 6 and y = 3x &minus; 1. " +
+         "A quick check: at x = 2 this gives y = 5, which is the point we were given. " +
+         "Revise: <a href='03-point-slope.html'>Point-slope form</a>."
+    },
+    {
+      q: "Find the equation of the line passing through (1, 4) and (3, 10).",
+      opts: ["y = 3x + 1", "y = 3x + 4", "y = 2x + 2", "y = 3x &minus; 1"],
+      a: 0,
+      e: "Slope = (10 &minus; 4)/(3 &minus; 1) = 6/2 = 3, then y &minus; 4 = 3(x &minus; 1) gives y = 3x + 1. " +
+         "Check with the second point: 3(3) + 1 = 10. Revise: <a href='04-two-point.html'>Two-point form</a>."
+    },
+    {
+      q: "The line 2x + 3y = 6 cuts the x-axis and y-axis at which two points?",
+      opts: ["(3, 0) and (0, 2)", "(2, 0) and (0, 3)", "(6, 0) and (0, 6)", "(&minus;3, 0) and (0, &minus;2)"],
+      a: 0,
+      e: "Put y = 0: 2x = 6, so x = 3. Put x = 0: 3y = 6, so y = 2. The intercept form is x/3 + y/2 = 1. " +
+         "Revise: <a href='05-intercept-form.html'>Intercept form</a>."
+    },
+    {
+      q: "For the line 4x &minus; 2y + 6 = 0, what are the slope and the y-intercept?",
+      opts: ["m = 2, c = 3", "m = &minus;2, c = 3", "m = 2, c = &minus;3", "m = &minus;2, c = &minus;3"],
+      a: 0,
+      e: "Rearranging: 2y = 4x + 6, so y = 2x + 3. Or use the formulas: m = &minus;A/B = &minus;4/(&minus;2) = 2 " +
+         "and the y-intercept is &minus;C/B = &minus;6/(&minus;2) = 3. Revise: <a href='08-general-form.html'>General form</a>."
+    },
+    {
+      q: "What is the inclination of a line whose slope is &minus;1?",
+      opts: ["45&deg;", "135&deg;", "&minus;45&deg;", "90&deg;"],
+      a: 1,
+      e: "tan &theta; = &minus;1. The calculator gives &minus;45&deg;, but inclination must lie between 0&deg; and 180&deg;, " +
+         "so add 180&deg;: &theta; = 135&deg;. Revise: <a href='09-slope-and-inclination.html'>Slope and inclination</a>."
+    },
+    {
+      q: "Where do the lines y = 2x &minus; 1 and y = &minus;x + 5 intersect?",
+      opts: ["(2, 3)", "(3, 2)", "(1, 1)", "(2, &minus;1)"],
+      a: 0,
+      e: "Set them equal: 2x &minus; 1 = &minus;x + 5, so 3x = 6 and x = 2. Then y = 2(2) &minus; 1 = 3. " +
+         "Check in the other equation: &minus;2 + 5 = 3. Revise: <a href='10-intersection.html'>Intersections</a>."
+    },
+    {
+      q: "How many points do the lines 3x &minus; y + 1 = 0 and 6x &minus; 2y + 2 = 0 have in common?",
+      opts: ["None &mdash; they are parallel", "Exactly one", "Infinitely many &mdash; they are the same line", "Exactly two"],
+      a: 2,
+      e: "The second equation is just the first multiplied by 2, so both describe the same line and share every point. " +
+         "Two straight lines can never meet in exactly two points. Revise: <a href='08-general-form.html'>General form</a> " +
+         "and <a href='10-intersection.html'>Intersections</a>."
+    }
+  ];
+
+  mountQuiz(document.getElementById("quizHost"), QUESTIONS);
+})();
+</script>
+</body>
+</html>

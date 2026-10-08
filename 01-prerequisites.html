@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prerequisites: the tools you need — Equations of Straight Lines</title>
+<meta name="description" content="Before you can build equations of lines, revise distance, midpoint, slope, and parallel and perpendicular lines. A See-Think-Wonder case study, a full derivation and a draggable interactive.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 0.1</span></div>
+    <div class="steptag"><span class="n">0</span> Step 0 of 10</div>
+    <h1>Prerequisites: the tools you need</h1>
+    <p class="lead">You cannot build equations of lines out of nothing. Before this chapter begins, you need four tools you already half-know: how to read coordinates, how to measure the distance and midpoint between two points, what <em>slope</em> means, and how to tell when two lines are parallel or perpendicular. This page is the toolbox.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 20 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>1</b> interactive panel</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Read a point&rsquo;s coordinates in any of the <b>four quadrants</b> and name the quadrant</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Use Pythagoras to find the <b>distance</b> between two points</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Find the <b>midpoint</b> and the <b>slope</b> of a segment, including the &ldquo;no slope&rdquo; case</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Decide whether two lines are <b>parallel or perpendicular</b> just from their slopes</label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>distance formula</code>, <code>midpoint</code>, <code>slope</code>, <code>parallel</code>, <code>perpendicular</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The mountain rescue trail</h3>
+      <p class="scene">A rescue team&rsquo;s map is a coordinate grid. The <span class="role">hut</span> sits at <b>(1, 2)</b> and the <span class="role">injured climber</span> is at <b>(7, 10)</b>, where each unit is <b>100&nbsp;m</b>. The shortest path between them is a straight segment. The team needs to know three things at a glance: how far it really is, where the half-way staging post should go, and how steep the climb feels.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="rescueEq">run = 6 &nbsp; rise = 8</div>
+          <div class="legend">
+            <span><i style="background:var(--good)"></i>the straight trail</span>
+            <span><i style="background:var(--accent)"></i>hut &amp; climber</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotRescue" aria-label="A right triangle on a grid joining the hut at (1,2) to the climber at (7,10), with a horizontal run of 6 and a vertical rise of 8"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look at what is drawn.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>There are <b>two marked points</b>: a hut at (1,&nbsp;2) and a climber at (7,&nbsp;10).</li>
+                <li>They are joined by one <b>straight segment</b>.</li>
+                <li>A <b>right-angled triangle</b> sits under that segment: a flat leg going right, a vertical leg going up.</li>
+                <li>The flat leg spans from <span class="v">x</span> = 1 to <span class="v">x</span> = 7, so it is <b>6</b> long (the run).</li>
+                <li>The vertical leg spans from <span class="v">y</span> = 2 to <span class="v">y</span> = 10, so it is <b>8</b> long (the rise).</li>
+                <li>The segment itself is the hypotenuse of that triangle.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What rule might be hiding in what you saw?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>If those two legs were a real triangle, Pythagoras would give the length of the hypotenuse: <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = <span class="v">&radic;</span>100 = <b>10</b> units = 1&nbsp;km.</p>
+              <p>The <b>ratio</b> 8 / 6 = 4 / 3 measures how steep the climb is — climb 8 for every 6 you walk across. That ratio is exactly what we will call the <b>slope</b>.</p>
+              <p>And the half-way post is just the <b>midpoint</b> of the two ends. Since two numbers pin down distance, steepness and the middle, there must be formulas for all three. <b>This page is those formulas.</b></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>How far is the climber <em>really</em> — is it just the straight-line distance?</li>
+                <li>Where exactly is the half-way staging post? Is it the average of the two coordinates?</li>
+                <li>What does &ldquo;slope&rdquo; mean precisely, and can it ever be negative?</li>
+                <li>How would a <em>second</em> trail that is twice as steep look on the same grid?</li>
+                <li>What if the two points shared an <span class="v">x</span>-coordinate — would the slope still make sense?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">1</span>The mathematics</div>
+    <h2>Four tools you already own</h2>
+
+    <h3>Tool 1 &mdash; reading coordinates and the four quadrants</h3>
+    <p>Every point is written <span class="v">(x, y)</span>: how far across (<span class="v">x</span>, right is positive) and how far up (<span class="v">y</span>, up is positive). The two axes split the plane into four <b>quadrants</b>, numbered anticlockwise from the top right:</p>
+    <div class="grid2">
+      <div>
+        <ul class="clean">
+          <li><b>Quadrant I:</b> <span class="v">x</span> &gt; 0, <span class="v">y</span> &gt; 0</li>
+          <li><b>Quadrant II:</b> <span class="v">x</span> &lt; 0, <span class="v">y</span> &gt; 0</li>
+          <li><b>Quadrant III:</b> <span class="v">x</span> &lt; 0, <span class="v">y</span> &lt; 0</li>
+          <li><b>Quadrant IV:</b> <span class="v">x</span> &gt; 0, <span class="v">y</span> &lt; 0</li>
+        </ul>
+        <p class="small muted">Points on an axis belong to no quadrant. The origin (0,&nbsp;0) is the meeting point.</p>
+      </div>
+      <div>
+        <svg class="plot static" id="plotQuad" aria-label="The four quadrants of the coordinate plane labelled I, II, III, IV"></svg>
+      </div>
+    </div>
+
+    <h3>Tool 2 &mdash; distance</h3>
+    <p>Place the two points <span class="v">A</span>(<span class="v">x</span>&#8321;, <span class="v">y</span>&#8321;) and <span class="v">B</span>(<span class="v">x</span>&#8322;, <span class="v">y</span>&#8322;). The horizontal gap is <span class="v">x</span>&#8322; &minus; <span class="v">x</span>&#8321; and the vertical gap is <span class="v">y</span>&#8322; &minus; <span class="v">y</span>&#8321;. Those are the two legs of a right triangle whose hypotenuse is the distance <span class="v">AB</span>.</p>
+    <div class="grid2">
+      <div>
+        <div class="formula big">AB = <span class="frac"><span class="num"><span class="v">&radic;</span>((x&#8322; &minus; x&#8321;)&sup2; + (y&#8322; &minus; y&#8321;)&sup2;)</span><span class="den">&nbsp;</span></span></div>
+        <p class="small">Square the two gaps, add them, take the square root. No sign survives the squaring, so order does not matter.</p>
+      </div>
+      <div>
+        <svg class="plot static" id="plotDist" aria-label="A right triangle on a grid showing the horizontal and vertical legs whose squares add to the squared distance"></svg>
+        <p class="small muted center">The legs are the two gaps; the hypotenuse is the distance.</p>
+      </div>
+    </div>
+    <div class="note ok">
+      <div class="h">Why it works</div>
+      <p>Pythagoras on the triangle gives (distance)&sup2; = (run)&sup2; + (rise)&sup2;. Substitute the gaps for the legs and take the root. The rescue trail gave <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = 10, exactly as you saw.</p>
+    </div>
+
+    <h3>Tool 3 &mdash; midpoint</h3>
+    <p>The half-way point is just the <b>average</b> of the two <span class="v">x</span>&rsquo;s and the average of the two <span class="v">y</span>&rsquo;s.</p>
+    <div class="formula big">M = <span class="frac"><span class="num">(x&#8321; + x&#8322;, &nbsp; y&#8321; + y&#8322;)</span><span class="den">2</span></span></div>
+    <p class="small">In the rescue case: M = ((1 + 7)/2, (2 + 10)/2) = (4,&nbsp;6). The staging post sits at <b>(4, 6)</b>, 500&nbsp;m out from each end.</p>
+
+    <h3>Tool 4 &mdash; slope</h3>
+    <p>Slope is the <b>steepness</b>: how much you climb for each step right.</p>
+    <div class="formula big">m = <span class="frac"><span class="num">y&#8322; &minus; y&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span> = <span class="frac"><span class="num">rise</span><span class="den">run</span></span></div>
+    <ul class="clean">
+      <li><b>Positive</b> slope: the line rises left-to-right.</li>
+      <li><b>Negative</b> slope: it falls left-to-right.</li>
+      <li><b>Zero</b> slope: perfectly flat, <span class="v">y</span> = constant.</li>
+      <li><b>No slope</b>: a <b>vertical</b> line, where <span class="v">x</span>&#8322; = <span class="v">x</span>&#8321; and you would divide by zero.</li>
+    </ul>
+    <div class="note tip">
+      <div class="h">It does not matter which way you travel</div>
+      <p>Swap the two points and both top and bottom flip sign, so the fraction is unchanged: <span class="v">m</span> = (y&#8321; &minus; y&#8322;)/(x&#8321; &minus; x&#8322;) gives the same value. Always keep the <b>same order</b> on top and bottom, though.</p>
+    </div>
+
+    <h3>Parallel and perpendicular lines</h3>
+    <p>Two lines with the <b>same</b> slope never meet — they are <b>parallel</b>. Two lines at right angles are <b>perpendicular</b>, and their slopes are <b>negative reciprocals</b>: one is the flip-and-negate of the other.</p>
+    <div class="formula">parallel:&nbsp; m&#8321; = m&#8322; &nbsp;&nbsp;&nbsp; perpendicular:&nbsp; m&#8321; &middot; m&#8322; = &minus;1</div>
+    <div class="note vio">
+      <div class="h">Why m&#8321; &middot; m&#8322; = &minus;1 ?</div>
+      <p>Imagine one line of slope <span class="v">m</span> = rise/run. A perpendicular line must climb what the first ran, and run what the first climbed, but backwards — so its slope is &minus;run/rise = &minus;1/<span class="v">m</span>. Multiply them: <span class="v">m</span> &middot; (&minus;1/<span class="v">m</span>) = &minus;1. (A vertical line, with no slope, is perpendicular to a horizontal line, slope 0 — the one case the product cannot show.)</p>
+    </div>
+
+    <div class="keyidea">
+      <span class="k">The toolbox in one breath</span>
+      <p>Distance measures the gap, midpoint finds the middle, slope measures steepness, and comparing slopes tells you parallel (<span class="v">m</span>&#8321; = <span class="v">m</span>&#8322;) or perpendicular (<span class="v">m</span>&#8321;<span class="v">m</span>&#8322; = &minus;1). Everything in this course is built from these four.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">2</span>Explore</div>
+    <h2>Drag two points and watch the toolbox work</h2>
+    <p>Drag either point <b>A</b> or <b>B</b> around the grid. The segment, the right triangle, the midpoint and every readout update live. Turn on the chip to see the <b>perpendicular bisector</b> through the midpoint. Notice how the readout says &ldquo;no slope&rdquo; the instant the two points line up vertically.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="preEq">y = &minus;x &minus; 4</div>
+        </div>
+        <svg class="plot" id="plotPre" aria-label="Draggable points A and B with the segment, right triangle, midpoint and optional perpendicular bisector"></svg>
+        <div class="outmsg" id="preOut">&nbsp;</div>
+      </div>
+      <div class="card tight">
+        <div class="chipline">
+          <span class="chip" id="prePerp">Show perpendicular bisector</span>
+          <span class="chip" id="preReset">Reset points</span>
+        </div>
+        <h4>Live readout</h4>
+        <p class="small"><b>&Delta;x</b> (run): <span class="eqout small" id="preDx">7</span></p>
+        <p class="small"><b>&Delta;y</b> (rise): <span class="eqout small" id="preDy">6</span></p>
+        <p class="small"><b>Distance</b>: <span class="eqout small" id="preDist">10</span></p>
+        <p class="small"><b>Midpoint</b>: <span class="eqout small" id="preMid">(&minus;0.5, 1)</span></p>
+        <p class="small"><b>Slope</b>: <span class="eqout small" id="preSlope">6/7</span></p>
+        <div class="note warn" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Drag B to share A&rsquo;s <span class="v">x</span>-coordinate. The slope readout becomes &ldquo;no slope&rdquo; and the line turns vertical — exactly the case the distance and midpoint formulas still handle, but slope cannot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; distance, slope and midpoint of A(1, 2) and B(7, 10)</summary>
+      <div class="body">
+        <p><b>Distance.</b> &Delta;x = 7 &minus; 1 = 6, &Delta;y = 10 &minus; 2 = 8.</p>
+        <div class="formula">AB = <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = <span class="v">&radic;</span>(36 + 64) = <span class="v">&radic;</span>100 = 10</div>
+        <p><b>Slope.</b> <span class="v">m</span> = 8 / 6 = <span class="frac"><span class="num">4</span><span class="den">3</span></span>.</p>
+        <p><b>Midpoint.</b> M = ((1 + 7)/2, (2 + 10)/2) = <b>(4, 6)</b>.</p>
+        <p class="small muted">These are exactly the rescue-trail numbers from the case study.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; A(&minus;2, 3), B(4, &minus;1), and the perpendicular bisector</summary>
+      <div class="body">
+        <p>Midpoint: M = ((&minus;2 + 4)/2, (3 + (&minus;1))/2) = <b>(1, 1)</b>.</p>
+        <p>Slope of AB: <span class="v">m</span> = (&minus;1 &minus; 3)/(4 &minus; (&minus;2)) = (&minus;4)/6 = <span class="frac"><span class="num">&minus;2</span><span class="den">3</span></span>.</p>
+        <p>Perpendicular slope = negative reciprocal = <span class="frac"><span class="num">3</span><span class="den">2</span></span>.</p>
+        <p>Through (1, 1):</p>
+        <div class="formula">y &minus; 1 = <span class="frac"><span class="num">3</span><span class="den">2</span></span>(x &minus; 1)</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; are these two lines perpendicular?</summary>
+      <div class="body">
+        <p>Line 1 through (0, 0) and (4, 2): <span class="v">m</span>&#8321; = (2 &minus; 0)/(4 &minus; 0) = <span class="frac"><span class="num">1</span><span class="den">2</span></span>.</p>
+        <p>Line 2 through (0, 0) and (&minus;2, 4): <span class="v">m</span>&#8322; = (4 &minus; 0)/(&minus;2 &minus; 0) = <span class="frac"><span class="num">4</span><span class="den">&minus;2</span></span> = &minus;2.</p>
+        <p>Product: <span class="v">m</span>&#8321;<span class="v">m</span>&#8322; = <span class="frac"><span class="num">1</span><span class="den">2</span></span> &middot; (&minus;2) = <b>&minus;1</b>. Yes — perpendicular.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; A(3, 5), B(3, &minus;2): the no-slope case</summary>
+      <div class="body">
+        <p>&Delta;x = 3 &minus; 3 = <b>0</b>. The slope formula would have a zero denominator, so <b>the slope does not exist</b> and the line is vertical:</p>
+        <div class="formula">x = 3</div>
+        <p>The distance is still fine: &Delta;y = &minus;2 &minus; 5 = &minus;7, so AB = 7. Midpoint = (3, 1.5).</p>
+        <p class="small muted">Distance and midpoint never break; only slope does.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Watch out</div>
+    <h2>Five ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">m = (y&#8322; &minus; y&#8321;)/(x&#8321; &minus; x&#8322;)</td><td>Top and bottom subtracted in <b>different orders</b> — the sign flips</td><td>Use the same point as &ldquo;2&rdquo; in both: (y&#8322;&minus;y&#8321;)/(x&#8322;&minus;x&#8321;)</td></tr>
+          <tr><td class="mono">m = &minus;8/6 (for a falling line)</td><td>Dropped the minus when &Delta;y was negative</td><td>Keep the sign: a falling line has a <b>negative</b> slope</td></tr>
+          <tr><td class="mono">perpendicular to slope 3 is &minus;1/3</td><td>Called the reciprocal &ldquo;&minus;1/3&rdquo; without flipping first</td><td>Flip <b>and</b> negate: 3 &rarr; 1/3 &rarr; <b>&minus;1/3</b>; 1/3 &rarr; 3 &rarr; <b>&minus;3</b></td></tr>
+          <tr><td class="mono">distance = &radic;((&minus;6)&sup2; + &hellip;) dropped the square</td><td>Forgot to square the negative gap</td><td>The square removes the sign anyway, so just square the magnitude</td></tr>
+          <tr><td class="mono">slope 0 for a vertical line</td><td>Thought &ldquo;no slope&rdquo; meant &ldquo;slope 0&rdquo;</td><td>Vertical means <b>no slope</b> (undefined); slope 0 means <b>horizontal</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>Find the distance between (2, &minus;1) and (5, 3).
+          <details class="sol"><summary>Answer</summary><div class="body"><p>&Delta;x = 3, &Delta;y = 4. Distance = <span class="v">&radic;</span>(3&sup2; + 4&sup2;) = <span class="v">&radic;</span>25 = <b>5</b>.</p></div></details>
+        </li>
+        <li>Find the slope of the line through (&minus;3, 4) and (1, &minus;2).
+          <details class="sol"><summary>Answer</summary><div class="body"><p>m = (&minus;2 &minus; 4)/(1 &minus; (&minus;3)) = (&minus;6)/4 = <b>&minus;3/2</b>.</p></div></details>
+        </li>
+        <li>Find the midpoint of (6, 8) and (&minus;2, 2).
+          <details class="sol"><summary>Answer</summary><div class="body"><p>M = ((6 + (&minus;2))/2, (8 + 2)/2) = (4/2, 10/2) = <b>(2, 5)</b>.</p></div></details>
+        </li>
+        <li>A line has slope 2 and another has slope &minus;1/2. Are they parallel, perpendicular, or neither?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Product: 2 &middot; (&minus;1/2) = <b>&minus;1</b>, so they are <b>perpendicular</b>. Slopes are not equal, so not parallel.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. Saved privately on this device.</p>
+      <h4>1. In your own words: what does &ldquo;slope&rdquo; measure, and why can a vertical line not have one?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. Which of these four tools still feels shaky, and what would make it click?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="index.html">Back to the course map</a> &middot; <a href="02-what-is-an-equation.html">Next: What an equation of a line means</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= case-study figure: the rescue triangle ================= */
+(function(){
+  var svg = document.getElementById("plotRescue");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:9, ymin:-1, ymax:12, stepX:1, stepY:1, labelStepX:1, labelStepY:2});
+  p.reset();
+  // right triangle legs
+  p.seg(1, 2, 7, 2, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
+  p.seg(7, 2, 7, 10, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
+  p.seg(1, 2, 7, 10, {color:"var(--good)", width:3.2});
+  p.point(1, 2, {color:"var(--accent)", r:7, label:"hut (1, 2)", labelDx:-8, labelDy:-12, anchor:"end"});
+  p.point(7, 10, {color:"var(--accent)", r:7, label:"climber (7, 10)", labelDx:10, labelDy:-11});
+  p.text(4, 2 - 0.7, "run = 6", {size:12.5, color:"var(--brand)"});
+  p.text(7 + 0.4, 6, "rise = 8", {size:12.5, color:"var(--brand)", anchor:"start"});
+})();
+
+/* ================= quadrants figure ================= */
+(function(){
+  var svg = document.getElementById("plotQuad");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-5, xmax:5, ymin:-5, ymax:5});
+  p.reset();
+  p.text(3.4, 4.2, "I", {size:15, color:"var(--ink-3)", weight:700});
+  p.text(-3.4, 4.2, "II", {size:15, color:"var(--ink-3)", weight:700});
+  p.text(-3.4, -4.4, "III", {size:15, color:"var(--ink-3)", weight:700});
+  p.text(3.4, -4.4, "IV", {size:15, color:"var(--ink-3)", weight:700});
+})();
+
+/* ================= distance figure ================= */
+(function(){
+  var svg = document.getElementById("plotDist");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:9, ymin:-1, ymax:8});
+  p.reset();
+  p.seg(1, 1, 7, 1, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
+  p.seg(7, 1, 7, 6, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
+  p.seg(1, 1, 7, 6, {color:"var(--brand)", width:3});
+  p.point(1, 1, {color:"var(--accent)", r:6, label:"A", labelDx:-8, labelDy:-10, anchor:"end"});
+  p.point(7, 6, {color:"var(--accent)", r:6, label:"B", labelDx:10, labelDy:-10});
+  p.text(3.6, 0.4, "x&#8322; − x&#8321;", {size:11.5, color:"var(--brand)"});
+  p.text(7.5, 3.5, "y&#8322; − y&#8321;", {size:11.5, color:"var(--brand)", anchor:"start"});
+})();
+
+/* ================= interactive: drag A and B ================= */
+(function(){
+  var svg = document.getElementById("plotPre");
+  if (!svg) return;
+  var XMIN=-9, XMAX=9, YMIN=-7, YMAX=7;
+  var p = new Plot(svg, {xmin:XMIN, xmax:XMAX, ymin:YMIN, ymax:YMAX});
+  var A = {x:-4, y:-2}, B = {x:3, y:4};
+  var perpOn = false;
+  var Dx = document.getElementById("preDx"), Dy = document.getElementById("preDy"),
+      Dist = document.getElementById("preDist"), Mid = document.getElementById("preMid"),
+      Slope = document.getElementById("preSlope"), Eq = document.getElementById("preEq"),
+      Out = document.getElementById("preOut");
+
+  function clampX(v){ return Math.max(XMIN, Math.min(XMAX, Math.round(v))); }
+  function clampY(v){ return Math.max(YMIN, Math.min(YMAX, Math.round(v))); }
+
+  function draw(){
+    var dx = B.x - A.x, dy = B.y - A.y;
+    p.reset();
+    // right-triangle legs (corner at B.x, A.y)
+    p.seg(A.x, A.y, B.x, A.y, {color:"var(--ink-3)", width:1.4, dash:"4 3"});
+    p.seg(B.x, A.y, B.x, B.y, {color:"var(--ink-3)", width:1.4, dash:"4 3"});
+    // hypotenuse
+    p.seg(A.x, A.y, B.x, B.y, {color:"var(--good)", width:3.2});
+    // midpoint
+    var mx = (A.x + B.x)/2, my = (A.y + B.y)/2;
+    p.point(mx, my, {color:"var(--violet)", r:5, label:"M", labelDx:9, labelDy:-9, labelColor:"var(--violet)"});
+    // points
+    p.point(A.x, A.y, {color:"var(--accent)", r:7, label:"A(" + nf(A.x) + ", " + nf(A.y) + ")", labelDx:-8, labelDy:-12, anchor:"end"});
+    p.point(B.x, B.y, {color:"var(--accent)", r:7, label:"B(" + nf(B.x) + ", " + nf(B.y) + ")", labelDx:10, labelDy:-11});
+
+    var dist = Math.sqrt(dx*dx + dy*dy);
+    var vertical = (dx === 0);
+    var slopeTxt, eqTxt;
+    if (vertical){
+      slopeTxt = "no slope (vertical)";
+      eqTxt = "x = " + nf(A.x);
+    } else {
+      var m = dy/dx;
+      slopeTxt = fracHTML(dy, dx);
+      var c = A.y - m*A.x;
+      eqTxt = eqLine(m, c);
+    }
+
+    if (perpOn){
+      if (vertical){
+        // perpendicular to a vertical line is horizontal through M
+        p.hline(my, {color:"var(--violet)", width:2.4, dash:"6 4"});
+        Eq.textContent = "x = " + nf(A.x) + "   |   perp: y = " + nf(my);
+      } else if (dy === 0){
+        // AB horizontal -> perpendicular is vertical through M
+        p.vline(mx, {color:"var(--violet)", width:2.4, dash:"6 4"});
+        Eq.textContent = eqTxt + "   |   perp: x = " + nf(mx);
+      } else {
+        var mp = -1/m, cp = my - mp*mx;
+        p.line(mp, cp, {color:"var(--violet)", width:2.4, dash:"6 4"});
+        Eq.textContent = eqTxt + "   |   perp: " + eqLine(mp, cp);
+      }
+    } else {
+      Eq.textContent = eqTxt;
+    }
+
+    Dx.textContent = nf(dx);
+    Dy.textContent = nf(dy);
+    Dist.textContent = nf(dist);
+    Mid.textContent = "(" + nf(mx) + ", " + nf(my) + ")";
+    Slope.textContent = slopeTxt;
+    Out.innerHTML = vertical
+      ? "<b>Vertical segment.</b> &Delta;x = 0, so slope is undefined — but distance " + nf(dist) + " and midpoint (" + nf(mx) + ", " + nf(my) + ") are still well defined."
+      : "<b>Run</b> " + nf(dx) + ", <b>rise</b> " + nf(dy) + ", so slope = " + fracHTML(dy,dx) + " and the line is <b>" + eqTxt + "</b>.";
+  }
+
+  var drag = null;
+  function pick(h){
+    var dA = Math.hypot(h.x - A.x, h.y - A.y);
+    var dB = Math.hypot(h.x - B.x, h.y - B.y);
+    return dA <= dB ? "A" : "B";
+  }
+  svg.addEventListener("pointerdown", function(e){
+    var h = p.fromEvent(e);
+    drag = pick(h);
+    var pt = drag === "A" ? A : B;
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    try { svg.setPointerCapture(e.pointerId); } catch(err){}
+    draw();
+  });
+  svg.addEventListener("pointermove", function(e){
+    if (!drag) return;
+    var h = p.fromEvent(e);
+    var pt = drag === "A" ? A : B;
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    draw();
+  });
+  function release(){ drag = null; }
+  svg.addEventListener("pointerup", release);
+  svg.addEventListener("pointercancel", release);
+  svg.addEventListener("pointerleave", release);
+
+  var perpChip = document.getElementById("prePerp");
+  if (perpChip) perpChip.addEventListener("click", function(){
+    perpOn = !perpOn;
+    perpChip.classList.toggle("on", perpOn);
+    draw();
+  });
+  var resetChip = document.getElementById("preReset");
+  if (resetChip) resetChip.addEventListener("click", function(){
+    A.x = -4; A.y = -2; B.x = 3; B.y = 4;
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

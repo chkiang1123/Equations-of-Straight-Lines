@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The intercept form — Equations of Straight Lines</title>
+<meta name="description" content="Describe a straight line by where it cuts the two axes. A See-Think-Wonder case study, the derivation of x/a + y/b = 1, and an interactive graph.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.2</span></div>
+    <div class="steptag"><span class="n">4</span> Step 4 of 10</div>
+    <h1>The intercept form</h1>
+    <p class="lead">Sometimes the most natural way to describe a line is by where it cuts the two axes. If you know those two cuts, you barely have to do any algebra at all.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 16 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>1</b> interactive panel</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Find the <b>x-intercept</b> and <b>y-intercept</b> of any line from its equation</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Write the <b>intercept form</b> <span class="v">x</span>/<span class="v">a</span> + <span class="v">y</span>/<span class="v">b</span> = 1 from the two intercepts</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Read the <b>slope</b> straight off the intercepts: <span class="v">m</span> = &minus;<span class="v">b</span>/<span class="v">a</span></label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Explain clearly <b>which lines this form cannot describe</b> and why</label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>intercept form</code>, <code>x/a + y/b = 1</code>, <code>x-intercept</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The budget line</h3>
+      <p class="scene">You have <b>$12</b> exactly. Pens cost <b>$2</b> each, notebooks cost <b>$3</b> each. If you buy <span class="role">x</span> pens and <span class="role">y</span> notebooks and spend <em>every</em> cent, the rule is <b>2x + 3y = 12</b>. The picture plots that line and marks where it cuts each axis.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">2x + 3y = 12</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>all ways to spend $12</span>
+            <span><i style="background:var(--accent)"></i>the axis cuts</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotBudget" aria-label="Graph of 2x + 3y = 12, a line cutting the x-axis at 6 and the y-axis at 4"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations, no maths yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>The picture is <b>one straight line</b> — the same sort of line every page in this course studies.</li>
+                <li>It <b>cuts the horizontal axis at 6</b> and the <b>vertical axis at 4</b>.</li>
+                <li>It <b>slopes downward</b> as you move to the right.</li>
+                <li>Several points on it have whole-number coordinates: (6,0), (3,2), (0,4) &hellip;</li>
+                <li>Those whole-number points are the combos that cost exactly $12 — 6 pens and no notebooks, 3 of each, or no pens and 4 notebooks.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What relationship might be hiding in what you saw?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>The two cuts tell a story. The horizontal cut is <b>6</b>, and 6 is exactly <b>12 &divide; 2</b> — the total money divided by the price of one pen. The vertical cut is <b>4</b>, and 4 is exactly <b>12 &divide; 3</b> — the total divided by the price of one notebook.</p>
+              <p>So the numbers 6 and 4 are not random: each one is the total budget divided by a price. The axis cuts are <b>built into the equation</b>, and a pattern is hiding here waiting to be made into a formula.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Can I write the equation <b>straight from the two intercepts</b>, without starting from 2x + 3y = 12?</li>
+                <li>Would <b>x/6 + y/4 = 1</b> really be the same line as 2x + 3y = 12?</li>
+                <li>What if one of the intercepts were <b>negative</b> — what would the line look like then?</li>
+                <li>Is there a line this trick <em>cannot</em> describe?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>From two axis cuts to one formula</h2>
+    <p>An <b>intercept</b> is simply where a line meets an axis. There are two kinds, and finding each one means putting the other variable equal to zero.</p>
+
+    <div class="grid2">
+      <div>
+        <h3>Finding the two intercepts</h3>
+        <p>Work on the budget line <span class="v">2x + 3y = 12</span>.</p>
+        <ol class="steps">
+          <li><b>x-intercept</b> — put <span class="v">y = 0</span>:
+            <div class="formula">2x + 3(0) = 12 &nbsp;&rArr;&nbsp; 2x = 12 &nbsp;&rArr;&nbsp; <b>x = 6</b></div>
+            The cut is the point <b>(6, 0)</b>.
+          </li>
+          <li><b>y-intercept</b> — put <span class="v">x = 0</span>:
+            <div class="formula">2(0) + 3y = 12 &nbsp;&rArr;&nbsp; 3y = 12 &nbsp;&rArr;&nbsp; <b>y = 4</b></div>
+            The cut is the point <b>(0, 4)</b>.
+          </li>
+        </ol>
+      </div>
+      <div>
+        <svg class="plot static" id="plotFind" aria-label="The line 2x+3y=12 with the x-intercept and y-intercept marked"></svg>
+        <p class="small muted center">Put the other variable to zero, and the axis cut appears.</p>
+      </div>
+    </div>
+
+    <h3>The pattern</h3>
+    <p>Take <span class="v">2x + 3y = 12</span> and divide <em>everything</em> by 12:</p>
+    <div class="formula big"><span class="frac"><span class="num">2x</span><span class="den">12</span></span> + <span class="frac"><span class="num">3y</span><span class="den">12</span></span> = <span class="frac"><span class="num">12</span><span class="den">12</span></span> &nbsp;&rArr;&nbsp; <span class="frac"><span class="num">x</span><span class="den">6</span></span> + <span class="frac"><span class="num">y</span><span class="den">4</span></span> = 1</div>
+    <p>The two denominators, 6 and 4, are exactly the two intercepts. So a line that cuts the axes at <span class="v">(a, 0)</span> and <span class="v">(0, b)</span> can always be written as:</p>
+    <div class="formula big"><span class="frac"><span class="num">x</span><span class="den">a</span></span> + <span class="frac"><span class="num">y</span><span class="den">b</span></span> = 1</div>
+
+    <div class="keyidea">
+      <span class="k">The intercept form</span>
+      <p>A line that cuts the x-axis at <b>(a, 0)</b> and the y-axis at <b>(0, b)</b> has equation <b>x/a + y/b = 1</b>. The denominators <em>are</em> the intercepts.</p>
+    </div>
+
+    <h3>Why this is enough</h3>
+    <p>Substitute the x-intercept <span class="v">(a, 0)</span>: <span class="frac"><span class="num">a</span><span class="den">a</span></span> + <span class="frac"><span class="num">0</span><span class="den">b</span></span> = 1 + 0 = 1 — it works. Substitute the y-intercept <span class="v">(0, b)</span>: 0 + 1 = 1 — it works too.</p>
+    <p>Two points fix a unique line, so if both intercepts satisfy the equation, <em>every</em> point on the line does. The form is genuine.</p>
+
+    <h3>The slope, read off the intercepts</h3>
+    <p>Rearrange <span class="v">x/a + y/b = 1</span> into slope-intercept form:</p>
+    <div class="formula"><span class="frac"><span class="num">y</span><span class="den">b</span></span> = 1 &minus; <span class="frac"><span class="num">x</span><span class="den">a</span></span> &nbsp;&rArr;&nbsp; y = b &minus; <span class="frac"><span class="num">b</span><span class="den">a</span></span>x &nbsp;&rArr;&nbsp; y = &minus;<span class="frac"><span class="num">b</span><span class="den">a</span></span>x + b</div>
+    <p>So the slope is <b>m = &minus;b/a</b> and the y-intercept is <b>b</b>. For the budget line, <span class="v">a = 6</span>, <span class="v">b = 4</span>, giving <span class="v">m = &minus;4/6 = &minus;2/3</span> — a downward slope, exactly as the picture showed.</p>
+
+    <div class="note tip">
+      <div class="h">A quick sanity check</div>
+      <p>Because <span class="v">m = &minus;b/a</span>, the slope and the two intercepts are tied together. If you know any two of {a, b, m}, you can find the third. That is why this form is so handy for sketching.</p>
+    </div>
+
+    <h3>The limits of the form</h3>
+    <p>The intercept form is brilliant, but it cannot describe <em>every</em> line. Three families escape it:</p>
+    <ul class="clean">
+      <li><b>A line through the origin</b> cuts both axes at (0, 0), so <span class="v">a = 0</span> and <span class="v">b = 0</span>. Dividing by zero is impossible.</li>
+      <li><b>A horizontal line</b> (other than the x-axis) never cuts the x-axis, so it has no x-intercept — that means <span class="v">a</span> does not exist.</li>
+      <li><b>A vertical line</b> (other than the y-axis) never cuts the y-axis, so it has no y-intercept — that means <span class="v">b</span> does not exist.</li>
+    </ul>
+    <div class="note warn">
+      <div class="h">Do not force it</div>
+      <p>These three are still perfectly good lines — they are just written in other forms (<span class="v">y = k</span>, <span class="v">x = h</span>, or <span class="v">y = mx</span>). The intercept form simply is not the right tool for them.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Slide the two intercepts</h2>
+    <p>Move <span class="v">a</span> and <span class="v">b</span>. The graph shows the line through <span class="v">(a, 0)</span> and <span class="v">(0, b)</span>, and the live readout writes the intercept form, the slope, and the slope-intercept version all at once.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="intEq">x/6 + y/4 = 1</div>
+        </div>
+        <svg class="plot" id="plotInt" aria-label="Interactive line through the two intercepts a and b"></svg>
+        <div class="outmsg" id="intMsg">The line cuts the x-axis at (6, 0) and the y-axis at (0, 4).</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>x-intercept <span class="v">a</span> <b id="intAv">6</b></label>
+          <input type="range" id="intA" min="-8" max="8" step="1" value="6">
+        </div>
+        <div class="ctrl">
+          <label>y-intercept <span class="v">b</span> <b id="intBv">4</b></label>
+          <input type="range" id="intB" min="-8" max="8" step="1" value="4">
+        </div>
+        <h4>The three descriptions</h4>
+        <p class="small">Intercept form: <span class="eqout small" id="intForm"></span></p>
+        <p class="small">Slope: <span class="eqout small" id="intSlope"></span></p>
+        <p class="small">Slope-intercept: <span class="eqout small" id="intSI"></span></p>
+        <div class="note vio" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Drag <span class="v">a</span> or <span class="v">b</span> to <b>0</b> and read the warning. A zero intercept shatters the x/a + y/b = 1 form — but the line still exists, just written differently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; intercepts 5 and &minus;3</summary>
+      <div class="body">
+        <p><b>Step 1.</b> x-intercept <span class="v">a = 5</span>, y-intercept <span class="v">b = &minus;3</span>.</p>
+        <div class="formula"><span class="frac"><span class="num">x</span><span class="den">5</span></span> + <span class="frac"><span class="num">y</span><span class="den">&minus;3</span></span> = 1 &nbsp;&nbsp;or&nbsp;&nbsp; <span class="frac"><span class="num">x</span><span class="den">5</span></span> &minus; <span class="frac"><span class="num">y</span><span class="den">3</span></span> = 1</div>
+        <p><b>Step 2.</b> Clear denominators by multiplying by 15: 3x &minus; 5y = 15.</p>
+        <div class="formula">3x &minus; 5y = 15</div>
+        <p class="small muted">A negative intercept keeps the <b>plus</b> sign in the form; the minus is carried by the denominator.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; 2x + 5y = 20, write in intercept form</summary>
+      <div class="body">
+        <p><b>Step 1.</b> x-intercept: <span class="v">y = 0</span> &rArr; 2x = 20 &rArr; <span class="v">x = 10</span>. y-intercept: <span class="v">x = 0</span> &rArr; 5y = 20 &rArr; <span class="v">y = 4</span>.</p>
+        <p><b>Step 2.</b> Substitute <span class="v">a = 10</span>, <span class="v">b = 4</span>:</p>
+        <div class="formula"><span class="frac"><span class="num">x</span><span class="den">10</span></span> + <span class="frac"><span class="num">y</span><span class="den">4</span></span> = 1</div>
+        <p><b>Step 3.</b> Slope: <span class="v">m = &minus;b/a = &minus;4/10 = &minus;2/5</span>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; 4x &minus; 3y = 12, write in intercept form</summary>
+      <div class="body">
+        <p><b>Step 1.</b> x-intercept: <span class="v">y = 0</span> &rArr; 4x = 12 &rArr; <span class="v">x = 3</span>. y-intercept: <span class="v">x = 0</span> &rArr; &minus;3y = 12 &rArr; <span class="v">y = &minus;4</span>.</p>
+        <p><b>Step 2.</b> Substitute <span class="v">a = 3</span>, <span class="v">b = &minus;4</span>:</p>
+        <div class="formula"><span class="frac"><span class="num">x</span><span class="den">3</span></span> + <span class="frac"><span class="num">y</span><span class="den">&minus;4</span></span> = 1</div>
+        <p><b>Step 3.</b> Slope: <span class="v">m = &minus;b/a = &minus;(&minus;4)/3 = 4/3</span>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; through (0, &minus;6) and (4, 0)</summary>
+      <div class="body">
+        <p><b>Step 1.</b> The point on the y-axis is (0, &minus;6), so <span class="v">b = &minus;6</span>. The point on the x-axis is (4, 0), so <span class="v">a = 4</span>.</p>
+        <p><b>Step 2.</b> Intercept form:</p>
+        <div class="formula"><span class="frac"><span class="num">x</span><span class="den">4</span></span> + <span class="frac"><span class="num">y</span><span class="den">&minus;6</span></span> = 1</div>
+        <p><b>Step 3.</b> General form: multiply by 12 &rArr; 3x &minus; 2y = 12.</p>
+        <div class="formula">3x &minus; 2y = 12</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>Watch out</div>
+    <h2>Three ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">x/a &minus; y/b = 1 for a negative b</td><td>The sign gets flipped twice and the line is wrong</td><td>Keep the <b>plus</b>: x/a + y/b = 1. When b is negative the denominator carries the minus, so it reads x/a &minus; y/|b| = 1</td></tr>
+          <tr><td class="mono">Using x/a + y/b = 1 on a line through (0,0)</td><td>a = 0 and b = 0, so you divide by zero</td><td>These lines are written y = mx (or y = 0, x = 0). The intercept form cannot reach them</td></tr>
+          <tr><td class="mono">Treating a and b as lengths</td><td>You drop the minus sign on a negative intercept</td><td>a and b are <b>directed</b> intercepts — coordinates, so they can be negative. (0, &minus;4) really means &minus;4</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>A line cuts the axes at (8, 0) and (0, 2). Write its intercept form and its slope.
+          <details class="sol"><summary>Answer</summary><div class="body"><div class="formula"><span class="frac"><span class="num">x</span><span class="den">8</span></span> + <span class="frac"><span class="num">y</span><span class="den">2</span></span> = 1</div><p>Slope m = &minus;b/a = &minus;2/8 = &minus;1/4.</p></div></details>
+        </li>
+        <li>Write 3x + 2y = 18 in intercept form.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>x-intercept: 3x = 18 &rArr; x = 6. y-intercept: 2y = 18 &rArr; y = 9.</p><div class="formula"><span class="frac"><span class="num">x</span><span class="den">6</span></span> + <span class="frac"><span class="num">y</span><span class="den">9</span></span> = 1</div></div></details>
+        </li>
+        <li>A line has intercept form x/4 + y/(&minus;5) = 1. Where does it cut the axes, and what is its slope?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>By reading the denominators: x-intercept a = 4, so (4, 0); y-intercept b = &minus;5, so (0, &minus;5). Slope m = &minus;b/a = &minus;(&minus;5)/4 = 5/4.</p></div></details>
+        </li>
+        <li>Can x/a + y/b = 1 describe the line y = 7? Explain.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>No. The line y = 7 is horizontal and never cuts the x-axis, so it has no x-intercept (a does not exist). It is written directly as y = 7 instead.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning — and it is saved privately on this device.</p>
+      <h4>1. In your own words: why does x/a + y/b = 1 describe the whole line once you know the two intercepts?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. Which line from today is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="04-two-point.html">Two-point form</a> &middot; <a href="index.html">Course map</a> &middot; <a href="06-slope-intercept.html">Slope-intercept form</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. case-study figure: the budget line ================= */
+(function(){
+  var svg = document.getElementById("plotBudget");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:8, ymin:-1, ymax:6});
+  p.reset();
+  // line 2x + 3y = 12  ->  y = 4 - (2/3)x
+  p.line(-2/3, 4, {color:"var(--brand)", width:3.2});
+  p.dotted(6, 0, 6, 0, {color:"var(--ink-3)"});
+  // dotted guides to the axes are the axes themselves; mark the cuts
+  p.point(6, 0, {color:"var(--accent)", r:7, label:"(6, 0)", labelDx:10, labelDy:-11});
+  p.point(0, 4, {color:"var(--accent)", r:7, label:"(0, 4)", labelDx:12, labelDy:-11});
+  p.text(3, 2.6, "2x + 3y = 12", {anchor:"middle", size:13, color:"var(--brand)"});
+  // a couple of whole-number combos
+  p.point(3, 2, {color:"var(--good)", r:4});
+  p.point(0, 4, {color:"var(--good)", r:4});
+  p.point(6, 0, {color:"var(--good)", r:4});
+})();
+
+/* ================= 2. derivation figure: find intercepts ================= */
+(function(){
+  var svg = document.getElementById("plotFind");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:8, ymin:-1, ymax:6});
+  p.reset();
+  p.line(-2/3, 4, {color:"var(--brand)", width:3.2});
+  p.dotted(6, 0, 6, 4, {color:"var(--ink-3)", dash:"4 4"});
+  p.dotted(0, 4, 6, 4, {color:"var(--ink-3)", dash:"4 4"});
+  p.point(6, 0, {color:"var(--accent)", r:7, label:"(6, 0)", labelDx:10, labelDy:18, anchor:"middle"});
+  p.point(0, 4, {color:"var(--accent)", r:7, label:"(0, 4)", labelDx:-10, labelDy:-11, anchor:"end"});
+})();
+
+/* ================= 3. interactive: slide the intercepts ================= */
+(function(){
+  var svg = document.getElementById("plotInt");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-9, xmax:9, ymin:-7, ymax:7});
+  var A = document.getElementById("intA"), B = document.getElementById("intB");
+  var Av = document.getElementById("intAv"), Bv = document.getElementById("intBv");
+  var EQ = document.getElementById("intEq"), FORM = document.getElementById("intForm");
+  var SL = document.getElementById("intSlope"), SI = document.getElementById("intSI");
+  var MSG = document.getElementById("intMsg");
+
+  function interceptStr(a, b){
+    var ys = (b < 0) ? (" &minus; y/" + nf(Math.abs(b))) : (" + y/" + nf(b));
+    return "x/" + nf(a) + ys + " = 1";
+  }
+
+  function draw(){
+    var a = +A.value, b = +B.value;
+    Av.textContent = nf(a); Bv.textContent = nf(b);
+    p.reset();
+
+    if (a === 0 && b === 0){
+      p.point(0, 0, {color:"var(--accent)", r:7, label:"(0, 0)"});
+      EQ.innerHTML = "x/a + y/b = 1 needs two intercepts";
+      FORM.innerHTML = "&mdash;";
+      SL.innerHTML = "&mdash;";
+      SI.innerHTML = "&mdash;";
+      MSG.innerHTML = "<b>Why it breaks:</b> both intercepts are zero, so the only point named by the intercepts is the origin. No single line is fixed. Choose a and b that are not both zero.";
+      return;
+    }
+    if (a === 0){
+      p.vline(0, {color:"var(--brand)", width:3.2});
+      p.point(0, b, {color:"var(--accent)", r:7, label:"(0, " + nf(b) + ")", labelDx:12, labelDy:-11});
+      EQ.innerHTML = "x/a + y/b = 1 fails (a = 0)";
+      FORM.innerHTML = "no intercept form";
+      SL.innerHTML = "does not exist";
+      SI.innerHTML = "x = 0";
+      MSG.innerHTML = "<b>Why it breaks:</b> the x-intercept is (0, 0), so the denominator a is zero and x/a is meaningless. <b>What the line is instead:</b> it passes through (0, 0) and (0, " + nf(b) + "), so every point has x = 0. The line is <b>x = 0</b>.";
+      return;
+    }
+    if (b === 0){
+      p.hline(0, {color:"var(--brand)", width:3.2});
+      p.point(a, 0, {color:"var(--accent)", r:7, label:"(" + nf(a) + ", 0)", labelDx:10, labelDy:-11});
+      EQ.innerHTML = "x/a + y/b = 1 fails (b = 0)";
+      FORM.innerHTML = "no intercept form";
+      SL.innerHTML = "0";
+      SI.innerHTML = "y = 0";
+      MSG.innerHTML = "<b>Why it breaks:</b> the y-intercept is (0, 0), so the denominator b is zero and y/b is meaningless. <b>What the line is instead:</b> it passes through (" + nf(a) + ", 0) and (0, 0), so every point has y = 0. The line is <b>y = 0</b>.";
+      return;
+    }
+
+    var m = -b / a, c = b;
+    p.line(m, c, {color:"var(--brand)", width:3.2});
+    p.dotted(a, 0, 0, b, {color:"var(--ink-3)", dash:"4 4"});
+    p.point(a, 0, {color:"var(--accent)", r:7, label:"(" + nf(a) + ", 0)", labelDx:10, labelDy:-11});
+    p.point(0, b, {color:"var(--accent)", r:7, label:"(0, " + nf(b) + ")", labelDx:12, labelDy:-11});
+
+    EQ.innerHTML = interceptStr(a, b);
+    FORM.innerHTML = interceptStr(a, b);
+    SL.innerHTML = "m = " + fracHTML(-b, a);
+    SI.innerHTML = eqLine(m, c);
+    MSG.innerHTML = "The line cuts the x-axis at (" + nf(a) + ", 0) and the y-axis at (0, " + nf(b) + "). Slope m = &minus;b/a = " + fracHTML(-b, a) + ", and rewriting gives " + eqLine(m, c) + ".";
+  }
+
+  [A, B].forEach(function(inp){
+    inp.addEventListener("input", function(){
+      [A, B].forEach(setRangeFill);
+      draw();
+    });
+    setRangeFill(inp);
+  });
+
+  draw();
+})();
+</script>
+</body>
+</html>

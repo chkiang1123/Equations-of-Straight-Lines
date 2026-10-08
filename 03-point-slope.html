@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Point-slope form — Equations of Straight Lines</title>
+<meta name="description" content="Build the equation of a straight line from one point and a slope. A See-Think-Wonder case study, a full derivation and two interactive graphs.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.1</span></div>
+    <div class="steptag"><span class="n">2</span> Step 2 of 10</div>
+    <h1>The point-slope form</h1>
+    <p class="lead">One point and one slope. That is genuinely all a straight line needs — and once you see <em>why</em>, the formula stops being something to memorise and becomes something you could have invented yourself.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 18 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Explain why <b>one point plus the slope</b> is enough to determine a whole line</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Derive <b>y &minus; y&#8321; = m(x &minus; x&#8321;)</b> yourself, from the slope formula</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Write the equation of a line given a point and a slope, then tidy it into general form</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Explain why two different students can give different-looking answers and <b>both be right</b></label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>point-slope form</code>, <code>y &minus; y&#8321; = m(x &minus; x&#8321;)</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The draining water tank</h3>
+      <p class="scene">A school water tank is being emptied for cleaning. A sensor logs the volume of water left, once a minute. The caretaker plots the readings and gets <b>one perfectly straight line</b>: at the moment the tap is opened there are <b>40 litres</b>, and the volume falls by exactly <b>5 litres every minute</b>.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="tankEq">V = 40 &minus; 5t</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>volume of water</span>
+            <span><i style="background:var(--accent)"></i>the starting reading</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotTank" aria-label="Graph of water volume against time, a straight line from 40 litres at time zero, falling 5 litres per minute"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations, no maths yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>It is <b>one straight line</b> — not a curve, not broken.</li>
+                <li>It <b>starts</b> at the point (0,&nbsp;40): zero minutes, 40 litres.</li>
+                <li>It passes through (1,&nbsp;35), (2,&nbsp;30), (3,&nbsp;25), (4,&nbsp;20) &hellip;</li>
+                <li>Every minute it goes down by the <b>same</b> amount: 5 litres.</li>
+                <li>It <b>cuts the horizontal axis</b> at t = 8.</li>
+                <li>Past t = 8 the line would give <b>negative</b> litres — which cannot happen in real life.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What rule or relationship might be hiding in what you saw?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>A straight line means the change is <b>constant</b> — the same drop every minute. That constant change is the <b>slope</b>.</p>
+              <p>The point (0,&nbsp;40) is where the line was <em>at the start</em>. So the whole graph is being carried by just two pieces of information: <b>one point</b>, and <b>one slope</b>.</p>
+              <p>If that really is all the information there is, then there ought to be a formula that takes <em>(a point, a slope)</em> and hands you back the whole line. <b>That formula is what this page is about.</b></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Where exactly does the &minus;5 appear in the equation?</li>
+                <li>Would (2,&nbsp;30) work just as well as (0,&nbsp;40) as my starting point?</li>
+                <li>Could I read the slope off <em>any</em> two points, or only neighbouring ones?</li>
+                <li>Can the equation answer new questions — like the volume at t = 3.5 minutes?</li>
+                <li>What would the graph look like if the tank drained faster at the beginning?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>Turning an idea into a formula</h2>
+    <p>You have a fixed point and a slope. Let us be completely general about it, so the result works for every line.</p>
+    <p>Let the fixed point be <span class="v">A</span>(<span class="v">x</span>&#8321;,&nbsp;<span class="v">y</span>&#8321;) and let the slope be <span class="v">m</span>. Now pick <em>any other point</em> on the line and call it <span class="v">P</span>(<span class="v">x</span>,&nbsp;<span class="v">y</span>).</p>
+
+    <div class="grid2">
+      <div>
+        <ol class="steps">
+          <li>You already know the slope formula. Using <b>A</b> and <b>P</b> as the two points:
+            <div class="formula">m = <span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">x &minus; x&#8321;</span></span></div>
+          </li>
+          <li>Multiply both sides by (<span class="v">x</span> &minus; <span class="v">x</span>&#8321;). The denominator disappears:
+            <div class="formula big">y &minus; y&#8321; = m(x &minus; x&#8321;)</div>
+          </li>
+          <li>That is the whole derivation. Two lines of algebra — you could have found it.</li>
+        </ol>
+      </div>
+      <div>
+        <svg class="plot static" id="plotDerive" aria-label="A line through a fixed point A and a general point P, showing the horizontal and vertical differences between them"></svg>
+        <p class="small muted center">The horizontal gap is <span class="v">x</span> &minus; <span class="v">x</span>&#8321;, the vertical gap is <span class="v">y</span> &minus; <span class="v">y</span>&#8321;, and their ratio is the slope.</p>
+      </div>
+    </div>
+
+    <div class="keyidea">
+      <span class="k">The point-slope form</span>
+      <p>A line through (<span class="v">x</span>&#8321;,&nbsp;<span class="v">y</span>&#8321;) with slope <span class="v">m</span> is exactly the set of points satisfying <b>y &minus; y&#8321; = m(x &minus; x&#8321;)</b>.</p>
+    </div>
+
+    <div class="note tip">
+      <div class="h">Read the equation as a sentence</div>
+      <p>&ldquo;<b>y &minus; y&#8321;</b>&rdquo; means <em>how far you have climbed from the known point</em>. &ldquo;<b>x &minus; x&#8321;</b>&rdquo; means <em>how far you have walked to the right</em>. The equation simply says: <b>climb = slope &times; walk</b>. That is all it ever says.</p>
+    </div>
+
+    <h3>Back to the tank</h3>
+    <p>Slope <span class="v">m</span> = &minus;5 (it is going <em>down</em>, so the slope is negative) and the known point is (0,&nbsp;40), so <span class="v">x</span>&#8321; = 0 and <span class="v">y</span>&#8321; = 40:</p>
+    <div class="formula">V &minus; 40 = &minus;5(t &minus; 0) &nbsp;&nbsp;&rArr;&nbsp;&nbsp; V = 40 &minus; 5t</div>
+    <p>And now the equation can answer new questions. Volume after 3.5 minutes? <span class="v">V</span> = 40 &minus; 5(3.5) = <b>22.5 litres</b>. When is the tank empty? <span class="v">V</span> = 0 gives <span class="v">t</span> = 8 — exactly where the line cut the axis.</p>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Build a line from one point and a slope</h2>
+    <p>Move the sliders. Watch two things at once: the <b>graph</b> and the <b>equation</b>. They are two descriptions of the same object.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="psSlopeForm">y &minus; 1 = 2(x &minus; 3)</div>
+        </div>
+        <svg class="plot" id="plotPS" aria-label="Interactive line with a draggable anchor point and slope"></svg>
+        <div class="outmsg" id="psCheck">Click anywhere on the grid to test whether that point lies on the current line.</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>Slope <span class="v">m</span> <b id="psMv">2</b></label>
+          <input type="range" id="psM" min="-4" max="4" step="0.25" value="2">
+        </div>
+        <div class="ctrl">
+          <label>Known point <span class="v">x</span>&#8321; <b id="psXv">3</b></label>
+          <input type="range" id="psX" min="-6" max="6" step="1" value="3">
+        </div>
+        <div class="ctrl">
+          <label>Known point <span class="v">y</span>&#8321; <b id="psYv">1</b></label>
+          <input type="range" id="psY" min="-6" max="6" step="1" value="1">
+        </div>
+        <h4>Same line, written two ways</h4>
+        <p class="small">Point-slope: <span class="eqout small" id="psPS"></span></p>
+        <p class="small">Slope-intercept: <span class="eqout small" id="psSI"></span></p>
+        <div class="note warn" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Set <span class="v">m</span> = 0. The line goes flat and the equation collapses to <span class="v">y</span> = a constant. Now try the anchor point at (0,&nbsp;0) — what happens to the equation?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution. Attempting before reading is what makes this stick.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; slope 3 through the point (2, 5)</summary>
+      <div class="body">
+        <p><b>Step 1.</b> Write down what you have: <span class="v">m</span> = 3, and (<span class="v">x</span>&#8321;,&nbsp;<span class="v">y</span>&#8321;) = (2,&nbsp;5).</p>
+        <p><b>Step 2.</b> Put them straight into the form.</p>
+        <div class="formula">y &minus; 5 = 3(x &minus; 2)</div>
+        <p><b>Step 3.</b> Expand if the question wants it tidier: <span class="v">y</span> &minus; 5 = 3<span class="v">x</span> &minus; 6, so</p>
+        <div class="formula">y = 3x &minus; 1 &nbsp;&nbsp;or&nbsp;&nbsp; 3x &minus; y &minus; 1 = 0</div>
+        <p class="small muted">Both answers are correct. Unless the question says otherwise, the point-slope form on its own is a complete answer.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; slope &minus;&frac12; through the point (&minus;3, 4)</summary>
+      <div class="body">
+        <p>Substitute directly: <span class="v">m</span> = &minus;&frac12;, <span class="v">x</span>&#8321; = &minus;3, <span class="v">y</span>&#8321; = 4.</p>
+        <div class="formula">y &minus; 4 = &minus;<span class="frac"><span class="num">1</span><span class="den">2</span></span>(x + 3)</div>
+        <p class="small">Notice the trap: <span class="v">x</span> &minus; (&minus;3) became <b>x + 3</b>. Two minus signs in a row make a plus.</p>
+        <p><b>Tidying up.</b> Multiply every term by 2 to clear the fraction: 2<span class="v">y</span> &minus; 8 = &minus;(<span class="v">x</span> + 3) = &minus;<span class="v">x</span> &minus; 3. So 2<span class="v">y</span> + <span class="v">x</span> &minus; 5 = 0, or</p>
+        <div class="formula">x + 2y &minus; 5 = 0</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; the two awkward slopes: 0 and undefined</summary>
+      <div class="body">
+        <p><b>(a)</b> Slope 0 through (5,&nbsp;&minus;2). Substituting gives <span class="v">y</span> + 2 = 0(<span class="v">x</span> &minus; 5), so <span class="v">y</span> + 2 = 0. The equation of the line is</p>
+        <div class="formula">y = &minus;2</div>
+        <p>which is a sentence about <span class="v">y</span> only — every point with height &minus;2 is on it, whatever its <span class="v">x</span>. That is a horizontal line.</p>
+        <p><b>(b)</b> A vertical line through (5,&nbsp;&minus;2). Here the slope does not exist, because <span class="v">x</span> &minus; <span class="v">x</span>&#8321; would be zero and you cannot divide by zero. So the point-slope form cannot describe it — and we must write it directly:</p>
+        <div class="formula">x = 5</div>
+        <p class="small muted">Remember this exception. It is the single most common reason an exam answer loses a mark.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; describing the slope in words (&minus;2, 6), rises 2 for every 3 to the right</summary>
+      <div class="body">
+        <p>The phrase &ldquo;rises 2 for every 3 to the right&rdquo; is the slope, written in English: <span class="v">m</span> = <span class="frac"><span class="num">2</span><span class="den">3</span></span>.</p>
+        <div class="formula">y &minus; 6 = <span class="frac"><span class="num">2</span><span class="den">3</span></span>(x + 2)</div>
+        <p>Multiply by 3: 3<span class="v">y</span> &minus; 18 = 2<span class="v">x</span> + 4 &nbsp;&rArr;&nbsp; 2<span class="v">x</span> &minus; 3<span class="v">y</span> + 22 = 0.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>The subtle bit</div>
+    <h2>Why your answer may not look like your friend&rsquo;s</h2>
+    <p>Here is one fixed line, <span class="v">y</span> = 2<span class="v">x</span> &minus; 3. Choose which point to treat as the &ldquo;known point&rdquo;. The line must not move — only the equation should change.</p>
+
+    <div class="plotbox">
+      <div class="plot-head">
+        <div class="eqout" id="anyEq">&nbsp;</div>
+        <div class="legend"><span><i style="background:var(--accent)"></i>chosen anchor</span></div>
+      </div>
+      <svg class="plot static" id="plotAny" aria-label="One fixed line with four labelled points, one of which is highlighted as the anchor point"></svg>
+      <div class="chipline" id="anyBtns"></div>
+      <div class="outmsg" id="anyMsg">&nbsp;</div>
+    </div>
+
+    <div class="note vio">
+      <div class="h">The insight</div>
+      <p>Point-slope form does <b>not</b> give a unique-looking answer — it gives a <b>correct</b> one. Every highlighted point produces a different equation, yet all of them expand to the same <span class="v">y</span> = 2<span class="v">x</span> &minus; 3. So if your answer differs from someone else&rsquo;s, do not panic: expand both and compare. If they match, you were both right.</p>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Watch out</div>
+    <h2>Five ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">y &minus; 4 = &hellip; for the point (&minus;3, 4)</td><td>Sign slip on <span class="v">x</span>&#8321;</td><td>Substitute, then simplify the bracket: <span class="v">x</span> &minus; (&minus;3) = <span class="v">x</span> + 3</td></tr>
+          <tr><td class="mono">y &minus; 3 = 2(x &minus; 5)</td><td><span class="v">x</span>&#8321; and <span class="v">y</span>&#8321; swapped between two different points</td><td>Both numbers must come from the <b>same</b> point</td></tr>
+          <tr><td class="mono">m = 3 without showing work</td><td>No slope given — you must find it first</td><td>Compute <span class="v">m</span> = (<span class="v">y</span>&#8322; &minus; <span class="v">y</span>&#8321;) / (<span class="v">x</span>&#8322; &minus; <span class="v">x</span>&#8321;) and keep the <b>same order</b> on top and bottom</td></tr>
+          <tr><td class="mono">Stopping at y &minus; 1 = 2(x &minus; 4)</td><td>Question asked for general form</td><td>Read the instruction. &ldquo;General form&rdquo; means rearrange to <span class="v">Ax</span> + <span class="v">By</span> + <span class="v">C</span> = 0</td></tr>
+          <tr><td class="mono">Using point-slope for x = 5</td><td>Vertical lines have no slope at all</td><td>Vertical lines are written directly as <span class="v">x</span> = <span class="v">h</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>Write the point-slope form of the line with slope 4 through (3,&nbsp;&minus;1).
+          <details class="sol"><summary>Answer</summary><div class="body"><div class="formula">y + 1 = 4(x &minus; 3)</div><p class="small">The two minuses: <span class="v">y</span> &minus; (&minus;1) = <span class="v">y</span> + 1.</p></div></details>
+        </li>
+        <li>Rewrite <span class="v">y</span> &minus; 7 = &minus;2(<span class="v">x</span> + 3) in slope-intercept form.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Expand: <span class="v">y</span> &minus; 7 = &minus;2<span class="v">x</span> &minus; 6, so</p><div class="formula">y = &minus;2x + 1</div></div></details>
+        </li>
+        <li>A line has slope &frac13; and passes through (&minus;6,&nbsp;2). Does it also pass through (0,&nbsp;4)?
+          <details class="sol"><summary>Answer</summary><div class="body"><p><span class="v">y</span> &minus; 2 = &frac13;(<span class="v">x</span> + 6), so <span class="v">y</span> = &frac13;<span class="v">x</span> + 2 + 2 = &frac13;<span class="v">x</span> + 4.</p><p>At <span class="v">x</span> = 0, <span class="v">y</span> = 4 — so <b>yes</b>, the line passes through (0,&nbsp;4). (Notice: this is its <span class="v">y</span>-intercept.)</p></div></details>
+        </li>
+        <li>Are <span class="v">y</span> &minus; 1 = 3(<span class="v">x</span> &minus; 2) and <span class="v">y</span> + 5 = 3(<span class="v">x</span> + 4) the same line?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Expand both. The first gives <span class="v">y</span> = 3<span class="v">x</span> &minus; 5. The second gives <span class="v">y</span> = 3<span class="v">x</span> + 12 &minus; 5 = 3<span class="v">x</span> &minus; 5. Same slope, same intercept: <b>yes, the same line</b>. The two anchors were (2,&nbsp;1) and (&minus;4,&nbsp;&minus;5) — both sit on it.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning — and it is saved privately on this device.</p>
+      <h4>1. In your own words: why is one point plus a slope enough to determine a whole line?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="index.html">Back to the course map</a> &middot; <a href="12-cheatsheet.html">Cheat sheet</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ---------- shared algebra helpers for this page ---------- */
+function coefOnly(m){
+  if (m === 0) return "0";
+  var neg = m < 0, a = Math.abs(m), r = rat(a), body;
+  if (a === 1) body = "";
+  else if (r && r[1] !== 1) body = fracHTML(r[0], r[1]);
+  else body = nf(a);
+  return (neg ? "\u2212" : "") + body;
+}
+function psLeft(y1){
+  if (y1 === 0) return "y";
+  return "y " + (y1 > 0 ? "\u2212 " + nf(y1) : "+ " + nf(Math.abs(y1)));
+}
+function psRight(m, x1){
+  if (x1 === 0) return coefOnly(m) + "x";
+  var inner = "x " + (x1 > 0 ? "\u2212 " + nf(x1) : "+ " + nf(Math.abs(x1)));
+  return coefOnly(m) + "(" + inner + ")";
+}
+
+/* ================= 1. case-study figure: the tank ================= */
+(function(){
+  var svg = document.getElementById("plotTank");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1.2, xmax:9.2, ymin:-8, ymax:48,
+                         stepX:1, stepY:5, labelStepX:1, labelStepY:10});
+  p.reset();
+  p.box(2, 30, 3, 25, {fill:"var(--accent-soft)", color:"var(--accent)", dash:"4 3"});
+  p.line(-5, 40, {color:"var(--brand)", width:3.2});
+  p.point(0, 40, {color:"var(--accent)", r:7, label:"(0, 40)", labelDx:10, labelDy:-11});
+  p.point(8, 0, {color:"var(--good)", r:7, label:"(8, 0)", labelDx:8, labelDy:-11});
+  p.text(3.35, 31.5, "\u22125 litres in 1 minute", {anchor:"start", size:12, color:"var(--accent)", weight:700});
+  p.text(8.9, 44, "t (min)", {anchor:"end", size:11.5, color:"var(--ink-3)", weight:600});
+  p.text(-0.9, 46.5, "V (litres)", {anchor:"start", size:11.5, color:"var(--ink-3)", weight:600});
+})();
+
+/* ================= 2. derivation figure ================= */
+(function(){
+  var svg = document.getElementById("plotDerive");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-1, xmax:9, ymin:-1, ymax:8});
+  p.reset();
+  p.line(0.55, 1.2, {color:"var(--brand)", width:3});
+  var x1 = 2, y1 = 0.55*2 + 1.2;
+  var x2 = 7, y2 = 0.55*7 + 1.2;
+  p.box(x1, y1, x2, y2, {fill:"var(--brand-soft)", color:"var(--brand)", dash:"4 3"});
+  p.point(x1, y1, {color:"var(--accent)", r:7, label:"A(x\u2081, y\u2081)", labelDx:-8, labelDy:-12, anchor:"end"});
+  p.point(x2, y2, {color:"var(--accent)", r:7, label:"P(x, y)", labelDx:10, labelDy:-11});
+  p.text((x1+x2)/2, y1 - 0.5, "x \u2212 x\u2081", {size:12.5, color:"var(--brand)"});
+  p.text(x2 + 1.4, (y1+y2)/2, "y \u2212 y\u2081", {size:12.5, color:"var(--brand)", anchor:"start"});
+  p.dotted(x1, y1, x2, y1, {color:"var(--grid)", width:0});
+})();
+
+/* ================= 3. interactive: point + slope ================= */
+(function(){
+  var svg = document.getElementById("plotPS");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var M = document.getElementById("psM"), X = document.getElementById("psX"), Y = document.getElementById("psY");
+  var Mv = document.getElementById("psMv"), Xv = document.getElementById("psXv"), Yv = document.getElementById("psYv");
+  var PS = document.getElementById("psPS"), SI = document.getElementById("psSI");
+  var CHK = document.getElementById("psCheck");
+
+  function state(){ return {m:+M.value, x1:+X.value, y1:+Y.value}; }
+
+  function draw(){
+    var s = state(), c = s.y1 - s.m*s.x1;
+    p.reset();
+    p.line(s.m, c, {color:"var(--brand)", width:3.2});
+    p.dotted(s.x1, s.y1, s.x1, 0, {color:"var(--ink-3)"});
+    p.dotted(0, s.y1, s.x1, s.y1, {color:"var(--ink-3)"});
+    p.point(s.x1, s.y1, {color:"var(--accent)", r:7, label:"A(" + nf(s.x1) + ", " + nf(s.y1) + ")", labelDx:12, labelDy:-11});
+    Mv.textContent = nf(s.m); Xv.textContent = nf(s.x1); Yv.textContent = nf(s.y1);
+    PS.innerHTML = psLeft(s.y1) + " = " + psRight(s.m, s.x1);
+    SI.innerHTML = eqLine(s.m, c);
+    CHK.innerHTML = "Click anywhere on the grid to test whether that point lies on the current line.";
+    CHK.style.borderColor = "var(--line)";
+  }
+
+  [M, X, Y].forEach(function(inp){
+    inp.addEventListener("input", function(){
+      [M, X, Y].forEach(setRangeFill);
+      draw();
+    });
+    setRangeFill(inp);
+  });
+
+  svg.addEventListener("click", function(e){
+    var s = state(), c = s.y1 - s.m*s.x1;
+    var hit = p.fromEvent(e);
+    var x = Math.round(hit.x), y = Math.round(hit.y);
+    if (x < -8 || x > 8 || y < -8 || y > 8) return;
+    draw();
+    var want = s.m*x + c;
+    var on = Math.abs(y - want) < 1e-9;
+    p.point(x, y, {color: on ? "var(--good)" : "var(--bad)", r:7, label:"(" + nf(x) + ", " + nf(y) + ")"});
+    CHK.innerHTML = on
+      ? "<b style='color:var(--good)'>&#10003; On the line.</b> Substituting x = " + nf(x) +
+        " into the equation: " + nf(s.m) + "(" + nf(x) + ") + " + nf(c) + " = " + nf(want) + " = y. It works."
+      : "<b style='color:var(--bad)'>&#10007; Not on the line.</b> For x = " + nf(x) +
+        " the equation demands y = " + nf(want) + ", but you clicked y = " + nf(y) + ".";
+    CHK.style.borderColor = on ? "var(--good)" : "var(--bad)";
+  });
+
+  draw();
+})();
+
+/* ================= 4. interactive: any point works ================= */
+(function(){
+  var svg = document.getElementById("plotAny");
+  if (!svg) return;
+  var m = 2, c = -3;
+  var pts = [[0,-3], [2,1], [4,5], [-1,-5]];
+  var p = new Plot(svg, {xmin:-6, xmax:6, ymin:-8, ymax:8});
+  var EQ = document.getElementById("anyEq"), MSG = document.getElementById("anyMsg");
+  var host = document.getElementById("anyBtns");
+  var cur = 0;
+
+  pts.forEach(function(pt, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (i === 0 ? " on" : "");
+    b.textContent = "anchor (" + nf(pt[0]) + ", " + nf(pt[1]) + ")";
+    b.addEventListener("click", function(){
+      cur = i;
+      Array.prototype.forEach.call(host.children, function(ch, j){ ch.className = "chip" + (j === i ? " on" : ""); });
+      draw();
+    });
+    host.appendChild(b);
+  });
+
+  function draw(){
+    p.reset();
+    p.line(m, c, {color:"var(--brand)", width:3.2});
+    pts.forEach(function(pt, i){
+      p.point(pt[0], pt[1], {color: i === cur ? "var(--accent)" : "var(--ink-3)", r: i === cur ? 7 : 5});
+    });
+    var pt = pts[cur];
+    EQ.innerHTML = psLeft(pt[1]) + " = " + psRight(m, pt[0]);
+    MSG.innerHTML = "Expanding this gives <b>" + eqLine(m, c) + "</b> &mdash; exactly the same line. " +
+      "The graph above has not moved a millimetre, but the equation looks completely different. " +
+      "Different anchor, same line.";
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

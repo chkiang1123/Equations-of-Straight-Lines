@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The two-point form — Equations of Straight Lines</title>
+<meta name="description" content="With two points you never need to be told the slope. A See-Think-Wonder case study, the two-point form, a draggable line builder and a collinearity checker.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.1</span></div>
+    <div class="steptag"><span class="n">3</span> Step 3 of 10</div>
+    <h1>The two-point form</h1>
+    <p class="lead">With two points you never need to be told the slope — you can always work it out. This page turns that simple fact into a reliable method for pinning down any non-vertical line.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 20 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Explain <b>why two points are enough</b> to fix a line (and one point is not)</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Compute the slope from two points, then write the equation using <b>either</b> point</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Use the <b>two-point form</b> directly and recognise it as point-slope with <var>m</var> substituted</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Test whether three points are <b>collinear</b> from their slopes</label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>two-point form</code>, <code>collinear</code>, <code>vertical exception</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>Two readings from the same journey</h3>
+      <p class="scene">A cyclist&rsquo;s tracker logs her distance from home: <b>12&nbsp;km</b> at <b>1 hour</b> after setting off, and <b>33&nbsp;km</b> at <b>2.5 hours</b>. The data are just two dots, but if her pace is steady the graph is a straight line through them. The figure plots those two points and the line they force.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="cycleEq">d = 14t − 2</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>the journey line</span>
+            <span><i style="background:var(--accent)"></i>tracker readings</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotCycle" aria-label="Two data points (1,12) and (2.5,33) joined by a straight line steeper than 45 degrees"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>There are only <b>two dots</b>: (1,&nbsp;12) and (2.5,&nbsp;33).</li>
+                <li>A <b>straight line</b> has been drawn through them.</li>
+                <li>The line <b>climbs</b> from left to right.</li>
+                <li>It is <b>steeper than 45&deg;</b> — it rises more than it runs.</li>
+                <li>The two points are the only hard data; everything else is inferred.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What must be true for a straight line to be justified?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>If the pace is constant the graph really is straight, so <b>two points fix the steepness</b> — and once you know the steepness you only need one point to place the whole line.</p>
+              <p>So there must be a method that takes <em>(two points)</em> and hands back the equation. And it must be unique: those two dots allow exactly one line (as long as they are not lined up vertically). <b>This page is that method.</b></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Can I predict the distance at <b>4 hours</b>?</li>
+                <li>What does the line give at time 0 — and does that make physical sense?</li>
+                <li>Would a straight line <em>always</em> be right, or only for steady pace?</li>
+                <li>What if the two readings shared the same time — could I still draw a line?</li>
+                <li>How do I know two different pairs aren&rsquo;t secretly on the same line?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end you will answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>The mathematics</div>
+    <h2>Two points pin down two unknowns</h2>
+
+    <h3>Why two points are enough</h3>
+    <p>The equation <var>y</var> = <var>m</var><var>x</var> + <var>c</var> has <b>two unknowns</b>: the slope <var>m</var> and the intercept <var>c</var>. One point gives one condition, which is not enough — infinitely many lines pass through a single point. Two points give <b>two conditions</b>, which pin down the two unknowns. (Except in the vertical case, where no <var>m</var> exists at all.)</p>
+
+    <div class="keyidea">
+      <span class="k">Two points &rarr; one line</span>
+      <p>Step 1: compute <var>m</var> = (<var>y</var>&#8322; &minus; <var>y</var>&#8321;)/(<var>x</var>&#8322; &minus; <var>x</var>&#8321;). Step 2: drop that <var>m</var> and <em>either</em> point into the point-slope form. That is the whole recipe.</p>
+    </div>
+
+    <h3>The two-point form</h3>
+    <p>Put the slope straight into the point-slope formula and you get a form that uses only the two points:</p>
+    <div class="formula big"><span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">y&#8322; &minus; y&#8321;</span></span> = <span class="frac"><span class="num">x &minus; x&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span></div>
+    <div class="note vio">
+      <div class="h">It is just point-slope in disguise</div>
+      <p>Replace <var>m</var> in <var>y</var> &minus; <var>y</var>&#8321; = <var>m</var>(<var>x</var> &minus; <var>x</var>&#8321;) with (<var>y</var>&#8322; &minus; <var>y</var>&#8321;)/(<var>x</var>&#8322; &minus; <var>x</var>&#8321;) and you get exactly the two-point form. Nothing new — just a shortcut.</p>
+    </div>
+
+    <h3>The vertical exception</h3>
+    <p>If <span class="v">x</span>&#8321; = <span class="v">x</span>&#8322; the denominator is zero, so there is <b>no two-point form</b> and no point-slope form: the line is simply</p>
+    <div class="formula">x = x&#8321;</div>
+
+    <h3>The collinearity test</h3>
+    <p>Three points are <b>collinear</b> (on one line) exactly when the slope between each pair is the same. Compute two slopes and compare:</p>
+    <div class="formula">same line &nbsp;&rArr;&nbsp; <span class="frac"><span class="num">y&#8322; &minus; y&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span> = <span class="frac"><span class="num">y&#8323; &minus; y&#8321;</span><span class="den">x&#8323; &minus; x&#8321;</span></span></div>
+    <p class="small muted">Watch the vertical case here too: if two pairs share an <var>x</var>-coordinate, compare carefully rather than dividing.</p>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Explore</div>
+    <h2>Drag two points, build the line</h2>
+    <p>Drag <b>A</b> or <b>B</b>. The readout shows the slope calculation with the <em>actual</em> numbers, then the point-slope equation built from A, then the simplified <var>y</var> = <var>m</var><var>x</var> + <var>c</var>. Line the points up vertically and the readout honestly refuses the form.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="tpEq">y = −x − 4</div>
+        </div>
+        <svg class="plot" id="plotTwo" aria-label="Draggable points A and B; the line through them and a live equation readout"></svg>
+        <div class="outmsg" id="tpOut">&nbsp;</div>
+      </div>
+      <div class="card tight">
+        <div class="chipline"><span class="chip" id="tpReset">Reset points</span></div>
+        <h4>Substituted slope</h4>
+        <p class="small eqout" id="tpSlopeCalc">&nbsp;</p>
+        <h4>Point-slope (from A)</h4>
+        <p class="small eqout" id="tpPS">&nbsp;</p>
+        <div class="note warn" style="margin-top:12px">
+          <div class="h">Try this</div>
+          <p>Drag B directly above A. The slope denominator becomes 0, and the readout switches to the clear vertical-line warning instead of a broken fraction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>Explore more</div>
+    <h2>The collinearity checker</h2>
+    <p>Drag all three points. The panel computes the slope of AB and of AC and gives a verdict. If the three are on one line, C turns <b>green</b>; if not, <b>red</b>.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="collEq">&nbsp;</div>
+        </div>
+        <svg class="plot" id="plotColl" aria-label="Three draggable points A, B and C with slope readouts and a collinearity verdict"></svg>
+        <div class="outmsg" id="collOut">&nbsp;</div>
+      </div>
+      <div class="card tight">
+        <div class="chipline"><span class="chip" id="collReset">Reset points</span></div>
+        <h4>Slopes</h4>
+        <p class="small">slope AB = <span class="eqout small" id="collAB">&nbsp;</span></p>
+        <p class="small">slope AC = <span class="eqout small" id="collAC">&nbsp;</span></p>
+        <div class="note tip" style="margin-top:12px">
+          <div class="h">Verdict</div>
+          <p>Equal slopes (or both vertical on the same <var>x</var>) means the three share one line.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; A(2, 3), B(6, 11)</summary>
+      <div class="body">
+        <p><b>Slope.</b> <var>m</var> = (11 &minus; 3)/(6 &minus; 2) = 8/4 = 2.</p>
+        <p><b>Using A(2, 3).</b> <var>y</var> &minus; 3 = 2(<var>x</var> &minus; 2) &rArr; <var>y</var> = 2<var>x</var> &minus; 1.</p>
+        <div class="formula">y = 2x − 1</div>
+        <p class="small muted">Using B instead gives <var>y</var> &minus; 11 = 2(<var>x</var> &minus; 6), which simplifies to the same line.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; A(&minus;1, 4), B(3, &minus;4)</summary>
+      <div class="body">
+        <p><b>Slope.</b> <var>m</var> = (&minus;4 &minus; 4)/(3 &minus; (&minus;1)) = (&minus;8)/4 = &minus;2.</p>
+        <p><b>Using A(&minus;1, 4).</b> <var>y</var> &minus; 4 = &minus;2(<var>x</var> + 1) &rArr; <var>y</var> = &minus;2<var>x</var> + 2.</p>
+        <div class="formula">y = −2x + 2</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; A(&minus;2, 5), B(4, 5): a horizontal line</summary>
+      <div class="body">
+        <p><b>Slope.</b> <var>m</var> = (5 &minus; 5)/(4 &minus; (&minus;2)) = 0/6 = 0.</p>
+        <p>Zero slope means flat. Using A: <var>y</var> &minus; 5 = 0&middot;(<var>x</var> + 2), so</p>
+        <div class="formula">y = 5</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; A(3, 1), B(3, 7): the vertical exception</summary>
+      <div class="body">
+        <p><b>Slope.</b> <var>x</var>&#8322; &minus; <var>x</var>&#8321; = 3 &minus; 3 = 0, so the slope does not exist.</p>
+        <p>There is no two-point form and no point-slope form. The line is simply</p>
+        <div class="formula">x = 3</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 5 &mdash; are (1, 2), (3, 8), (5, 14) collinear?</summary>
+      <div class="body">
+        <p>slope (1,2)&rarr;(3,8) = (8 &minus; 2)/(3 &minus; 1) = 6/2 = 3.</p>
+        <p>slope (1,2)&rarr;(5,14) = (14 &minus; 2)/(5 &minus; 1) = 12/4 = 3.</p>
+        <p>The slopes are equal, so <b>yes</b>, the three points are collinear.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">8</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">m = (y&#8322; − y&#8321;)/(x&#8321; − x&#8322;)</td><td>Numerator and denominator subtracted in opposite orders — sign flips</td><td>Use the same &ldquo;2&rdquo; point in both: (y&#8322;−y&#8321;)/(x&#8322;−x&#8321;)</td></tr>
+          <tr><td class="mono">y = 2x + c, then use B&rsquo;s x with A&rsquo;s y</td><td>Substituted the wrong point to find c</td><td>Both numbers in point-slope must come from the <b>same</b> point</td></tr>
+          <tr><td class="mono">two-point form for x = 3</td><td>Forgot the vertical case has zero denominator</td><td>If x&#8321; = x&#8322;, write x = x&#8321; directly</td></tr>
+          <tr><td class="mono">leaving y − 3 = 2(x − 2)</td><td>Lost a mark by not simplifying when asked for y = mx + c</td><td>Read the instruction; &ldquo;simplify&rdquo; means expand to slope-intercept</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>Find the equation of the line through (0, &minus;3) and (4, 5).
+          <details class="sol"><summary>Answer</summary><div class="body"><p>m = (5 &minus; (&minus;3))/(4 &minus; 0) = 8/4 = 2. Using (0, &minus;3): <var>y</var> + 3 = 2<var>x</var> &rArr; <b>y = 2x &minus; 3</b>.</p></div></details>
+        </li>
+        <li>Find the equation of the line through (1, 2) and (1, 9).
+          <details class="sol"><summary>Answer</summary><div class="body"><p>x&#8322; &minus; x&#8321; = 0, so the slope does not exist. The line is <b>x = 1</b>.</p></div></details>
+        </li>
+        <li>Are (&minus;2, 0), (0, 3), (2, 6) collinear?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>slope A&rarr;B = (3 &minus; 0)/(0 &minus; (&minus;2)) = 3/2. slope A&rarr;C = (6 &minus; 0)/(2 &minus; (&minus;2)) = 6/4 = 3/2. Equal &rArr; <b>yes, collinear</b>.</p></div></details>
+        </li>
+        <li>A line through (2, 1) and (5, 1): what is special about it?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Slope = 0, so it is <b>horizontal</b>: <var>y</var> = 1.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. Saved privately on this device.</p>
+      <h4>1. In your own words: why do two points fix a line, and what single case defeats the method?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="index.html">Back to the course map</a> &middot; <a href="05-intercept-form.html">Next: The intercept form</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= case-study figure: the cyclist ================= */
+(function(){
+  var svg = document.getElementById("plotCycle");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-0.5, xmax:5, ymin:-3, ymax:40, stepX:1, stepY:5, labelStepX:1, labelStepY:10});
+  p.reset();
+  p.line(14, -2, {color:"var(--brand)", width:3.2});
+  p.point(1, 12, {color:"var(--accent)", r:7, label:"(1, 12)", labelDx:-8, labelDy:-12, anchor:"end"});
+  p.point(2.5, 33, {color:"var(--accent)", r:7, label:"(2.5, 33)", labelDx:10, labelDy:-11});
+  p.text(4.4, 38, "t (h)", {anchor:"end", size:11.5, color:"var(--ink-3)", weight:600});
+  p.text(-0.4, 38, "d (km)", {anchor:"start", size:11.5, color:"var(--ink-3)", weight:600});
+})();
+
+/* ================= interactive 1: two draggable points ================= */
+(function(){
+  var svg = document.getElementById("plotTwo");
+  if (!svg) return;
+  var XMIN=-9, XMAX=9, YMIN=-7, YMAX=7;
+  var p = new Plot(svg, {xmin:XMIN, xmax:XMAX, ymin:YMIN, ymax:YMAX});
+  var A = {x:-4, y:-2}, B = {x:3, y:4};
+  var Eq = document.getElementById("tpEq");
+  var Out = document.getElementById("tpOut");
+  var SlopeCalc = document.getElementById("tpSlopeCalc");
+  var PS = document.getElementById("tpPS");
+
+  function clampX(v){ return Math.max(XMIN, Math.min(XMAX, Math.round(v))); }
+  function clampY(v){ return Math.max(YMIN, Math.min(YMAX, Math.round(v))); }
+
+  function draw(){
+    var dx = B.x - A.x, dy = B.y - A.y;
+    p.reset();
+    if (dx === 0){
+      p.vline(A.x, {color:"var(--brand)", width:3.2});
+    } else {
+      var m = dy/dx;
+      var c = A.y - m*A.x;
+      p.line(m, c, {color:"var(--brand)", width:3.2});
+    }
+    p.point(A.x, A.y, {color:"var(--accent)", r:7, label:"A(" + nf(A.x) + ", " + nf(A.y) + ")", labelDx:-8, labelDy:-12, anchor:"end"});
+    p.point(B.x, B.y, {color:"var(--accent)", r:7, label:"B(" + nf(B.x) + ", " + nf(B.y) + ")", labelDx:10, labelDy:-11});
+
+    if (dx === 0){
+      Eq.textContent = "x = " + nf(A.x);
+      SlopeCalc.textContent = "m = (" + nf(dy) + ") / 0  →  undefined";
+      PS.textContent = "no point-slope / two-point form";
+      Out.innerHTML = "<b style='color:var(--bad)'>Vertical line: x = " + nf(A.x) + ".</b> The two-point and point-slope forms cannot be used — the slope denominator is zero.";
+      return;
+    }
+    var m = dy/dx;
+    var c = A.y - m*A.x;
+    Eq.textContent = eqLine(m, c);
+    SlopeCalc.innerHTML = "m = (" + nf(dy) + ") / (" + nf(dx) + ") = " + fracHTML(dy, dx);
+    PS.innerHTML = "y " + (A.y>=0 ? "− " : "+ ") + nf(Math.abs(A.y)) + " = " + fracHTML(dy,dx) + "(x " + (A.x>=0 ? "− " : "+ ") + nf(Math.abs(A.x)) + ")";
+    Out.innerHTML = "Using A(" + nf(A.x) + ", " + nf(A.y) + "): point-slope above; simplified it is <b>" + eqLine(m, c) + "</b>. Either point gives the same line.";
+  }
+
+  var drag = null;
+  function pick(h){
+    var dA = Math.hypot(h.x - A.x, h.y - A.y);
+    var dB = Math.hypot(h.x - B.x, h.y - B.y);
+    return dA <= dB ? "A" : "B";
+  }
+  svg.addEventListener("pointerdown", function(e){
+    var h = p.fromEvent(e);
+    drag = pick(h);
+    var pt = drag === "A" ? A : B;
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    try { svg.setPointerCapture(e.pointerId); } catch(err){}
+    draw();
+  });
+  svg.addEventListener("pointermove", function(e){
+    if (!drag) return;
+    var h = p.fromEvent(e);
+    var pt = drag === "A" ? A : B;
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    draw();
+  });
+  function release(){ drag = null; }
+  svg.addEventListener("pointerup", release);
+  svg.addEventListener("pointercancel", release);
+  svg.addEventListener("pointerleave", release);
+
+  var reset = document.getElementById("tpReset");
+  if (reset) reset.addEventListener("click", function(){
+    A.x = -4; A.y = -2; B.x = 3; B.y = 4; draw();
+  });
+  draw();
+})();
+
+/* ================= interactive 2: collinearity checker ================= */
+(function(){
+  var svg = document.getElementById("plotColl");
+  if (!svg) return;
+  var XMIN=-7, XMAX=7, YMIN=-7, YMAX=7;
+  var p = new Plot(svg, {xmin:XMIN, xmax:XMAX, ymin:YMIN, ymax:YMAX});
+  var A = {x:-4, y:-2}, B = {x:0, y:2}, C = {x:4, y:6};
+  var Eq = document.getElementById("collEq");
+  var Out = document.getElementById("collOut");
+  var AB = document.getElementById("collAB");
+  var AC = document.getElementById("collAC");
+
+  function clampX(v){ return Math.max(XMIN, Math.min(XMAX, Math.round(v))); }
+  function clampY(v){ return Math.max(YMIN, Math.min(YMAX, Math.round(v))); }
+
+  function draw(){
+    var dxAB = B.x - A.x, dyAB = B.y - A.y;
+    var dxAC = C.x - A.x, dyAC = C.y - A.y;
+
+    p.reset();
+    // draw the line through A and B (if not vertical)
+    if (dxAB === 0){
+      p.vline(A.x, {color:"var(--brand)", width:3, dash:"5 4"});
+    } else {
+      var m = dyAB/dxAB, c = A.y - m*A.x;
+      p.line(m, c, {color:"var(--brand)", width:3, dash:"5 4"});
+    }
+    p.point(A.x, A.y, {color:"var(--accent)", r:7, label:"A", labelDx:-8, labelDy:-12, anchor:"end"});
+    p.point(B.x, B.y, {color:"var(--accent)", r:7, label:"B", labelDx:10, labelDy:-11});
+
+    // collinearity decision
+    var collinear;
+    if (dxAB === 0 && dxAC === 0){
+      collinear = (B.x === C.x);
+    } else if (dxAB === 0 || dxAC === 0){
+      collinear = false;
+    } else {
+      var sAB = dyAB/dxAB, sAC = dyAC/dxAC;
+      collinear = Math.abs(sAB - sAC) < 1e-9;
+    }
+
+    p.point(C.x, C.y, {color: collinear ? "var(--good)" : "var(--bad)", r:7,
+      label:"C", labelDx:10, labelDy:-11, labelColor: collinear ? "var(--good)" : "var(--bad)"});
+
+    AB.textContent = (dxAB === 0) ? "no slope (vertical)" : fracHTML(dyAB, dxAB);
+    AC.textContent = (dxAC === 0) ? "no slope (vertical)" : fracHTML(dyAC, dxAC);
+    Eq.textContent = collinear ? "collinear ✓" : "not collinear ✗";
+
+    if (collinear){
+      Out.innerHTML = "<b style='color:var(--good)'>&#10003; Collinear.</b> slope AB = slope AC" +
+        (dxAB===0 ? " (both vertical on x = " + nf(A.x) + ")" : "") + ", so all three sit on one line.";
+    } else {
+      Out.innerHTML = "<b style='color:var(--bad)'>&#10007; Not collinear.</b> slope AB and slope AC differ, so C is off the line through A and B.";
+    }
+  }
+
+  var drag = null;
+  function pick(h){
+    var dA = Math.hypot(h.x - A.x, h.y - A.y);
+    var dB = Math.hypot(h.x - B.x, h.y - B.y);
+    var dC = Math.hypot(h.x - C.x, h.y - C.y);
+    if (dA <= dB && dA <= dC) return "A";
+    if (dB <= dC) return "B";
+    return "C";
+  }
+  svg.addEventListener("pointerdown", function(e){
+    var h = p.fromEvent(e);
+    drag = pick(h);
+    var pt = drag === "A" ? A : (drag === "B" ? B : C);
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    try { svg.setPointerCapture(e.pointerId); } catch(err){}
+    draw();
+  });
+  svg.addEventListener("pointermove", function(e){
+    if (!drag) return;
+    var h = p.fromEvent(e);
+    var pt = drag === "A" ? A : (drag === "B" ? B : C);
+    pt.x = clampX(h.x); pt.y = clampY(h.y);
+    draw();
+  });
+  function release(){ drag = null; }
+  svg.addEventListener("pointerup", release);
+  svg.addEventListener("pointercancel", release);
+  svg.addEventListener("pointerleave", release);
+
+  var reset = document.getElementById("collReset");
+  if (reset) reset.addEventListener("click", function(){
+    A.x = -4; A.y = -2; B.x = 0; B.y = 2; C.x = 4; C.y = 6; draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

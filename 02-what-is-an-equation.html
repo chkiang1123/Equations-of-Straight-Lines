@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an equation of a line actually means — Equations of Straight Lines</title>
+<meta name="description" content="A line drawn on a grid and its equation like y = 2x + 1 are two descriptions of one object. A See-Think-Wonder case study, the locus idea, a click-to-test grid and a table of values.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 1.1</span></div>
+    <div class="steptag"><span class="n">1</span> Step 1 of 10</div>
+    <h1>What an equation of a line actually means</h1>
+    <p class="lead">A line you draw on a grid and an equation like <var>y</var> = 2<var>x</var> + 1 look like different things. They are not. They are two descriptions of the <em>same</em> object. This page is about the link between the picture and the symbols — and it is the idea the whole chapter rests on.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 19 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Say what a <b>locus</b> is in your own words</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Test whether a point lies on a line by <b>substituting</b> its coordinates</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Explain why an equation describes <b>infinitely many</b> points</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">State the <b>two-way</b> promise: every point on the line satisfies it, and every point that satisfies it lies on the line</label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>locus</code>, <code>satisfies the equation</code>, <code>test a point</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The taut wire</h3>
+      <p class="scene">A steel wire is stretched dead straight across a workshop coordinate grid. It passes through <b>(0, 1)</b> and <b>(2, 5)</b>. An apprentice says: &ldquo;the wire <em>is</em> the equation <var>y</var> = 2<var>x</var> + 1&rdquo;. A second apprentice is not so sure — isn&rsquo;t one of those a picture and the other just symbols?</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="wireEq">y = 2x + 1</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>the wire</span>
+            <span><i style="background:var(--good)"></i>on the wire</span>
+            <span><i style="background:var(--bad)"></i>off the wire</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotWire" aria-label="A straight wire through (0,1), (1,3), (2,5), (3,7) with the points (2,1) and (1,2) marked off the line"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>The wire is a <b>straight line</b> drawn on a grid.</li>
+                <li>It passes exactly through the lattice points (0,&nbsp;1), (1,&nbsp;3), (2,&nbsp;5), (3,&nbsp;7)&hellip;</li>
+                <li>Each step right of 1 seems to add 2 upward — it climbs steadily.</li>
+                <li>Two points are clearly <b>off</b> the wire: (2,&nbsp;1) and (1,&nbsp;2).</li>
+                <li>The equation <var>y</var> = 2<var>x</var> + 1 is written beside it as symbols.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? How would you decide whether the apprentice is right?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>What would it <em>mean</em> to test whether a point belongs to the wire? You would put its coordinates into the equation and see whether the two sides <b>balance</b>.</p>
+              <p>For (3,&nbsp;7): 2&middot;3 + 1 = 7, which equals the <var>y</var>. It fits. For (2,&nbsp;1): 2&middot;2 + 1 = 5, but the point&rsquo;s <var>y</var> is 1 — it does not fit, so it is off the wire.</p>
+              <p>That means a formula <em>decides membership</em> for every point. So there must be a precise way to link &ldquo;the picture&rdquo; and &ldquo;the symbols&rdquo;. <b>This page is that link.</b></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Are &ldquo;the line&rdquo; and &ldquo;the equation&rdquo; really the <em>same</em> thing?</li>
+                <li>How many points are actually on the wire — a few, or many?</li>
+                <li>Can one equation really describe a whole infinite shape?</li>
+                <li>What is the rule that decides which points count as &ldquo;on&rdquo;?</li>
+                <li>What about a vertical wire — does an equation still describe it?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">2</span>The mathematics</div>
+    <h2>A line is a rule that points must obey</h2>
+
+    <h3>A line is a locus</h3>
+    <p>A line is a <b>locus</b> (Latin for &ldquo;place&rdquo;): the set of <em>all</em> points that satisfy one condition. For <var>y</var> = 2<var>x</var> + 1, the condition is exactly &ldquo;your <var>y</var> must equal 2&middot;(your <var>x</var>) + 1&rdquo;. Every point that obeys lives on the line; every point that disobeys does not.</p>
+
+    <h3>The test</h3>
+    <p>To decide whether <span class="v">(x, y)</span> lies on the line, <b>substitute</b> and check the balance:</p>
+    <div class="formula">for (3, 7):&nbsp; 2(3) + 1 = 7 &nbsp;&#10003; &nbsp;&nbsp;&nbsp; for (2, 1):&nbsp; 2(2) + 1 = 5 &ne; 1 &nbsp;&#10007;</div>
+    <div class="note tip">
+      <div class="h">How to say it</div>
+      <p>We say the point <b>satisfies the equation</b>. The coordinates of a point on the line are just a pair that makes the statement true.</p>
+    </div>
+
+    <h3>Infinitely many points</h3>
+    <p>Why so many? Because <span class="v">x</span> is <b>free</b> — you may choose it to be anything — but once you do, <span class="v">y</span> is <b>forced</b> by the equation. Pick <var>x</var>, get exactly one <var>y</var>. Since there are infinitely many choices of <var>x</var>, there are infinitely many points on the line.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th><span class="v">x</span></th><th>&minus;1</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+        <tbody><tr><td class="mono"><span class="v">y</span> = 2<var>x</var> + 1</td><td class="mono">&minus;1</td><td class="mono">1</td><td class="mono">3</td><td class="mono">5</td><td class="mono">7</td><td class="mono">9</td></tr></tbody>
+      </table>
+    </div>
+    <p class="small muted">This is only six rows of an infinitely long table. Every row is a point on the wire.</p>
+
+    <div class="keyidea">
+      <span class="k">The two-way promise</span>
+      <p>Every point <b>on</b> the line satisfies its equation, and every point that <b>satisfies</b> the equation lies <b>on</b> the line. The picture and the symbols are two views of one thing — not two different things.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>Explore</div>
+    <h2>Click to test points on the grid</h2>
+    <p>Pick an equation, then click anywhere on the grid. The point snaps to a lattice position and turns <b>green</b> if it lies on the line, <b>red</b> if it does not. The message shows the actual substitution arithmetic.</p>
+
+    <div class="plotbox">
+      <div class="plot-head">
+        <div class="eqout" id="testEq">y = 2x + 1</div>
+        <div class="legend"><span><i style="background:var(--good)"></i>on the line</span><span><i style="background:var(--bad)"></i>off the line</span></div>
+      </div>
+      <svg class="plot" id="plotTest" aria-label="A click-to-test grid for the chosen equation; clicked points turn green if on the line, red if off"></svg>
+      <div class="chipline" id="testBtns"></div>
+      <div class="outmsg" id="testMsg">Choose an equation above, then click the grid.</div>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore more</div>
+    <h2>A table of values, plotted</h2>
+    <p>The same equation, seen as a table. Type two <span class="v">x</span>-values; the panel computes the matching <span class="v">y</span> and plots both points so you can watch them land on the line.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="tblEq">y = 2x + 1</div>
+        </div>
+        <svg class="plot static" id="plotTable" aria-label="The current equation drawn with the two chosen points marked"></svg>
+      </div>
+      <div class="card tight">
+        <div class="inrow">
+          <div class="f"><span>x&#8321;</span><input type="number" id="tx1" value="0"></div>
+          <div class="f"><span>x&#8322;</span><input type="number" id="tx2" value="2"></div>
+        </div>
+        <p class="small">y&#8321; = <span class="eqout small" id="ty1">&nbsp;</span></p>
+        <p class="small">y&#8322; = <span class="eqout small" id="ty2">&nbsp;</span></p>
+        <div class="outmsg" id="tblMsg">Pick two x-values and watch the points sit on the line.</div>
+        <div class="note tip" style="margin-top:12px">
+          <div class="h">Notice</div>
+          <p>Whatever <span class="v">x</span> you choose, the point lands on the line. That is the two-way promise in action: free <span class="v">x</span>, forced <span class="v">y</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; does (3, 7) lie on y = 2x + 1? What about (&minus;2, &minus;3)?</summary>
+      <div class="body">
+        <p>For (3, 7): 2(3) + 1 = 7 = <var>y</var> &rArr; <b>yes</b>.</p>
+        <p>For (&minus;2, &minus;3): 2(&minus;2) + 1 = &minus;4 + 1 = &minus;3 = <var>y</var> &rArr; <b>yes</b> too.</p>
+        <p class="small muted">Negative coordinates work the same way; just substitute carefully.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; find k so that (4, k) lies on 3x + 2y = 6</summary>
+      <div class="body">
+        <p>Substitute x = 4, y = k:</p>
+        <div class="formula">3(4) + 2k = 6 &nbsp;&rArr;&nbsp; 12 + 2k = 6 &nbsp;&rArr;&nbsp; 2k = &minus;6 &nbsp;&rArr;&nbsp; k = &minus;3</div>
+        <p>So the point (4, &minus;3) lies on the line.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; which of (0, 3), (3, 0), (1, 3), (&minus;2, 5) lie on y = &minus;x + 3?</summary>
+      <div class="body">
+        <ul class="clean">
+          <li>(0, 3): &minus;0 + 3 = 3 = <var>y</var> &rArr; <b>on</b></li>
+          <li>(3, 0): &minus;3 + 3 = 0 = <var>y</var> &rArr; <b>on</b></li>
+          <li>(1, 3): &minus;1 + 3 = 2 &ne; 3 &rArr; <b>off</b></li>
+          <li>(&minus;2, 5): &minus;(&minus;2) + 3 = 2 + 3 = 5 = <var>y</var> &rArr; <b>on</b></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; how many points lie on a line?</summary>
+      <div class="body">
+        <p><b>Infinitely many.</b> The equation leaves <span class="v">x</span> free. Choose any real <span class="v">x</span> you like — say 0, then 1, then 1.5, then &radic;2, then &pi; — and the equation forces exactly one <span class="v">y</span> each time. There is no last point. The line is the complete, infinite list of all those pairs.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">checking (2,1) by 2+1</td><td>Added instead of following 2x + 1</td><td>Follow the exact rule: 2&middot;(x) + 1, then compare to y</td></tr>
+          <tr><td class="mono">saying &ldquo;the line has 100 points&rdquo;</td><td>Forgot x is a real number, not just integers</td><td>There are infinitely many real x-values, so infinitely many points</td></tr>
+          <tr><td class="mono">y = 2x + 1 is &ldquo;only the symbols&rdquo;</td><td>Split the picture and the equation into two things</td><td>They are two descriptions of one object — the two-way promise</td></tr>
+          <tr><td class="mono">x = &minus;2 has &ldquo;no equation&rdquo;</td><td>Thought every line must look like y = &hellip;</td><td>Vertical lines are described by x = constant; still a locus</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>Does the point (5, 11) lie on <var>y</var> = 2<var>x</var> + 1?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>2(5) + 1 = 11 = <var>y</var>, so <b>yes</b>.</p></div></details>
+        </li>
+        <li>Find <var>k</var> so that (2, <var>k</var>) lies on <var>y</var> = &minus;3<var>x</var> + 4.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>k = &minus;3(2) + 4 = &minus;6 + 4 = <b>&minus;2</b>.</p></div></details>
+        </li>
+        <li>Why does an equation of a line describe infinitely many points?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Because <span class="v">x</span> is free (any real number) while <span class="v">y</span> is forced by the equation. Each choice of <span class="v">x</span> gives one point, and there are infinitely many choices.</p></div></details>
+        </li>
+        <li>State the two-way promise in one sentence.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Every point on the line satisfies its equation, and every point that satisfies the equation lies on the line.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. Saved privately on this device.</p>
+      <h4>1. In your own words: why can one short equation describe a whole infinite line?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="index.html">Back to the course map</a> &middot; <a href="03-point-slope.html">Next: The point-slope form</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= case-study figure: the wire ================= */
+(function(){
+  var svg = document.getElementById("plotWire");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-3, xmax:5, ymin:-3, ymax:9, stepX:1, stepY:1, labelStepX:1, labelStepY:1});
+  p.reset();
+  p.line(2, 1, {color:"var(--brand)", width:3.2});
+  var onPts = [[0,1],[1,3],[2,5],[3,7]];
+  onPts.forEach(function(pt){
+    p.point(pt[0], pt[1], {color:"var(--good)", r:5});
+  });
+  p.point(2, 1, {color:"var(--bad)", r:6, label:"(2, 1) off", labelDx:9, labelDy:-9, labelColor:"var(--bad)"});
+  p.point(1, 2, {color:"var(--bad)", r:6, label:"(1, 2) off", labelDx:9, labelDy:-9, labelColor:"var(--bad)"});
+})();
+
+/* ================= shared equation definitions ================= */
+function makeEqns(){
+  return [
+    { label:"y = 2x + 1", kind:"fn", m:2, c:1,
+      test:function(x,y){ return y === 2*x + 1; },
+      sub:function(x,y){ var v = 2*x+1; return "2(" + x + ") + 1 = " + v + (v===y ? " = y ✓" : " ≠ " + y + " ✗"); } },
+    { label:"y = −x + 3", kind:"fn", m:-1, c:3,
+      test:function(x,y){ return y === -x + 3; },
+      sub:function(x,y){ var v = -x+3; return "−(" + x + ") + 3 = " + v + (v===y ? " = y ✓" : " ≠ " + y + " ✗"); } },
+    { label:"y = 4", kind:"h", y:4,
+      test:function(x,y){ return y === 4; },
+      sub:function(x,y){ return "this line is y = 4; your y is " + y + (y===4 ? " ✓" : " ≠ 4 ✗"); } },
+    { label:"x = −2", kind:"v", x:-2,
+      test:function(x,y){ return x === -2; },
+      sub:function(x,y){ return "this line is x = −2; your x is " + x + (x===-2 ? " ✓" : " ≠ −2 ✗"); } }
+  ];
+}
+
+/* ================= interactive 1: click to test ================= */
+(function(){
+  var svg = document.getElementById("plotTest");
+  if (!svg) return;
+  var XMIN=-6, XMAX=6, YMIN=-6, YMAX=6;
+  var p = new Plot(svg, {xmin:XMIN, xmax:XMAX, ymin:YMIN, ymax:YMAX});
+  var EQNS = makeEqns();
+  var cur = 0;
+  var clicked = [];
+  var Eq = document.getElementById("testEq");
+  var Msg = document.getElementById("testMsg");
+  var host = document.getElementById("testBtns");
+
+  function drawBase(){
+    var e = EQNS[cur];
+    p.reset();
+    if (e.kind === "fn") p.line(e.m, e.c, {color:"var(--brand)", width:3.2});
+    else if (e.kind === "h") p.hline(e.y, {color:"var(--brand)", width:3.2});
+    else if (e.kind === "v") p.vline(e.x, {color:"var(--brand)", width:3.2});
+  }
+  function redraw(){
+    drawBase();
+    clicked.forEach(function(pt){
+      var on = EQNS[cur].test(pt[0], pt[1]);
+      p.point(pt[0], pt[1], {color: on ? "var(--good)" : "var(--bad)", r:6,
+        label:"(" + pt[0] + ", " + pt[1] + ")", labelDx:8, labelDy:-9,
+        labelColor: on ? "var(--good)" : "var(--bad)"});
+    });
+  }
+  EQNS.forEach(function(e, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (i === 0 ? " on" : "");
+    b.textContent = e.label;
+    b.addEventListener("click", function(){
+      cur = i; clicked = [];
+      Array.prototype.forEach.call(host.children, function(ch, j){ ch.className = "chip" + (j === i ? " on" : ""); });
+      Eq.textContent = e.label;
+      Msg.innerHTML = "Equation set to <b>" + e.label + "</b>. Click the grid to test a point.";
+      redraw();
+    });
+    host.appendChild(b);
+  });
+
+  svg.addEventListener("click", function(ev){
+    var h = p.fromEvent(ev);
+    var x = Math.max(XMIN, Math.min(XMAX, Math.round(h.x)));
+    var y = Math.max(YMIN, Math.min(YMAX, Math.round(h.y)));
+    clicked.push([x, y]);
+    var e = EQNS[cur];
+    var on = e.test(x, y);
+    redraw();
+    Msg.innerHTML = (on
+      ? "<b style='color:var(--good)'>&#10003; On the line.</b> "
+      : "<b style='color:var(--bad)'>&#10007; Not on the line.</b> ")
+      + "Substituting (" + x + ", " + y + "): " + e.sub(x, y);
+  });
+
+  Eq.textContent = EQNS[0].label;
+  redraw();
+})();
+
+/* ================= interactive 2: table of values ================= */
+(function(){
+  var svg = document.getElementById("plotTable");
+  if (!svg) return;
+  var XMIN=-6, XMAX=6, YMIN=-6, YMAX=6;
+  var p = new Plot(svg, {xmin:XMIN, xmax:XMAX, ymin:YMIN, ymax:YMAX});
+  var EQNS = makeEqns();
+  var cur = 0;
+  var Eq = document.getElementById("tblEq");
+  var y1 = document.getElementById("ty1"), y2 = document.getElementById("ty2");
+  var Msg = document.getElementById("tblMsg");
+  var in1 = document.getElementById("tx1"), in2 = document.getElementById("tx2");
+
+  function compute(x){
+    var e = EQNS[cur];
+    if (e.kind === "fn") return e.m*x + e.c;
+    if (e.kind === "h") return e.y;
+    return null; // vertical: no single y
+  }
+  function draw(){
+    var x1 = parseInt(in1.value, 10), x2 = parseInt(in2.value, 10);
+    var e = EQNS[cur];
+    Eq.textContent = e.label;
+    p.reset();
+    if (e.kind === "fn") p.line(e.m, e.c, {color:"var(--brand)", width:3.2});
+    else if (e.kind === "h") p.hline(e.y, {color:"var(--brand)", width:3.2});
+    else if (e.kind === "v") p.vline(e.x, {color:"var(--brand)", width:3.2});
+
+    if (e.kind === "v"){
+      y1.textContent = "—"; y2.textContent = "—";
+      Msg.innerHTML = "<b>x = " + e.x + "</b> is a vertical line: every point has that x, so a table of x-values cannot describe it. (Use the click grid above to test points instead.)";
+      return;
+    }
+    var v1 = compute(x1), v2 = compute(x2);
+    y1.textContent = nf(v1);
+    y2.textContent = nf(v2);
+    p.point(x1, v1, {color:"var(--accent)", r:7, label:"(" + x1 + ", " + nf(v1) + ")", labelDx:9, labelDy:-10});
+    p.point(x2, v2, {color:"var(--accent)", r:7, label:"(" + x2 + ", " + nf(v2) + ")", labelDx:9, labelDy:-10});
+    Msg.innerHTML = "Both points land on <b>" + e.label + "</b> — free x, forced y.";
+  }
+  in1.addEventListener("input", draw);
+  in2.addEventListener("input", draw);
+  // keep the table's equation in step with the click-grid's equation by sharing the chip set
+  var host = document.getElementById("testBtns");
+  if (host){
+    Array.prototype.forEach.call(host.children, function(ch, i){
+      ch.addEventListener("click", function(){ cur = i; draw(); });
+    });
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

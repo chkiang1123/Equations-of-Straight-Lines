@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The slope-intercept form — Equations of Straight Lines</title>
+<meta name="description" content="The form you will use most often: y = mx + c. A See-Think-Wonder case study, the derivation, two interactive panels, and a match-the-graph challenge.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.3</span></div>
+    <div class="steptag"><span class="n">5</span> Step 5 of 10</div>
+    <h1>The slope-intercept form</h1>
+    <p class="lead">This is the form you will use most often, and it is the one that tells you the most at a glance. Two numbers, and the whole picture is there.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 20 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">State what the two letters in <b>y = mx + c</b> mean and why</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Read the <b>slope</b> and the <b>y-intercept</b> straight off a graph</label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Convert a line into, and out of, the slope-intercept form</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Explain what <b>m = 0</b> and <b>c = 0</b> each look like on the page</label></li>
+    </ul>
+    <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>slope-intercept form</code>, <code>y = mx + c</code>, <code>y-intercept</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>The taxi fare</h3>
+      <p class="scene">A taxi company charges a <b>flagfall of $3.50</b> plus <b>$2.20 per kilometre</b>. The picture shows the fare against distance: a straight line that starts at <b>3.50</b> on the vertical axis and climbs <b>2.20 for every kilometre</b> across.</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">F = 3.50 + 2.20d</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>fare</span>
+            <span><i style="background:var(--accent)"></i>the flagfall</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotTaxi" aria-label="Graph of taxi fare against distance, a line starting at 3.50 and rising 2.20 per km"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations, no maths yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>The line <b>starts at 3.50</b> on the vertical axis — not at zero.</li>
+                <li>It <b>climbs steadily</b> as distance grows; it is not flat and not curved.</li>
+                <li>Every step of <b>1 km to the right</b> adds <b>2.20 upwards</b>.</li>
+                <li>If extended left, it would cross the horizontal axis at a <b>negative distance</b> (a distance you cannot drive).</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What relationship might be hiding in what you saw?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>The <b>starting value</b> is where <span class="v">distance = 0</span> — that is the point where the line meets the vertical axis. That number must be the intercept.</p>
+              <p>The <b>rate of climb</b> is the slope: how much the fare rises for each kilometre. So the two numbers in the equation — the start and the rate — are both visible in the picture.</p>
+              <p>That means there really <em>must</em> be a form of the equation made of exactly those two numbers.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>What happens if the flagfall doubles — is the new line just shifted up?</li>
+                <li>Is the intercept still visible if the line starts below zero?</li>
+                <li>Could I read the equation off <em>any</em> straight graph this way?</li>
+                <li>What does a flat fare (no per-km charge) look like?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>The form that names its own numbers</h2>
+    <p>The slope-intercept form writes a line as:</p>
+    <div class="formula big">y = mx + c</div>
+    <p>(Some books write <span class="v">y = mx + b</span> — the letter changes, the idea does not.) Here <span class="v">m</span> is the slope and <span class="v">c</span> is the <b>y-intercept</b>: the value of <span class="v">y</span> when <span class="v">x = 0</span>.</p>
+
+    <div class="note tip">
+      <div class="h">Why c is the intercept</div>
+      <p>Put <span class="v">x = 0</span> into <span class="v">y = mx + c</span>:</p>
+      <div class="formula">y = m(0) + c = 0 + c = <b>c</b></div>
+      <p>So the line passes through <b>(0, c)</b>. The number <span class="v">c</span> literally is where the line meets the vertical axis.</p>
+    </div>
+
+    <h3>What each sign of m looks like</h3>
+    <div class="grid2">
+      <div>
+        <ul class="clean">
+          <li><b>m &gt; 0</b> &mdash; the line climbs to the right (the taxi fare).</li>
+          <li><b>m &lt; 0</b> &mdash; the line falls to the right.</li>
+          <li><b>m = 0</b> &mdash; the line is <b>horizontal</b>: <span class="v">y = c</span>, a constant.</li>
+        </ul>
+        <p>And <span class="v">c = 0</span> means the line passes through the origin: <span class="v">y = mx</span>.</p>
+      </div>
+      <div>
+        <svg class="plot static" id="plotSigns" aria-label="Three lines showing positive, negative and zero slope with the same intercept"></svg>
+      </div>
+    </div>
+
+    <h3>Converting in</h3>
+    <p><b>From point-slope</b> (page 3): expand <span class="v">y &minus; y&#8321; = m(x &minus; x&#8321;)</span> and collect the constant term — that constant is <span class="v">c</span>.</p>
+    <p><b>From general form</b> <span class="v">Ax + By + C = 0</span>, solve for <span class="v">y</span>:</p>
+    <div class="formula">By = &minus;Ax &minus; C &nbsp;&rArr;&nbsp; y = &minus;<span class="frac"><span class="num">A</span><span class="den">B</span></span>x &minus; <span class="frac"><span class="num">C</span><span class="den">B</span></span></div>
+    <p>So <span class="v">m = &minus;A/B</span> and <span class="v">c = &minus;C/B</span>.</p>
+
+    <h3>Converting out</h3>
+    <p>To return to general form, bring everything to one side: <span class="v">y = mx + c</span> &rArr; <span class="v">mx &minus; y + c = 0</span>.</p>
+
+    <div class="keyidea">
+      <span class="k">Read the graph as a sentence</span>
+      <p>Start at <b>c</b> on the vertical axis, then <b>rise m for every 1 across</b>. The rise-over-run triangle makes the slope visible.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Slide the slope and the intercept</h2>
+    <p>Move <span class="v">m</span> and <span class="v">c</span>. Watch the live equation and the rise-over-run triangle. Try the preset chips too.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="siEq">y = 2x &minus; 1</div>
+        </div>
+        <svg class="plot" id="plotSI" aria-label="Interactive line y = mx + c with a rise-over-run triangle"></svg>
+        <div class="outmsg" id="siMsg">This line has slope 2 and crosses the y-axis at &minus;1.</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>Slope <span class="v">m</span> <b id="siMv">2</b></label>
+          <input type="range" id="siM" min="-4" max="4" step="0.25" value="2">
+        </div>
+        <div class="ctrl">
+          <label>y-intercept <span class="v">c</span> <b id="siCv">&minus;1</b></label>
+          <input type="range" id="siC" min="-6" max="6" step="0.5" value="-1">
+        </div>
+        <div class="chipline" id="siChips">
+          <button type="button" class="chip" data-m="1">m = 1</button>
+          <button type="button" class="chip" data-m="-1">m = &minus;1</button>
+          <button type="button" class="chip" data-m="0">m = 0</button>
+          <button type="button" class="chip" data-c="0">c = 0</button>
+          <button type="button" class="chip" data-m="3">steep up</button>
+          <button type="button" class="chip" data-m="-0.5">gentle down</button>
+        </div>
+        <p class="small muted">Click a preset to set that slider; the others stay where they are.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>The subtle bit</div>
+    <h2>Match the graph</h2>
+    <p>Here is one random line. Pick the equation you think matches it. Then press <b>New line</b> for another. The more you do, the faster you read a graph.</p>
+
+    <div class="plotbox">
+      <div class="plot-head">
+        <div class="eqout">Which equation is this line?</div>
+      </div>
+      <svg class="plot" id="plotMatch" aria-label="A randomly generated line for the match-the-graph challenge"></svg>
+      <div class="chipline" id="matchBtns"></div>
+      <div class="outmsg" id="matchMsg">Pick an equation below.</div>
+      <div class="chipline"><button type="button" class="btn sm primary" id="matchNew">New line</button></div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first — write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; slope 3, y-intercept &minus;2</summary>
+      <div class="body">
+        <p><b>Step 1.</b> <span class="v">m = 3</span>, <span class="v">c = &minus;2</span>. Substitute:</p>
+        <div class="formula">y = 3x &minus; 2</div>
+        <p><b>Step 2.</b> To general form, bring all terms to one side: 3x &minus; y &minus; 2 = 0.</p>
+        <div class="formula">3x &minus; y &minus; 2 = 0</div>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; find m and c for 2x + 3y &minus; 6 = 0</summary>
+      <div class="body">
+        <p>Solve for <span class="v">y</span>:</p>
+        <div class="formula">3y = &minus;2x + 6 &nbsp;&rArr;&nbsp; y = &minus;<span class="frac"><span class="num">2</span><span class="den">3</span></span>x + 2</div>
+        <p>So <span class="v">m = &minus;2/3</span> and <span class="v">c = 2</span>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; through (0, 4) and (3, &minus;2)</summary>
+      <div class="body">
+        <p>The point (0, 4) is on the y-axis, so <span class="v">c = 4</span>. Slope:</p>
+        <div class="formula">m = <span class="frac"><span class="num">&minus;2 &minus; 4</span><span class="den">3 &minus; 0</span></span> = <span class="frac"><span class="num">&minus;6</span><span class="den">3</span></span> = &minus;2</div>
+        <p>Therefore <span class="v">y = &minus;2x + 4</span>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; crosses the y-axis at 3 and passes through (2, 1)</summary>
+      <div class="body">
+        <p><span class="v">c = 3</span>. Slope using the two points (0, 3) and (2, 1):</p>
+        <div class="formula">m = <span class="frac"><span class="num">1 &minus; 3</span><span class="den">2 &minus; 0</span></span> = <span class="frac"><span class="num">&minus;2</span><span class="den">2</span></span> = &minus;1</div>
+        <p>So <span class="v">y = &minus;x + 3</span>.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Reading c off the x-axis</td><td>c is the y-value where x = 0, not where y = 0</td><td>Find c at the <b>vertical</b> intercept, the point (0, c)</td></tr>
+          <tr><td class="mono">y = &minus;2/3 x + 2 written as c = +2 from &minus;C/B</td><td>Sign error when rearranging general form</td><td>c = &minus;C/B, not +C/B. Check by substituting x = 0</td></tr>
+          <tr><td class="mono">Writing y = 3x with no c</td><td>Forgetting it still has an intercept, namely 0</td><td>y = 3x has c = 0 and <b>does</b> pass through the origin</td></tr>
+          <tr><td class="mono">From y = c + mx, calling c the slope</td><td>The order of terms swaps m and c in your head</td><td>The slope is always the coefficient of x: here m is the slope, c = +c is the intercept</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
+      <ol>
+        <li>Write y = 4x &minus; 7 in general form.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Bring all terms to one side: 4x &minus; y &minus; 7 = 0.</p></div></details>
+        </li>
+        <li>For 5x &minus; 2y = 8, what are m and c?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>2y = 5x &minus; 8, so y = (5/2)x &minus; 4. Thus m = 5/2, c = &minus;4.</p></div></details>
+        </li>
+        <li>A line through (0, &minus;1) and (2, 5): write y = mx + c.
+          <details class="sol"><summary>Answer</summary><div class="body"><p>c = &minus;1. m = (5 &minus; (&minus;1)) / (2 &minus; 0) = 6/2 = 3. So y = 3x &minus; 1.</p></div></details>
+        </li>
+        <li>What does y = &minus;x + 3 look like on a graph?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>It crosses the y-axis at 3 and falls one unit for every unit to the right (slope &minus;1), so it makes a line slanting down to the right.</p></div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning — and it is saved privately on this device.</p>
+      <h4>1. In your own words: why is y = mx + c the form that "tells you the most at a glance"?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="05-intercept-form.html">Intercept form</a> &middot; <a href="index.html">Course map</a> &middot; <a href="07-horizontal-vertical.html">Horizontal &amp; vertical lines</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. case-study figure: taxi fare ================= */
+(function(){
+  var svg = document.getElementById("plotTaxi");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-0.6, xmax:5, ymin:-1, ymax:15, stepX:1, stepY:2, labelStepY:2});
+  p.reset();
+  p.line(2.2, 3.5, {color:"var(--brand)", width:3.2});
+  p.point(0, 3.5, {color:"var(--accent)", r:7, label:"(0, 3.50)", labelDx:12, labelDy:-11});
+  p.box(0, 3.5, 1, 5.7, {fill:"var(--brand-soft)", color:"var(--brand)", dash:"4 3"});
+  p.text(0.5, 5.0, "rise 2.20", {anchor:"start", size:12, color:"var(--accent)", weight:700});
+  p.text(0.5, 3.0, "run 1 km", {anchor:"middle", size:12, color:"var(--good)", weight:700});
+  p.text(4.4, 13, "d (km)", {anchor:"end", size:11.5, color:"var(--ink-3)", weight:600});
+  p.text(-0.5, 14.5, "F ($)", {anchor:"start", size:11.5, color:"var(--ink-3)", weight:600});
+})();
+
+/* ================= 2. signs figure ================= */
+(function(){
+  var svg = document.getElementById("plotSigns");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-4, xmax:4, ymin:-4, ymax:6});
+  p.reset();
+  p.line(1.2, 1, {color:"var(--brand)", width:3, label:"m > 0"});
+  p.line(-1.2, 1, {color:"var(--accent)", width:3, label:"m < 0"});
+  p.line(0, 1, {color:"var(--good)", width:3, label:"m = 0"});
+  p.point(0, 1, {color:"var(--violet)", r:6, label:"(0, c)", labelDx:10, labelDy:-11});
+})();
+
+/* ================= 3. interactive 1: m and c ================= */
+(function(){
+  var svg = document.getElementById("plotSI");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var M = document.getElementById("siM"), C = document.getElementById("siC");
+  var Mv = document.getElementById("siMv"), Cv = document.getElementById("siCv");
+  var EQ = document.getElementById("siEq"), MSG = document.getElementById("siMsg");
+  var chips = document.getElementById("siChips");
+
+  function draw(){
+    var m = +M.value, c = +C.value;
+    Mv.textContent = nf(m); Cv.textContent = nf(c);
+    p.reset();
+    p.line(m, c, {color:"var(--brand)", width:3.2});
+    // rise-over-run triangle between x=0 and x=1
+    p.box(0, c, 1, c + m, {fill:"var(--brand-soft)", color:"var(--brand)", dash:"4 4"});
+    p.seg(0, c, 1, c, {color:"var(--good)", width:3});
+    p.seg(1, c, 1, c + m, {color:"var(--accent)", width:3});
+    p.point(0, c, {color:"var(--accent)", r:7, label:"(0, " + nf(c) + ")", labelDx:12, labelDy:-11});
+    p.text(0.5, c - 0.5, "run 1", {anchor:"middle", size:12, color:"var(--good)"});
+    p.text(1.25, c + m/2, "rise " + nf(m), {anchor:"start", size:12, color:"var(--accent)"});
+    EQ.innerHTML = eqLine(m, c);
+    var dir = m > 0 ? "It climbs to the right." : (m < 0 ? "It falls to the right." : "It is horizontal.");
+    MSG.innerHTML = "This line has slope m = " + nf(m) + " and crosses the y-axis at " + nf(c) + ". " + dir;
+  }
+
+  [M, C].forEach(function(inp){
+    inp.addEventListener("input", function(){
+      [M, C].forEach(setRangeFill);
+      draw();
+    });
+    setRangeFill(inp);
+  });
+
+  if (chips){
+    Array.prototype.forEach.call(chips.querySelectorAll(".chip"), function(b){
+      b.addEventListener("click", function(){
+        if (b.getAttribute("data-m") !== null) M.value = b.getAttribute("data-m");
+        if (b.getAttribute("data-c") !== null) C.value = b.getAttribute("data-c");
+        [M, C].forEach(setRangeFill);
+        draw();
+      });
+    });
+  }
+
+  draw();
+})();
+
+/* ================= 4. interactive 2: match the graph ================= */
+(function(){
+  var svg = document.getElementById("plotMatch");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-9, xmax:9, ymin:-7, ymax:7});
+  var host = document.getElementById("matchBtns");
+  var MSG = document.getElementById("matchMsg");
+  var NEW = document.getElementById("matchNew");
+  var PAIRS = [[1,2],[-1,1],[2,-1],[-2,1],[0.5,3],[-0.5,-2],[3,0],[-3,2]];
+  var correct = null, answered = false;
+
+  function shuffle(arr){
+    for (var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+
+  function newLine(){
+    answered = false;
+    correct = PAIRS[Math.floor(Math.random() * PAIRS.length)];
+    var pool = PAIRS.filter(function(q){ return !(q[0] === correct[0] && q[1] === correct[1]); });
+    shuffle(pool);
+    var cands = [correct].concat(pool.slice(0, 3));
+    shuffle(cands);
+
+    p.reset();
+    p.line(correct[0], correct[1], {color:"var(--brand)", width:3.2});
+
+    host.innerHTML = "";
+    cands.forEach(function(cand){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.setAttribute("data-correct", (cand[0] === correct[0] && cand[1] === correct[1]) ? "1" : "0");
+      b.innerHTML = eqLine(cand[0], cand[1]);
+      b.addEventListener("click", function(){
+        if (answered) return;
+        answered = true;
+        var right = (cand[0] === correct[0] && cand[1] === correct[1]);
+        Array.prototype.forEach.call(host.children, function(ch){
+          if (ch.getAttribute("data-correct") === "1"){ ch.style.borderColor = "var(--good)"; ch.style.color = "var(--good)"; }
+        });
+        if (!right){ b.style.borderColor = "var(--bad)"; b.style.color = "var(--bad)"; }
+        MSG.innerHTML = right
+          ? "<b style='color:var(--good)'>&#10003; Correct.</b> The line is " + eqLine(correct[0], correct[1]) + " — its slope and y-intercept match the graph."
+          : "<b style='color:var(--bad)'>&#10007; Not quite.</b> That equation has a different slope or intercept. The line was " + eqLine(correct[0], correct[1]) + ". Look again at where it crosses the y-axis.";
+      });
+      host.appendChild(b);
+    });
+    MSG.innerHTML = "Which equation matches the line? Pick one, then press <b>New line</b>.";
+  }
+
+  if (NEW) NEW.addEventListener("click", newLine);
+  newLine();
+})();
+</script>
+</body>
+</html>

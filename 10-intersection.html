@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where two lines meet — Equations of Straight Lines</title>
+<meta name="description" content="Two lines, two equations, one answer — or none, or infinitely many. A See-Think-Wonder case study, two solving methods, and two interactive panels.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav" data-nav></header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 3.9</span></div>
+    <div class="steptag"><span class="n">9</span> Step 9 of 10</div>
+    <h1>Where two lines meet</h1>
+    <p class="lead">Two lines, two equations, one answer &mdash; and three possible outcomes. Really this page is about <em>simultaneous equations</em> wearing a geometry costume.</p>
+    <div class="pagemeta">
+      <span>&#9201; <b>about 22 minutes</b></span>
+      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span><b>2</b> interactive panels</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="goals">
+    <h2>In this page you will</h2>
+    <ul>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Say what it means for the intersection to be the <b>simultaneous solution</b> of the two equations</label></li>
+      <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Solve a pair of lines by <b>substitution</b> and by <b>elimination</b></label></li>
+      <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Recognise the three outcomes &mdash; one point, parallel, or the same line &mdash; from the equations alone</label></li>
+      <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Use the coefficient test <b>a&#8321;b&#8322; &minus; a&#8322;b&#8321;</b> to tell the cases apart</label></li>
+    </ul>
+    <p class="glink">Tick these as you go &mdash; your ticks are saved on this device. Keyword search: <code>intersection of two lines</code>, <code>simultaneous equations</code>, <code>parallel lines test</code>.</p>
+  </div>
+
+  <!-- ================= CASE STUDY ================= -->
+  <section class="blk">
+    <div class="case">
+      <div class="case-top">
+        <span class="case-badge">Case study</span>
+        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+      </div>
+      <h3>Two proposed roads</h3>
+      <p class="scene">A planner is comparing two proposed straight routes. <span class="role">Route A</span> follows <b>2x &minus; y = 1</b>; <span class="role">Route B</span> follows <b>x + y = 4</b>. She needs the <b>junction point</b>, and she also wants to know whether the routes could ever turn out to be parallel (never meeting) or identical (the same road).</p>
+
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout">2x &minus; y = 1 &nbsp;&middot;&nbsp; x + y = 4</div>
+          <div class="legend">
+            <span><i style="background:var(--brand)"></i>route A</span>
+            <span><i style="background:var(--accent)"></i>route B</span>
+          </div>
+        </div>
+        <svg class="plot static" id="plotRoutes" aria-label="Two straight lines crossing at one point, with visibly different slopes"></svg>
+      </div>
+
+      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+
+      <div class="stw">
+        <div class="stw-col see">
+          <div class="stw-t"><span class="stw-n">1</span>See</div>
+          <p class="stw-p">Describe only what is actually <em>there</em> &mdash; two lines, where they cross, how they tilt. No explanations yet.</p>
+          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I noticed</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>There are <b>two straight lines</b>.</li>
+                <li>They <b>cross</b> at exactly one point &mdash; there is one point they share.</li>
+                <li>The lines have <b>visibly different slopes</b>: one climbs steeply, the other falls gently.</li>
+                <li>The shared point is somewhere in the first quadrant, above and to the right of the origin.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col think">
+          <div class="stw-t"><span class="stw-n">2</span>Think</div>
+          <p class="stw-p">What does it make you think? What must be true about a point where the routes join?</p>
+          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <details class="sol model"><summary>Compare with what I thought</summary>
+            <div class="body">
+              <p>A junction point lies on <b>both</b> lines, so its coordinates must satisfy <b>both</b> equations at once. That is precisely a pair of <b>simultaneous equations</b>. There should be a routine way to find the shared point &mdash; and a way to tell in advance whether one even exists.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="stw-col wonder">
+          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
+          <p class="stw-p">What are you now curious about? Ask the questions this page must answer.</p>
+          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <details class="sol model"><summary>Some wonders worth chasing</summary>
+            <div class="body">
+              <ul class="clean">
+                <li>Could two straight lines ever meet <em>more than once</em>?</li>
+                <li>How could I tell &ldquo;parallel&rdquo; from the equations alone, without drawing?</li>
+                <li>What would happen if the two equations were secretly the <em>same</em> line?</li>
+                <li>Is there a quick test using just the coefficients?</li>
+              </ul>
+              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE MATHS ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">3</span>The mathematics</div>
+    <h2>One point that satisfies both</h2>
+    <p>A point where two lines meet is a point that lies on <em>both</em> lines. In equation language that means its <span class="v">(x, y)</span> makes both equations true at the same time.</p>
+    <div class="keyidea">
+      <span class="k">The intersection is a simultaneous solution</span>
+      <p>A point is on both lines if and only if it satisfies <b>both</b> equations. So finding where two lines meet is exactly solving two equations simultaneously.</p>
+    </div>
+
+    <h3>Method 1 &mdash; substitution</h3>
+    <p>Make one variable the subject of one equation, then substitute it into the other.</p>
+    <div class="formula">from 2x &minus; y = 1: &nbsp; y = 2x &minus; 1 &nbsp; &rArr; &nbsp; put into x + y = 4</div>
+
+    <h3>Method 2 &mdash; elimination</h3>
+    <p>Multiply one or both equations so a coefficient matches, then add or subtract to wipe out a variable.</p>
+    <div class="formula">2x &minus; y = 1 &nbsp; + &nbsp; (x + y = 4) &nbsp; &rArr; &nbsp; 3x = 5</div>
+
+    <h3>The three outcomes</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Outcome</th><th>Slopes</th><th>What the algebra does</th></tr></thead>
+        <tbody>
+          <tr><td><b>One solution</b></td><td class="mono">different</td><td>The lines meet once; you get a real <span class="v">(x, y)</span>.</td></tr>
+          <tr><td><b>No solution</b></td><td class="mono">equal, different intercept</td><td>The lines are parallel; the algebra collapses to a false statement like <span class="mono">0 = 7</span>.</td></tr>
+          <tr><td><b>Infinitely many</b></td><td class="mono">equal, same line</td><td>The equations describe one line; the algebra collapses to a true statement like <span class="mono">0 = 0</span>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Recognising it from the coefficients</h3>
+    <p>For two lines written as <span class="v">a&#8321;x + b&#8321;y + c&#8321; = 0</span> and <span class="v">a&#8322;x + b&#8322;y + c&#8322; = 0</span>, form</p>
+    <div class="formula big">D = a&#8321;b&#8322; &minus; a&#8322;b&#8321;</div>
+    <ul class="clean">
+      <li><b>D &ne; 0</b> &rArr; the lines have different slopes &rArr; <b>one solution</b> (they meet once).</li>
+      <li><b>D = 0</b> and <span class="v">a&#8321;c&#8322; &minus; a&#8322;c&#8321; &ne; 0</span> &rArr; equal slopes, different line &rArr; <b>parallel, no solution</b>.</li>
+      <li><b>D = 0</b> and the constants are also proportional &rArr; <b>the same line, infinitely many shared points</b>.</li>
+    </ul>
+
+    <h3>In the y = mx + c language</h3>
+    <p>If the lines are <span class="v">y = m&#8321;x + c&#8321;</span> and <span class="v">y = m&#8322;x + c&#8322;</span>:</p>
+    <ul class="clean">
+      <li><b>One solution</b> iff <span class="v">m&#8321; &ne; m&#8322;</span>.</li>
+      <li><b>Parallel</b> iff <span class="v">m&#8321; = m&#8322;</span> and <span class="v">c&#8321; &ne; c&#8322;</span>.</li>
+      <li><b>Identical</b> iff <span class="v">m&#8321; = m&#8322;</span> and <span class="v">c&#8321; = c&#8322;</span>.</li>
+      <li><b>Perpendicular</b> iff <span class="v">m&#8321;m&#8322; = &minus;1</span>.</li>
+    </ul>
+    <div class="note tip">
+      <div class="h">Why two lines can meet at most once</div>
+      <p>Two distinct straight lines cannot bend to meet a second time. So there are only three possibilities: never (parallel), exactly once, or always (the same line). That is why the algebra can only ever produce one point, a contradiction, or an identity.</p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE 1 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">4</span>Explore</div>
+    <h2>Slide two lines together</h2>
+    <p>Set the slopes and intercepts of two lines. Watch them move and the live classification update &mdash; meeting once, parallel, or the same line &mdash; with a perpendicularity check thrown in.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="intEq">y = 2x − 1 &nbsp;&middot;&nbsp; y = −x + 4</div>
+        </div>
+        <svg class="plot" id="plotInt" aria-label="Two interactive lines with their intersection marked and classified"></svg>
+        <div class="outmsg" id="intMsg">The lines meet once at (1.67, 2.33).</div>
+      </div>
+      <div class="card tight">
+        <div class="ctrl">
+          <label>Line 1 slope <span class="v">m&#8321;</span> <b id="intM1v">2</b></label>
+          <input type="range" id="intM1" min="-4" max="4" step="0.25" value="2">
+        </div>
+        <div class="ctrl">
+          <label>Line 1 intercept <span class="v">c&#8321;</span> <b id="intC1v">−1</b></label>
+          <input type="range" id="intC1" min="-6" max="6" step="0.5" value="-1">
+        </div>
+        <div class="ctrl">
+          <label>Line 2 slope <span class="v">m&#8322;</span> <b id="intM2v">−1</b></label>
+          <input type="range" id="intM2" min="-4" max="4" step="0.25" value="-1">
+        </div>
+        <div class="ctrl">
+          <label>Line 2 intercept <span class="v">c&#8322;</span> <b id="intC2v">4</b></label>
+          <input type="range" id="intC2" min="-6" max="6" step="0.5" value="4">
+        </div>
+        <div class="note vio" style="margin-top:10px">
+          <div class="h">Try this</div>
+          <p>Set <span class="v">m&#8322; = m&#8321;</span> but keep <span class="v">c&#8322; &ne; c&#8321;</span> to see them run parallel. Then match <span class="v">c&#8322;</span> too and watch them become the same line.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKED EXAMPLES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">5</span>Worked examples</div>
+    <h2>Doing it properly, on paper</h2>
+    <p>Try each one yourself first &mdash; write it down. Only then open the solution.</p>
+
+    <details class="sol">
+      <summary>Example 1 &mdash; y = 2x &minus; 1 and y = &minus;x + 5</summary>
+      <div class="body">
+        <p>Both already give <span class="v">y</span>, so set them equal (substitution):</p>
+        <div class="formula">2x &minus; 1 = &minus;x + 5 &nbsp;&rArr;&nbsp; 3x = 6 &nbsp;&rArr;&nbsp; x = 2</div>
+        <p>Substitute back: y = 2(2) &minus; 1 = 3. The lines meet at <b>(2, 3)</b>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 2 &mdash; x + 2y = 8 and 3x &minus; 2y = 0</summary>
+      <div class="body">
+        <p>The <span class="v">y</span> coefficients are opposite, so add (elimination):</p>
+        <div class="formula">(x + 2y) + (3x &minus; 2y) = 8 + 0 &nbsp;&rArr;&nbsp; 4x = 8 &nbsp;&rArr;&nbsp; x = 2</div>
+        <p>From the first equation: 2 + 2y = 8 &nbsp;&rArr;&nbsp; 2y = 6 &nbsp;&rArr;&nbsp; y = 3. They meet at <b>(2, 3)</b>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 3 &mdash; y = 2x + 1 and 2x &minus; y + 5 = 0</summary>
+      <div class="body">
+        <p>Rewrite the second in slope-intercept form: 2x &minus; y + 5 = 0 &nbsp;&rArr;&nbsp; y = 2x + 5.</p>
+        <p>Both lines have slope <b>2</b> but different intercepts (1 and 5), so they are <b>parallel</b>. They never meet &mdash; <b>no intersection</b>.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 4 &mdash; y = 3x &minus; 2 and 6x &minus; 2y &minus; 4 = 0</summary>
+      <div class="body">
+        <p>Rewrite the second: 6x &minus; 2y &minus; 4 = 0 &nbsp;&rArr;&nbsp; 2y = 6x &minus; 4 &nbsp;&rArr;&nbsp; y = 3x &minus; 2.</p>
+        <p>That is the <em>same</em> equation as the first. The lines are identical, so they share <b>infinitely many</b> points.</p>
+      </div>
+    </details>
+
+    <details class="sol">
+      <summary>Example 5 &mdash; y = 2x + 1 and y = &minus;½x + 4</summary>
+      <div class="body">
+        <p>Slopes 2 and &minus;½ multiply to 2 &times; (&minus;½) = <b>&minus;1</b>, so the lines are <b>perpendicular</b>. Set equal:</p>
+        <div class="formula">2x + 1 = &minus;0.5x + 4 &nbsp;&rArr;&nbsp; 2.5x = 3 &nbsp;&rArr;&nbsp; x = 1.2</div>
+        <p>y = 2(1.2) + 1 = 3.4. They meet at <b>(1.2, 3.4)</b>.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= INTERACTIVE 2 ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">6</span>The solver</div>
+    <h2>A step-by-step solver</h2>
+    <p>Type the coefficients of two lines in general form. The panel classifies them and, when there is one solution, shows the real elimination working and a check that the point satisfies both originals.</p>
+
+    <div class="grid2 plotfirst">
+      <div class="plotbox">
+        <div class="plot-head">
+          <div class="eqout" id="solEq">line 1 &nbsp;·&nbsp; line 2</div>
+        </div>
+        <svg class="plot" id="plotSol" aria-label="Two lines from typed coefficients, with their intersection marked"></svg>
+        <div class="outmsg" id="solMsg">Enter coefficients to see the working.</div>
+      </div>
+      <div class="card tight">
+        <div class="inrow">
+          <div class="f"><span>a&#8321;</span><input type="number" id="sa1" value="2" step="1"></div>
+          <div class="f"><span>b&#8321;</span><input type="number" id="sb1" value="-1" step="1"></div>
+          <div class="f"><span>c&#8321;</span><input type="number" id="sc1" value="-1" step="1"></div>
+        </div>
+        <p class="small muted" style="margin:2px 0 6px">Line 1: a&#8321;x + b&#8321;y + c&#8321; = 0 &nbsp; <span class="eqout small" id="solL1"></span></p>
+        <div class="inrow">
+          <div class="f"><span>a&#8322;</span><input type="number" id="sa2" value="1" step="1"></div>
+          <div class="f"><span>b&#8322;</span><input type="number" id="sb2" value="1" step="1"></div>
+          <div class="f"><span>c&#8322;</span><input type="number" id="sc2" value="-4" step="1"></div>
+        </div>
+        <p class="small muted" style="margin:2px 0 6px">Line 2: a&#8322;x + b&#8322;y + c&#8322; = 0 &nbsp; <span class="eqout small" id="solL2"></span></p>
+        <div class="note ok" style="margin-top:10px">
+          <div class="h">Safe by design</div>
+          <p>The solver guards against degenerate inputs and division by zero. It will never print a broken number.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="blk">
+    <div class="steptag"><span class="n">7</span>Watch out</div>
+    <h2>Four ways to lose marks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>What goes wrong</th><th>Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">finding x and stopping</td><td>The y-coordinate is left out</td><td>Always substitute x back to get y; the answer is a point (x, y)</td></tr>
+          <tr><td class="mono">calling parallel "the same line"</td><td>Equal slopes alone do not make the lines identical</td><td>Check the intercept too: same slope AND same intercept means identical</td></tr>
+          <tr><td class="mono">subtracting when you should add</td><td>The term to be eliminated keeps its sign</td><td>Make coefficients equal and opposite, then add; or equal, then subtract</td></tr>
+          <tr><td class="mono">not checking both equations</td><td>An arithmetic slip passes unnoticed</td><td>Plug the point into both originals; both must balance</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= SELF CHECK ================= -->
+  <section class="blk">
+    <div class="selfcheck">
+      <h3>&#10003; Check yourself before you move on</h3>
+      <p class="small">Four quick questions. Write your answers down first &mdash; then open each one.</p>
+      <ol>
+        <li>Find where y = 3x + 2 and y = &minus;x + 6 meet.
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>3x + 2 = &minus;x + 6 &rArr; 4x = 4 &rArr; x = 1; y = 3(1) + 2 = 5. They meet at <b>(1, 5)</b>.</p>
+          </div></details>
+        </li>
+        <li>Without drawing, are 4x + 2y = 3 and 2x + y = 5 parallel?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>Write both with the same left side: 4x + 2y = 3 and 4x + 2y = 10. Same left side, different right side &mdash; equal slopes, different line. <b>Yes, parallel, no intersection.</b></p>
+          </div></details>
+        </li>
+        <li>What does the coefficient test D = a&#8321;b&#8322; &minus; a&#8322;b&#8321; tell you when it equals 0?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>D = 0 means the slopes are equal. The lines are then either <b>parallel</b> (no solution) or <b>the same line</b> (infinitely many) &mdash; you must check the constants to decide which.</p>
+          </div></details>
+        </li>
+        <li>Two lines have slopes 3 and &minus;1/3 and meet at (1, 2). Are they perpendicular?
+          <details class="sol"><summary>Answer</summary><div class="body">
+            <p>3 &times; (&minus;1/3) = &minus;1, so <b>yes, they are perpendicular</b>. (The meeting point is extra information, not needed for the perpendicular test.)</p>
+          </div></details>
+        </li>
+      </ol>
+    </div>
+
+    <div class="reflect">
+      <h3>Exit ticket</h3>
+      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning &mdash; and it is saved privately on this device.</p>
+      <h4>1. In your own words: why is finding where two lines meet the same as solving them simultaneously?</h4>
+      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
+      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
+      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+    </div>
+
+    <div class="conf" data-conf></div>
+  </section>
+
+  <div data-pnav class="pnav"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Equations of Straight Lines</b> &middot; an offline self-study course</p>
+    <p>Works with no internet connection. Nothing you write is uploaded anywhere &mdash; your notes and progress stay in this browser on this device.</p>
+    <p><a href="09-slope-and-inclination.html">Slope and inclination</a> &middot; <a href="index.html">Course map</a> &middot; <a href="11-practice.html">Practice and self-test</a></p>
+  </div>
+</footer>
+
+<script src="assets/plot.js"></script>
+<script src="assets/app.js"></script>
+<script>
+/* ================= 1. case-study figure: two routes ================= */
+(function(){
+  var svg = document.getElementById("plotRoutes");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-2, xmax:6, ymin:-3, ymax:6, stepX:1, stepY:1, labelStepX:1, labelStepY:1});
+  p.reset();
+  p.line(2, -1, {color:"var(--brand)", width:3.2, label:"A"});
+  p.line(-1, 4, {color:"var(--accent)", width:3.2, label:"B"});
+  p.point(5/3, 7/3, {color:"var(--violet)", r:7, label:"(" + nf(5/3,2) + ", " + nf(7/3,2) + ")", labelDx:10, labelDy:-11});
+})();
+
+/* ================= 2. interactive 1: two-line explorer ================= */
+(function(){
+  var svg = document.getElementById("plotInt");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var M1 = document.getElementById("intM1"), C1 = document.getElementById("intC1");
+  var M2 = document.getElementById("intM2"), C2 = document.getElementById("intC2");
+  var M1v = document.getElementById("intM1v"), C1v = document.getElementById("intC1v");
+  var M2v = document.getElementById("intM2v"), C2v = document.getElementById("intC2v");
+  var EQ = document.getElementById("intEq"), MSG = document.getElementById("intMsg");
+
+  function draw(){
+    var m1 = +M1.value, c1 = +C1.value, m2 = +M2.value, c2 = +C2.value;
+    M1v.textContent = nf(m1); C1v.textContent = nf(c1);
+    M2v.textContent = nf(m2); C2v.textContent = nf(c2);
+    p.reset();
+    p.line(m1, c1, {color:"var(--brand)", width:3.2});
+    p.line(m2, c2, {color:"var(--accent)", width:3.2});
+    EQ.innerHTML = eqLine(m1, c1) + " &nbsp;·&nbsp; " + eqLine(m2, c2);
+
+    if (Math.abs(m1 - m2) > 1e-9){
+      var x = (c2 - c1) / (m1 - m2);
+      var y = m1 * x + c1;
+      p.point(x, y, {color:"var(--violet)", r:7, label:"(" + nf(x,2) + ", " + nf(y,2) + ")", labelDx:10, labelDy:-11});
+      var perp = Math.abs(m1 * m2 + 1) < 1e-9;
+      MSG.innerHTML = "The lines meet once at <b>(" + nf(x,2) + ", " + nf(y,2) + ")</b>." +
+        (perp ? " Their slopes multiply to −1, so they are <b>perpendicular</b>." : " They are not perpendicular (m₁m₂ = " + nf(m1*m2,2) + ").");
+      MSG.style.borderColor = "var(--good)";
+    } else if (Math.abs(c1 - c2) < 1e-9){
+      MSG.innerHTML = "<b>The same line</b> — infinitely many shared points. Both lines have slope " + nf(m1) + " and the same intercept.";
+      MSG.style.borderColor = "var(--line)";
+    } else {
+      MSG.innerHTML = "<b>Parallel — they never meet.</b> Both have slope " + nf(m1) + " but different intercepts (" + nf(c1) + " and " + nf(c2) + ").";
+      MSG.style.borderColor = "var(--bad)";
+    }
+  }
+
+  [M1, C1, M2, C2].forEach(function(inp){
+    inp.addEventListener("input", function(){
+      [M1, C1, M2, C2].forEach(setRangeFill);
+      draw();
+    });
+    setRangeFill(inp);
+  });
+  draw();
+})();
+
+/* ================= 3. interactive 2: step-by-step solver ================= */
+(function(){
+  var svg = document.getElementById("plotSol");
+  if (!svg) return;
+  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
+  var ids = ["sa1","sb1","sc1","sa2","sb2","sc2"];
+  var inp = {};
+  ids.forEach(function(id){ inp[id] = document.getElementById(id); });
+  var EQ = document.getElementById("solEq"), MSG = document.getElementById("solMsg");
+  var L1 = document.getElementById("solL1"), L2 = document.getElementById("solL2");
+
+  function g(id){ var v = parseFloat(inp[id].value); return isFinite(v) ? v : 0; }
+
+  function draw(){
+    var a1 = g("sa1"), b1 = g("sb1"), c1 = g("sc1");
+    var a2 = g("sa2"), b2 = g("sb2"), c2 = g("sc2");
+    L1.innerHTML = eqGeneral(a1, b1, c1);
+    L2.innerHTML = eqGeneral(a2, b2, c2);
+    EQ.innerHTML = eqGeneral(a1, b1, c1) + " &nbsp;·&nbsp; " + eqGeneral(a2, b2, c2);
+    p.reset();
+
+    // degenerate guards: each line needs A and B not both zero
+    if ((a1 === 0 && b1 === 0) || (a2 === 0 && b2 === 0)){
+      MSG.innerHTML = "<b>Not a valid pair of lines.</b> Each line needs A and B not both zero. Adjust the coefficients.";
+      MSG.style.borderColor = "var(--bad)";
+      return;
+    }
+    // draw both lines where possible
+    if (b1 !== 0) p.line(-a1/b1, -c1/b1, {color:"var(--brand)", width:3.2});
+    else p.vline(-c1/a1, {color:"var(--brand)", width:3.2});
+    if (b2 !== 0) p.line(-a2/b2, -c2/b2, {color:"var(--accent)", width:3.2});
+    else p.vline(-c2/a2, {color:"var(--accent)", width:3.2});
+
+    var D = a1*b2 - a2*b1;
+    var Dac = a1*c2 - a2*c1;
+    var Dbc = b1*c2 - b2*c1;
+
+    if (Math.abs(D) > 1e-9){
+      // one solution via elimination (Cramer)
+      var x = (-b2*c1 + b1*c2) / D;
+      var y = (-a1*c2 + a2*c1) / D;
+      p.point(x, y, {color:"var(--violet)", r:7, label:"(" + nf(x,2) + ", " + nf(y,2) + ")", labelDx:10, labelDy:-11});
+      var perp = false;
+      if (b1 !== 0 && b2 !== 0){
+        var m1 = -a1/b1, m2 = -a2/b2;
+        perp = Math.abs(m1*m2 + 1) < 1e-9;
+      }
+      MSG.innerHTML =
+        "<b>Classification:</b> D = a₁b₂ − a₂b₁ = " + nf(D,2) + " ≠ 0, so the lines have different slopes → <b>one solution</b>.<br>" +
+        "<b>Elimination:</b> multiply line 1 by " + nf(b2,2) + " and line 2 by " + nf(b1,2) + " so the y-coefficients match, then subtract: " +
+        "x = (−b₂c₁ + b₁c₂)/D = " + nf((-b2*c1 + b1*c2),2) + " / " + nf(D,2) + " = <b>" + nf(x,2) + "</b>.<br>" +
+        "Substitute into line 1: " + nf(a1,2) + "(" + nf(x,2) + ") + " + nf(b1,2) + "y + " + nf(c1,2) + " = 0 → y = <b>" + nf(y,2) + "</b>.<br>" +
+        "<b>Check:</b> line 1: " + nf(a1*x + b1*y + c1,4) + " (≈0); line 2: " + nf(a2*x + b2*y + c2,4) + " (≈0). " +
+        "Junction at <b>(" + nf(x,2) + ", " + nf(y,2) + ")</b>." + (perp ? " Slopes multiply to −1 → perpendicular." : "");
+      MSG.style.borderColor = "var(--good)";
+    } else if (Math.abs(Dac) > 1e-9 || Math.abs(Dbc) > 1e-9){
+      MSG.innerHTML = "<b>Classification:</b> D = " + nf(D,2) + " = 0 but the constants are not proportional (a₁c₂ − a₂c₁ = " + nf(Dac,2) + ") → equal slopes, different line → <b>parallel, no solution</b>. The algebra would collapse to a false statement like 0 = 7.";
+      MSG.style.borderColor = "var(--bad)";
+    } else {
+      MSG.innerHTML = "<b>Classification:</b> D = 0 and the constants are proportional (a₁c₂ − a₂c₁ = " + nf(Dac,2) + ") → the equations describe the <b>same line</b>, so there are <b>infinitely many</b> shared points. The algebra collapses to a true statement like 0 = 0.";
+      MSG.style.borderColor = "var(--line)";
+    }
+  }
+
+  ids.forEach(function(id){
+    inp[id].addEventListener("input", draw);
+  });
+  draw();
+})();
+</script>
+</body>
+</html>
