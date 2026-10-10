@@ -47,16 +47,7 @@
       <h3>Two readings from the same journey</h3>
       <p class="scene">A cyclist&rsquo;s tracker logs her distance from home: <b>12&nbsp;km</b> at <b>1 hour</b> after setting off, and <b>33&nbsp;km</b> at <b>2.5 hours</b>. The data are just two dots, but if her pace is steady the graph is a straight line through them. The figure plots those two points and the line they force.</p>
 
-      <div class="plotbox">
-        <div class="plot-head">
-          <div class="eqout" id="cycleEq">d = 14t − 2</div>
-          <div class="legend">
-            <span><i style="background:var(--brand)"></i>the journey line</span>
-            <span><i style="background:var(--accent)"></i>tracker readings</span>
-          </div>
-        </div>
-        <svg class="plot static" id="plotCycle" aria-label="Two data points (1,12) and (2.5,33) joined by a straight line steeper than 45 degrees"></svg>
-      </div>
+      <div id="boardJourney"></div>
 
       <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look.</p>
 
@@ -312,19 +303,140 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
-/* ================= case-study figure: the cyclist ================= */
-(function(){
-  var svg = document.getElementById("plotCycle");
-  if (!svg) return;
-  var p = new Plot(svg, {xmin:-0.5, xmax:5, ymin:-3, ymax:40, stepX:1, stepY:5, labelStepX:1, labelStepY:10});
-  p.reset();
-  p.line(14, -2, {color:"var(--brand)", width:3.2});
-  p.point(1, 12, {color:"var(--accent)", r:7, label:"(1, 12)", labelDx:-8, labelDy:-12, anchor:"end"});
-  p.point(2.5, 33, {color:"var(--accent)", r:7, label:"(2.5, 33)", labelDx:10, labelDy:-11});
-  p.text(4.4, 38, "t (h)", {anchor:"end", size:11.5, color:"var(--ink-3)", weight:600});
-  p.text(-0.4, 38, "d (km)", {anchor:"start", size:11.5, color:"var(--ink-3)", weight:600});
+/* ================= animated board: two readings from one journey ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  function gcd(x, y) { x = Math.round(x); y = Math.round(y); while (y) { var t = x % y; x = y; y = t; } return x || 1; }
+  function isInt(v) { return Math.abs(v - Math.round(v)) < 1e-9; }
+  function fr2(a, b) {
+    if (!isFinite(a) || !isFinite(b) || Math.abs(b) < 1e-9) return "—";
+    var A = a, B = b, s = 0;
+    while ((!isInt(A) || !isInt(B)) && s < 6) { A *= 10; B *= 10; s++; }
+    A = Math.round(A); B = Math.round(B);
+    var k = gcd(Math.abs(A), Math.abs(B)) || 1; A /= k; B /= k;
+    var sign = (A / B < 0) ? "−" : ""; A = Math.abs(A); B = Math.abs(B);
+    if (B === 1) return sign + A;
+    return sign + A + "/" + B;
+  }
+  function psText(m, x1, y1) {
+    var lhs = "y " + (Math.abs(y1) < 1e-9 ? "" : (y1 > 0 ? "− " + nf(y1, 0) : "+ " + nf(-y1, 0)));
+    var br = (Math.abs(x1) < 1e-9 ? "x" : "x " + (x1 > 0 ? "− " + nf(x1, 0) : "+ " + nf(-x1, 0)));
+    return lhs + " = " + Anim.coeff(m) + "(" + br + ")";
+  }
+  function tagAt(g, text, yy, color) {
+    g.tag(text, g.pad.l + 6, yy, { align: "left", mono: true, size: 12.5, color: color || "ink", bold: true });
+  }
+
+  var RW = { x: [0, 5], y: [0, 40], xs: 0.5, ys: 5, labelX: 1, labelY: 5 };
+  var lesson = {
+    id: "journey", no: "CS", name: "Two readings from one journey",
+    view: RW,
+    controls: [
+      { k: "x1", label: "A x", min: -5, max: 5, step: 1, value: 2 },
+      { k: "y1", label: "A y", min: -8, max: 8, step: 1, value: 3 },
+      { k: "x2", label: "B x", min: -5, max: 7, step: 1, value: 6 },
+      { k: "y2", label: "B y", min: -8, max: 12, step: 1, value: 11 }
+    ],
+    steps: [
+      {
+        title: "Two readings, nothing else",
+        dur: 1800, view: RW,
+        body: "<p>A tracker logs distance from home: <b>12 km at 1 hour</b> and <b>33 km at 2.5 hours</b>. Just two dots — no line yet.</p>",
+        draw: function (g, t) {
+          g.dot(1, 12, { color: "c3", r: 7, alpha: E(t, 0, .4), halo: true, label: "1 h → 12 km", dx: 12, dy: -16 });
+          g.dot(2.5, 33, { color: "c3", r: 7, alpha: E(t, .4, .9), halo: true, label: "2.5 h → 33 km", dx: 12, dy: -16 });
+        }
+      },
+      {
+        title: "One straight line through them",
+        dur: 2200, view: RW,
+        body: "<p>If her pace is steady, the graph between the two readings is a straight line. It draws from t = 0 to t = 5.</p>",
+        draw: function (g, t) {
+          g.dot(1, 12, { color: "c3", r: 7, halo: true, alpha: 1, label: "1 h → 12 km", dx: 12, dy: -16 });
+          g.dot(2.5, 33, { color: "c3", r: 7, halo: true, alpha: 1, label: "2.5 h → 33 km", dx: 12, dy: -16 });
+          g.line(14, -2, { color: "c1", w: 3, t: E(t, 0, 1), from: 0, to: 5, head: true, grad: ["c1", "c4"] });
+          g.tracerLine(14, -2, { color: "c1", w: 3.2, alpha: E(t, .7, 1), from: 0, to: 5 });
+        }
+      },
+      {
+        title: "Work out the slope first",
+        dur: 2600, view: RW,
+        body: "<p>The slope is the steepness. The run is 2.5 − 1 = 1.5 h; the rise is 33 − 12 = 21 km. So m = 21 / 1.5 = 14 km/h.</p>",
+        draw: function (g, t) {
+          g.line(14, -2, { color: "c1", w: 3, alpha: .5, from: 0, to: 5 });
+          var r1 = E(t, 0, .4);
+          g.seg(1, 12, 2.5, 12, { color: "c2", w: 2.6, t: r1 });
+          var r2 = E(t, .4, .8);
+          g.seg(2.5, 12, 2.5, 33, { color: "c2", w: 2.6, t: r2 });
+          g.rightAngle(2.5, 12, -1, 1, { alpha: E(t, .5, .9) });
+          g.lab("run = 1.5 h", (1 + 2.5) / 2, 12, { dx: 0, dy: 18, align: "center", size: 12, color: "c2", bold: true, alpha: r1 });
+          g.lab("rise = 21 km", 2.5, (12 + 33) / 2, { dx: 13, dy: 0, size: 12, color: "c2", bold: true, alpha: r2 });
+          g.corner("m = (33 − 12) / (2.5 − 1) = 21/1.5 = 14 km/h", { alpha: E(t, .6, 1) });
+          g.dot(1, 12, { color: "c3", r: 7, halo: true, label: "1 h → 12 km", dx: 12, dy: -16 });
+          g.dot(2.5, 33, { color: "c3", r: 7, halo: true, label: "2.5 h → 33 km", dx: 12, dy: -16 });
+          g.tracer(1, 12, 2.5, 33, { color: "c3", w: 3.4, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Now use either point",
+        dur: 2800, view: RW,
+        body: "<p>Drop the slope 14 and <em>either</em> reading into point-slope. From A or from B, both simplify to y = 14x − 2. The line predicts 54 km at 4 h — and a curious −2 km at t = 0.</p>",
+        draw: function (g, t) {
+          g.line(14, -2, { color: "c1", w: 3, alpha: .5, from: 0, to: 5 });
+          var ly = lerp(2, 36, t), lx = (ly + 2) / 14;
+          g.dot(lx, ly, { color: "c3", r: 6, halo: true });
+          tagAt(g, "from A(1, 12): y − 12 = 14(x − 1)", g.pad.t + 14, "c1");
+          tagAt(g, "from B(2.5, 33): y − 33 = 14(x − 2.5)", g.pad.t + 34, "c4");
+          tagAt(g, "both simplify to  y = 14x − 2", g.pad.t + 54, "ink");
+          tagAt(g, "predict at t = 4 → 54 km", g.pad.t + 74, "c2");
+          tagAt(g, "at t = 0 → −2 km (2 km from home)", g.pad.t + 94, "c5");
+          g.tag("t = " + nf(lx, 2) + " h → d = " + nf(ly, 2) + " km", g.sx(lx), g.sy(ly) - 22, { align: "center", color: "c3", bold: true, size: 12 });
+        }
+      },
+      {
+        title: "Explore: build a line from two points",
+        dur: 900, explore: true,
+        view: { x: [-6, 7], y: [-9, 12], xs: 1, ys: 1 },
+        body: "<p>Set two points A and B. The line through them is drawn, the slope is computed from the real numbers, and the equation is built from A. Line the points up vertically and the form honestly refuses.</p>",
+        draw: function (g, t, P) {
+          var x1 = P.x1, y1 = P.y1, x2 = P.x2, y2 = P.y2;
+          if (x1 === x2) {
+            g.vl(x1, { color: "c1", w: 3, from: Math.min(y1, y2), to: Math.max(y1, y2) });
+            g.corner("x = " + nf(x1, 0) + " — the two-point form cannot be used", { alpha: .95 });
+          } else {
+            var m = (y2 - y1) / (x2 - x1), c = y1 - m * x1;
+            g.line(m, c, { color: "c1", w: 3 });
+          }
+          g.dot(x1, y1, { color: "c3", r: 6.5, halo: true, label: "A(" + nf(x1, 0) + ", " + nf(y1, 0) + ")", dx: 12, dy: -15 });
+          g.dot(x2, y2, { color: "c4", r: 6.5, halo: true, label: "B(" + nf(x2, 0) + ", " + nf(y2, 0) + ")", dx: 12, dy: 18 });
+        },
+        readout: function (P) {
+          var x1 = P.x1, y1 = P.y1, x2 = P.x2, y2 = P.y2, dx = x2 - x1, dy = y2 - y1;
+          if (dx === 0) {
+            return "x₁ = x₂ = " + nf(x1, 0) + " → <b>vertical line x = " + nf(x1, 0) + "</b>.<br>The two-point form cannot be used (the slope denominator is zero).";
+          }
+          var m = dy / dx, c = y1 - m * x1;
+          var lines = [];
+          lines.push("m = (" + nf(y2, 0) + " − " + nf(y1, 0) + ") / (" + nf(x2, 0) + " − " + nf(x1, 0) + ") = " + nf(dy, 0) + "/" + nf(dx, 0) + " = " + nf(m, 2));
+          lines.push("point-slope from A: " + psText(m, x1, y1));
+          lines.push("simplified: " + Anim.eqMC(m, c));
+          return lines.join("<br>");
+        }
+      }
+    ]
+  };
+
+  function mount(id, lesson) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    try { Anim.mount(el, lesson); } catch (e) { el.innerHTML = ""; }
+  }
+  mount("boardJourney", lesson);
 })();
 
 /* ================= interactive 1: two draggable points ================= */

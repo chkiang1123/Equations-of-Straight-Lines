@@ -37,6 +37,9 @@
     <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>horizontal line</code>, <code>vertical line</code>, <code>vertical slope</code>.</p>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardFences"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -311,6 +314,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. case-study figure: two fences ================= */
@@ -394,6 +398,139 @@
   });
 
   draw();
+})();
+
+/* ================= animated board: the two fences ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, lerp = Anim.lerp, rad = Anim.rad;
+
+  var K = 3, H = 5;   // y = 3 (east-west),  x = 5 (north-south)
+
+  var lesson = {
+    id: "fences", no: "CS", name: "Two fences on the site plan",
+    view: { x: [-8, 8], y: [-6, 6], xs: 1, ys: 1 },
+    controls: [
+      { k: "k", label: "horizontal: y = k", min: -6, max: 6, step: 1, value: 3 },
+      { k: "h", label: "vertical: x = h", min: -8, max: 8, step: 1, value: 5 }
+    ],
+    steps: [
+      {
+        title: "The east-west fence",
+        dur: 2300,
+        body: "<p>Every point on this fence has the <em>same</em> height, <b>3</b>. East or west, it never changes — so the only thing you can say about it is <b>y = 3</b>.</p>",
+        draw: function (g, t) {
+          g.hl(K, { color: "c2", w: 3.4, t: E(t, 0, .9), head: true, grad: ["c2", "c6"] });
+          var i;
+          for (i = -2; i <= 7; i++) {
+            g.dot(i, K, { color: "c2", r: 4.6, p: E(t, .12 + (i + 2) * .07, .42 + (i + 2) * .07), alpha: .95 });
+          }
+          g.dot(2, K, { color: "c2", r: 7, p: E(t, .5, .9), glow: true, pulse: true, ring: true,
+            label: "(2, 3)", dx: 0, dy: -18, align: "center", size: 13 });
+          g.dot(7, K, { color: "c2", r: 7, p: E(t, .62, 1), glow: true, pulse: true, ring: true,
+            label: "(7, 3)", dx: 0, dy: -18, align: "center", size: 13 });
+          g.corner("y = 3", { p: E(t, .55, 1) });
+          g.tag("rise = 0, so slope = 0 / run = 0", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c2", bold: true, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "The north-south fence",
+        dur: 2300,
+        body: "<p>Every point on this fence has the <em>same</em> sideways position, <b>5</b>. North or south, it never changes — so the rule is <b>x = 5</b>.</p>",
+        draw: function (g, t) {
+          g.hl(K, { color: "c2", w: 3, alpha: .5 });
+          g.vl(H, { color: "c4", w: 3.4, t: E(t, 0, .9), head: true, grad: ["c4", "c6"] });
+          var i;
+          for (i = -1; i <= 6; i++) {
+            g.dot(H, i, { color: "c4", r: 4.6, p: E(t, .12 + (i + 1) * .08, .45 + (i + 1) * .08), alpha: .95 });
+          }
+          g.dot(H, 2, { color: "c4", r: 7, p: E(t, .5, .9), glow: true, pulse: true, ring: true,
+            label: "(5, 2)", dx: 14, dy: -14, size: 13 });
+          g.dot(H, 6, { color: "c4", r: 7, p: E(t, .62, 1), glow: true, pulse: true, ring: true,
+            label: "(5, 6)", dx: 14, dy: -14, size: 13 });
+          g.corner("x = 5", { p: E(t, .55, 1) });
+          g.tag("run = 0, so slope = rise / 0 — undefined", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c4", bold: true, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Where they cross",
+        dur: 2400,
+        body: "<p>The two fences meet at <b>(5, 3)</b> — the one point that satisfies <em>both</em> rules at once: x is 5 and y is 3.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, 0, .5), s2 = E(t, .4, 1);
+          g.hl(K, { color: "c2", w: 3, alpha: .8 });
+          g.vl(H, { color: "c4", w: 3, alpha: .8 });
+          g.seg(0, K, H, K, { color: "c3", w: 2, dash: [4, 3], t: s1, alpha: .9 });
+          g.seg(H, 0, H, K, { color: "c3", w: 2, dash: [4, 3], t: s1, alpha: .9 });
+          g.dot(H, K, { color: "c3", r: 8, p: s2, glow: true, pulse: true, ring: true,
+            label: "(5, 3)", dx: 14, dy: -16, size: 13.5 });
+          g.corner("y = 3  and  x = 5  →  (5, 3)", { p: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "Why y = mx + c cannot write a vertical line",
+        dur: 2800,
+        body: "<p>In <span class='m'>y = mx + c</span> you feed in <em>x</em> and get out <em>one</em> y. But at <b>x = 5</b> the fence has infinitely many heights. No single output — so no finite m will ever do it.</p>",
+        draw: function (g, t) {
+          /* a line pivots about (5, 3): steeper and steeper, never vertical */
+          var a = E(t, 0, .82);
+          var ang = lerp(0, 88.6, a);
+          var m = Math.tan(rad(ang));
+          if (!isFinite(m) || Math.abs(m) > 400) m = 400;
+          g.line(m, K - m * H, { color: "c1", w: 3, alpha: .92, grad: ["c1", "c4"] });
+          g.dot(H, K, { color: "c3", r: 6, glow: true, ring: true });
+          g.corner("tilt " + nf(ang, 1) + "\u00B0   m = " + (m > 99 ? nf(m, 0) : nf(m, 2)), { p: 1 });
+          var s2 = E(t, .84, 1);
+          g.vl(H, { color: "c6", w: 3.6, t: s2, head: true, grad: ["c4", "c6"] });
+          g.lab("the real x = 5 — no m at all", -4.6, -4.8,
+            { size: 12.5, color: "c6", bold: true, alpha: s2, slide: [10, 0] });
+        }
+      },
+      {
+        title: "Both fit the general form",
+        dur: 2400,
+        body: "<p>The general form <span class='m'>Ax + By + C = 0</span> handles them both without complaint. Horizontal is <b>0x + 1y − 3 = 0</b>; vertical is <b>1x + 0y − 5 = 0</b>. One rule, no exceptions.</p>",
+        draw: function (g, t) {
+          g.hl(K, { color: "c2", w: 3.2, alpha: .9 });
+          g.vl(H, { color: "c4", w: 3.2, alpha: .9 });
+          g.tracer(0, K, H, K, { color: "c2", w: 3, alpha: E(t, .25, 1), period: 2200 });
+          g.tracer(H, 0, H, K, { color: "c4", w: 3, alpha: E(t, .25, 1), period: 2200 });
+          g.dot(H, K, { color: "c3", r: 7, glow: true, pulse: true, ring: true, alpha: .95 });
+          g.tag("0x + 1y − 3 = 0", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c2", bold: true, alpha: E(t, .3, .8) });
+          g.tag("1x + 0y − 5 = 0", g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12.5, color: "c4", bold: true, alpha: E(t, .55, 1) });
+        }
+      },
+      {
+        title: "Explore: move both fences",
+        dur: 900, explore: true,
+        body: "<p>Slide <span class='m'>k</span> and <span class='m'>h</span>. The crossing point follows both lines, and the readout names the intersection and the slope of each fence.</p>",
+        draw: function (g, t, P) {
+          var k = P.k, h = P.h;
+          g.hl(k, { color: "c2", w: 3.2, grad: ["c2", "c6"] });
+          g.vl(h, { color: "c4", w: 3.2, grad: ["c4", "c6"] });
+          g.dot(h, k, { color: "c3", r: 7.5, glow: true, pulse: true, ring: true,
+            label: "(" + nf(h, 0) + ", " + nf(k, 0) + ")", dx: 14, dy: -16, size: 13 });
+          g.seg(0, k, h, k, { color: "c3", w: 1.4, dash: [4, 3], alpha: .55 });
+          g.seg(h, 0, h, k, { color: "c3", w: 1.4, dash: [4, 3], alpha: .55 });
+          g.tag("y = " + nf(k, 0), g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c2", bold: true });
+          g.tag("x = " + nf(h, 0), g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12.5, color: "c4", bold: true });
+        },
+        readout: function (P) {
+          var k = P.k, h = P.h;
+          return "They cross at <b>(" + nf(h, 0) + ", " + nf(k, 0) + ")</b>.<br>" +
+            "Horizontal fence <b>y = " + nf(k, 0) + "</b> — slope <b>0</b> (rise = 0).<br>" +
+            "Vertical fence <b>x = " + nf(h, 0) + "</b> — slope <b>does not exist</b> (run = 0).<br>" +
+            "General form: <b>0x + 1y " + (k >= 0 ? "− " + nf(k, 0) : "+ " + nf(-k, 0)) + " = 0</b> and " +
+            "<b>1x + 0y " + (h >= 0 ? "− " + nf(h, 0) : "+ " + nf(-h, 0)) + " = 0</b>.";
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardFences");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

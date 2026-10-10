@@ -103,6 +103,9 @@
     if (!saved) {
       saved = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
     }
+    /* ?theme=light|dark forces a theme for a single visit (also handy for sharing a link) */
+    var forced = /[?&]theme=(light|dark)\b/.exec(String(location.search || ""));
+    if (forced) saved = forced[1];
     applyTheme(saved);
     var b = document.getElementById("themeBtn");
     if (b) b.addEventListener("click", function () {

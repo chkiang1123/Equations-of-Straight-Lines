@@ -37,6 +37,9 @@
     <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>slope-intercept form</code>, <code>y = mx + c</code>, <code>y-intercept</code>.</p>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardTaxi"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -314,6 +317,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. case-study figure: taxi fare ================= */
@@ -448,6 +452,138 @@
 
   if (NEW) NEW.addEventListener("click", newLine);
   newLine();
+})();
+
+/* ================= animated board: the taxi fare ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  var M = 2.2, C = 3.5;          // F = 2.20 d + 3.50
+  function fare(d) { return M * d + C; }
+  function lineStr(m, c) { return "y = " + nf(m, 2) + "x" + (c < 0 ? " − " : " + ") + nf(Math.abs(c), 2); }
+
+  var lesson = {
+    id: "taxi", no: "CS", name: "The taxi fare",
+    view: { x: [-1, 6], y: [-2, 14], xs: 1, ys: 2 },
+    controls: [
+      { k: "m", label: "slope m", min: -4, max: 4, step: 0.2, value: 2.2 },
+      { k: "c", label: "y-intercept c", min: -6, max: 6, step: 0.5, value: 3.5 }
+    ],
+    steps: [
+      {
+        title: "Before the wheels turn",
+        dur: 2200,
+        body: "<p>Even at <span class='m'>0 km</span> the meter reads <b>$3.50</b>. That is the flagfall, and it is the point where the line cuts the vertical axis — the <b>y-intercept c</b>.</p>",
+        draw: function (g, t) {
+          g.vl(0, { color: "axis", w: 1.6, alpha: .8 });
+          var a = E(t, .15, .8);
+          g.dot(0, C, { color: "c3", r: 7.5, p: a, glow: true, pulse: true, ring: true,
+            label: "(0, 3.50)", dx: 14, dy: -14, size: 13 });
+          g.seg(-1, C, 0, C, { color: "c3", w: 2, dash: [4, 3], t: E(t, .5, 1), alpha: .9 });
+          g.corner("c = 3.50", { p: E(t, .45, 1) });
+          g.tag("the flagfall — paid even at 0 km", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c3", bold: true, alpha: E(t, .62, 1) });
+        }
+      },
+      {
+        title: "One kilometre later",
+        dur: 2500,
+        body: "<p>Drive <b>1 km</b> and the fare climbs by <b>$2.20</b>. That pair — <em>across 1, up 2.20</em> — is the step the line repeats forever.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, 0, .45), s2 = E(t, .38, .8), s3 = E(t, .62, 1);
+          g.seg(0, C, 1, C, { color: "c2", w: 2.8, t: s1, head: true });
+          g.seg(1, C, 1, fare(1), { color: "c2", w: 2.8, t: s2, head: true });
+          g.rightAngle(1, C, -1, 1, { alpha: s2, color: "c2" });
+          g.lab("run = 1 km", .5, C, { dx: 0, dy: 20, align: "center", size: 12, color: "c2", bold: true, alpha: s1, slide: [0, 8] });
+          g.lab("rise = $2.20", 1, (C + fare(1)) / 2, { dx: 13, dy: 0, size: 12, color: "c2", bold: true, alpha: s2, slide: [8, 0] });
+          g.dot(0, C, { color: "c3", r: 6, alpha: .85 });
+          g.dot(1, fare(1), { color: "c3", r: 7, p: s3, glow: true, pulse: true, ring: true,
+            label: "(1, 5.70)", dx: 14, dy: -14, size: 13 });
+          g.corner("m = rise / run = 2.20 / 1 = 2.20", { p: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "The same step, over and over",
+        dur: 2400,
+        body: "<p>Because the step never changes, the points lie on a straight line. Extend it and you can read off any fare without doing the arithmetic.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.4, t: E(t, 0, .95), head: true, grad: ["c1", "c4"] });
+          g.tracerLine(M, C, { color: "c3", w: 3.2, alpha: E(t, .8, 1), from: 0, to: 5 });
+          var i;
+          for (i = 0; i <= 5; i++) {
+            g.dot(i, fare(i), { color: "c3", r: 4.5, p: E(t, .18 + i * .12, .48 + i * .12), alpha: .95 });
+          }
+          g.dot(0, C, { color: "c3", r: 7, alpha: .95, glow: true, pulse: true, label: "(0, 3.50)", dx: 14, dy: -14, size: 12.5 });
+          g.tag("y = 2.20x + 3.50", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true, alpha: E(t, .5, 1) });
+          g.tag("m = 2.20    c = 3.50", g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12, color: "c4", bold: true, alpha: E(t, .68, 1) });
+        }
+      },
+      {
+        title: "When m = 0: no climb at all",
+        dur: 2400,
+        body: "<p>Set <span class='m'>m = 0</span> and the rise disappears. The line goes flat: <b>y = 0x + 3.50 = 3.50</b>. You pay the flagfall forever and the distance never matters.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, 0, .55), s2 = E(t, .35, 1);
+          g.line(M, C, { color: "c1", w: 2.6, alpha: .28 });
+          g.hl(C, { color: "c2", w: 3.2, t: s1, head: true, grad: ["c2", "c6"] });
+          g.dot(3, C, { color: "c2", r: 6.5, p: s2, glow: true, pulse: true,
+            label: "(3, 3.50)", dx: 0, dy: -18, align: "center", size: 12.5 });
+          g.dot(5, C, { color: "c2", r: 6.5, p: s2, glow: true, label: "(5, 3.50)", dx: 0, dy: -18, align: "center", size: 12.5 });
+          g.corner("m = 0  →  y = 3.50", { p: E(t, .55, 1) });
+          g.tag("a horizontal line", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12, color: "c2", bold: true, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "When c = 0: straight through the origin",
+        dur: 2400,
+        body: "<p>Set <span class='m'>c = 0</span> and the flagfall vanishes. The line now passes through <b>(0, 0)</b>: <b>y = 2.20x</b>. Twice the distance, twice the fare — a pure proportion.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, 0, .6), s2 = E(t, .4, 1);
+          g.line(M, C, { color: "c1", w: 2.6, alpha: .25 });
+          g.line(M, 0, { color: "c4", w: 3.2, t: s1, head: true, grad: ["c4", "c6"] });
+          g.tracerLine(M, 0, { color: "c3", w: 3, alpha: E(t, .75, 1), from: 0, to: 5 });
+          g.dot(0, 0, { color: "c4", r: 7.5, p: s2, glow: true, pulse: true, ring: true,
+            label: "(0, 0)", dx: 14, dy: -14, size: 13 });
+          g.dot(3, M * 3, { color: "c4", r: 6, p: s2, alpha: .95, label: "(3, 6.60)", dx: 14, dy: -14, size: 12.5 });
+          g.corner("c = 0  →  y = 2.20x", { p: E(t, .55, 1) });
+          g.tag("through the origin", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12, color: "c4", bold: true, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Explore: dial in any m and c",
+        dur: 900, explore: true,
+        body: "<p>Move <span class='m'>m</span> to tilt the line and <span class='m'>c</span> to slide it up or down. Watch the fare change shape as the two numbers change.</p>",
+        draw: function (g, t, P) {
+          var m = P.m, c = P.c;
+          g.line(m, c, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          g.tracerLine(m, c, { color: "c3", w: 3, from: -1, to: 6, period: 2400 });
+          g.dot(0, c, { color: "c3", r: 7, glow: true, pulse: true, ring: true,
+            label: "(0, " + nf(c, 2) + ")", dx: 14, dy: -14, size: 12.5 });
+          if (Math.abs(m) > 1e-9) {
+            var xr = -c / m;
+            if (xr > -1 && xr < 6 && Math.abs(xr) > 1e-9)
+              g.dot(xr, 0, { color: "c2", r: 6.5, glow: true, pulse: true,
+                label: "(" + nf(xr, 2) + ", 0)", dx: 0, dy: 20, align: "center", size: 12.5 });
+          }
+          g.tag("y = " + nf(m, 2) + "x" + (c < 0 ? " − " : " + ") + nf(Math.abs(c), 2),
+            g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+        },
+        readout: function (P) {
+          var m = P.m, c = P.c;
+          var bits = ["<b>y = " + nf(m, 2) + "x" + (c < 0 ? " &minus; " : " + ") + nf(Math.abs(c), 2) + "</b>"];
+          if (Math.abs(m) < 1e-9) bits.push("m = 0 → the line is <b>horizontal</b>, y = " + nf(c, 2) + ".");
+          else bits.push("m = " + nf(m, 2) + " → every 1 across moves " + (m > 0 ? "up" : "down") + " " + nf(Math.abs(m), 2) + ".");
+          if (Math.abs(c) < 1e-9) bits.push("c = 0 → the line <b>passes through the origin</b>.");
+          else bits.push("c = " + nf(c, 2) + " → it cuts the y-axis at (0, " + nf(c, 2) + ").");
+          return bits.join("<br>");
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardTaxi");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

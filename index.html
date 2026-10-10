@@ -35,6 +35,9 @@
 
 <div class="wrap">
 
+  <!-- ============ HERO ANIMATION ============ -->
+  <div id="boardHero"></div>
+
   <div class="note warn" id="storeWarn" style="display:none;margin-top:22px">
     <div class="h">Heads up &mdash; saving is unavailable</div>
     <p>This browser is blocking local storage for pages opened as files, so your notes, ticks and quiz scores
@@ -185,6 +188,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 (function(){
@@ -247,6 +251,129 @@
       : "You are " + Math.round(n / (COURSE.length - 1) * 100) + "% of the way through. Pages you have not opened yet are listed as \u201cnot yet\u201d below.";
   }
   WB.progress();
+})();
+</script>
+
+<!-- ================= animated hero board: the whole chapter in one picture ================= -->
+<script>
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, nf = Anim.nf;
+
+  var M = 2, C = -1;                 // y = 2x - 1
+
+  var lesson = {
+    id: "hero", no: "\u25C6", name: "One line, two numbers",
+    view: { x: [-4, 6], y: [-5, 7], xs: 1, ys: 1 },
+    controls: [
+      { k: "m", label: "slope m", min: -3, max: 3, step: 0.25, value: 2 },
+      { k: "c", label: "y-intercept c", min: -4, max: 6, step: 0.5, value: -1 }
+    ],
+    steps: [
+      {
+        title: "A straight line, drawn",
+        dur: 2200,
+        body: "<p>Everything in this chapter comes out of one picture. A straight line is fixed completely by <b>two numbers</b> &mdash; how steep it is, and where it cuts the vertical axis.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.6, t: E(t, 0, .85), head: true, grad: ["c1", "c4"] });
+          g.tracerLine(M, C, { color: "c3", w: 3.2, alpha: E(t, .78, 1), from: -4, to: 6 });
+          g.corner("one straight line", { p: E(t, .5, 1) });
+        }
+      },
+      {
+        title: "The first number: how steep",
+        dur: 2600,
+        body: "<p>Walk <b>2</b> to the right and the line climbs <b>4</b>. That ratio is the <b>slope</b>: <span class='m'>m = rise / run = 4 / 2 = 2</span>.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .5 });
+          var a1 = E(t, .08, .5), a2 = E(t, .4, .78), a3 = E(t, .64, .96);
+          g.seg(0, C, 2, C, { color: "c2", w: 2.6, t: a1, head: true });
+          g.seg(2, C, 2, 3, { color: "c5", w: 2.6, t: a2, head: true });
+          g.rightAngle(2, C, -1, 1, { alpha: a2, color: "c2" });
+          g.dot(0, C, { color: "c3", r: 6.5, p: a1, glow: true, ring: true,
+            label: "(0, \u22121)", dx: -12, dy: 16, align: "right", size: 12 });
+          g.dot(2, 3, { color: "c3", r: 6.5, p: a2, glow: true, pulse: true, ring: true,
+            label: "(2, 3)", dx: 12, dy: -14, size: 12 });
+          g.lab("run = 2", 1, C, { dy: 20, align: "center", size: 12, color: "c2", bold: true, alpha: a1, slide: [0, 8] });
+          g.lab("rise = 4", 2, C + 2, { dx: 12, size: 12, color: "c5", bold: true, alpha: a2, slide: [10, 0] });
+          g.corner("m = rise / run = 4 / 2 = 2", { p: a3, color: "c1" });
+        }
+      },
+      {
+        title: "The second number: where it starts",
+        dur: 2400,
+        body: "<p>At <span class='m'>x = 0</span> the line is at <span class='m'>y = &minus;1</span>. That cut on the vertical axis is the <b>y-intercept</b>. Steepness and intercept together give the equation <span class='m'>y = 2x &minus; 1</span>.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          var a = E(t, .08, .55), b = E(t, .5, .92);
+          g.bandY(-1.35, -0.65, { color: "c3", alpha: .12 * a });
+          g.seg(-4, 0, 6, 0, { color: "muted", w: 1.4, dash: [4, 4], alpha: .55 * a });
+          g.dot(0, C, { color: "c3", r: 8, p: a, glow: true, pulse: true, ring: true,
+            label: "(0, \u22121)", dx: 14, dy: -16, size: 12.5 });
+          g.tag("this single cut is all the intercept means", g.pad.l + 8, g.pad.t + 44,
+            { align: "left", size: 12, color: "c3", bold: true, alpha: b });
+          g.corner("y = 2x \u2212 1", { p: b, color: "c1" });
+        }
+      },
+      {
+        title: "Every point obeys it",
+        dur: 2600,
+        body: "<p>The equation is a test. Feed it any <span class='m'>x</span> and it returns the one <span class='m'>y</span> that sits on the line &mdash; no point on the line is left out, and no point off it passes.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .5 });
+          var xs = [-1, 0, 1, 2, 3];
+          xs.forEach(function (x, i) {
+            var y = M * x + C;
+            var p = E(t, .06 + i * .13, .34 + i * .13);
+            if (p <= 0) return;
+            g.seg(x, 0, x, y, { color: "muted", w: 1.2, dash: [3, 3], alpha: p * .6 });
+            g.dot(x, y, { color: i === 3 ? "c5" : "c3", r: 6, p: p, glow: i === 3, pulse: i === 3, ring: true });
+            g.tag("x = " + x + "  \u2192  y = " + y, g.pad.l + 8, g.pad.t + 44 + i * 22,
+              { align: "left", size: 12, color: i === 3 ? "c5" : "c2", bold: true, alpha: p });
+          });
+          g.corner("true at every single point", { p: E(t, .85, 1) });
+        }
+      },
+      {
+        title: "Explore: build your own line",
+        dur: 900, explore: true,
+        body: "<p>Move the two numbers and watch the line respond. <b>m</b> tilts it, <b>c</b> slides it up and down &mdash; and the equation rewrites itself as you go.</p>",
+        draw: function (g, t, P) {
+          var m = P.m, c = P.c;
+          g.line(m, c, { color: "c1", w: 3.6, grad: ["c1", "c4"] });
+          g.tracerLine(m, c, { color: "c3", w: 3, alpha: .9 });
+          g.dot(0, c, { color: "c3", r: 7.5, glow: true, pulse: true, ring: true,
+            label: "(0, " + nf(c, 2) + ")", dx: 12, dy: -16, size: 12.5 });
+          if (Math.abs(m) > 1e-9) {
+            var xr = -c / m;
+            if (xr > -4 && xr < 6) g.dot(xr, 0, { color: "c5", r: 6.5, glow: true, pulse: true,
+              label: "(" + nf(xr, 2) + ", 0)", dx: 0, dy: 20, align: "center", size: 12.5 });
+          }
+          g.tag("y = " + nf(m, 2) + "x" + (c < 0 ? " \u2212 " : " + ") + nf(Math.abs(c), 2),
+            g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+        },
+        readout: function (P) {
+          var m = P.m, c = P.c, L = [];
+          L.push("<b>y = " + nf(m, 2) + "x" + (c < 0 ? " \u2212 " : " + ") + nf(Math.abs(c), 2) + "</b>");
+          if (Math.abs(m) < 1e-9) L.push("slope <b>0</b> &mdash; a horizontal line, level with y = " + nf(c, 2) + ".");
+          else L.push("slope <b>" + nf(m, 2) + "</b> &mdash; one step right changes y by " + nf(m, 2) + ".");
+          L.push("y-intercept <b>(0, " + nf(c, 2) + ")</b>.");
+          if (Math.abs(m) > 1e-9) {
+            var xr = -c / m;
+            L.push(Math.abs(xr) < 40
+              ? "x-intercept <b>(" + nf(xr, 2) + ", 0)</b>."
+              : "the x-intercept is off the picture at this slope.");
+          } else if (Math.abs(c) > 1e-9) {
+            L.push("a level line never crosses the x-axis.");
+          }
+          return L.join("<br>");
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardHero");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

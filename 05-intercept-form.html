@@ -37,6 +37,9 @@
     <p class="glink">Tick these as you go — your ticks are saved on this device. Keyword search: <code>intercept form</code>, <code>x/a + y/b = 1</code>, <code>x-intercept</code>.</p>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardBudget"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -320,6 +323,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. case-study figure: the budget line ================= */
@@ -427,6 +431,140 @@
   });
 
   draw();
+})();
+
+/* ================= animated board: the budget line ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  var M = -2 / 3, C = 4; // 2x + 3y = 12  ->  y = -(2/3)x + 4
+
+  function termStr(c) { return (c < 0 ? " − " : " + ") + nf(Math.abs(c), 0); }
+
+  var lesson = {
+    id: "budget", no: "CS", name: "The budget line",
+    view: { x: [-8, 8], y: [-8, 8], xs: 1, ys: 1 },
+    controls: [
+      { k: "a", label: "x-intercept a", min: -8, max: 8, step: 1, value: 6 },
+      { k: "b", label: "y-intercept b", min: -8, max: 8, step: 1, value: 4 }
+    ],
+    steps: [
+      {
+        title: "Twelve dollars, two prices",
+        dur: 2200,
+        body: "<p>You have $12 exactly. Pens cost $2 and notebooks $3, so <span class='m'>2x + 3y = 12</span>. Watch the line draw itself from one axis cut to the other.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.4, t: E(t, 0, 1), head: true, grad: ["c1", "c4"] });
+          g.tracerLine(M, C, { color: "c3", w: 3.2, alpha: E(t, .75, 1) });
+        }
+      },
+      {
+        title: "Where it cuts each axis",
+        dur: 2400,
+        body: "<p>Put <span class='m'>y = 0</span> and the line meets the x-axis at <b>(6, 0)</b>; put <span class='m'>x = 0</span> and it meets the y-axis at <b>(0, 4)</b>. Those two points are the whole story.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .55 });
+          var a1 = E(t, 0, .5), a2 = E(t, .45, 1);
+          g.dot(6, 0, { color: "c3", r: 7, p: a1, glow: true, pulse: true, ring: true, label: "(6, 0)", dx: -12, dy: -16, align: "right" });
+          g.dot(0, 4, { color: "c3", r: 7, p: a2, glow: true, pulse: true, ring: true, label: "(0, 4)", dx: 12, dy: -16 });
+          g.seg(6, 0, 6, 4, { color: "muted", w: 1.4, dash: [4, 4], t: a1 });
+          g.seg(0, 4, 6, 4, { color: "muted", w: 1.4, dash: [4, 4], t: a2 });
+          g.corner("x-intercept 6    y-intercept 4", { p: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "Divide the whole equation by 12",
+        dur: 2800,
+        body: "<p>Take <span class='m'>2x + 3y = 12</span> and divide <em>every</em> term by 12. The denominators that appear, 6 and 4, are exactly the two intercepts.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .5 });
+          g.dot(6, 0, { color: "c3", r: 6, alpha: .9 });
+          g.dot(0, 4, { color: "c3", r: 6, alpha: .9 });
+          var s1 = seg(t, 0, .34), s2 = seg(t, .34, .67), s3 = seg(t, .67, 1);
+          var txt = s3 > 0 ? "x/6 + y/4 = 1" : (s2 > 0 ? "2x/12 + 3y/12 = 1" : "2x + 3y = 12");
+          g.corner(txt, { p: 1 });
+          g.tag("this is the intercept form", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c4", bold: true, alpha: E(t, .72, 1) });
+        }
+      },
+      {
+        title: "The slope, straight from the intercepts",
+        dur: 2600,
+        body: "<p>Drop a right triangle between the two axis cuts. The horizontal leg is the <b>run = 6</b>, the vertical leg is the <b>rise = 4</b>. So the slope is <b>m = −4/6 = −2/3</b>.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .55 });
+          var a = E(t, 0, .7);
+          g.seg(6, 0, 0, 0, { color: "c2", w: 2.6, t: a });
+          g.seg(0, 0, 0, 4, { color: "c2", w: 2.6, t: a });
+          g.rightAngle(0, 0, -1, 1, { alpha: a, color: "c2" });
+          g.lab("run = 6", 3, 0, { dx: 0, dy: 18, align: "center", size: 12, color: "c2", bold: true, alpha: a });
+          g.lab("rise = 4", 0, 2, { dx: -14, dy: 0, align: "right", size: 12, color: "c2", bold: true, alpha: a });
+          g.dot(6, 0, { color: "c3", r: 6, alpha: .9 });
+          g.dot(0, 4, { color: "c3", r: 6, alpha: .9 });
+          g.corner("m = −b/a = −4/6 = −2/3", { p: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "Two intercepts fix the line",
+        dur: 2400,
+        body: "<p>A single dot travels from one cut to the other. Because two points decide a line, naming the intercepts is enough to pin down the whole picture.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3, alpha: .6 });
+          var px = lerp(6, 0, E(t, 0, 1)), py = lerp(0, 4, E(t, 0, 1));
+          g.dot(px, py, { color: "c3", r: 7, glow: true, pulse: true, label: "(" + nf(px, 0) + ", " + nf(py, 0) + ")", dx: 12, dy: -16 });
+          g.dot(6, 0, { color: "c3", r: 5.5, alpha: .8 });
+          g.dot(0, 4, { color: "c3", r: 5.5, alpha: .8 });
+          g.tag("x/6 + y/4 = 1", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true, alpha: E(t, .5, 1) });
+          g.tag("y = −2x/3 + 4", g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12.5, color: "c4", bold: true, alpha: E(t, .65, 1) });
+        }
+      },
+      {
+        title: "Explore: slide the two intercepts",
+        dur: 900, explore: true,
+        body: "<p>Move <span class='m'>a</span> and <span class='m'>b</span>. The line through (a, 0) and (0, b) redraws, and the readout writes the intercept form, the slope as a fraction, and the slope-intercept version. Set either to 0 to see the form break.</p>",
+        draw: function (g, t, P) {
+          var a = P.a, b = P.b;
+          if (a === 0 && b === 0) {
+            g.dot(0, 0, { color: "c3", r: 6, glow: true, label: "(0, 0)", dx: 12, dy: -16 });
+            g.corner("both intercepts 0 — the origin alone fixes no line", { alpha: .95 });
+            return;
+          }
+          if (a === 0) {
+            g.hl(b, { color: "c1", w: 3.2, from: -8, to: 8 });
+            g.dot(0, b, { color: "c3", r: 7, glow: true, pulse: true, label: "(0, " + nf(b, 0) + ")", dx: 12, dy: -16 });
+            g.corner("a = 0 → the horizontal line y = " + nf(b, 0), { alpha: .95 });
+            return;
+          }
+          if (b === 0) {
+            g.vl(a, { color: "c1", w: 3.2, from: -8, to: 8 });
+            g.dot(a, 0, { color: "c3", r: 7, glow: true, pulse: true, label: "(" + nf(a, 0) + ", 0)", dx: 12, dy: -16 });
+            g.corner("b = 0 → the vertical line x = " + nf(a, 0), { alpha: .95 });
+            return;
+          }
+          var m = -b / a;
+          g.line(m, b, { color: "c1", w: 3.2, grad: ["c1", "c4"] });
+          g.dot(a, 0, { color: "c3", r: 6.5, glow: true, pulse: true, label: "(" + nf(a, 0) + ", 0)", dx: -12, dy: -16, align: "right" });
+          g.dot(0, b, { color: "c3", r: 6.5, glow: true, pulse: true, label: "(0, " + nf(b, 0) + ")", dx: 12, dy: -16 });
+        },
+        readout: function (P) {
+          var a = P.a, b = P.b;
+          if (a === 0 && b === 0)
+            return "Both intercepts zero — the origin alone fixes no line. The intercept form <b>x/a + y/b = 1</b> is undefined here.";
+          if (a === 0)
+            return "x-intercept a = 0 → the form breaks. The line is the <b>horizontal line y = " + nf(b, 0) + "</b> (slope 0).";
+          if (b === 0)
+            return "y-intercept b = 0 → the form breaks. The line is the <b>vertical line x = " + nf(a, 0) + "</b> (slope does not exist).";
+          return "<b>x/" + nf(a, 0) + " + y/" + nf(b, 0) + " = 1</b><br>" +
+                 "slope m = −b/a = " + fr(-b, a) + "<br>" +
+                 "slope-intercept: y = " + fr(-b, a) + "x" + termStr(b);
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardBudget");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

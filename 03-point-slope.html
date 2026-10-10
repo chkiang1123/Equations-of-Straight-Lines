@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Point-slope form — Equations of Straight Lines</title>
-<meta name="description" content="Build the equation of a straight line from one point and a slope. A See-Think-Wonder case study, a full derivation and two interactive graphs.">
+<meta name="description" content="Build the equation of a straight line from one point and a slope. A See-Think-Wonder case study, animated step-by-step graphs and a live playground.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <div class="pagemeta">
       <span>&#9201; <b>about 18 minutes</b></span>
       <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
-      <span><b>2</b> interactive panels</span>
+      <span><b>3</b> animated boards</span>
     </div>
   </div>
 </div>
@@ -47,18 +47,9 @@
       <h3>The draining water tank</h3>
       <p class="scene">A school water tank is being emptied for cleaning. A sensor logs the volume of water left, once a minute. The caretaker plots the readings and gets <b>one perfectly straight line</b>: at the moment the tap is opened there are <b>40 litres</b>, and the volume falls by exactly <b>5 litres every minute</b>.</p>
 
-      <div class="plotbox">
-        <div class="plot-head">
-          <div class="eqout" id="tankEq">V = 40 &minus; 5t</div>
-          <div class="legend">
-            <span><i style="background:var(--brand)"></i>volume of water</span>
-            <span><i style="background:var(--accent)"></i>the starting reading</span>
-          </div>
-        </div>
-        <svg class="plot static" id="plotTank" aria-label="Graph of water volume against time, a straight line from 40 litres at time zero, falling 5 litres per minute"></svg>
-      </div>
+      <div id="boardTank"></div>
 
-      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
+      <p class="small muted">Watch it once all the way through. You can replay any step, or press <b>Autoplay</b> and just watch. Do not do any algebra yet — just look.</p>
 
       <div class="stw">
         <div class="stw-col see">
@@ -120,23 +111,17 @@
     <p>You have a fixed point and a slope. Let us be completely general about it, so the result works for every line.</p>
     <p>Let the fixed point be <span class="v">A</span>(<span class="v">x</span>&#8321;,&nbsp;<span class="v">y</span>&#8321;) and let the slope be <span class="v">m</span>. Now pick <em>any other point</em> on the line and call it <span class="v">P</span>(<span class="v">x</span>,&nbsp;<span class="v">y</span>).</p>
 
-    <div class="grid2">
-      <div>
-        <ol class="steps">
-          <li>You already know the slope formula. Using <b>A</b> and <b>P</b> as the two points:
-            <div class="formula">m = <span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">x &minus; x&#8321;</span></span></div>
-          </li>
-          <li>Multiply both sides by (<span class="v">x</span> &minus; <span class="v">x</span>&#8321;). The denominator disappears:
-            <div class="formula big">y &minus; y&#8321; = m(x &minus; x&#8321;)</div>
-          </li>
-          <li>That is the whole derivation. Two lines of algebra — you could have found it.</li>
-        </ol>
-      </div>
-      <div>
-        <svg class="plot static" id="plotDerive" aria-label="A line through a fixed point A and a general point P, showing the horizontal and vertical differences between them"></svg>
-        <p class="small muted center">The horizontal gap is <span class="v">x</span> &minus; <span class="v">x</span>&#8321;, the vertical gap is <span class="v">y</span> &minus; <span class="v">y</span>&#8321;, and their ratio is the slope.</p>
-      </div>
-    </div>
+    <div id="boardPS"></div>
+
+    <ol class="steps">
+      <li>You already know the slope formula. Using <b>A</b> and <b>P</b> as the two points:
+        <div class="formula">m = <span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">x &minus; x&#8321;</span></span></div>
+      </li>
+      <li>Multiply both sides by (<span class="v">x</span> &minus; <span class="v">x</span>&#8321;). The denominator disappears:
+        <div class="formula big">y &minus; y&#8321; = m(x &minus; x&#8321;)</div>
+      </li>
+      <li>That is the whole derivation. Two lines of algebra — you could have found it.</li>
+    </ol>
 
     <div class="keyidea">
       <span class="k">The point-slope form</span>
@@ -154,41 +139,15 @@
     <p>And now the equation can answer new questions. Volume after 3.5 minutes? <span class="v">V</span> = 40 &minus; 5(3.5) = <b>22.5 litres</b>. When is the tank empty? <span class="v">V</span> = 0 gives <span class="v">t</span> = 8 — exactly where the line cut the axis.</p>
   </section>
 
-  <!-- ================= INTERACTIVE 1 ================= -->
+  <!-- ================= EXPLORE ================= -->
   <section class="blk">
     <div class="steptag"><span class="n">4</span>Explore</div>
     <h2>Build a line from one point and a slope</h2>
-    <p>Move the sliders. Watch two things at once: the <b>graph</b> and the <b>equation</b>. They are two descriptions of the same object.</p>
+    <p>Go to the last step of the board below and move the sliders. Watch two things at once: the <b>graph</b> and the <b>equation</b>. They are two descriptions of the same object.</p>
 
-    <div class="grid2 plotfirst">
-      <div class="plotbox">
-        <div class="plot-head">
-          <div class="eqout" id="psSlopeForm">y &minus; 1 = 2(x &minus; 3)</div>
-        </div>
-        <svg class="plot" id="plotPS" aria-label="Interactive line with a draggable anchor point and slope"></svg>
-        <div class="outmsg" id="psCheck">Click anywhere on the grid to test whether that point lies on the current line.</div>
-      </div>
-      <div class="card tight">
-        <div class="ctrl">
-          <label>Slope <span class="v">m</span> <b id="psMv">2</b></label>
-          <input type="range" id="psM" min="-4" max="4" step="0.25" value="2">
-        </div>
-        <div class="ctrl">
-          <label>Known point <span class="v">x</span>&#8321; <b id="psXv">3</b></label>
-          <input type="range" id="psX" min="-6" max="6" step="1" value="3">
-        </div>
-        <div class="ctrl">
-          <label>Known point <span class="v">y</span>&#8321; <b id="psYv">1</b></label>
-          <input type="range" id="psY" min="-6" max="6" step="1" value="1">
-        </div>
-        <h4>Same line, written two ways</h4>
-        <p class="small">Point-slope: <span class="eqout small" id="psPS"></span></p>
-        <p class="small">Slope-intercept: <span class="eqout small" id="psSI"></span></p>
-        <div class="note warn" style="margin-top:12px">
-          <div class="h">Try this</div>
-          <p>Set <span class="v">m</span> = 0. The line goes flat and the equation collapses to <span class="v">y</span> = a constant. Now try the anchor point at (0,&nbsp;0) — what happens to the equation?</p>
-        </div>
-      </div>
+    <div class="note warn">
+      <div class="h">Try this</div>
+      <p>Set <span class="v">m</span> = 0. The line goes flat and the equation collapses to <span class="v">y</span> = a constant. Now put the anchor point at (0,&nbsp;0) — what happens to the equation?</p>
     </div>
   </section>
 
@@ -243,21 +202,13 @@
     </details>
   </section>
 
-  <!-- ================= INTERACTIVE 2 ================= -->
+  <!-- ================= THE SUBTLE BIT ================= -->
   <section class="blk">
     <div class="steptag"><span class="n">6</span>The subtle bit</div>
     <h2>Why your answer may not look like your friend&rsquo;s</h2>
-    <p>Here is one fixed line, <span class="v">y</span> = 2<span class="v">x</span> &minus; 3. Choose which point to treat as the &ldquo;known point&rdquo;. The line must not move — only the equation should change.</p>
+    <p>Here is one fixed line, <span class="v">y</span> = 2<span class="v">x</span> &minus; 3. Step through the anchors below: the line must <b>not</b> move — only the equation changes.</p>
 
-    <div class="plotbox">
-      <div class="plot-head">
-        <div class="eqout" id="anyEq">&nbsp;</div>
-        <div class="legend"><span><i style="background:var(--accent)"></i>chosen anchor</span></div>
-      </div>
-      <svg class="plot static" id="plotAny" aria-label="One fixed line with four labelled points, one of which is highlighted as the anchor point"></svg>
-      <div class="chipline" id="anyBtns"></div>
-      <div class="outmsg" id="anyMsg">&nbsp;</div>
-    </div>
+    <div id="boardAny"></div>
 
     <div class="note vio">
       <div class="h">The insight</div>
@@ -277,7 +228,7 @@
           <tr><td class="mono">y &minus; 3 = 2(x &minus; 5)</td><td><span class="v">x</span>&#8321; and <span class="v">y</span>&#8321; swapped between two different points</td><td>Both numbers must come from the <b>same</b> point</td></tr>
           <tr><td class="mono">m = 3 without showing work</td><td>No slope given — you must find it first</td><td>Compute <span class="v">m</span> = (<span class="v">y</span>&#8322; &minus; <span class="v">y</span>&#8321;) / (<span class="v">x</span>&#8322; &minus; <span class="v">x</span>&#8321;) and keep the <b>same order</b> on top and bottom</td></tr>
           <tr><td class="mono">Stopping at y &minus; 1 = 2(x &minus; 4)</td><td>Question asked for general form</td><td>Read the instruction. &ldquo;General form&rdquo; means rearrange to <span class="v">Ax</span> + <span class="v">By</span> + <span class="v">C</span> = 0</td></tr>
-          <tr><td class="mono">Using point-slope for x = 5</td><td>Vertical lines have no slope at all</td><td>Vertical lines are written directly as <span class="v">x</span> = <span class="v">h</span></td></tr>
+          <tr><td class="mono">Using point-slope for x = 5</td><td>Vertical lines have no slope at all</td><td>Vertical lines are written directly as <span class="v">x</span> = <span class="h">h</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -328,151 +279,299 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
-/* ---------- shared algebra helpers for this page ---------- */
-function coefOnly(m){
-  if (m === 0) return "0";
-  var neg = m < 0, a = Math.abs(m), r = rat(a), body;
-  if (a === 1) body = "";
-  else if (r && r[1] !== 1) body = fracHTML(r[0], r[1]);
-  else body = nf(a);
-  return (neg ? "\u2212" : "") + body;
-}
-function psLeft(y1){
-  if (y1 === 0) return "y";
-  return "y " + (y1 > 0 ? "\u2212 " + nf(y1) : "+ " + nf(Math.abs(y1)));
-}
-function psRight(m, x1){
-  if (x1 === 0) return coefOnly(m) + "x";
-  var inner = "x " + (x1 > 0 ? "\u2212 " + nf(x1) : "+ " + nf(Math.abs(x1)));
-  return coefOnly(m) + "(" + inner + ")";
-}
+/* ============================================================
+   Animated boards for this page.
+   Every board is DATA: steps[] with draw(g, t, P).
+   t runs 0 -> 1 over step.dur; use E(t,a,b) to stage a reveal.
 
-/* ================= 1. case-study figure: the tank ================= */
-(function(){
-  var svg = document.getElementById("plotTank");
-  if (!svg) return;
-  var p = new Plot(svg, {xmin:-1.2, xmax:9.2, ymin:-8, ymax:48,
-                         stepX:1, stepY:5, labelStepX:1, labelStepY:10});
-  p.reset();
-  p.box(2, 30, 3, 25, {fill:"var(--accent-soft)", color:"var(--accent)", dash:"4 3"});
-  p.line(-5, 40, {color:"var(--brand)", width:3.2});
-  p.point(0, 40, {color:"var(--accent)", r:7, label:"(0, 40)", labelDx:10, labelDy:-11});
-  p.point(8, 0, {color:"var(--good)", r:7, label:"(8, 0)", labelDx:8, labelDy:-11});
-  p.text(3.35, 31.5, "\u22125 litres in 1 minute", {anchor:"start", size:12, color:"var(--accent)", weight:700});
-  p.text(8.9, 44, "t (min)", {anchor:"end", size:11.5, color:"var(--ink-3)", weight:600});
-  p.text(-0.9, 46.5, "V (litres)", {anchor:"start", size:11.5, color:"var(--ink-3)", weight:600});
-})();
+   Motion vocabulary used here:
+     p      progress for pop-in (dots) and slide-in (labels)
+     glow   soft halo around an emphasis dot
+     pulse  breathing ring that keeps going after the step ends
+     head   glowing nib at the pen tip while a line draws itself
+     grad   gradient stroke along the line
+     slide  [dx,dy] starting offset; the label glides to its place
+     tracer a spark that keeps travelling along the line (ambient)
+     Anim.count(a,b,p)  number that ticks as the step plays
+   Colours are palette NAMES so boards follow the light/dark theme.
+   ============================================================ */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, EB = Anim.EB, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp, count = Anim.count;
 
-/* ================= 2. derivation figure ================= */
-(function(){
-  var svg = document.getElementById("plotDerive");
-  if (!svg) return;
-  var p = new Plot(svg, {xmin:-1, xmax:9, ymin:-1, ymax:8});
-  p.reset();
-  p.line(0.55, 1.2, {color:"var(--brand)", width:3});
-  var x1 = 2, y1 = 0.55*2 + 1.2;
-  var x2 = 7, y2 = 0.55*7 + 1.2;
-  p.box(x1, y1, x2, y2, {fill:"var(--brand-soft)", color:"var(--brand)", dash:"4 3"});
-  p.point(x1, y1, {color:"var(--accent)", r:7, label:"A(x\u2081, y\u2081)", labelDx:-8, labelDy:-12, anchor:"end"});
-  p.point(x2, y2, {color:"var(--accent)", r:7, label:"P(x, y)", labelDx:10, labelDy:-11});
-  p.text((x1+x2)/2, y1 - 0.5, "x \u2212 x\u2081", {size:12.5, color:"var(--brand)"});
-  p.text(x2 + 1.4, (y1+y2)/2, "y \u2212 y\u2081", {size:12.5, color:"var(--brand)", anchor:"start"});
-  p.dotted(x1, y1, x2, y1, {color:"var(--grid)", width:0});
-})();
+  /* ---------- BOARD 1: the draining tank ---------- */
+  var tank = {
+    id: "tank", no: "CS", name: "The draining water tank",
+    view: { x: [0, 10], y: [-6, 46], xs: 1, ys: 5, labelX: 1, labelY: 5 },
+    steps: [
+      {
+        title: "The first reading",
+        dur: 1800,
+        body: "<p>The tap opens at time <span class='m'>t = 0</span>. The sensor reads <b>40 litres</b>.</p><p>Watch the marker land on the vertical axis — that single number is where the whole story starts.</p>",
+        draw: function (g, t) {
+          var p = E(t, .15, .8);
+          g.hl(40, { color: "c3", dash: [5, 4], w: 1.4, alpha: E(t, .5, .95) * .8, from: 0, to: 10 });
+          g.dot(0, 40, { color: "c3", r: 7, p: p, glow: true, pulse: true, ring: true, label: "40 L at the start", dy: -18, dx: 12, labelSlide: [16, 0] });
+          g.tag("volume (litres)", g.pad.l - 26, g.pad.t + 4, { align: "left", alpha: EB(t, .2, .7), size: 11 });
+          g.tag("time (minutes)", g.pad.l + g.pw, g.pad.t + g.ph + 20, { align: "right", alpha: EB(t, .5, 1), size: 11 });
+          g.tag(function () { return "V = " + nf(count(40, 40, 0), 0) + " L"; }, g.pad.l + g.pw - 8, g.pad.t + 42,
+            { align: "right", mono: true, bold: true, size: 13, color: "c3", alpha: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "One reading, every minute",
+        dur: 3000,
+        body: "<p>The sensor keeps logging. Each new reading is <b>5 litres lower</b> than the one before.</p><p>Nothing wobbles. Nothing speeds up or slows down.</p>",
+        draw: function (g, t) {
+          var k, x, v, a;
+          g.dot(0, 40, { r: 5, alpha: .4, color: "muted" });
+          for (k = 1; k <= 8; k++) {
+            x = k; v = 40 - 5 * k;
+            a = seg(t, (k - 1) / 8 * .84, (k - 1) / 8 * .84 + .16);
+            g.dot(x, v, { r: 5.5, p: a, color: "c1", glow: a > .5, label: v + " L", dx: 10, dy: -14, size: 11, labelSlide: [10, -6] });
+          }
+          /* live counter that ticks down with the animation */
+          g.tag(function () {
+            var n = Math.round(count(8, 0, seg(t, 0, 1)));
+            return n > 0 ? "readings logged: " + (8 - n) + " / 8" : "all eight readings logged";
+          }, g.pad.l + 8, g.pad.t + g.ph - 6, { align: "left", mono: true, size: 12, color: "c1" });
+        }
+      },
+      {
+        title: "They all lie on one straight line",
+        dur: 2400,
+        body: "<p>No curve, no wobble. A ruler through any two of these points passes through <b>all</b> of them.</p>",
+        draw: function (g, t) {
+          var k;
+          for (k = 0; k <= 8; k++) g.dot(k, 40 - 5 * k, { r: 4.5, alpha: .45, color: "c1" });
+          var dr = E(t, .08, .85);
+          g.line(-5, 40, { color: "c1", w: 3.4, t: dr, head: true, grad: ["c1", "c4"], from: 0, to: 9 });
+          g.dot(0, 40, { r: 7, p: E(t, .75, 1), color: "c3", glow: true, pulse: true, ring: true, label: "(0, 40)", dy: -18, dx: 12, labelSlide: [14, 0] });
+          g.dot(8, 0, { r: 7, p: E(t, .85, 1), color: "c5", glow: true, ring: true, label: "empty at t = 8", dy: 18, align: "center", labelSlide: [0, 14] });
+        }
+      },
+      {
+        title: "The same drop, every single minute",
+        dur: 3000,
+        body: "<p>Walk one minute to the right and the line drops <b>5 litres</b> — always. That constant drop is the <b>slope</b>.</p><p>Steepness you can measure is a number you can use.</p>",
+        draw: function (g, t) {
+          g.line(-5, 40, { color: "c1", w: 3, from: 0, to: 9, grad: ["c1", "c4"] });
+          var k;
+          for (k = 0; k <= 8; k++) g.dot(k, 40 - 5 * k, { r: 4, alpha: .4, color: "c1" });
+          var pairs = [[2, 3], [5, 6]];
+          pairs.forEach(function (q, i) {
+            var a = E(t, .1 + i * .35, .5 + i * .35);
+            var x0 = q[0], x1 = q[1];
+            g.seg(x0, 40 - 5 * x1, x1, 40 - 5 * x1, { color: "c2", dash: [4, 4], w: 1.6, alpha: a * .9, t: a });
+            g.arrow(x0, 40 - 5 * x0, x0, 40 - 5 * x1, { color: "c2", w: 2.6, alpha: a, t: a, head: 7, glow: true });
+            g.lab("\u22125 L", x0, (40 - 5 * x0 + 40 - 5 * x1) / 2, {
+              dx: 12, dy: 0, size: 12.5, color: "c2", bold: true,
+              p: seg(t, .45 + i * .35, .72 + i * .35), slide: [14, 0]
+            });
+		      });
+          g.tracerLine(-5, 40, { from: 0, to: 9, color: "c3", w: 3.4, period: 3000, alpha: E(t, .8, 1), tailLen: .16 });
+          g.corner("slope = \u22125 litres per minute", { p: E(t, .7, 1) });
+        }
+      }
+    ]
+  };
 
-/* ================= 3. interactive: point + slope ================= */
-(function(){
-  var svg = document.getElementById("plotPS");
-  if (!svg) return;
-  var p = new Plot(svg, {xmin:-8, xmax:8, ymin:-8, ymax:8});
-  var M = document.getElementById("psM"), X = document.getElementById("psX"), Y = document.getElementById("psY");
-  var Mv = document.getElementById("psMv"), Xv = document.getElementById("psXv"), Yv = document.getElementById("psYv");
-  var PS = document.getElementById("psPS"), SI = document.getElementById("psSI");
-  var CHK = document.getElementById("psCheck");
+  /* ---------- BOARD 2: deriving the form ---------- */
+  var AX = 2, AY = 1, M = 1.5;
+  var AC = AY - M * AX;
 
-  function state(){ return {m:+M.value, x1:+X.value, y1:+Y.value}; }
-
-  function draw(){
-    var s = state(), c = s.y1 - s.m*s.x1;
-    p.reset();
-    p.line(s.m, c, {color:"var(--brand)", width:3.2});
-    p.dotted(s.x1, s.y1, s.x1, 0, {color:"var(--ink-3)"});
-    p.dotted(0, s.y1, s.x1, s.y1, {color:"var(--ink-3)"});
-    p.point(s.x1, s.y1, {color:"var(--accent)", r:7, label:"A(" + nf(s.x1) + ", " + nf(s.y1) + ")", labelDx:12, labelDy:-11});
-    Mv.textContent = nf(s.m); Xv.textContent = nf(s.x1); Yv.textContent = nf(s.y1);
-    PS.innerHTML = psLeft(s.y1) + " = " + psRight(s.m, s.x1);
-    SI.innerHTML = eqLine(s.m, c);
-    CHK.innerHTML = "Click anywhere on the grid to test whether that point lies on the current line.";
-    CHK.style.borderColor = "var(--line)";
+  function fan(g, t, alphaScale) {
+    var slopes = [-3, -2, -1, -0.5, 0.5, 1, 2, 3];
+    slopes.forEach(function (m, i) {
+      var a = seg(t, i / slopes.length * .8, i / slopes.length * .8 + .18) * alphaScale;
+      g.line(m, AY - m * AX, { color: "muted", w: 1.5, alpha: a * .8 });
+    });
+    var dm = [-3, -1.5, 0, 1.5, 3];
+    dm.forEach(function (m, i) {
+      var a = seg(t, i / dm.length * .8, i / dm.length * .8 + .18) * alphaScale;
+      g.line(m, AY - m * AX, { color: "c4", w: 1.9, alpha: a * .9 });
+    });
   }
 
-  [M, X, Y].forEach(function(inp){
-    inp.addEventListener("input", function(){
-      [M, X, Y].forEach(setRangeFill);
-      draw();
-    });
-    setRangeFill(inp);
-  });
+  var lesson = {
+    id: "pslope", no: "3.1", name: "The point-slope form",
+    view: { x: [-8, 8], y: [-8, 8], xs: 1, ys: 1 },
+    controls: [
+      { k: "m", label: "slope m", min: -4, max: 4, step: 0.25, value: 2 },
+      { k: "x1", label: "known point x\u2081", min: -6, max: 6, step: 1, value: 3 },
+      { k: "y1", label: "known point y\u2081", min: -6, max: 6, step: 1, value: 1 }
+    ],
+    steps: [
+      {
+        title: "One point is not enough",
+        dur: 3000,
+        body: "<p>Here is a single point, <span class='m'>A(2, 1)</span>. How many straight lines can pass through it?</p><p><b>Infinitely many.</b> Watch them fan out — a point on its own pins down almost nothing.</p>",
+        draw: function (g, t) {
+          g.dot(AX, AY, { r: 7, color: "c3", p: E(t, 0, .35), glow: true, pulse: true, ring: true, label: "A(2, 1)", dx: 12, dy: -16, labelSlide: [16, -4] });
+          fan(g, E(t, .15, 1), 1);
+          g.corner("infinitely many lines through one point", { p: E(t, .6, .95) });
+        }
+      },
+      {
+        title: "Add the slope — now there is exactly one",
+        dur: 2800,
+        body: "<p>Now say the slope must be <span class='m'>m = 1.5</span>. The fan collapses to <b>one single line</b>.</p><p>So a point plus a slope really is <b>all</b> the information a line needs.</p>",
+        draw: function (g, t) {
+          var fade = 1 - E(t, 0, .5);
+          fan(g, 1, fade * .5);
+          g.dot(AX, AY, { r: 7, color: "c3", glow: true, pulse: true, ring: true, label: "A(2, 1)", dx: 12, dy: -16 });
+          var dr = E(t, .28, .95);
+          g.line(M, AC, { color: "c1", w: 3.6, t: dr, head: true, grad: ["c1", "c6"] });
+          g.tracerLine(M, AC, { color: "c6", w: 3.4, period: 2800, alpha: E(t, .85, 1) });
+          g.lab("y = 1.5x \u2212 2", 6.4, M * 6.4 + AC, { dx: 0, dy: -16, align: "center", color: "c1", bold: true, p: seg(t, .78, 1), slide: [0, -14] });
+          g.corner("point (2, 1)  +  slope 1.5  \u2192  one line", { p: E(t, .72, 1) });
+        }
+      },
+      {
+        title: "Name a general point on it",
+        dur: 3000,
+        body: "<p>Call the known point <span class='m'>A(x\u2081, y\u2081)</span>. Now pick <b>any other point</b> on the line and call it <span class='m'>P(x, y)</span>.</p><p>The two gaps between them are <span class='m'>x \u2212 x\u2081</span> across and <span class='m'>y \u2212 y\u2081</span> up.</p>",
+        draw: function (g, t) {
+          g.line(M, AC, { color: "c1", w: 2.8, alpha: .5 });
+          g.dot(AX, AY, { r: 7, color: "c3", glow: true, pulse: true, label: "A(x\u2081, y\u2081) = (2, 1)", dx: 12, dy: -16 });
+          var s = E(t, .1, .95);
+          var px = lerp(-1.5, 6.5, s), py = M * px + AC;
+          var a = seg(t, .22, .55);
+          g.seg(AX, AY, px, AY, { color: "c2", w: 2.6, alpha: a, t: a, grad: ["c2", "c6"] });
+          g.seg(px, AY, px, py, { color: "c2", w: 2.6, alpha: a, t: a, grad: ["c2", "c6"] });
+          g.rightAngle(px, AY, px - AX, py - AY, { alpha: a, color: "c2" });
+          g.lab("x \u2212 x\u2081", (AX + px) / 2, AY, { dx: 0, dy: 20, align: "center", size: 12, color: "c2", bold: true, p: seg(t, .4, .72), slide: [0, 12] });
+          g.lab("y \u2212 y\u2081", px, (AY + py) / 2, { dx: 14, dy: 0, size: 12, color: "c2", bold: true, p: seg(t, .5, .82), slide: [12, 0] });
+          g.dot(px, py, { r: 7, color: "c4", p: seg(t, .18, .5), glow: true, pulse: true, label: "P(x, y)", dx: 12, dy: -16, labelSlide: [14, -4] });
+        }
+      },
+      {
+        title: "Their ratio IS the slope",
+        dur: 2600,
+        body: "<p>You already know the slope formula. Applied to <span class='m'>A</span> and <span class='m'>P</span> it says:</p><p><b>slope = rise / run</b> = <span class='m'>(y \u2212 y\u2081) / (x \u2212 x\u2081)</span></p>",
+        draw: function (g, t) {
+          g.line(M, AC, { color: "c1", w: 2.6, alpha: .5 });
+          g.dot(AX, AY, { r: 7, color: "c3", glow: true, pulse: true, label: "A", dx: 12, dy: -16 });
+          var px = 5.5, py = M * px + AC;
+          g.seg(AX, AY, px, AY, { color: "c2", w: 2.8, grad: ["c2", "c6"], t: EB(t, 0, .45) });
+          g.seg(px, AY, px, py, { color: "c2", w: 2.8, grad: ["c2", "c6"], t: EB(t, .1, .55) });
+          g.rightAngle(px, AY, px - AX, py - AY, { color: "c2" });
+          g.dot(px, py, { r: 7, color: "c4", glow: true, pulse: true, label: "P", dx: 12, dy: -16 });
+          g.lab("rise = y \u2212 y\u2081", px, (AY + py) / 2, { dx: 16, dy: 0, size: 11.5, color: "c2", p: E(t, .2, .6), slide: [12, 0] });
+          g.lab("run = x \u2212 x\u2081", (AX + px) / 2, AY, { dx: 0, dy: 20, align: "center", size: 11.5, color: "c2", p: E(t, .35, .75), slide: [0, 12] });
+          g.corner("m = (y \u2212 y\u2081) / (x \u2212 x\u2081)", { p: E(t, .55, 1) });
+        }
+      },
+      {
+        title: "Multiply up — and the form appears",
+        dur: 2600,
+        body: "<p>Multiply both sides by <span class='m'>(x \u2212 x\u2081)</span>. The denominator disappears and you are left with the whole formula.</p><p><b>climb = slope &times; walk.</b> That is all it has ever said.</p>",
+        draw: function (g, t) {
+          g.line(M, AC, { color: "c1", w: 3.4, grad: ["c1", "c6"] });
+          g.dot(AX, AY, { r: 7, color: "c3", glow: true, pulse: true, label: "A(2, 1)", dx: 12, dy: -16 });
+          var px = 5.5, py = M * px + AC;
+          var a = E(t, 0, .5);
+          g.seg(AX, AY, px, AY, { color: "c2", w: 2.8, alpha: a, grad: ["c2", "c6"] });
+          g.seg(px, AY, px, py, { color: "c2", w: 2.8, alpha: a, grad: ["c2", "c6"] });
+          g.lab("climb", px, (AY + py) / 2, { dx: 16, dy: 0, size: 11.5, color: "c2", p: a, slide: [12, 0] });
+          g.lab("walk", (AX + px) / 2, AY, { dx: 0, dy: 20, align: "center", size: 11.5, color: "c2", p: a, slide: [0, 12] });
+          g.dot(px, py, { r: 7, color: "c4", p: a, glow: true, pulse: true });
+          g.tracerLine(M, AC, { color: "c3", w: 3.6, period: 2400, alpha: E(t, .5, 1), tailLen: .18 });
+          g.corner("y \u2212 y\u2081 = m(x \u2212 x\u2081)", { p: E(t, .45, 1), color: "c1" });
+          g.tag("the point-slope form", g.pad.l + g.pw - 6, g.pad.t + 14, { align: "right", size: 12, color: "c4", bold: true, p: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Try it yourself",
+        dur: 900, explore: true,
+        body: "<p>Move the three sliders. The anchor point and the line move together, and the equation is rewritten every time.</p><p>The spark travelling along the line runs at a constant speed — a straight line never changes gradient.</p>",
+        draw: function (g, t, P) {
+          var m = P.m, x1 = P.x1, y1 = P.y1, c = y1 - m * x1;
+          g.line(m, c, { color: "c1", w: 3.4, grad: ["c1", "c6"] });
+          g.tracerLine(m, c, { color: "c3", w: 3.6, period: 2600, tailLen: .16 });
+          g.dot(x1, y1, { r: 7.5, color: "c3", glow: true, pulse: true, ring: true, label: "(" + nf(x1, 0) + ", " + nf(y1, 0) + ")", dx: 12, dy: -17 });
+          if (Math.abs(m) > 1e-9) {
+            var px = x1 + 1, py = y1 + m;
+            g.seg(x1, y1, px, y1, { color: "c2", w: 2.2, dash: [4, 3] });
+            g.seg(px, y1, px, py, { color: "c2", w: 2.2, dash: [4, 3] });
+            g.lab("m = " + nf(m, 2), px, (y1 + py) / 2, { dx: 14, dy: 0, size: 11.5, color: "c2", bold: true });
+          } else {
+            g.lab("m = 0 \u2014 a horizontal line", x1, y1, { dx: 0, dy: 28, align: "center", size: 11.5, color: "c2", bold: true });
+          }
+          g.corner(Anim.eqMC(m, c));
+        },
+        readout: function (P) {
+          var m = P.m, x1 = P.x1, y1 = P.y1, c = y1 - m * x1;
+          var pts = psText(m, x1, y1);
+          if (Math.abs(m) < 1e-9) {
+            return "<b>" + pts + "</b><br>slope 0 \u00b7 horizontal line \u00b7 every point on it has y = " + nf(y1, 0);
+          }
+          return "<b>" + pts + "</b><br>which expands to <span class='m'>" + Anim.eqMC(m, c) + "</span> \u00b7 slope " +
+            nf(m, 2) + " \u00b7 y-intercept " + nf(c, 2);
+        }
+      }
+    ]
+  };
 
-  svg.addEventListener("click", function(e){
-    var s = state(), c = s.y1 - s.m*s.x1;
-    var hit = p.fromEvent(e);
-    var x = Math.round(hit.x), y = Math.round(hit.y);
-    if (x < -8 || x > 8 || y < -8 || y > 8) return;
-    draw();
-    var want = s.m*x + c;
-    var on = Math.abs(y - want) < 1e-9;
-    p.point(x, y, {color: on ? "var(--good)" : "var(--bad)", r:7, label:"(" + nf(x) + ", " + nf(y) + ")"});
-    CHK.innerHTML = on
-      ? "<b style='color:var(--good)'>&#10003; On the line.</b> Substituting x = " + nf(x) +
-        " into the equation: " + nf(s.m) + "(" + nf(x) + ") + " + nf(c) + " = " + nf(want) + " = y. It works."
-      : "<b style='color:var(--bad)'>&#10007; Not on the line.</b> For x = " + nf(x) +
-        " the equation demands y = " + nf(want) + ", but you clicked y = " + nf(y) + ".";
-    CHK.style.borderColor = on ? "var(--good)" : "var(--bad)";
-  });
-
-  draw();
-})();
-
-/* ================= 4. interactive: any point works ================= */
-(function(){
-  var svg = document.getElementById("plotAny");
-  if (!svg) return;
-  var m = 2, c = -3;
-  var pts = [[0,-3], [2,1], [4,5], [-1,-5]];
-  var p = new Plot(svg, {xmin:-6, xmax:6, ymin:-8, ymax:8});
-  var EQ = document.getElementById("anyEq"), MSG = document.getElementById("anyMsg");
-  var host = document.getElementById("anyBtns");
-  var cur = 0;
-
-  pts.forEach(function(pt, i){
-    var b = document.createElement("button");
-    b.type = "button";
-    b.className = "chip" + (i === 0 ? " on" : "");
-    b.textContent = "anchor (" + nf(pt[0]) + ", " + nf(pt[1]) + ")";
-    b.addEventListener("click", function(){
-      cur = i;
-      Array.prototype.forEach.call(host.children, function(ch, j){ ch.className = "chip" + (j === i ? " on" : ""); });
-      draw();
-    });
-    host.appendChild(b);
-  });
-
-  function draw(){
-    p.reset();
-    p.line(m, c, {color:"var(--brand)", width:3.2});
-    pts.forEach(function(pt, i){
-      p.point(pt[0], pt[1], {color: i === cur ? "var(--accent)" : "var(--ink-3)", r: i === cur ? 7 : 5});
-    });
-    var pt = pts[cur];
-    EQ.innerHTML = psLeft(pt[1]) + " = " + psRight(m, pt[0]);
-    MSG.innerHTML = "Expanding this gives <b>" + eqLine(m, c) + "</b> &mdash; exactly the same line. " +
-      "The graph above has not moved a millimetre, but the equation looks completely different. " +
-      "Different anchor, same line.";
+  /* point-slope text with the numbers substituted, e.g. "y − 1 = 2(x − 3)" */
+  function psText(m, x1, y1) {
+    var lhs = "y" + (Math.abs(y1) < 1e-9 ? "" : (y1 > 0 ? " \u2212 " + nf(y1, 0) : " + " + nf(-y1, 0)));
+    var br = (Math.abs(x1) < 1e-9) ? "x" : ("x" + (x1 > 0 ? " \u2212 " + nf(x1, 0) : " + " + nf(-x1, 0)));
+    var cm = Anim.coeff(m);
+    if (Math.abs(m) < 1e-9) return lhs + " = 0";
+    return lhs + " = " + cm + "(" + br + ")";
   }
-  draw();
+
+  /* ---------- BOARD 3: one line, four anchors ---------- */
+  var LM = 2, LC = -3;
+  var anchors = [[0, -3], [2, 1], [-2, -7], [4, 5]];
+  var ACOL = ["c3", "c2", "c4", "c6"];
+
+  var anyLine = {
+    id: "any", no: "3.1", name: "One line, four different anchors",
+    view: { x: [-8, 8], y: [-8, 8], xs: 1, ys: 1 },
+    steps: anchors.map(function (a, i) {
+      return {
+        title: "Anchor " + (i + 1) + ": the point (" + a[0] + ", " + a[1] + ")",
+        dur: 2200,
+        body: "<p>Using <span class='m'>(" + a[0] + ", " + a[1] + ")</span> as the known point, the point-slope form reads:</p>" +
+          "<p><b>" + psText(LM, a[0], a[1]) + "</b></p><p>Expand it and you land back on the same line every time.</p>",
+        draw: function (g, t) {
+          g.line(LM, LC, { color: "c1", w: 3.4, t: E(t, 0, .5), head: true, grad: ["c1", "c6"] });
+          g.tracerLine(LM, LC, { color: ACOL[i], w: 3.4, period: 2400, alpha: E(t, .5, 1) });
+          var al = E(t, .3, .8);
+          g.dot(a[0], a[1], { r: 8, color: ACOL[i], p: al, glow: true, pulse: true, ring: true, label: "(" + a[0] + ", " + a[1] + ")", dx: 13, dy: -18, labelSlide: [16, -6], labelColor: ACOL[i] });
+          g.corner(psText(LM, a[0], a[1]) + "   \u2192   y = 2x \u2212 3", { p: E(t, .55, 1) });
+        }
+      };
+    }).concat([{
+      title: "Four equations, one line",
+      dur: 2800,
+      body: "<p>All four anchors at once. <b>Four different-looking equations, one single line.</b></p><p>Expand any of them and you get <span class='m'>y = 2x \u2212 3</span> — so a different-looking answer is not automatically a wrong one.</p>",
+      draw: function (g, t) {
+        g.line(LM, LC, { color: "c1", w: 3.2, t: E(t, 0, .3), head: true, grad: ["c1", "c6"] });
+        anchors.forEach(function (a, i) {
+          var al = E(t, .2 + i * .16, .5 + i * .16);
+          g.dot(a[0], a[1], { r: 6.5, color: ACOL[i], p: al, glow: true, pulse: true });
+          g.lab(psText(LM, a[0], a[1]), a[0], a[1], { dx: 13, dy: -17, size: 11.5, color: ACOL[i], bold: true, p: al, slide: [14, -5] });
+        });
+        g.tracerLine(LM, LC, { color: "c3", w: 3.2, period: 3000, alpha: E(t, .6, 1) });
+        g.corner("y = 2x \u2212 3", { p: E(t, .8, 1) });
+      }
+    }])
+  };
+
+  function mount(id, lesson) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    try { Anim.mount(el, lesson); } catch (e) { el.innerHTML = ""; }
+  }
+  mount("boardTank", tank);
+  mount("boardPS", lesson);
+  mount("boardAny", anyLine);
 })();
 </script>
 </body>

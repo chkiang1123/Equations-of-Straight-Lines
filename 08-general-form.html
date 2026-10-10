@@ -37,6 +37,9 @@
     <p class="glink">Tick these as you go &mdash; your ticks are saved on this device. Keyword search: <code>general form</code>, <code>Ax + By + C = 0</code>, <code>coefficients of a line</code>.</p>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardSpec"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -370,6 +373,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. case-study figure: the machined edge ================= */
@@ -484,6 +488,181 @@
     MSG.innerHTML = "This is the same line as 3x − 4y + 12 = 0, just multiplied by <b>" + nf(k) + "</b>. The graph above has not moved — only the coefficients changed. Different outfit, identical line.";
   }
   draw();
+})();
+
+/* ================= animated board: the machined-edge spec ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr;
+
+  var A0 = 3, B0 = -4, C0 = 12;      // 3x - 4y + 12 = 0
+  var M = -A0 / B0, CI = -C0 / B0;   // slope 0.75, y-intercept 3
+  var XI = -C0 / A0;                 // x-intercept -4
+
+  function gen(a, b, c) {
+    var s = "";
+    s += (Math.abs(a) === 1 ? (a < 0 ? "\u2212" : "") : nf(a, 0)) + (Math.abs(a) === 1 ? "x" : "x");
+    s += (b < 0 ? " \u2212 " : " + ") + (Math.abs(b) === 1 ? "y" : nf(Math.abs(b), 0) + "y");
+    s += (c < 0 ? " \u2212 " : " + ") + nf(Math.abs(c), 0);
+    return s + " = 0";
+  }
+
+  var lesson = {
+    id: "spec", no: "CS", name: "The machined-edge spec sheet",
+    view: { x: [-8, 8], y: [-6, 6], xs: 1, ys: 1 },
+    controls: [
+      { k: "A", label: "A (coefficient of x)", min: -6, max: 6, step: 1, value: 3 },
+      { k: "B", label: "B (coefficient of y)", min: -6, max: 6, step: 1, value: -4 },
+      { k: "C", label: "C (constant)", min: -12, max: 12, step: 1, value: 12 }
+    ],
+    steps: [
+      {
+        title: "Three numbers describe one edge",
+        dur: 2300,
+        body: "<p>The spec reads <span class='m'>3x &minus; 4y + 12 = 0</span>: <b>A = 3</b>, <b>B = &minus;4</b>, <b>C = 12</b>. Nothing is solved for y yet — the line is still perfectly well defined.</p>",
+        draw: function (g, t) {
+          g.line(M, CI, { color: "c1", w: 3.4, t: E(t, 0, .92), head: true, grad: ["c1", "c4"] });
+          g.tracerLine(M, CI, { color: "c3", w: 3.2, alpha: E(t, .82, 1), from: -8, to: 8 });
+          g.corner("A = 3    B = \u22124    C = 12", { p: E(t, .3, .8) });
+          g.tag("Ax + By + C = 0", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", mono: true, size: 12, color: "c4", bold: true, alpha: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "The slope hides in the coefficients",
+        dur: 2600,
+        body: "<p>Rearrange once and the slope falls out: <span class='m'>m = &minus;A/B = &minus;3/(&minus;4) = 3/4 = 0.75</span> — exactly the value on the drawing. No need to plot anything.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .1, .55), s2 = E(t, .45, .9);
+          g.line(M, CI, { color: "c1", w: 3.2, alpha: .55 });
+          g.seg(XI, 0, 0, 0, { color: "c2", w: 2.8, t: s1, head: true });
+          g.seg(0, 0, 0, CI, { color: "c2", w: 2.8, t: s2, head: true });
+          g.rightAngle(0, 0, 1, -1, { alpha: s2, color: "c2" });
+          g.lab("run = 4", -2, 0, { dx: 0, dy: 20, align: "center", size: 12, color: "c2", bold: true, alpha: s1 });
+          g.lab("rise = 3", 0, 1.5, { dx: -14, dy: 0, align: "right", size: 12, color: "c2", bold: true, alpha: s2 });
+          g.dot(XI, 0, { color: "c3", r: 6, alpha: .9 });
+          g.dot(0, CI, { color: "c3", r: 6, alpha: .9 });
+          var txt = seg(t, .7, 1) > 0 ? "m = \u2212A/B = 3/4 = 0.75" : "m = rise / run";
+          g.corner(txt, { p: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "Both intercepts, straight from A, B, C",
+        dur: 2600,
+        body: "<p>Put <span class='m'>y = 0</span>: <b>3x + 12 = 0</b>, so the x-intercept is <b>&minus;C/A = &minus;4</b>. Put <span class='m'>x = 0</span>: <b>&minus;4y + 12 = 0</b>, so the y-intercept is <b>&minus;C/B = 3</b>. The cutting head now has both positions.</p>",
+        draw: function (g, t) {
+          var a1 = E(t, .05, .5), a2 = E(t, .45, .95);
+          g.line(M, CI, { color: "c1", w: 3.2, alpha: .55 });
+          g.seg(XI, 0, XI, CI, { color: "muted", w: 1.4, dash: [4, 3], t: a1 });
+          g.seg(0, CI, XI, CI, { color: "muted", w: 1.4, dash: [4, 3], t: a2 });
+          g.dot(XI, 0, { color: "c3", r: 7.5, p: a1, glow: true, pulse: true, ring: true,
+            label: "(\u22124, 0)", dx: -12, dy: -16, align: "right", size: 13 });
+          g.dot(0, CI, { color: "c3", r: 7.5, p: a2, glow: true, pulse: true, ring: true,
+            label: "(0, 3)", dx: 12, dy: -16, size: 13 });
+          g.corner("x-int = \u2212C/A = \u22124    y-int = \u2212C/B = 3", { p: E(t, .62, 1) });
+        }
+      },
+      {
+        title: "Why it is called general",
+        dur: 2800,
+        body: "<p>Set <span class='m'>A = 0</span> and you get a <b>horizontal</b> line. Set <span class='m'>B = 0</span> and you get a <b>vertical</b> one — the case <span class='m'>y = mx + c</span> simply cannot write. Both live happily here.</p>",
+        draw: function (g, t) {
+          var s1 = seg(t, 0, .5), s2 = seg(t, .5, 1);
+          if (s1 > 0 && s2 < 1) {
+            g.line(M, CI, { color: "c1", w: 3.2, alpha: .3 });
+          }
+          if (s2 <= 0) {
+            /* A = 0  ->  -4y + 12 = 0  ->  y = 3 */
+            g.hl(3, { color: "c2", w: 3.4, t: E(t, .05, .45), head: true, grad: ["c2", "c6"] });
+            g.dot(4, 3, { color: "c2", r: 7, p: E(t, .25, .45), glow: true, pulse: true,
+              label: "(4, 3)", dx: 0, dy: -18, align: "center", size: 12.5 });
+            g.corner("A = 0  \u2192  0x \u2212 4y + 12 = 0  \u2192  y = 3", { p: E(t, .12, .5) });
+            g.tag("horizontal", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12, color: "c2", bold: true, alpha: E(t, .2, .5) });
+          } else {
+            /* B = 0  ->  3x + 12 = 0  ->  x = -4 */
+            g.vl(-4, { color: "c4", w: 3.4, t: E(t, .55, .95), head: true, grad: ["c4", "c6"] });
+            g.dot(-4, -3, { color: "c4", r: 7, p: E(t, .75, .95), glow: true, pulse: true,
+              label: "(\u22124, \u22123)", dx: 14, dy: -14, size: 12.5 });
+            g.corner("B = 0  \u2192  3x + 0y + 12 = 0  \u2192  x = \u22124", { p: E(t, .6, 1) });
+            g.tag("vertical — impossible for y = mx + c", g.pad.l + 6, g.pad.t + 34,
+              { align: "left", size: 12, color: "c4", bold: true, alpha: E(t, .68, 1) });
+          }
+        }
+      },
+      {
+        title: "Same line, different outfit",
+        dur: 2800,
+        body: "<p>Multiply <em>every</em> term by the same number and the coefficients all change while the line does not budge. <b>6x &minus; 8y + 24 = 0</b> and <b>&minus;3x + 4y &minus; 12 = 0</b> are the very same edge.</p>",
+        draw: function (g, t) {
+          var s1 = seg(t, 0, .34), s2 = seg(t, .34, .67), s3 = seg(t, .67, 1);
+          var txt = "3x \u2212 4y + 12 = 0", lc = "c1";
+          if (s2 > 0) { txt = "6x \u2212 8y + 24 = 0"; lc = "c6"; }
+          if (s3 > 0) { txt = "\u22123x + 4y \u2212 12 = 0"; lc = "c3"; }
+          g.line(M, CI, { color: "c1", w: 3.6, grad: ["c1", "c4"] });
+          g.dot(XI, 0, { color: "c3", r: 6, alpha: .95, pulse: true });
+          g.dot(0, CI, { color: "c3", r: 6, alpha: .95, pulse: true });
+          g.corner(txt, { p: 1, color: lc });
+          g.tag("the graph never moves", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c3", bold: true, alpha: E(t, .5, 1) });
+        }
+      },
+      {
+        title: "Explore: dial A, B and C",
+        dur: 900, explore: true,
+        body: "<p>Change any of the three coefficients and watch the edge swing. Set <span class='m'>B = 0</span> for a vertical line, <span class='m'>A = 0</span> for a horizontal one, and both to 0 to see the form collapse.</p>",
+        draw: function (g, t, P) {
+          var a = P.A, b = P.B, c = P.C;
+          if (a === 0 && b === 0) {
+            g.corner("A = B = 0 — not a line at all", { alpha: .95 });
+            g.lab("the rule is: A and B are not both zero", 0, 0,
+              { align: "center", size: 13, color: "c6", bold: true });
+            return;
+          }
+          if (b === 0) {
+            var xv = -c / a;
+            g.vl(xv, { color: "c4", w: 3.4, grad: ["c4", "c6"] });
+            g.dot(xv, 0, { color: "c4", r: 7, glow: true, pulse: true,
+              label: "(" + nf(xv, 2) + ", 0)", dx: 14, dy: -16, size: 12.5 });
+            g.corner("B = 0  \u2192  vertical line x = " + nf(xv, 2), { alpha: .95 });
+            return;
+          }
+          if (a === 0) {
+            var yv = -c / b;
+            g.hl(yv, { color: "c2", w: 3.4, grad: ["c2", "c6"] });
+            g.dot(0, yv, { color: "c2", r: 7, glow: true, pulse: true,
+              label: "(0, " + nf(yv, 2) + ")", dx: 14, dy: -16, size: 12.5 });
+            g.corner("A = 0  \u2192  horizontal line y = " + nf(yv, 2), { alpha: .95 });
+            return;
+          }
+          var m = -a / b, ci = -c / b, xi = -c / a;
+          g.line(m, ci, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          g.tracerLine(m, ci, { color: "c3", w: 3, from: -8, to: 8, period: 2400 });
+          g.dot(xi, 0, { color: "c3", r: 6.5, glow: true, pulse: true,
+            label: "(" + nf(xi, 2) + ", 0)", dx: -12, dy: -16, align: "right", size: 12.5 });
+          g.dot(0, ci, { color: "c3", r: 6.5, glow: true, pulse: true,
+            label: "(0, " + nf(ci, 2) + ")", dx: 12, dy: -16, size: 12.5 });
+          g.corner(gen(a, b, c), { alpha: .95 });
+        },
+        readout: function (P) {
+          var a = P.A, b = P.B, c = P.C;
+          if (a === 0 && b === 0)
+            return "<b class='warn'>A and B are both 0.</b> The equation becomes " + nf(c, 0) + " = 0, which is either never true or always true — it is not a line.";
+          if (b === 0)
+            return "<b>" + gen(a, b, c) + "</b><br>B = 0, so this is the <b>vertical</b> line x = " + nf(-c / a, 2) + ". Slope does not exist.";
+          if (a === 0)
+            return "<b>" + gen(a, b, c) + "</b><br>A = 0, so this is the <b>horizontal</b> line y = " + nf(-c / b, 2) + ". Slope 0.";
+          var m = -a / b, ci = -c / b, xi = -c / a;
+          return "<b>" + gen(a, b, c) + "</b><br>" +
+            "slope m = \u2212A/B = " + fr(-a, b) + " = " + nf(m, 3) + "<br>" +
+            "x-intercept \u2212C/A = " + nf(xi, 3) + " &nbsp;&middot;&nbsp; y-intercept \u2212C/B = " + nf(ci, 3) + "<br>" +
+            "slope-intercept: y = " + nf(m, 3) + "x" + (ci < 0 ? " \u2212 " : " + ") + nf(Math.abs(ci), 3);
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardSpec");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

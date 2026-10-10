@@ -39,6 +39,9 @@
     </ul>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardDrone"></div>
+
   <!-- ================= CASE STUDY (SYNTHESIS) ================= -->
   <section class="blk">
     <div class="case">
@@ -205,6 +208,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. the drone figure ================= */
@@ -306,6 +310,145 @@
   ];
 
   mountQuiz(document.getElementById("quizHost"), QUESTIONS);
+})();
+
+/* ================= animated board: the delivery drone ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  var P1 = { x: 1, y: 2 }, P2 = { x: 9, y: 8 };          // depot -> drop point
+  var MD = (P2.y - P1.y) / (P2.x - P1.x);                // 3/4
+  var CD = P1.y - MD * P1.x;                             // 5/4
+  var MR = 2, CR = -6;                                   // the river
+  var XC = (CR - CD) / (MD - MR), YC = MR * XC + CR;     // crossing
+
+  var lesson = {
+    id: "drone", no: "CS", name: "The delivery drone",
+    view: { x: [-1, 10], y: [-8, 10], xs: 1, ys: 2 },
+    controls: [
+      { k: "mr", label: "river slope", min: -3, max: 4, step: 0.25, value: 2 },
+      { k: "cr", label: "river intercept", min: -10, max: 6, step: 0.5, value: -6 }
+    ],
+    steps: [
+      {
+        title: "Two fixed points",
+        dur: 2300,
+        body: "<p>Everything starts from the two places the drone must visit: the depot at <b>(1, 2)</b> and the drop point at <b>(9, 8)</b>. Two points is all you need &mdash; but you have to turn them into an equation.</p>",
+        draw: function (g, t) {
+          g.dot(P1.x, P1.y, { color: "c3", r: 7.5, p: E(t, .05, .4), glow: true, pulse: true, ring: true,
+            label: "depot (1, 2)", dx: 13, dy: -14, size: 12.5 });
+          g.dot(P2.x, P2.y, { color: "c3", r: 7.5, p: E(t, .35, .7), glow: true, pulse: true, ring: true,
+            label: "drop (9, 8)", dx: -13, dy: -14, align: "right", size: 12.5 });
+          g.seg(P1.x, P1.y, P2.x, P2.y, { color: "muted", w: 1.6, dash: [5, 4], t: E(t, .68, 1) });
+          g.corner("two points fix a straight path", { p: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Turn the two points into an equation",
+        dur: 2800,
+        body: "<p>Two points need the <b>two-point form</b> first: <span class='m'>(y &minus; 2)/(x &minus; 1) = (8 &minus; 2)/(9 &minus; 1)</span>. That gives the slope <b>m = 6/8 = 3/4</b>, and then <b>point-slope</b> finishes the job.</p>",
+        draw: function (g, t) {
+          g.line(MD, CD, { color: "c1", w: 3.4, t: E(t, 0, .5), head: true, grad: ["c1", "c4"] });
+          var s1 = E(t, .3, .62), s2 = E(t, .55, .85), s3 = E(t, .78, 1);
+          g.seg(P1.x, P1.y, P2.x, P2.y, { color: "c2", w: 2.6, t: s2, head: true });
+          g.seg(P1.x, P1.y, P2.x, P1.y, { color: "c2", w: 2, dash: [4, 3], t: s1, alpha: .85 });
+          g.seg(P2.x, P1.y, P2.x, P2.y, { color: "c2", w: 2, dash: [4, 3], t: s1, alpha: .85 });
+          g.lab("run = 8", 5, P1.y, { dx: 0, dy: 20, align: "center", size: 12, color: "c2", bold: true, alpha: s1 });
+          g.lab("rise = 6", P2.x, 5, { dx: 14, dy: 0, size: 12, color: "c2", bold: true, alpha: s1 });
+          g.dot(P1.x, P1.y, { color: "c3", r: 6.5, glow: true, alpha: .95 });
+          g.dot(P2.x, P2.y, { color: "c3", r: 6.5, glow: true, alpha: .95 });
+          g.corner(s3 > 0 ? "y \u2212 2 = 3/4 (x \u2212 1)   \u2192   y = 3/4 x + 5/4" : "m = 6/8 = 3/4",
+            { p: E(t, .6, 1) });
+          g.tag("two-point \u2192 point-slope \u2192 slope-intercept", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c1", bold: true, alpha: E(t, .85, 1) });
+        }
+      },
+      {
+        title: "The river is a line too",
+        dur: 2500,
+        body: "<p>The river runs along <span class='m'>y = 2x &minus; 6</span> &mdash; already in slope-intercept form. Its slope, <b>2</b>, is bigger than the path's <b>3/4</b>, so the river climbs more sharply.</p>",
+        draw: function (g, t) {
+          g.line(MD, CD, { color: "c1", w: 3, alpha: .5 });
+          g.line(MR, CR, { color: "c3", w: 3.4, t: E(t, 0, .9), head: true, grad: ["c3", "c5"] });
+          g.tracerLine(MR, CR, { color: "c6", w: 3, from: -1, to: 8, alpha: E(t, .8, 1) });
+          g.dot(0, CR, { color: "c3", r: 6, p: E(t, .5, .8), glow: true, label: "(0, \u22126)", dx: 12, dy: -14, size: 12 });
+          g.dot(3, 0, { color: "c3", r: 6, p: E(t, .62, .9), glow: true, label: "(3, 0)", dx: 12, dy: -14, size: 12 });
+          g.corner("river: y = 2x \u2212 6", { p: E(t, .45, 1), color: "c3" });
+          g.tag("steeper than the flight path", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c3", bold: true, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "Where the path meets the river",
+        dur: 2900,
+        body: "<p>Set the two rules equal: <span class='m'>3/4 x + 5/4 = 2x &minus; 6</span>. Collect the x terms and <b>x = 5.8</b>, so <b>y = 5.6</b>. That point is the simultaneous solution &mdash; the one place both lines agree.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .05, .45), s2 = E(t, .4, .8), s3 = E(t, .72, 1);
+          g.line(MD, CD, { color: "c1", w: 3.2, alpha: .55 });
+          g.line(MR, CR, { color: "c3", w: 3.2, alpha: .55 });
+          g.seg(XC, YC, XC, YC - 3.4, { color: "muted", w: 1.4, dash: [4, 3], t: s3 });
+          g.seg(XC, YC, XC - 3.4, YC, { color: "muted", w: 1.4, dash: [4, 3], t: s3 });
+          g.dot(XC, YC, { color: "c6", r: 8, p: s2, glow: true, pulse: true, ring: true,
+            label: "(5.8, 5.6)", dx: 14, dy: -16, size: 13 });
+          g.corner(s3 > 0 ? "crossing at (5.8, 5.6)" : "3/4 x + 5/4 = 2x \u2212 6", { p: s1 });
+          g.tag(s2 > 0 ? "5/4 x = 29/4   \u2192   x = 29/5 = 5.8" : "", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12.5, color: "c6", bold: true, alpha: s2 });
+        }
+      },
+      {
+        title: "And the halfway point",
+        dur: 2400,
+        body: "<p>The midpoint uses nothing but averages: <span class='m'>((1+9)/2, (2+8)/2) = (5, 5)</span>. It sits on the flight path, roughly where the drone passes over the river.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .05, .55), s2 = E(t, .5, .95);
+          g.line(MD, CD, { color: "c1", w: 3.2, alpha: .6 });
+          g.line(MR, CR, { color: "c3", w: 3, alpha: .5 });
+          g.dot(P1.x, P1.y, { color: "c3", r: 5.5, alpha: .8 });
+          g.dot(P2.x, P2.y, { color: "c3", r: 5.5, alpha: .8 });
+          g.dot(5, 5, { color: "c2", r: 8, p: s2, glow: true, pulse: true, ring: true,
+            label: "midpoint (5, 5)", dx: -13, dy: -16, align: "right", size: 13 });
+          g.corner("average the coordinates", { p: s1 });
+          g.tag("( (1+9)/2 , (2+8)/2 ) = (5, 5)", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12.5, color: "c2", bold: true, alpha: s2 });
+        }
+      },
+      {
+        title: "Explore: re-route the river",
+        dur: 900, explore: true,
+        body: "<p>The flight path is fixed. Tilt and slide the river and watch the crossing point slide along the path &mdash; until the river becomes parallel to the path and the two never meet at all.</p>",
+        draw: function (g, t, P) {
+          var mr = P.mr, cr = P.cr;
+          g.line(MD, CD, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          g.line(mr, cr, { color: "c3", w: 3.4, grad: ["c3", "c5"] });
+          g.dot(P1.x, P1.y, { color: "c3", r: 6, glow: true });
+          g.dot(P2.x, P2.y, { color: "c3", r: 6, glow: true });
+          if (Math.abs(mr - MD) > 1e-9) {
+            var xc = (cr - CD) / (MD - mr), yc = mr * xc + cr;
+            if (xc > -6 && xc < 16 && yc > -12 && yc < 14)
+              g.dot(xc, yc, { color: "c6", r: 7.5, glow: true, pulse: true, ring: true,
+                label: "(" + nf(xc, 2) + ", " + nf(yc, 2) + ")", dx: 14, dy: -16, size: 12.5 });
+          }
+          g.tag("path: y = 3/4 x + 5/4", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+          g.tag("river: y = " + nf(mr, 2) + "x" + (cr < 0 ? " \u2212 " : " + ") + nf(Math.abs(cr), 2),
+            g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12.5, color: "c3", bold: true });
+        },
+        readout: function (P) {
+          var mr = P.mr, cr = P.cr;
+          if (Math.abs(mr - MD) < 1e-9)
+            return "<b>Parallel.</b> The river slope " + nf(mr, 2) + " equals the path slope 3/4, so the drone never crosses the river &mdash; <b>no junction</b>.<br>" +
+              "The river is y = " + nf(mr, 2) + "x" + (cr < 0 ? " &minus; " : " + ") + nf(Math.abs(cr), 2) + ".";
+          var xc = (cr - CD) / (MD - mr), yc = mr * xc + cr;
+          return "The drone crosses the river at <b>(" + nf(xc, 3) + ", " + nf(yc, 3) + ")</b>.<br>" +
+            "path y = 3/4 x + 5/4  &nbsp;&middot;&nbsp;  river y = " + nf(mr, 2) + "x" + (cr < 0 ? " &minus; " : " + ") + nf(Math.abs(cr), 2) +
+            "<br>distance along the path from the depot: about " + nf(Math.sqrt(Math.pow(xc - P1.x, 2) + Math.pow(yc - P1.y, 2)), 2) + " km";
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardDrone");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

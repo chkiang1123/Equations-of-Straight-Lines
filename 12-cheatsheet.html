@@ -43,6 +43,9 @@
     </ul>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardFive"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -325,6 +328,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 (function(){
@@ -341,6 +345,154 @@
   p.dotted(2, 0, 0, 0, {color:"var(--ink-3)"});
   p.text(1, 6.2, "every one of the five equations passes through all of these points",
     {size:12, color:"var(--ink-3)", weight:600});
+})();
+
+/* ================= animated board: five equations, one line ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, lerp = Anim.lerp;
+
+  var M = 2, C = -4;                       // y = 2x - 4
+  var P = { x: 3, y: 2 }, Q = { x: 5, y: 6 };
+  var XI = 2, YI = -4;                     // intercepts (2, 0) and (0, -4)
+
+  var lesson = {
+    id: "five", no: "\u03A3", name: "Five equations, one line",
+    view: { x: [-5, 7], y: [-8, 8], xs: 1, ys: 2 },
+    controls: [
+      { k: "m", label: "slope m", min: -3, max: 3, step: 0.25, value: 2 },
+      { k: "c", label: "y-intercept c", min: -6, max: 6, step: 0.5, value: -4 }
+    ],
+    steps: [
+      {
+        title: "Five students, one line",
+        dur: 2300,
+        body: "<p>Anita, Bilal, Chen, Dana and Eli each handed in a different-looking equation. Drawn on the same grid they are not five lines at all &mdash; they are <b>one</b>.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.4, t: E(t, 0, .9), head: true, grad: ["c1", "c4"] });
+          g.tracerLine(M, C, { color: "c3", w: 3.2, alpha: E(t, .8, 1), from: -5, to: 7 });
+          g.corner("one straight line, five outfits", { p: E(t, .55, 1) });
+        }
+      },
+      {
+        title: "Point-slope: Anita and Bilal",
+        dur: 2600,
+        body: "<p><b>Anita:</b> <span class='m'>y &minus; 2 = 2(x &minus; 3)</span>. <b>Bilal:</b> <span class='m'>(y &minus; 2)/(x &minus; 3) = (6 &minus; 2)/(5 &minus; 3)</span>. Both are built on the two points <b>(3, 2)</b> and <b>(5, 6)</b>.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.2, alpha: .55 });
+          g.seg(P.x, P.y, Q.x, Q.y, { color: "c2", w: 2.6, t: E(t, .1, .6), head: true });
+          g.dot(P.x, P.y, { color: "c3", r: 7, p: E(t, .3, .7), glow: true, pulse: true, ring: true,
+            label: "(3, 2)", dx: -12, dy: -16, align: "right", size: 12.5 });
+          g.dot(Q.x, Q.y, { color: "c3", r: 7, p: E(t, .5, .9), glow: true, pulse: true, ring: true,
+            label: "(5, 6)", dx: 12, dy: -16, size: 12.5 });
+          g.corner("y \u2212 2 = 2(x \u2212 3)", { p: E(t, .55, 1), color: "c1" });
+          g.tag("slope from the two points:  (6\u22122)/(5\u22123) = 2", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c2", bold: true, alpha: E(t, .75, 1) });
+        }
+      },
+      {
+        title: "Intercepts: Chen",
+        dur: 2500,
+        body: "<p><b>Chen:</b> <span class='m'>x/2 + y/(&minus;4) = 1</span>. The denominators are the two axis cuts: <b>(2, 0)</b> across and <b>(0, &minus;4)</b> down. Nothing is solved for y here at all.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.2, alpha: .55 });
+          var a1 = E(t, .08, .5), a2 = E(t, .45, .9);
+          g.dot(XI, 0, { color: "c3", r: 7.5, p: a1, glow: true, pulse: true, ring: true,
+            label: "(2, 0)", dx: 12, dy: -16, size: 12.5 });
+          g.dot(0, YI, { color: "c3", r: 7.5, p: a2, glow: true, pulse: true, ring: true,
+            label: "(0, \u22124)", dx: 12, dy: 16, size: 12.5 });
+          g.seg(0, 0, XI, 0, { color: "c2", w: 2, dash: [4, 3], t: a1, alpha: .8 });
+          g.seg(0, 0, 0, YI, { color: "c2", w: 2, dash: [4, 3], t: a2, alpha: .8 });
+          g.corner("x/2 + y/(\u22124) = 1", { p: E(t, .55, 1), color: "c1" });
+          g.tag("the denominators 2 and \u22124 are the intercepts", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12, color: "c2", bold: true, alpha: E(t, .75, 1) });
+        }
+      },
+      {
+        title: "Slope-intercept and general: Dana and Eli",
+        dur: 2700,
+        body: "<p><b>Dana:</b> <span class='m'>y = 2x &minus; 4</span> tells you the slope and the cut at a glance. <b>Eli:</b> <span class='m'>2x &minus; y &minus; 4 = 0</span> puts everything on one side &mdash; the form that handles vertical lines too.</p>",
+        draw: function (g, t) {
+          g.line(M, C, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          var a = E(t, .15, .6);
+          g.dot(0, C, { color: "c3", r: 7, p: a, glow: true, pulse: true, ring: true,
+            label: "(0, \u22124)", dx: 12, dy: 16, size: 12.5 });
+          g.seg(0, C, 1, C, { color: "c2", w: 2.4, t: E(t, .35, .6), head: true });
+          g.seg(1, C, 1, M + C, { color: "c2", w: 2.4, t: E(t, .55, .85), head: true });
+          g.rightAngle(1, C, -1, 1, { alpha: E(t, .55, .9), color: "c2" });
+          g.lab("1", .5, C, { dx: 0, dy: 20, align: "center", size: 12, color: "c2", bold: true, alpha: E(t, .4, .7) });
+          g.lab("m = 2", 1, C + 1, { dx: 13, dy: 0, size: 12, color: "c2", bold: true, alpha: E(t, .6, .9) });
+          g.tag("y = 2x \u2212 4", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+          g.tag("2x \u2212 y \u2212 4 = 0", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", mono: true, size: 12.5, color: "c4", bold: true, alpha: E(t, .5, 1) });
+          g.corner("A = 2, B = \u22121, C = \u22124  \u2192  m = \u2212A/B = 2", { p: E(t, .8, 1), color: "c4" });
+        }
+      },
+      {
+        title: "Which form to reach for",
+        dur: 2800,
+        body: "<p>The forms are not competitors, they are tools. Given two points, start with <b>two-point</b>; given a slope and a point, use <b>point-slope</b>; to read the picture, use <b>slope-intercept</b>; when the coefficients matter &mdash; or the line is vertical &mdash; use <b>general</b>.</p>",
+        draw: function (g, t) {
+          var rows = [
+            ["two points", "two-point", "c2"],
+            ["slope + a point", "point-slope", "c1"],
+            ["the picture", "slope-intercept", "c4"],
+            ["both intercepts", "intercept form", "c3"],
+            ["coefficients / vertical", "general form", "c6"]
+          ];
+          g.line(M, C, { color: "c1", w: 3, alpha: .3 });
+          rows.forEach(function (r, i) {
+            var p = E(t, .06 + i * .16, .36 + i * .16);
+            if (p <= 0) return;
+            g.tag("given " + r[0] + "  \u2192  use " + r[1], g.pad.l + 8, g.pad.t + 20 + i * 26,
+              { align: "left", size: 12.5, color: r[2], bold: true, alpha: p });
+          });
+          var s = E(t, .88, 1);
+          if (s > 0) g.dot(1, M + C, { color: "c3", r: 7, glow: true, pulse: true, ring: true, label: "(1, \u22122)", dx: 12, dy: -14, size: 12.5, p: s });
+        }
+      },
+      {
+        title: "Explore: build your own line in all five forms",
+        dur: 900, explore: true,
+        body: "<p>Move <span class='m'>m</span> and <span class='m'>c</span> and every form updates together &mdash; proof that they are five ways of saying the same thing.</p>",
+        draw: function (g, t, P) {
+          var m = P.m, c = P.c;
+          g.line(m, c, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          g.dot(0, c, { color: "c3", r: 7, glow: true, pulse: true, ring: true,
+            label: "(0, " + nf(c, 2) + ")", dx: 12, dy: -16, size: 12.5 });
+          if (Math.abs(m) > 1e-9) {
+            var xr = -c / m;
+            if (xr > -5 && xr < 7) g.dot(xr, 0, { color: "c5", r: 6.5, glow: true, pulse: true,
+              label: "(" + nf(xr, 2) + ", 0)", dx: 0, dy: 20, align: "center", size: 12.5 });
+          }
+          g.dot(1, m + c, { color: "c2", r: 6, glow: true, label: "(1, " + nf(m + c, 2) + ")", dx: 12, dy: -14, size: 12 });
+          g.tag("y = " + nf(m, 2) + "x" + (c < 0 ? " \u2212 " : " + ") + nf(Math.abs(c), 2),
+            g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+        },
+        readout: function (P) {
+          var m = P.m, c = P.c;
+          var L = [];
+          L.push("<b>slope-intercept:</b> y = " + nf(m, 2) + "x" + (c < 0 ? " &minus; " : " + ") + nf(Math.abs(c), 2));
+          L.push("<b>point-slope (through (0, c)):</b> y &minus; (" + nf(c, 2) + ") = " + nf(m, 2) + "(x &minus; 0)");
+          L.push("<b>general:</b> " + nf(-m, 2) + "x + 1y + (" + nf(-c, 2) + ") = 0");
+          if (Math.abs(m) < 1e-9) {
+            L.push("<b>intercept form:</b> not available &mdash; a horizontal line has no x-intercept (unless c = 0).");
+            L.push("<b>two-point:</b> pick any two x values; every point has y = " + nf(c, 2) + ".");
+          } else {
+            var a = -c / m, b = c;
+            L.push(Math.abs(a) < 1e-9 || Math.abs(b) < 1e-9
+              ? "<b>intercept form:</b> not available &mdash; one intercept is 0. Use general form instead."
+              : "<b>intercept form:</b> x/" + nf(a, 2) + " + y/" + nf(b, 2) + " = 1");
+            L.push("<b>two-point:</b> through (0, " + nf(c, 2) + ") and (" + nf(a, 2) + ", 0)");
+          }
+          return L.join("<br>");
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardFive");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

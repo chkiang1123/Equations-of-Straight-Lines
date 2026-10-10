@@ -37,6 +37,9 @@
     <p class="glink">Tick these as you go &mdash; your ticks are saved on this device. Keyword search: <code>intersection of two lines</code>, <code>simultaneous equations</code>, <code>parallel lines test</code>.</p>
   </div>
 
+  <!-- ================= ANIMATED BOARD ================= -->
+  <div id="boardJunction"></div>
+
   <!-- ================= CASE STUDY ================= -->
   <section class="blk">
     <div class="case">
@@ -355,6 +358,7 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
 /* ================= 1. case-study figure: two routes ================= */
@@ -483,6 +487,152 @@
     inp[id].addEventListener("input", draw);
   });
   draw();
+})();
+
+/* ================= animated board: the junction of two routes ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  var M1 = 2, C1 = -1;        // route A: 2x - y = 1  ->  y = 2x - 1
+  var M2 = -1, C2 = 4;        // route B: x + y = 4   ->  y = -x + 4
+  var XI = 5 / 3, YI = 7 / 3; // junction
+
+  var lesson = {
+    id: "junction", no: "CS", name: "The junction of two routes",
+    view: { x: [-6, 6], y: [-6, 6], xs: 1, ys: 1 },
+    controls: [
+      { k: "m2", label: "route B slope m\u2082", min: -4, max: 4, step: 0.25, value: -1 },
+      { k: "c2", label: "route B intercept c\u2082", min: -6, max: 6, step: 0.5, value: 4 }
+    ],
+    steps: [
+      {
+        title: "Two routes, drawn on one plan",
+        dur: 2500,
+        body: "<p>Route A is <span class='m'>2x &minus; y = 1</span>, which is <b>y = 2x &minus; 1</b>. Route B is <span class='m'>x + y = 4</span>, which is <b>y = &minus;x + 4</b>. Different slopes, so they must cross somewhere.</p>",
+        draw: function (g, t) {
+          g.line(M1, C1, { color: "c1", w: 3.4, t: E(t, 0, .55), head: true, grad: ["c1", "c4"] });
+          g.line(M2, C2, { color: "c3", w: 3.4, t: E(t, .45, 1), head: true, grad: ["c3", "c5"] });
+          var a = E(t, .55, 1);
+          g.lab("A: y = 2x \u2212 1", -2.2, -5.4, { size: 12.5, color: "c1", bold: true, alpha: a, slide: [0, 8] });
+          g.tag("B: y = \u2212x + 4", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c3", bold: true, alpha: a });
+          g.corner("2x \u2212 y = 1    and    x + y = 4");
+        }
+      },
+      {
+        title: "The junction is the simultaneous solution",
+        dur: 2800,
+        body: "<p>Substitute the first rule into the second: <span class='m'>x + (2x &minus; 1) = 4</span>. The point that satisfies <em>both</em> rules at once is the place the lines cross.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .05, .4), s2 = E(t, .35, .7), s3 = E(t, .6, 1);
+          g.line(M1, C1, { color: "c1", w: 3, alpha: .45 });
+          g.line(M2, C2, { color: "c3", w: 3, alpha: .45 });
+          g.seg(XI, YI, XI, YI + 3.6, { color: "muted", w: 1.4, dash: [4, 3], t: s3 });
+          g.seg(XI, YI, XI - 3.6, YI, { color: "muted", w: 1.4, dash: [4, 3], t: s3 });
+          g.dot(XI, YI, { color: "c6", r: 8, p: s3, glow: true, pulse: true, ring: true,
+            label: "(5/3, 7/3)", dx: 14, dy: -16, size: 13 });
+          g.corner("x + (2x \u2212 1) = 4", { p: s1 });
+          var txt = s3 > 0 ? "3x = 5   \u2192   x = 5/3,  y = 7/3" : (s2 > 0 ? "3x \u2212 1 = 4" : "");
+          g.tag(txt, g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c6", bold: true, alpha: (s2 > 0 ? 1 : 0) });
+        }
+      },
+      {
+        title: "Elimination gets there in one move",
+        dur: 2600,
+        body: "<p>Notice <span class='m'>&minus;y</span> in one rule and <span class='m'>+y</span> in the other. Add the two equations and the y terms cancel on the spot: <b>3x = 5</b>.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .05, .45), s2 = E(t, .4, .75), s3 = E(t, .68, 1);
+          g.line(M1, C1, { color: "c1", w: 3, alpha: .45 });
+          g.line(M2, C2, { color: "c3", w: 3, alpha: .45 });
+          g.dot(XI, YI, { color: "c6", r: 6.5, alpha: .9, pulse: true });
+          g.corner("2x \u2212 y = 1", { p: s1, color: "c1" });
+          g.tag("x + y = 4", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c3", bold: true, alpha: s1 });
+          g.tag("add:  3x = 5", g.pad.l + 6, g.pad.t + 56, { align: "left", size: 12.5, color: "c6", bold: true, alpha: s2 });
+          g.tag("x = 5/3  \u2192  y = 4 \u2212 5/3 = 7/3", g.pad.l + 6, g.pad.t + 78,
+            { align: "left", size: 12.5, color: "c4", bold: true, alpha: s3 });
+        }
+      },
+      {
+        title: "Check it in both rules",
+        dur: 2400,
+        body: "<p>Put <span class='m'>(5/3, 7/3)</span> back into each rule. Both come out true, so this really is the point shared by the two routes.</p>",
+        draw: function (g, t) {
+          var s1 = E(t, .05, .5), s2 = E(t, .45, .95);
+          g.line(M1, C1, { color: "c1", w: 3, alpha: .45 });
+          g.line(M2, C2, { color: "c3", w: 3, alpha: .45 });
+          g.dot(XI, YI, { color: "c6", r: 8, p: s2, glow: true, pulse: true, ring: true,
+            label: "(5/3, 7/3)", dx: 14, dy: -16, size: 13 });
+          g.corner("A:  2(5/3) \u2212 7/3 = 3/3 = 1  \u2713", { p: s1, color: "c1" });
+          g.tag("B:  5/3 + 7/3 = 12/3 = 4  \u2713", g.pad.l + 6, g.pad.t + 34,
+            { align: "left", size: 12.5, color: "c3", bold: true, alpha: s2 });
+        }
+      },
+      {
+        title: "The three possible outcomes",
+        dur: 3600,
+        body: "<p>Two routes can meet once, never meet, or be the very same road. The slopes tell you which, before you solve anything: different slopes &rarr; <b>one junction</b>, same slope &rarr; <b>parallel</b>, same slope and same intercept &rarr; <b>identical</b>.</p>",
+        draw: function (g, t) {
+          var s1 = seg(t, 0, .33), s2 = seg(t, .33, .66), s3 = seg(t, .66, 1);
+          if (s1 < 1) {
+            g.line(M1, C1, { color: "c1", w: 3.2, alpha: .85 });
+            g.line(M1, C1 + 3, { color: "c5", w: 3.2, alpha: .9, grad: ["c5", "c3"] });
+            g.corner("parallel: same slope, different intercept \u2014 never meet", { color: "c5" });
+            g.tag("no solution", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c5", bold: true });
+          } else if (s2 < 1) {
+            g.line(M1, C1, { color: "c1", w: 4.2, alpha: .9 });
+            g.line(M1, C1, { color: "c6", w: 1.8, alpha: E(t, .33, .5), dash: [7, 6] });
+            g.corner("identical: same slope AND same intercept \u2014 one and the same line", { color: "c6" });
+            g.tag("infinitely many solutions", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c6", bold: true });
+          } else {
+            g.line(M1, C1, { color: "c1", w: 3.2, alpha: .85 });
+            g.line(M2, C2, { color: "c3", w: 3.2, alpha: .85 });
+            g.dot(XI, YI, { color: "c6", r: 7.5, glow: true, pulse: true, ring: true,
+              label: "one point", dx: 14, dy: -16, size: 13 });
+            g.corner("different slopes \u2014 exactly one junction", { color: "c4" });
+            g.tag("one solution", g.pad.l + 6, g.pad.t + 34, { align: "left", size: 12.5, color: "c4", bold: true });
+          }
+        }
+      },
+      {
+        title: "Explore: change route B and watch the test",
+        dur: 900, explore: true,
+        body: "<p>Route A stays fixed at <span class='m'>y = 2x &minus; 1</span>. Tilt and slide route B: make the slopes equal for parallel, and match the intercept as well to land on the identical line.</p>",
+        draw: function (g, t, P) {
+          var m2 = P.m2, c2 = P.c2;
+          g.line(M1, C1, { color: "c1", w: 3.4, grad: ["c1", "c4"] });
+          var same = Math.abs(m2 - M1) < 1e-9;
+          var ident = same && Math.abs(c2 - C1) < 1e-9;
+          g.line(m2, c2, { color: ident ? "c6" : "c3", w: ident ? 4.4 : 3.4,
+            grad: [ident ? "c6" : "c3", ident ? "c1" : "c5"], alpha: .95 });
+          if (!same) {
+            var xi = (c2 - C1) / (M1 - m2), yi = m2 * xi + c2;
+            if (xi > -6 && xi < 6 && yi > -6 && yi < 6)
+              g.dot(xi, yi, { color: "c6", r: 7.5, glow: true, pulse: true, ring: true,
+                label: "(" + nf(xi, 2) + ", " + nf(yi, 2) + ")", dx: 14, dy: -16, size: 12.5 });
+          }
+          g.tag("A: y = 2x \u2212 1", g.pad.l + 6, g.pad.t + 14, { align: "left", mono: true, size: 12.5, color: "c1", bold: true });
+          g.tag("B: y = " + nf(m2, 2) + "x" + (c2 < 0 ? " \u2212 " : " + ") + nf(Math.abs(c2), 2),
+            g.pad.l + 6, g.pad.t + 34, { align: "left", mono: true, size: 12.5, color: ident ? "c6" : "c3", bold: true });
+        },
+        readout: function (P) {
+          var m2 = P.m2, c2 = P.c2;
+          var same = Math.abs(m2 - M1) < 1e-9;
+          var ident = same && Math.abs(c2 - C1) < 1e-9;
+          var head = "<b>A: y = 2x &minus; 1</b> &nbsp;&middot;&nbsp; <b>B: y = " + nf(m2, 2) + "x" + (c2 < 0 ? " &minus; " : " + ") + nf(Math.abs(c2), 2) + "</b><br>";
+          if (ident)
+            return head + "<b>Identical routes.</b> Same slope (2) and same intercept (&minus;1), so the two equations describe one and the same line &mdash; <b>infinitely many</b> shared points.";
+          if (same)
+            return head + "<b>Parallel.</b> Both have slope 2 but different intercepts (" + nf(C1, 1) + " vs " + nf(c2, 1) + "), so they never meet &mdash; <b>no solution</b>.";
+          var xi = (c2 - C1) / (M1 - m2), yi = m2 * xi + c2;
+          return head + "<b>One junction.</b> Different slopes (" + nf(M1, 2) + " vs " + nf(m2, 2) + "), so exactly one shared point: <b>(" + nf(xi, 3) + ", " + nf(yi, 3) + ")</b>.<br>" +
+            "Coefficient test a\u2081b\u2082 &minus; a\u2082b\u2081 = 2(1) &minus; (" + nf(-m2, 2) + ")(&minus;1) &ne; 0.";
+        }
+      }
+    ]
+  };
+
+  var el = document.getElementById("boardJunction");
+  if (el) Anim.mount(el, lesson);
 })();
 </script>
 </body>

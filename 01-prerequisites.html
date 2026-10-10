@@ -47,16 +47,7 @@
       <h3>The mountain rescue trail</h3>
       <p class="scene">A rescue team&rsquo;s map is a coordinate grid. The <span class="role">hut</span> sits at <b>(1, 2)</b> and the <span class="role">injured climber</span> is at <b>(7, 10)</b>, where each unit is <b>100&nbsp;m</b>. The shortest path between them is a straight segment. The team needs to know three things at a glance: how far it really is, where the half-way staging post should go, and how steep the climb feels.</p>
 
-      <div class="plotbox">
-        <div class="plot-head">
-          <div class="eqout" id="rescueEq">run = 6 &nbsp; rise = 8</div>
-          <div class="legend">
-            <span><i style="background:var(--good)"></i>the straight trail</span>
-            <span><i style="background:var(--accent)"></i>hut &amp; climber</span>
-          </div>
-        </div>
-        <svg class="plot static" id="plotRescue" aria-label="A right triangle on a grid joining the hut at (1,2) to the climber at (7,10), with a horizontal run of 6 and a vertical rise of 8"></svg>
-      </div>
+      <div id="boardRescue"></div>
 
       <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look at what is drawn.</p>
 
@@ -329,22 +320,182 @@
 </footer>
 
 <script src="assets/plot.js"></script>
+<script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
 <script>
-/* ================= case-study figure: the rescue triangle ================= */
-(function(){
-  var svg = document.getElementById("plotRescue");
-  if (!svg) return;
-  var p = new Plot(svg, {xmin:-1, xmax:9, ymin:-1, ymax:12, stepX:1, stepY:1, labelStepX:1, labelStepY:2});
-  p.reset();
-  // right triangle legs
-  p.seg(1, 2, 7, 2, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
-  p.seg(7, 2, 7, 10, {color:"var(--ink-3)", width:1.6, dash:"4 3"});
-  p.seg(1, 2, 7, 10, {color:"var(--good)", width:3.2});
-  p.point(1, 2, {color:"var(--accent)", r:7, label:"hut (1, 2)", labelDx:-8, labelDy:-12, anchor:"end"});
-  p.point(7, 10, {color:"var(--accent)", r:7, label:"climber (7, 10)", labelDx:10, labelDy:-11});
-  p.text(4, 2 - 0.7, "run = 6", {size:12.5, color:"var(--brand)"});
-  p.text(7 + 0.4, 6, "rise = 8", {size:12.5, color:"var(--brand)", anchor:"start"});
+/* ================= animated board: the mountain rescue trail ================= */
+(function () {
+  if (!window.Anim) return;
+  var E = Anim.E, seg = Anim.seg, nf = Anim.nf, fr = Anim.fr, lerp = Anim.lerp;
+
+  function gcd(x, y) { x = Math.round(x); y = Math.round(y); while (y) { var t = x % y; x = y; y = t; } return x || 1; }
+  function isInt(v) { return Math.abs(v - Math.round(v)) < 1e-9; }
+  function fr2(a, b) {
+    if (!isFinite(a) || !isFinite(b) || Math.abs(b) < 1e-9) return "—";
+    var A = a, B = b, s = 0;
+    while ((!isInt(A) || !isInt(B)) && s < 6) { A *= 10; B *= 10; s++; }
+    A = Math.round(A); B = Math.round(B);
+    var k = gcd(Math.abs(A), Math.abs(B)) || 1; A /= k; B /= k;
+    var sign = (A / B < 0) ? "−" : ""; A = Math.abs(A); B = Math.abs(B);
+    if (B === 1) return sign + A;
+    return sign + A + "/" + B;
+  }
+
+  var AX = 1, AY = 2, BX = 7, BY = 10;
+  var lesson = {
+    id: "rescue", no: "CS", name: "The mountain rescue trail",
+    view: { x: [-1, 9], y: [-1, 12], xs: 1, ys: 1 },
+    controls: [
+      { k: "bx", label: "climber x", min: -1, max: 9, step: 1, value: 7 },
+      { k: "by", label: "climber y", min: -1, max: 12, step: 1, value: 10 },
+      { k: "perp", type: "seg", label: "perpendicular bisector", options: [
+        { v: "off", t: "hidden" }, { v: "on", t: "shown" } ] }
+    ],
+    steps: [
+      {
+        title: "A hut and a climber",
+        dur: 1800,
+        body: "<p>Two marked points on the grid: the <b>hut</b> at <span class='m'>A(1, 2)</span> and the <b>injured climber</b> at <span class='m'>B(7, 10)</span>. Each square is 100&nbsp;m.</p>",
+        draw: function (g, t) {
+          g.dot(AX, AY, { color: "c3", r: 6, alpha: E(t, 0, .45), halo: true, pulse: true, label: "A(1, 2)", dx: 12, dy: -15 });
+          g.dot(BX, BY, { color: "c3", r: 6, alpha: E(t, .3, .85), halo: true, pulse: true, label: "B(7, 10)", dx: 12, dy: -15 });
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 3, t: E(t, .6, 1), head: true, grad: ["c1", "c4"] });
+          g.tracer(AX, AY, BX, BY, { color: "c1", w: 3.2, alpha: E(t, .7, 1) });
+        }
+      },
+      {
+        title: "The run and the rise",
+        dur: 2200,
+        body: "<p>The straight distance hides a right triangle. The flat leg runs from A to (7,&nbsp;2): that is the <b>run = 6</b>. The vertical leg climbs from (7,&nbsp;2) to B: that is the <b>rise = 8</b>.</p>",
+        draw: function (g, t) {
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 3, alpha: .45, t: 1 });
+          var r1 = E(t, 0, .4);
+          g.seg(AX, AY, BX, AY, { color: "c2", w: 2.6, t: r1 });
+          var r2 = E(t, .4, .8);
+          g.seg(BX, AY, BX, BY, { color: "c2", w: 2.6, t: r2 });
+          g.rightAngle(BX, AY, -1, 1, { alpha: E(t, .5, .9) });
+          g.lab("run = 6", (AX + BX) / 2, AY, { dx: 0, dy: 18, align: "center", size: 12, color: "c2", bold: true, alpha: r1 });
+          g.lab("rise = 8", BX, (AY + BY) / 2, { dx: 12, dy: 0, size: 12, color: "c2", bold: true, alpha: r2 });
+        }
+      },
+      {
+        title: "How far is it really?",
+        dur: 2400,
+        body: "<p>Pythagoras on that triangle: AB = √(6² + 8²) = √100 = 10 squares. At 100&nbsp;m per square, that is <b>1000&nbsp;m</b> of real climbing.</p>",
+        draw: function (g, t) {
+          var th = E(t, 0, .55);
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 8, alpha: .22, t: th });
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 3, t: th });
+          g.dot(AX, AY, { color: "c3", r: 6, halo: true, label: "A(1, 2)", dx: 12, dy: -15 });
+          g.dot(BX, BY, { color: "c3", r: 6, halo: true, pulse: true, label: "B(7, 10)", dx: 12, dy: -15 });
+          g.corner("AB = √(6² + 8²) = √100 = 10", { alpha: E(t, .4, 1) });
+          g.lab("10 squares = 1000 m", (AX + BX) / 2, (AY + BY) / 2, { dx: 0, dy: -14, align: "center", color: "c3", bold: true, alpha: E(t, .55, 1) });
+          g.tracer(AX, AY, BX, BY, { color: "c3", w: 3.4, alpha: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "The half-way post",
+        dur: 2200,
+        body: "<p>The staging post sits at the midpoint — the average of the two coordinates. Here that is <b>(4, 6)</b>, exactly 500&nbsp;m out from each end.</p>",
+        draw: function (g, t) {
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 3, alpha: .4, t: 1 });
+          var a = E(t, 0, .5);
+          g.dot(4, 6, { color: "c3", r: 6, alpha: a, halo: true, pulse: true, label: "midpoint (4, 6)", dx: 0, dy: -16, align: "center" });
+          var g2 = E(t, .3, .8);
+          g.seg(4, 6, 4, 0, { color: "muted", w: 1, dash: [3, 3], alpha: g2 * .7 });
+          g.seg(4, 6, 0, 6, { color: "muted", w: 1, dash: [3, 3], alpha: g2 * .7 });
+        }
+      },
+      {
+        title: "How steep is the path?",
+        dur: 2400,
+        body: "<p>The <b>slope</b> is just rise over run: 8 / 6 = 4/3. The climber gains 4&nbsp;m of height for every 3&nbsp;m walked across. That ratio is the slope.</p>",
+        draw: function (g, t) {
+          g.seg(AX, AY, BX, BY, { color: "c1", w: 3, alpha: .4, t: 1 });
+          var r1 = E(t, 0, .4);
+          g.seg(AX, AY, BX, AY, { color: "c2", w: 3, t: r1 });
+          var r2 = E(t, .3, .7);
+          g.seg(BX, AY, BX, BY, { color: "c2", w: 3, t: r2 });
+          g.rightAngle(BX, AY, -1, 1, { alpha: E(t, .4, .8) });
+          g.lab("run = 6", (AX + BX) / 2, AY, { dx: 0, dy: 18, align: "center", size: 12, color: "c2", bold: true, alpha: r1 });
+          g.lab("rise = 8", BX, (AY + BY) / 2, { dx: 12, dy: 0, size: 12, color: "c2", bold: true, alpha: r2 });
+          g.corner("slope = rise / run = 8/6 = 4/3", { alpha: E(t, .6, 1) });
+        }
+      },
+      {
+        title: "Explore: move the climber",
+        dur: 900, explore: true,
+        body: "<p>Use the sliders to reposition B. Watch the distance, midpoint and slope update live. Switch the perpendicular bisector on (it is the set of points equally far from A and B).</p>",
+        draw: function (g, t, P) {
+          var ax = AX, ay = AY, bx = P.bx, by = P.by;
+          var dx = bx - ax, dy = by - ay;
+          if (Math.abs(dx) < 1e-9) {
+            g.vl(ax, { color: "c1", w: 3, from: Math.min(ay, by), to: Math.max(ay, by) });
+          } else {
+            g.seg(ax, ay, bx, by, { color: "c1", w: 3, t: 1 });
+          }
+          g.dot(ax, ay, { color: "c3", r: 6, halo: true, label: "A(1, 2)", dx: 12, dy: -15 });
+          g.dot(bx, by, { color: "c3", r: 6, halo: true, label: "B(" + nf(bx, 0) + ", " + nf(by, 0) + ")", dx: 12, dy: -15 });
+          var mx = (ax + bx) / 2, my = (ay + by) / 2;
+          g.dot(mx, my, { color: "c4", r: 5, halo: true, label: "M", dx: -10, dy: 14, align: "right", alpha: .95 });
+          if (P.perp === "on") {
+            if (Math.abs(dx) < 1e-9) {
+              g.hl(my, { color: "c4", w: 2.6, dash: [6, 4] });
+              g.lab("y = " + nf(my, 0), bx, my, { dx: 0, dy: -14, align: "center", color: "c4", bold: true });
+            } else if (Math.abs(dy) < 1e-9) {
+              g.vl(mx, { color: "c4", w: 2.6, dash: [6, 4] });
+              g.lab("x = " + nf(mx, 0), mx, 10.5, { dx: 0, dy: -14, align: "center", color: "c4", bold: true });
+            } else {
+              var mp = -dx / dy, cp = my - mp * mx;
+              g.line(mp, cp, { color: "c4", w: 2.6, dash: [6, 4] });
+              var cand = [-0.5, 1, 3, 5, 7, 8.5], lx = null, ly = null;
+              for (var ci = 0; ci < cand.length; ci++) {
+                var yy = mp * cand[ci] + cp;
+                if (yy >= 0.5 && yy <= 11.5) { lx = cand[ci]; ly = yy; break; }
+              }
+              if (lx !== null) g.lab(Anim.eqMC(mp, cp), lx, ly, { dx: 0, dy: -14, align: "center", color: "c4", bold: true });
+            }
+          }
+          if (Math.abs(dx) < 1e-9) g.corner("the segment is vertical: x = " + nf(ax, 0), { alpha: .95 });
+        },
+        readout: function (P) {
+          var ax = AX, ay = AY, bx = P.bx, by = P.by;
+          var dx = bx - ax, dy = by - ay;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var mx = (ax + bx) / 2, my = (ay + by) / 2;
+          var lines = [];
+          lines.push("Δx (run) = " + nf(dx, 0));
+          lines.push("Δy (rise) = " + nf(dy, 0));
+          lines.push("distance = " + nf(dist, 2) + " squares = " + nf(dist * 100, 0) + " m");
+          lines.push("midpoint = (" + nf(mx, 1) + ", " + nf(my, 1) + ")");
+          if (Math.abs(dx) < 1e-9) {
+            lines.push("slope: does not exist — the points are stacked vertically");
+          } else {
+            lines.push("slope = " + fr2(dy, dx));
+          }
+          if (P.perp === "on") {
+            if (Math.abs(dx) < 1e-9) {
+              lines.push("perp bisector: y = " + nf(my, 0) + " (slope 0)");
+            } else if (Math.abs(dy) < 1e-9) {
+              lines.push("perp bisector: x = " + nf(mx, 0) + " (slope undefined)");
+            } else {
+              var mp = -dx / dy, cp = my - mp * mx;
+              lines.push("perp bisector slope = " + fr2(-dx, dy));
+              lines.push("perp bisector: " + Anim.eqMC(mp, cp));
+            }
+          }
+          return lines.join("<br>");
+        }
+      }
+    ]
+  };
+
+  function mount(id, lesson) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    try { Anim.mount(el, lesson); } catch (e) { el.innerHTML = ""; }
+  }
+  mount("boardRescue", lesson);
 })();
 
 /* ================= quadrants figure ================= */
