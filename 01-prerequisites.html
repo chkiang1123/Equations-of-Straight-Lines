@@ -6,6 +6,7 @@
 <title>Prerequisites: the tools you need — Equations of Straight Lines</title>
 <meta name="description" content="Before you can build equations of lines, revise distance, midpoint, slope, and parallel and perpendicular lines. A See-Think-Wonder case study, a full derivation and a draggable interactive.">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
 <body>
 <header class="nav" data-nav></header>
@@ -54,16 +55,16 @@
       <div class="stw">
         <div class="stw-col see">
           <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations yet.</p>
-          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
+          <div data-concept="see"></div>
           <details class="sol model"><summary>Compare with what I noticed</summary>
             <div class="body">
               <ul class="clean">
                 <li>There are <b>two marked points</b>: a hut at (1,&nbsp;2) and a climber at (7,&nbsp;10).</li>
                 <li>They are joined by one <b>straight segment</b>.</li>
                 <li>A <b>right-angled triangle</b> sits under that segment: a flat leg going right, a vertical leg going up.</li>
-                <li>The flat leg spans from <span class="v">x</span> = 1 to <span class="v">x</span> = 7, so it is <b>6</b> long (the run).</li>
-                <li>The vertical leg spans from <span class="v">y</span> = 2 to <span class="v">y</span> = 10, so it is <b>8</b> long (the rise).</li>
+                <li>The flat leg spans from <span class="m tex">x</span> = 1 to <span class="m tex">x</span> = 7, so it is <b>6</b> long (the run).</li>
+                <li>The vertical leg spans from <span class="m tex">y</span> = 2 to <span class="m tex">y</span> = 10, so it is <b>8</b> long (the rise).</li>
                 <li>The segment itself is the hypotenuse of that triangle.</li>
               </ul>
             </div>
@@ -72,11 +73,11 @@
 
         <div class="stw-col think">
           <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">What does it make you think? What rule might be hiding in what you saw?</p>
-          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
+          <div data-concept="think"></div>
           <details class="sol model"><summary>Compare with what I thought</summary>
             <div class="body">
-              <p>If those two legs were a real triangle, Pythagoras would give the length of the hypotenuse: <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = <span class="v">&radic;</span>100 = <b>10</b> units = 1&nbsp;km.</p>
+              <p>If those two legs were a real triangle, Pythagoras would give the length of the hypotenuse: <span class="m tex">\sqrt{}</span>(6&sup2; + 8&sup2;) = <span class="m tex">\sqrt{}</span>100 = <b>10</b> units = 1&nbsp;km.</p>
               <p>The <b>ratio</b> 8 / 6 = 4 / 3 measures how steep the climb is — climb 8 for every 6 you walk across. That ratio is exactly what we will call the <b>slope</b>.</p>
               <p>And the half-way post is just the <b>midpoint</b> of the two ends. Since two numbers pin down distance, steepness and the middle, there must be formulas for all three. <b>This page is those formulas.</b></p>
             </div>
@@ -85,8 +86,8 @@
 
         <div class="stw-col wonder">
           <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
-          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
+          <div data-concept="wonder"></div>
           <details class="sol model"><summary>Some wonders worth chasing</summary>
             <div class="body">
               <ul class="clean">
@@ -94,7 +95,7 @@
                 <li>Where exactly is the half-way staging post? Is it the average of the two coordinates?</li>
                 <li>What does &ldquo;slope&rdquo; mean precisely, and can it ever be negative?</li>
                 <li>How would a <em>second</em> trail that is twice as steep look on the same grid?</li>
-                <li>What if the two points shared an <span class="v">x</span>-coordinate — would the slope still make sense?</li>
+                <li>What if the two points shared an <span class="m tex">x</span>-coordinate — would the slope still make sense?</li>
               </ul>
               <p class="small muted">Keep these. By the end you will be able to answer every one.</p>
             </div>
@@ -110,14 +111,14 @@
     <h2>Four tools you already own</h2>
 
     <h3>Tool 1 &mdash; reading coordinates and the four quadrants</h3>
-    <p>Every point is written <span class="v">(x, y)</span>: how far across (<span class="v">x</span>, right is positive) and how far up (<span class="v">y</span>, up is positive). The two axes split the plane into four <b>quadrants</b>, numbered anticlockwise from the top right:</p>
+    <p>Every point is written <span class="m tex">(x, y)</span>: how far across (<span class="m tex">x</span>, right is positive) and how far up (<span class="m tex">y</span>, up is positive). The two axes split the plane into four <b>quadrants</b>, numbered anticlockwise from the top right:</p>
     <div class="grid2">
       <div>
         <ul class="clean">
-          <li><b>Quadrant I:</b> <span class="v">x</span> &gt; 0, <span class="v">y</span> &gt; 0</li>
-          <li><b>Quadrant II:</b> <span class="v">x</span> &lt; 0, <span class="v">y</span> &gt; 0</li>
-          <li><b>Quadrant III:</b> <span class="v">x</span> &lt; 0, <span class="v">y</span> &lt; 0</li>
-          <li><b>Quadrant IV:</b> <span class="v">x</span> &gt; 0, <span class="v">y</span> &lt; 0</li>
+          <li><b>Quadrant I:</b> <span class="m tex">x</span> &gt; 0, <span class="m tex">y</span> &gt; 0</li>
+          <li><b>Quadrant II:</b> <span class="m tex">x</span> &lt; 0, <span class="m tex">y</span> &gt; 0</li>
+          <li><b>Quadrant III:</b> <span class="m tex">x</span> &lt; 0, <span class="m tex">y</span> &lt; 0</li>
+          <li><b>Quadrant IV:</b> <span class="m tex">x</span> &gt; 0, <span class="m tex">y</span> &lt; 0</li>
         </ul>
         <p class="small muted">Points on an axis belong to no quadrant. The origin (0,&nbsp;0) is the meeting point.</p>
       </div>
@@ -127,10 +128,10 @@
     </div>
 
     <h3>Tool 2 &mdash; distance</h3>
-    <p>Place the two points <span class="v">A</span>(<span class="v">x</span>&#8321;, <span class="v">y</span>&#8321;) and <span class="v">B</span>(<span class="v">x</span>&#8322;, <span class="v">y</span>&#8322;). The horizontal gap is <span class="v">x</span>&#8322; &minus; <span class="v">x</span>&#8321; and the vertical gap is <span class="v">y</span>&#8322; &minus; <span class="v">y</span>&#8321;. Those are the two legs of a right triangle whose hypotenuse is the distance <span class="v">AB</span>.</p>
+    <p>Place the two points <span class="m tex">A</span>(<span class="m tex">x_1</span>, <span class="m tex">y_1</span>) and <span class="m tex">B</span>(<span class="m tex">x_2</span>, <span class="m tex">y_2</span>). The horizontal gap is <span class="m tex">x_2</span> &minus; <span class="m tex">x_1</span> and the vertical gap is <span class="m tex">y_2</span> &minus; <span class="m tex">y_1</span>. Those are the two legs of a right triangle whose hypotenuse is the distance <span class="m tex">AB</span>.</p>
     <div class="grid2">
       <div>
-        <div class="formula big">AB = <span class="frac"><span class="num"><span class="v">&radic;</span>((x&#8322; &minus; x&#8321;)&sup2; + (y&#8322; &minus; y&#8321;)&sup2;)</span><span class="den">&nbsp;</span></span></div>
+        <div class="formula big tex tex">AB = \frac{\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{\;}</div>
         <p class="small">Square the two gaps, add them, take the square root. No sign survives the squaring, so order does not matter.</p>
       </div>
       <div>
@@ -140,39 +141,39 @@
     </div>
     <div class="note ok">
       <div class="h">Why it works</div>
-      <p>Pythagoras on the triangle gives (distance)&sup2; = (run)&sup2; + (rise)&sup2;. Substitute the gaps for the legs and take the root. The rescue trail gave <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = 10, exactly as you saw.</p>
+      <p>Pythagoras on the triangle gives (distance)&sup2; = (run)&sup2; + (rise)&sup2;. Substitute the gaps for the legs and take the root. The rescue trail gave <span class="m tex">\sqrt{}</span>(6&sup2; + 8&sup2;) = 10, exactly as you saw.</p>
     </div>
 
     <h3>Tool 3 &mdash; midpoint</h3>
-    <p>The half-way point is just the <b>average</b> of the two <span class="v">x</span>&rsquo;s and the average of the two <span class="v">y</span>&rsquo;s.</p>
-    <div class="formula big">M = <span class="frac"><span class="num">(x&#8321; + x&#8322;, &nbsp; y&#8321; + y&#8322;)</span><span class="den">2</span></span></div>
+    <p>The half-way point is just the <b>average</b> of the two <span class="m tex">x</span>&rsquo;s and the average of the two <span class="m tex">y</span>&rsquo;s.</p>
+    <div class="formula big tex tex">M = \frac{(x_1 + x_2, \; y_1 + y_2)}{2}</div>
     <p class="small">In the rescue case: M = ((1 + 7)/2, (2 + 10)/2) = (4,&nbsp;6). The staging post sits at <b>(4, 6)</b>, 500&nbsp;m out from each end.</p>
 
     <h3>Tool 4 &mdash; slope</h3>
     <p>Slope is the <b>steepness</b>: how much you climb for each step right.</p>
-    <div class="formula big">m = <span class="frac"><span class="num">y&#8322; &minus; y&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span> = <span class="frac"><span class="num">rise</span><span class="den">run</span></span></div>
+    <div class="formula big tex tex">m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{\text{rise}}}{\text{\text{run}}}</div>
     <ul class="clean">
       <li><b>Positive</b> slope: the line rises left-to-right.</li>
       <li><b>Negative</b> slope: it falls left-to-right.</li>
-      <li><b>Zero</b> slope: perfectly flat, <span class="v">y</span> = constant.</li>
-      <li><b>No slope</b>: a <b>vertical</b> line, where <span class="v">x</span>&#8322; = <span class="v">x</span>&#8321; and you would divide by zero.</li>
+      <li><b>Zero</b> slope: perfectly flat, <span class="m tex">y</span> = constant.</li>
+      <li><b>No slope</b>: a <b>vertical</b> line, where <span class="m tex">x_2</span> = <span class="m tex">x_1</span> and you would divide by zero.</li>
     </ul>
     <div class="note tip">
       <div class="h">It does not matter which way you travel</div>
-      <p>Swap the two points and both top and bottom flip sign, so the fraction is unchanged: <span class="v">m</span> = (y&#8321; &minus; y&#8322;)/(x&#8321; &minus; x&#8322;) gives the same value. Always keep the <b>same order</b> on top and bottom, though.</p>
+      <p>Swap the two points and both top and bottom flip sign, so the fraction is unchanged: <span class="m tex">m</span> = (y&#8321; &minus; y&#8322;)/(x&#8321; &minus; x&#8322;) gives the same value. Always keep the <b>same order</b> on top and bottom, though.</p>
     </div>
 
     <h3>Parallel and perpendicular lines</h3>
     <p>Two lines with the <b>same</b> slope never meet — they are <b>parallel</b>. Two lines at right angles are <b>perpendicular</b>, and their slopes are <b>negative reciprocals</b>: one is the flip-and-negate of the other.</p>
-    <div class="formula">parallel:&nbsp; m&#8321; = m&#8322; &nbsp;&nbsp;&nbsp; perpendicular:&nbsp; m&#8321; &middot; m&#8322; = &minus;1</div>
+    <div class="formula tex tex">\text{\text{parallel}}:\; m_1 = m_2 \;\;\; \text{\text{perpendicular}}:\; m_1 \cdot m_2 = -1</div>
     <div class="note vio">
       <div class="h">Why m&#8321; &middot; m&#8322; = &minus;1 ?</div>
-      <p>Imagine one line of slope <span class="v">m</span> = rise/run. A perpendicular line must climb what the first ran, and run what the first climbed, but backwards — so its slope is &minus;run/rise = &minus;1/<span class="v">m</span>. Multiply them: <span class="v">m</span> &middot; (&minus;1/<span class="v">m</span>) = &minus;1. (A vertical line, with no slope, is perpendicular to a horizontal line, slope 0 — the one case the product cannot show.)</p>
+      <p>Imagine one line of slope <span class="m tex">m</span> = rise/run. A perpendicular line must climb what the first ran, and run what the first climbed, but backwards — so its slope is &minus;run/rise = &minus;1/<span class="m tex">m</span>. Multiply them: <span class="m tex">m</span> &middot; (&minus;1/<span class="m tex">m</span>) = &minus;1. (A vertical line, with no slope, is perpendicular to a horizontal line, slope 0 — the one case the product cannot show.)</p>
     </div>
 
     <div class="keyidea">
       <span class="k">The toolbox in one breath</span>
-      <p>Distance measures the gap, midpoint finds the middle, slope measures steepness, and comparing slopes tells you parallel (<span class="v">m</span>&#8321; = <span class="v">m</span>&#8322;) or perpendicular (<span class="v">m</span>&#8321;<span class="v">m</span>&#8322; = &minus;1). Everything in this course is built from these four.</p>
+      <p>Distance measures the gap, midpoint finds the middle, slope measures steepness, and comparing slopes tells you parallel (<span class="m tex">m_1</span> = <span class="m tex">m_2</span>) or perpendicular (<span class="m tex">m_1</span><span class="m tex">m_2</span> = &minus;1). Everything in this course is built from these four.</p>
     </div>
   </section>
 
@@ -203,7 +204,7 @@
         <p class="small"><b>Slope</b>: <span class="eqout small" id="preSlope">6/7</span></p>
         <div class="note warn" style="margin-top:12px">
           <div class="h">Try this</div>
-          <p>Drag B to share A&rsquo;s <span class="v">x</span>-coordinate. The slope readout becomes &ldquo;no slope&rdquo; and the line turns vertical — exactly the case the distance and midpoint formulas still handle, but slope cannot.</p>
+          <p>Drag B to share A&rsquo;s <span class="m tex">x</span>-coordinate. The slope readout becomes &ldquo;no slope&rdquo; and the line turns vertical — exactly the case the distance and midpoint formulas still handle, but slope cannot.</p>
         </div>
       </div>
     </div>
@@ -219,8 +220,8 @@
       <summary>Example 1 &mdash; distance, slope and midpoint of A(1, 2) and B(7, 10)</summary>
       <div class="body">
         <p><b>Distance.</b> &Delta;x = 7 &minus; 1 = 6, &Delta;y = 10 &minus; 2 = 8.</p>
-        <div class="formula">AB = <span class="v">&radic;</span>(6&sup2; + 8&sup2;) = <span class="v">&radic;</span>(36 + 64) = <span class="v">&radic;</span>100 = 10</div>
-        <p><b>Slope.</b> <span class="v">m</span> = 8 / 6 = <span class="frac"><span class="num">4</span><span class="den">3</span></span>.</p>
+        <div class="formula tex tex">AB = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10</div>
+        <p><b>Slope.</b> <span class="m tex">m</span> = 8 / 6 = <span class="m tex">\frac{4}{3}</span>.</p>
         <p><b>Midpoint.</b> M = ((1 + 7)/2, (2 + 10)/2) = <b>(4, 6)</b>.</p>
         <p class="small muted">These are exactly the rescue-trail numbers from the case study.</p>
       </div>
@@ -230,19 +231,19 @@
       <summary>Example 2 &mdash; A(&minus;2, 3), B(4, &minus;1), and the perpendicular bisector</summary>
       <div class="body">
         <p>Midpoint: M = ((&minus;2 + 4)/2, (3 + (&minus;1))/2) = <b>(1, 1)</b>.</p>
-        <p>Slope of AB: <span class="v">m</span> = (&minus;1 &minus; 3)/(4 &minus; (&minus;2)) = (&minus;4)/6 = <span class="frac"><span class="num">&minus;2</span><span class="den">3</span></span>.</p>
-        <p>Perpendicular slope = negative reciprocal = <span class="frac"><span class="num">3</span><span class="den">2</span></span>.</p>
+        <p>Slope of AB: <span class="m tex">m</span> = (&minus;1 &minus; 3)/(4 &minus; (&minus;2)) = (&minus;4)/6 = <span class="m tex">\frac{-2}{3}</span>.</p>
+        <p>Perpendicular slope = negative reciprocal = <span class="m tex">\frac{3}{2}</span>.</p>
         <p>Through (1, 1):</p>
-        <div class="formula">y &minus; 1 = <span class="frac"><span class="num">3</span><span class="den">2</span></span>(x &minus; 1)</div>
+        <div class="formula tex tex">y - 1 = \frac{3}{2}(x - 1)</div>
       </div>
     </details>
 
     <details class="sol">
       <summary>Example 3 &mdash; are these two lines perpendicular?</summary>
       <div class="body">
-        <p>Line 1 through (0, 0) and (4, 2): <span class="v">m</span>&#8321; = (2 &minus; 0)/(4 &minus; 0) = <span class="frac"><span class="num">1</span><span class="den">2</span></span>.</p>
-        <p>Line 2 through (0, 0) and (&minus;2, 4): <span class="v">m</span>&#8322; = (4 &minus; 0)/(&minus;2 &minus; 0) = <span class="frac"><span class="num">4</span><span class="den">&minus;2</span></span> = &minus;2.</p>
-        <p>Product: <span class="v">m</span>&#8321;<span class="v">m</span>&#8322; = <span class="frac"><span class="num">1</span><span class="den">2</span></span> &middot; (&minus;2) = <b>&minus;1</b>. Yes — perpendicular.</p>
+        <p>Line 1 through (0, 0) and (4, 2): <span class="m tex">m_1</span> = (2 &minus; 0)/(4 &minus; 0) = <span class="m tex">\frac{1}{2}</span>.</p>
+        <p>Line 2 through (0, 0) and (&minus;2, 4): <span class="m tex">m_2</span> = (4 &minus; 0)/(&minus;2 &minus; 0) = <span class="m tex">\frac{4}{-2}</span> = &minus;2.</p>
+        <p>Product: <span class="m tex">m_1</span><span class="m tex">m_2</span> = <span class="m tex">\frac{1}{2}</span> &middot; (&minus;2) = <b>&minus;1</b>. Yes — perpendicular.</p>
       </div>
     </details>
 
@@ -250,7 +251,7 @@
       <summary>Example 4 &mdash; A(3, 5), B(3, &minus;2): the no-slope case</summary>
       <div class="body">
         <p>&Delta;x = 3 &minus; 3 = <b>0</b>. The slope formula would have a zero denominator, so <b>the slope does not exist</b> and the line is vertical:</p>
-        <div class="formula">x = 3</div>
+        <div class="formula tex tex">x = 3</div>
         <p>The distance is still fine: &Delta;y = &minus;2 &minus; 5 = &minus;7, so AB = 7. Midpoint = (3, 1.5).</p>
         <p class="small muted">Distance and midpoint never break; only slope does.</p>
       </div>
@@ -282,7 +283,7 @@
       <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
       <ol>
         <li>Find the distance between (2, &minus;1) and (5, 3).
-          <details class="sol"><summary>Answer</summary><div class="body"><p>&Delta;x = 3, &Delta;y = 4. Distance = <span class="v">&radic;</span>(3&sup2; + 4&sup2;) = <span class="v">&radic;</span>25 = <b>5</b>.</p></div></details>
+          <details class="sol"><summary>Answer</summary><div class="body"><p>&Delta;x = 3, &Delta;y = 4. Distance = <span class="m tex">\sqrt{}</span>(3&sup2; + 4&sup2;) = <span class="m tex">\sqrt{}</span>25 = <b>5</b>.</p></div></details>
         </li>
         <li>Find the slope of the line through (&minus;3, 4) and (1, &minus;2).
           <details class="sol"><summary>Answer</summary><div class="body"><p>m = (&minus;2 &minus; 4)/(1 &minus; (&minus;3)) = (&minus;6)/4 = <b>&minus;3/2</b>.</p></div></details>
@@ -298,11 +299,9 @@
 
     <div class="reflect">
       <h3>Exit ticket</h3>
-      <p class="sub">Two minutes of honest reflection. Saved privately on this device.</p>
-      <h4>1. In your own words: what does &ldquo;slope&rdquo; measure, and why can a vertical line not have one?</h4>
-      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
-      <h4>2. Which of these four tools still feels shaky, and what would make it click?</h4>
-      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+      <p class="sub">Answer the questions. Each wrong answer names the exact wrong idea and fixes it — results are saved privately on this device.</p>
+      
+      <div data-exit></div>
     </div>
 
     <div class="conf" data-conf></div>
@@ -319,6 +318,10 @@
   </div>
 </footer>
 
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/tex.js"></script>
+<script src="assets/concept-data.js"></script>
+<script src="assets/concept.js"></script>
 <script src="assets/plot.js"></script>
 <script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>

@@ -6,6 +6,7 @@
 <title>What an equation of a line actually means — Equations of Straight Lines</title>
 <meta name="description" content="A line drawn on a grid and its equation like y = 2x + 1 are two descriptions of one object. A See-Think-Wonder case study, the locus idea, a click-to-test grid and a table of values.">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
 <body>
 <header class="nav" data-nav></header>
@@ -15,7 +16,7 @@
     <div class="crumb"><a href="index.html">Course map</a><span class="sep">/</span><span>Chapter 1.1</span></div>
     <div class="steptag"><span class="n">1</span> Step 1 of 10</div>
     <h1>What an equation of a line actually means</h1>
-    <p class="lead">A line you draw on a grid and an equation like <var>y</var> = 2<var>x</var> + 1 look like different things. They are not. They are two descriptions of the <em>same</em> object. This page is about the link between the picture and the symbols — and it is the idea the whole chapter rests on.</p>
+    <p class="lead">A line you draw on a grid and an equation like <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1 look like different things. They are not. They are two descriptions of the <em>same</em> object. This page is about the link between the picture and the symbols — and it is the idea the whole chapter rests on.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 19 minutes</b></span>
       <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
@@ -45,7 +46,7 @@
         <span class="routine-badge">See &middot; Think &middot; Wonder</span>
       </div>
       <h3>The taut wire</h3>
-      <p class="scene">A steel wire is stretched dead straight across a workshop coordinate grid. It passes through <b>(0, 1)</b> and <b>(2, 5)</b>. An apprentice says: &ldquo;the wire <em>is</em> the equation <var>y</var> = 2<var>x</var> + 1&rdquo;. A second apprentice is not so sure — isn&rsquo;t one of those a picture and the other just symbols?</p>
+      <p class="scene">A steel wire is stretched dead straight across a workshop coordinate grid. It passes through <b>(0, 1)</b> and <b>(2, 5)</b>. An apprentice says: &ldquo;the wire <em>is</em> the equation <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1&rdquo;. A second apprentice is not so sure — isn&rsquo;t one of those a picture and the other just symbols?</p>
 
       <div id="boardWire"></div>
 
@@ -54,8 +55,8 @@
       <div class="stw">
         <div class="stw-col see">
           <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Describe only what is actually <em>there</em> — shapes, points, numbers. No explanations yet.</p>
-          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
+          <div data-concept="see"></div>
           <details class="sol model"><summary>Compare with what I noticed</summary>
             <div class="body">
               <ul class="clean">
@@ -63,7 +64,7 @@
                 <li>It passes exactly through the lattice points (0,&nbsp;1), (1,&nbsp;3), (2,&nbsp;5), (3,&nbsp;7)&hellip;</li>
                 <li>Each step right of 1 seems to add 2 upward — it climbs steadily.</li>
                 <li>Two points are clearly <b>off</b> the wire: (2,&nbsp;1) and (1,&nbsp;2).</li>
-                <li>The equation <var>y</var> = 2<var>x</var> + 1 is written beside it as symbols.</li>
+                <li>The equation <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1 is written beside it as symbols.</li>
               </ul>
             </div>
           </details>
@@ -71,12 +72,12 @@
 
         <div class="stw-col think">
           <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">What does it make you think? How would you decide whether the apprentice is right?</p>
-          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
+          <div data-concept="think"></div>
           <details class="sol model"><summary>Compare with what I thought</summary>
             <div class="body">
               <p>What would it <em>mean</em> to test whether a point belongs to the wire? You would put its coordinates into the equation and see whether the two sides <b>balance</b>.</p>
-              <p>For (3,&nbsp;7): 2&middot;3 + 1 = 7, which equals the <var>y</var>. It fits. For (2,&nbsp;1): 2&middot;2 + 1 = 5, but the point&rsquo;s <var>y</var> is 1 — it does not fit, so it is off the wire.</p>
+              <p>For (3,&nbsp;7): 2&middot;3 + 1 = 7, which equals the <span class="m tex">y</span>. It fits. For (2,&nbsp;1): 2&middot;2 + 1 = 5, but the point&rsquo;s <span class="m tex">y</span> is 1 — it does not fit, so it is off the wire.</p>
               <p>That means a formula <em>decides membership</em> for every point. So there must be a precise way to link &ldquo;the picture&rdquo; and &ldquo;the symbols&rdquo;. <b>This page is that link.</b></p>
             </div>
           </details>
@@ -84,8 +85,8 @@
 
         <div class="stw-col wonder">
           <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">What are you now curious about? Ask questions you cannot yet answer.</p>
-          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
+          <div data-concept="wonder"></div>
           <details class="sol model"><summary>Some wonders worth chasing</summary>
             <div class="body">
               <ul class="clean">
@@ -109,22 +110,22 @@
     <h2>A line is a rule that points must obey</h2>
 
     <h3>A line is a locus</h3>
-    <p>A line is a <b>locus</b> (Latin for &ldquo;place&rdquo;): the set of <em>all</em> points that satisfy one condition. For <var>y</var> = 2<var>x</var> + 1, the condition is exactly &ldquo;your <var>y</var> must equal 2&middot;(your <var>x</var>) + 1&rdquo;. Every point that obeys lives on the line; every point that disobeys does not.</p>
+    <p>A line is a <b>locus</b> (Latin for &ldquo;place&rdquo;): the set of <em>all</em> points that satisfy one condition. For <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1, the condition is exactly &ldquo;your <span class="m tex">y</span> must equal 2&middot;(your <span class="m tex">x</span>) + 1&rdquo;. Every point that obeys lives on the line; every point that disobeys does not.</p>
 
     <h3>The test</h3>
-    <p>To decide whether <span class="v">(x, y)</span> lies on the line, <b>substitute</b> and check the balance:</p>
-    <div class="formula">for (3, 7):&nbsp; 2(3) + 1 = 7 &nbsp;&#10003; &nbsp;&nbsp;&nbsp; for (2, 1):&nbsp; 2(2) + 1 = 5 &ne; 1 &nbsp;&#10007;</div>
+    <p>To decide whether <span class="m tex">(x, y)</span> lies on the line, <b>substitute</b> and check the balance:</p>
+    <div class="formula tex tex">\text{\text{for}} (3, 7):\; 2(3) + 1 = 7 \;\checkmark \;\;\; \text{\text{for}} (2, 1):\; 2(2) + 1 = 5 \neq 1 \;\times</div>
     <div class="note tip">
       <div class="h">How to say it</div>
       <p>We say the point <b>satisfies the equation</b>. The coordinates of a point on the line are just a pair that makes the statement true.</p>
     </div>
 
     <h3>Infinitely many points</h3>
-    <p>Why so many? Because <span class="v">x</span> is <b>free</b> — you may choose it to be anything — but once you do, <span class="v">y</span> is <b>forced</b> by the equation. Pick <var>x</var>, get exactly one <var>y</var>. Since there are infinitely many choices of <var>x</var>, there are infinitely many points on the line.</p>
+    <p>Why so many? Because <span class="m tex">x</span> is <b>free</b> — you may choose it to be anything — but once you do, <span class="m tex">y</span> is <b>forced</b> by the equation. Pick <span class="m tex">x</span>, get exactly one <span class="m tex">y</span>. Since there are infinitely many choices of <span class="m tex">x</span>, there are infinitely many points on the line.</p>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th><span class="v">x</span></th><th>&minus;1</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
-        <tbody><tr><td class="mono"><span class="v">y</span> = 2<var>x</var> + 1</td><td class="mono">&minus;1</td><td class="mono">1</td><td class="mono">3</td><td class="mono">5</td><td class="mono">7</td><td class="mono">9</td></tr></tbody>
+        <thead><tr><th><span class="m tex">x</span></th><th>&minus;1</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+        <tbody><tr><td class="mono"><span class="m tex">y</span> = 2<span class="m tex">x</span> + 1</td><td class="mono">&minus;1</td><td class="mono">1</td><td class="mono">3</td><td class="mono">5</td><td class="mono">7</td><td class="mono">9</td></tr></tbody>
       </table>
     </div>
     <p class="small muted">This is only six rows of an infinitely long table. Every row is a point on the wire.</p>
@@ -156,7 +157,7 @@
   <section class="blk">
     <div class="steptag"><span class="n">4</span>Explore more</div>
     <h2>A table of values, plotted</h2>
-    <p>The same equation, seen as a table. Type two <span class="v">x</span>-values; the panel computes the matching <span class="v">y</span> and plots both points so you can watch them land on the line.</p>
+    <p>The same equation, seen as a table. Type two <span class="m tex">x</span>-values; the panel computes the matching <span class="m tex">y</span> and plots both points so you can watch them land on the line.</p>
 
     <div class="grid2 plotfirst">
       <div class="plotbox">
@@ -175,7 +176,7 @@
         <div class="outmsg" id="tblMsg">Pick two x-values and watch the points sit on the line.</div>
         <div class="note tip" style="margin-top:12px">
           <div class="h">Notice</div>
-          <p>Whatever <span class="v">x</span> you choose, the point lands on the line. That is the two-way promise in action: free <span class="v">x</span>, forced <span class="v">y</span>.</p>
+          <p>Whatever <span class="m tex">x</span> you choose, the point lands on the line. That is the two-way promise in action: free <span class="m tex">x</span>, forced <span class="m tex">y</span>.</p>
         </div>
       </div>
     </div>
@@ -190,8 +191,8 @@
     <details class="sol">
       <summary>Example 1 &mdash; does (3, 7) lie on y = 2x + 1? What about (&minus;2, &minus;3)?</summary>
       <div class="body">
-        <p>For (3, 7): 2(3) + 1 = 7 = <var>y</var> &rArr; <b>yes</b>.</p>
-        <p>For (&minus;2, &minus;3): 2(&minus;2) + 1 = &minus;4 + 1 = &minus;3 = <var>y</var> &rArr; <b>yes</b> too.</p>
+        <p>For (3, 7): 2(3) + 1 = 7 = <span class="m tex">y</span> &rArr; <b>yes</b>.</p>
+        <p>For (&minus;2, &minus;3): 2(&minus;2) + 1 = &minus;4 + 1 = &minus;3 = <span class="m tex">y</span> &rArr; <b>yes</b> too.</p>
         <p class="small muted">Negative coordinates work the same way; just substitute carefully.</p>
       </div>
     </details>
@@ -200,7 +201,7 @@
       <summary>Example 2 &mdash; find k so that (4, k) lies on 3x + 2y = 6</summary>
       <div class="body">
         <p>Substitute x = 4, y = k:</p>
-        <div class="formula">3(4) + 2k = 6 &nbsp;&rArr;&nbsp; 12 + 2k = 6 &nbsp;&rArr;&nbsp; 2k = &minus;6 &nbsp;&rArr;&nbsp; k = &minus;3</div>
+        <div class="formula tex tex">3(4) + 2k = 6 \;\Rightarrow\; 12 + 2k = 6 \;\Rightarrow\; 2k = -6 \;\Rightarrow\; k = -3</div>
         <p>So the point (4, &minus;3) lies on the line.</p>
       </div>
     </details>
@@ -209,10 +210,10 @@
       <summary>Example 3 &mdash; which of (0, 3), (3, 0), (1, 3), (&minus;2, 5) lie on y = &minus;x + 3?</summary>
       <div class="body">
         <ul class="clean">
-          <li>(0, 3): &minus;0 + 3 = 3 = <var>y</var> &rArr; <b>on</b></li>
-          <li>(3, 0): &minus;3 + 3 = 0 = <var>y</var> &rArr; <b>on</b></li>
+          <li>(0, 3): &minus;0 + 3 = 3 = <span class="m tex">y</span> &rArr; <b>on</b></li>
+          <li>(3, 0): &minus;3 + 3 = 0 = <span class="m tex">y</span> &rArr; <b>on</b></li>
           <li>(1, 3): &minus;1 + 3 = 2 &ne; 3 &rArr; <b>off</b></li>
-          <li>(&minus;2, 5): &minus;(&minus;2) + 3 = 2 + 3 = 5 = <var>y</var> &rArr; <b>on</b></li>
+          <li>(&minus;2, 5): &minus;(&minus;2) + 3 = 2 + 3 = 5 = <span class="m tex">y</span> &rArr; <b>on</b></li>
         </ul>
       </div>
     </details>
@@ -220,7 +221,7 @@
     <details class="sol">
       <summary>Example 4 &mdash; how many points lie on a line?</summary>
       <div class="body">
-        <p><b>Infinitely many.</b> The equation leaves <span class="v">x</span> free. Choose any real <span class="v">x</span> you like — say 0, then 1, then 1.5, then &radic;2, then &pi; — and the equation forces exactly one <span class="v">y</span> each time. There is no last point. The line is the complete, infinite list of all those pairs.</p>
+        <p><b>Infinitely many.</b> The equation leaves <span class="m tex">x</span> free. Choose any real <span class="m tex">x</span> you like — say 0, then 1, then 1.5, then &radic;2, then &pi; — and the equation forces exactly one <span class="m tex">y</span> each time. There is no last point. The line is the complete, infinite list of all those pairs.</p>
       </div>
     </details>
   </section>
@@ -248,14 +249,14 @@
       <h3>&#10003; Check yourself before you move on</h3>
       <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
       <ol>
-        <li>Does the point (5, 11) lie on <var>y</var> = 2<var>x</var> + 1?
-          <details class="sol"><summary>Answer</summary><div class="body"><p>2(5) + 1 = 11 = <var>y</var>, so <b>yes</b>.</p></div></details>
+        <li>Does the point (5, 11) lie on <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1?
+          <details class="sol"><summary>Answer</summary><div class="body"><p>2(5) + 1 = 11 = <span class="m tex">y</span>, so <b>yes</b>.</p></div></details>
         </li>
-        <li>Find <var>k</var> so that (2, <var>k</var>) lies on <var>y</var> = &minus;3<var>x</var> + 4.
+        <li>Find <span class="m tex">k</span> so that (2, <span class="m tex">k</span>) lies on <span class="m tex">y</span> = &minus;3<span class="m tex">x</span> + 4.
           <details class="sol"><summary>Answer</summary><div class="body"><p>k = &minus;3(2) + 4 = &minus;6 + 4 = <b>&minus;2</b>.</p></div></details>
         </li>
         <li>Why does an equation of a line describe infinitely many points?
-          <details class="sol"><summary>Answer</summary><div class="body"><p>Because <span class="v">x</span> is free (any real number) while <span class="v">y</span> is forced by the equation. Each choice of <span class="v">x</span> gives one point, and there are infinitely many choices.</p></div></details>
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Because <span class="m tex">x</span> is free (any real number) while <span class="m tex">y</span> is forced by the equation. Each choice of <span class="m tex">x</span> gives one point, and there are infinitely many choices.</p></div></details>
         </li>
         <li>State the two-way promise in one sentence.
           <details class="sol"><summary>Answer</summary><div class="body"><p>Every point on the line satisfies its equation, and every point that satisfies the equation lies on the line.</p></div></details>
@@ -265,11 +266,9 @@
 
     <div class="reflect">
       <h3>Exit ticket</h3>
-      <p class="sub">Two minutes of honest reflection. Saved privately on this device.</p>
-      <h4>1. In your own words: why can one short equation describe a whole infinite line?</h4>
-      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
-      <h4>2. What is still fuzzy, and what would you ask your teacher?</h4>
-      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+      <p class="sub">Answer the questions. Each wrong answer names the exact wrong idea and fixes it — results are saved privately on this device.</p>
+      
+      <div data-exit></div>
     </div>
 
     <div class="conf" data-conf></div>
@@ -286,6 +285,10 @@
   </div>
 </footer>
 
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/tex.js"></script>
+<script src="assets/concept-data.js"></script>
+<script src="assets/concept.js"></script>
 <script src="assets/plot.js"></script>
 <script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>

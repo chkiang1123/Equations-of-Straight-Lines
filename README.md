@@ -17,11 +17,17 @@ Most resources hand you a formula and ask you to use it. This one does the oppos
 
 - **See · Think · Wonder** case study on every content page — you observe, interpret and question *first*, then compare
   with a model response, and only then read the mathematics.
-- **Writing boxes** on every page. Your observations and reflections are saved in your browser as you type.
+- **Concept checks, not essay boxes.** Each See / Think / Wonder column is a short **True / False** check. Every false
+  statement is built around a mistake real students make, so a wrong answer is worth more than a right one: it names
+  the exact wrong idea and repairs it. When you retry, you are only served the ones you missed, and the summary lists
+  the misconception you fell for.
+- **Exit tickets are maths, not paragraphs.** Two marked questions per page, with distractors built from the usual
+  slips — inverted slope, dropped minus sign, swapped coordinates, intercept confused with slope.
+- **Every formula is real LaTeX**, typeset offline by a vendored copy of KaTeX. No network, no fallback fonts.
 - **Interactive graphs** driven by real maths: drag points, move sliders, click the grid to test whether a point lies
   on a line, and watch the equation change alongside the picture.
 - **Self-learning scaffolding**: tickable learning goals, a confidence rating, an exit ticket, and a progress bar
-  that remembers which pages you have opened. Notes can be downloaded as a text file.
+  that remembers which pages you have opened.
 
 ## The pages
 
@@ -62,10 +68,17 @@ index.html                    course map, study guide, progress
 assets/style.css              design system (light + dark)
 assets/plot.js                SVG plotting engine + algebra formatting
 assets/app.js                 nav, prev/next, progress, note saving, quiz engine
+assets/tex.js                 LaTeX hook — renders anything marked .tex through KaTeX
+assets/concept.js             See/Think/Wonder concept checks + exit ticket engine
+assets/concept-data.js        the question bank: 12 pages x (9 True/False + 2 maths)
+assets/katex/                 KaTeX, vendored so the site needs no network
 ```
 
 Everything is vanilla HTML, CSS and JavaScript. `assets/app.js` holds the single course map that drives the
 navigation, the progress bar and the prev/next buttons on every page, so adding a page is a one-line change.
+
+To add or edit concept-check questions, open `assets/concept-data.js`. Each page is one entry keyed by its filename
+without the extension. Wrap any maths in `$...$` and it is handed to KaTeX automatically.
 
 ## Deploy
 

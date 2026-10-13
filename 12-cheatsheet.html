@@ -6,6 +6,7 @@
 <title>Cheat sheet and self-assessment — Equations of Straight Lines</title>
 <meta name="description" content="Every form of the equation of a straight line on one page, how to convert between them, which one to reach for, and a self-assessment checklist.">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
 <body>
 <header class="nav" data-nav></header>
@@ -83,15 +84,15 @@
       <div class="stw">
         <div class="stw-col see">
           <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">What is actually written there?</p>
-          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
+          <div data-concept="see"></div>
           <details class="sol model"><summary>Compare with what I noticed</summary>
             <div class="body">
               <ul class="clean">
                 <li>Five completely different-looking pieces of algebra.</li>
                 <li>The number <b>2</b> appears in every single one of them.</li>
                 <li>The number <b>&minus;4</b> (or &minus;4 hidden as a denominator) appears in three of them.</li>
-                <li>Only one has <span class="v">y</span> isolated on the left; only one has everything on the left.</li>
+                <li>Only one has <span class="m tex">y</span> isolated on the left; only one has everything on the left.</li>
                 <li>Two of them are written as fractions.</li>
               </ul>
             </div>
@@ -100,12 +101,12 @@
 
         <div class="stw-col think">
           <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">What pattern might connect them?</p>
-          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
+          <div data-concept="think"></div>
           <details class="sol model"><summary>Compare with what I thought</summary>
             <div class="body">
               <p>Every one of them is built from the same two facts: <b>the slope is 2</b>, and <b>the line passes through certain fixed points</b>.</p>
-              <p>Anita and Bilal are using different anchor points. Chen is using the two intercepts. Dana has simplified to <span class="v">y</span> = <span class="v">mx</span> + <span class="v">c</span>. Eli has pushed everything to one side.</p>
+              <p>Anita and Bilal are using different anchor points. Chen is using the two intercepts. Dana has simplified to <span class="m tex">y</span> = <span class="m tex">mx</span> + <span class="m tex">c</span>. Eli has pushed everything to one side.</p>
               <p>So a &ldquo;different answer&rdquo; usually just means &ldquo;a different form of the same answer&rdquo;. To check, I should be able to convert any one of them into any other.</p>
             </div>
           </details>
@@ -113,8 +114,8 @@
 
         <div class="stw-col wonder">
           <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">What would you want to be able to do with these?</p>
-          <div data-write="wonder" data-ph="I wonder whether..." data-rows="5"></div>
+          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
+          <div data-concept="wonder"></div>
           <details class="sol model"><summary>What this whole page answers</summary>
             <div class="body">
               <ul class="clean">
@@ -152,7 +153,7 @@
           </tr>
           <tr>
             <td><b>Two-point</b></td>
-            <td class="mono"><span class="frac"><span class="num">y &minus; y&#8321;</span><span class="den">x &minus; x&#8321;</span></span> = <span class="frac"><span class="num">y&#8322; &minus; y&#8321;</span><span class="den">x&#8322; &minus; x&#8321;</span></span></td>
+            <td class="mono"><span class="m tex">\frac{y - y_1}{x - x_1}</span> = <span class="m tex">\frac{y_2 - y_1}{x_2 - x_1}</span></td>
             <td>two points it passes through, and the slope</td>
             <td>vertical lines</td>
           </tr>
@@ -196,7 +197,7 @@
           <li><b>From point-slope</b>: expand the bracket, then move the constant across.</li>
           <li><b>From two-point</b>: work out the slope first, then treat it as point-slope.</li>
           <li><b>From intercept</b>: multiply out and rearrange &mdash; the slope comes out as &minus;b/a and the intercept as b.</li>
-          <li><b>From general</b>: <span class="v">By</span> = &minus;<span class="v">Ax</span> &minus; <span class="v">C</span>, so <span class="v">y</span> = &minus;(<span class="v">A</span>/<span class="v">B</span>)<span class="v">x</span> &minus; <span class="v">C</span>/<span class="v">B</span>.</li>
+          <li><b>From general</b>: <span class="m tex">By</span> = &minus;<span class="m tex">Ax</span> &minus; <span class="m tex">C</span>, so <span class="m tex">y</span> = &minus;(<span class="m tex">A</span>/<span class="m tex">B</span>)<span class="m tex">x</span> &minus; <span class="m tex">C</span>/<span class="m tex">B</span>.</li>
         </ol>
       </div>
       <div>
@@ -211,7 +212,7 @@
     </div>
     <div class="note tip">
       <div class="h">The universal move</div>
-      <p>When in doubt, aim for <span class="v">y</span> = <span class="v">mx</span> + <span class="v">c</span>. Every form except the vertical line can be
+      <p>When in doubt, aim for <span class="m tex">y</span> = <span class="m tex">mx</span> + <span class="m tex">c</span>. Every form except the vertical line can be
       rearranged into it, and once you are there you can read off the slope and the intercept instantly, and convert onward to anything else.</p>
     </div>
   </section>
@@ -306,11 +307,9 @@
 
     <div class="reflect">
       <h3>Exit ticket</h3>
-      <p class="sub">Last one. Two minutes.</p>
-      <h4>1. In one paragraph: what is &ldquo;the equation of a straight line&rdquo;, in your own words?</h4>
-      <div data-write="exit1" data-ph="The equation of a line is..." data-rows="4"></div>
-      <h4>2. Which single idea from this course will you still remember in a year?</h4>
-      <div data-write="exit2" data-ph="The one idea I will keep is..." data-rows="3"></div>
+      <p class="sub">Answer the questions. Each wrong answer names the exact wrong idea and fixes it — results are saved privately on this device.</p>
+      
+      <div data-exit></div>
     </div>
 
     <div class="conf" data-conf></div>
@@ -327,6 +326,10 @@
   </div>
 </footer>
 
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/tex.js"></script>
+<script src="assets/concept-data.js"></script>
+<script src="assets/concept.js"></script>
 <script src="assets/plot.js"></script>
 <script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>

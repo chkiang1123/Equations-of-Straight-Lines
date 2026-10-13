@@ -161,6 +161,22 @@ p{margin:11px 0}
 var,.v{font-style:italic;font-family:"Cambria Math","Times New Roman",Georgia,serif}
 sub{font-size:.68em}
 sup{font-size:.68em}
+
+/* ---------- KATEX (offline LaTeX typesetting) ---------- */
+/* .tex is the hook used by assets/tex.js: the LaTeX source lives in the
+   element's own text and is replaced by KaTeX output on load. */
+.tex{white-space:normal}
+.katex{font-size:1.045em;line-height:inherit;text-rendering:auto}
+.formula .katex{font-size:1.08em}
+.formula.big .katex{font-size:1.18em}
+.m .katex{font-size:1em}
+/* if KaTeX cannot parse a source we leave it visible, flagged as code */
+.tex-fail{display:inline-block;background:var(--code-bg);border:1px dashed var(--bad);
+  border-radius:6px;padding:1px 7px;color:var(--bad);
+  font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.9em;font-style:normal}
+/* keep long display formulas scrollable rather than clipped */
+.formula{overflow-x:auto;overflow-y:hidden}
+.formula .katex-display{margin:0}
 code{background:var(--code-bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.9em;
   font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
 .tk{color:var(--brand);font-weight:650}
@@ -391,6 +407,47 @@ textarea.write::placeholder{color:var(--ink-3);opacity:.75}
 .qexp{margin-top:12px;padding:12px 15px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);
   font-size:13.8px;display:none}
 .qexp.show{display:block}
+
+/* ---------- CONCEPT CHECK (See / Think / Wonder, True-False) ---------- */
+.cc{display:grid;gap:12px;margin-top:12px}
+.cc-item{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:13px 15px}
+.cc-item.right{border-color:color-mix(in srgb,var(--good) 45%,transparent);background:var(--good-soft)}
+.cc-item.wrong{border-color:color-mix(in srgb,var(--bad) 45%,transparent);background:var(--bad-soft)}
+.cc-q{display:flex;gap:10px;align-items:flex-start;font-size:14.4px;line-height:1.5}
+.cc-n{flex:none;width:22px;height:22px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);
+  display:grid;place-items:center;font-size:11.6px;font-weight:700;color:var(--ink-3);margin-top:1px}
+.cc-s{flex:1}
+.cc-btns{display:flex;gap:8px;margin-top:11px}
+.tfbtn{flex:0 0 auto;min-width:82px;padding:7px 16px;border-radius:9px;cursor:pointer;font-size:13.4px;font-weight:650;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-family:inherit}
+.tfbtn:hover:not(:disabled){border-color:var(--brand-2);color:var(--brand);background:var(--brand-soft)}
+.tfbtn.correct{border-color:var(--good);background:var(--good);color:#fff}
+.tfbtn.wrong{border-color:var(--bad);background:var(--bad);color:#fff}
+.tfbtn.locked{cursor:default}
+.tfbtn:disabled{opacity:.62;cursor:default}
+.cc-fb{display:none;margin-top:11px;padding:11px 14px;border-radius:10px;background:var(--surface-2);
+  border:1px solid var(--line);font-size:13.4px;line-height:1.55}
+.cc-fb.show{display:block}
+.cc-verd{font-weight:750;margin-bottom:5px}
+.cc-verd.ok{color:var(--good)}
+.cc-verd.no{color:var(--bad)}
+.cc-why{color:var(--ink-2)}
+.cc-sum{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.cc-score{font-weight:750;font-size:14.6px;font-family:"Cambria Math",Georgia,serif}
+.cc-diag{margin-top:10px}
+.cc-diag ul{margin:7px 0 0;padding-left:20px}
+.cc-diag li{font-size:13.4px;color:var(--ink-2);margin-bottom:4px}
+.cc-acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.cc-acts .btn{padding:7px 14px;font-size:13.2px}
+
+/* ---------- EXIT TICKET (marked maths questions) ---------- */
+.ex{display:grid;gap:16px;margin-top:6px}
+.ex .qq{font-size:14.6px}
+.ex-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  margin-top:16px;padding:13px 17px;border-radius:12px;background:var(--brand-soft);
+  border:1px solid color-mix(in srgb,var(--brand) 22%,transparent)}
+.ex-score{font-weight:750;font-size:16px;color:var(--brand);font-family:"Cambria Math",Georgia,serif}
+
 .score{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;border-radius:14px;
   background:var(--brand-soft);border:1px solid color-mix(in srgb,var(--brand) 22%,transparent);margin-top:18px}
 .score .big{font-size:29px;font-weight:800;color:var(--brand);font-family:"Cambria Math",Georgia,serif}

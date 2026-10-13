@@ -6,6 +6,7 @@
 <title>Equations of Straight Lines — a self-study course</title>
 <meta name="description" content="A free offline self-study course on the equation of a straight line: twelve pages, each with a See-Think-Wonder case study, interactive graphs, worked examples and self-checks.">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
 <body>
 <header class="nav" data-nav></header>
@@ -82,21 +83,21 @@
     <div class="stw" style="margin-top:20px">
       <div class="stw-col see">
         <div class="stw-t"><span class="stw-n">1</span>See</div>
-        <p class="stw-p"><b>What is actually there?</b></p>
+        <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
         <p class="small">Describe the picture or the situation as literally as you can. &ldquo;The line goes down 5 every minute.&rdquo;
         &ldquo;It starts at (0, 40).&rdquo; Resist the urge to explain. Observations only.</p>
         <p class="small muted"><b>Why it helps:</b> most mistakes in this chapter come from mis-reading the diagram, not from bad algebra.</p>
       </div>
       <div class="stw-col think">
         <div class="stw-t"><span class="stw-n">2</span>Think</div>
-        <p class="stw-p"><b>What does it make you think?</b></p>
+        <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
         <p class="small">Now interpret. What relationship might be hiding in what you saw? What would happen if something changed?
         This is where a guess is genuinely useful &mdash; even a wrong one.</p>
         <p class="small muted"><b>Why it helps:</b> a prediction you make yourself is remembered far better than one you are told.</p>
       </div>
       <div class="stw-col wonder">
         <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-        <p class="stw-p"><b>What are you curious about?</b></p>
+        <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
         <p class="small">Ask questions you cannot answer yet. &ldquo;Does it matter which point I use?&rdquo;
         &ldquo;What if the slope is zero?&rdquo; Write them down &mdash; they become your reason to read on.</p>
         <p class="small muted"><b>Why it helps:</b> curiosity is what makes the next section feel like an answer rather than a lecture.</p>
@@ -151,7 +152,7 @@
     <div class="tocard">
       <div class="mini">
         <div class="t"><span class="ic">1</span>Plotting points</div>
-        <p>Reading and writing coordinates as (<span class="v">x</span>,&nbsp;<span class="v">y</span>) and locating them on a grid.</p>
+        <p>Reading and writing coordinates as (<span class="m tex">x</span>,&nbsp;<span class="m tex">y</span>) and locating them on a grid.</p>
       </div>
       <div class="mini">
         <div class="t"><span class="ic">2</span>Rearranging equations</div>
@@ -159,7 +160,7 @@
       </div>
       <div class="mini">
         <div class="t"><span class="ic">3</span>Negative numbers</div>
-        <p>Comfort with <span class="v">x</span> &minus; (&minus;3) becoming <span class="v">x</span> + 3. This trip up happens constantly.</p>
+        <p>Comfort with <span class="m tex">x</span> &minus; (&minus;3) becoming <span class="m tex">x</span> + 3. This trip up happens constantly.</p>
       </div>
     </div>
     <p class="note">If any of those feel shaky, <b>page 0 (Prerequisites)</b> revises them from scratch &mdash; including the slope
@@ -187,6 +188,10 @@
   </div>
 </footer>
 
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/tex.js"></script>
+<script src="assets/concept-data.js"></script>
+<script src="assets/concept.js"></script>
 <script src="assets/plot.js"></script>
 <script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>

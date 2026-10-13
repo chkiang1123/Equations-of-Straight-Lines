@@ -6,6 +6,7 @@
 <title>Slope and inclination — Equations of Straight Lines</title>
 <meta name="description" content="Slope is a number, but it is also an angle. Connect the two with m = tan θ, a See-Think-Wonder case study, a landmark table and two interactive panels.">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
 <body>
 <header class="nav" data-nav></header>
@@ -29,7 +30,7 @@
   <div class="goals">
     <h2>In this page you will</h2>
     <ul>
-      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Define the <b>inclination</b> <span class="v">&theta;</span> of a line and state the rule <span class="v">m = tan &theta;</span></label></li>
+      <li><input type="checkbox" data-goal="g1" id="g1"><label for="g1">Define the <b>inclination</b> <span class="m tex">\theta</span> of a line and state the rule <span class="m tex">m = \tan \theta</span></label></li>
       <li><input type="checkbox" data-goal="g2" id="g2"><label for="g2">Work out the slope or the inclination from the other, including the <b>&plusmn;180&deg;</b> adjustment for negative slopes</label></li>
       <li><input type="checkbox" data-goal="g3" id="g3"><label for="g3">Explain the four cases from horizontal through vertical, and why a <b>90&deg;</b> line has no slope</label></li>
       <li><input type="checkbox" data-goal="g4" id="g4"><label for="g4">Use the angle language to see parallel and perpendicular lines at a glance</label></li>
@@ -66,8 +67,8 @@
       <div class="stw">
         <div class="stw-col see">
           <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Describe only what is actually <em>there</em> &mdash; the two lines, their directions, the marked angles. No explanations yet.</p>
-          <div data-write="see" data-ph="I can see..." data-rows="5"></div>
+          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
+          <div data-concept="see"></div>
           <details class="sol model"><summary>Compare with what I noticed</summary>
             <div class="body">
               <ul class="clean">
@@ -83,8 +84,8 @@
 
         <div class="stw-col think">
           <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">What does it make you think? How should the angle connect to the slope you already know?</p>
-          <div data-write="think" data-ph="This makes me think..." data-rows="5"></div>
+          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
+          <div data-concept="think"></div>
           <details class="sol model"><summary>Compare with what I thought</summary>
             <div class="body">
               <p>A bigger angle near 90&deg; should mean a <b>steeper</b> road. If 45&deg; is exactly halfway between flat and upright, its slope ought to be <b>1</b> (rise equals run). And once the angle passes 90&deg;, the road is going <em>down</em> to the right &mdash; so its slope must become <b>negative</b>. The angle and the slope are two views of the same tilt.</p>
@@ -94,8 +95,8 @@
 
         <div class="stw-col wonder">
           <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">What are you now curious about? Ask the questions this page must answer.</p>
-          <div data-write="wonder" data-ph="I am curious about..." data-rows="5"></div>
+          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
+          <div data-concept="wonder"></div>
           <details class="sol model"><summary>Some wonders worth chasing</summary>
             <div class="body">
               <ul class="clean">
@@ -118,12 +119,12 @@
     <h2>An angle instead of a number</h2>
 
     <h3>Definition of inclination</h3>
-    <p>The <b>inclination</b> <span class="v">&theta;</span> of a line is the angle measured <b>anticlockwise</b> from the positive direction of the x-axis to the line:</p>
-    <div class="formula big">0&deg; &le; &theta; &lt; 180&deg;</div>
+    <p>The <b>inclination</b> <span class="m tex">\theta</span> of a line is the angle measured <b>anticlockwise</b> from the positive direction of the x-axis to the line:</p>
+    <div class="formula big tex tex">0^{\circ} \leq \theta &lt; 180^{\circ}</div>
     <p class="small muted">Note the strict upper bound: an angle of 180&deg; would point along the positive x-axis again, which is the same direction as 0&deg;, so we stop just short of it.</p>
 
     <h3>Why m = tan &theta;</h3>
-    <p>Look at a line through the origin making angle <span class="v">&theta;</span> with the x-axis. Walk a distance of 1 along the x-direction; the vertical climb is exactly the tangent of the angle.</p>
+    <p>Look at a line through the origin making angle <span class="m tex">\theta</span> with the x-axis. Walk a distance of 1 along the x-direction; the vertical climb is exactly the tangent of the angle.</p>
     <div class="grid2">
       <div>
         <ol class="steps">
@@ -137,7 +138,7 @@
         <p class="small muted center">rise / run = tan &theta; / 1 = tan &theta;.</p>
       </div>
     </div>
-    <div class="formula big">m = tan &theta;</div>
+    <div class="formula big tex tex">m = \tan \theta</div>
 
     <h3>The four cases</h3>
     <ul class="clean">
@@ -171,11 +172,11 @@
 
     <h3>Going backwards: &theta; = tan&#8315;&sup1;(m)</h3>
     <p>Given a slope, the inclination is the inverse tangent &mdash; but a calculator returns an angle between &minus;90&deg; and 90&deg;. For a negative slope that answer is <em>negative</em>, which is not a valid inclination. The fix:</p>
-    <div class="formula big">&theta; = <span style="font-style:italic">tan</span>&#8315;&sup1;(m), &nbsp; then add 180&deg; if m &lt; 0</div>
-    <p>This lands the answer safely in the interval <span class="v">[0&deg;, 180&deg;)</span>. For example, <span class="v">m = &minus;1</span> gives tan&#8315;&sup1;(&minus;1) = &minus;45&deg;, and adding 180&deg; yields <b>135&deg;</b>.</p>
+    <div class="formula big tex tex">\theta = \tan^{-1}(m), \; \text{\text{then add}} 180^{\circ} \text{\text{if}} m &lt; 0</div>
+    <p>This lands the answer safely in the interval <span class="m tex">[0^{\circ}, 180^{\circ})</span>. For example, <span class="m tex">m = -1</span> gives tan&#8315;&sup1;(&minus;1) = &minus;45&deg;, and adding 180&deg; yields <b>135&deg;</b>.</p>
 
     <h3>Parallel and perpendicular, in this language</h3>
-    <p>Two lines are <b>parallel</b> exactly when their inclinations are equal (they point the same way). They are <b>perpendicular</b> when their inclinations differ by 90&deg;. From <span class="v">m = tan &theta;</span> it follows that perpendicular lines satisfy <b>m&#8321;m&#8322; = &minus;1</b> &mdash; the rule you already know, now seen as a statement about angles.</p>
+    <p>Two lines are <b>parallel</b> exactly when their inclinations are equal (they point the same way). They are <b>perpendicular</b> when their inclinations differ by 90&deg;. From <span class="m tex">m = \tan \theta</span> it follows that perpendicular lines satisfy <b>m&#8321;m&#8322; = &minus;1</b> &mdash; the rule you already know, now seen as a statement about angles.</p>
 
     <div class="note tip">
       <div class="h">Roads are percentages</div>
@@ -192,7 +193,7 @@
   <section class="blk">
     <div class="steptag"><span class="n">4</span>Explore</div>
     <h2>Spin the inclination</h2>
-    <p>Drag the slider to choose an inclination <span class="v">&theta;</span> from 0&deg; to 179&deg;. Watch the line turn, the marked angle grow, and the slope update. Stop on 90&deg; and see what breaks.</p>
+    <p>Drag the slider to choose an inclination <span class="m tex">\theta</span> from 0&deg; to 179&deg;. Watch the line turn, the marked angle grow, and the slope update. Stop on 90&deg; and see what breaks.</p>
 
     <div class="grid2 plotfirst">
       <div class="plotbox">
@@ -204,7 +205,7 @@
       </div>
       <div class="card tight">
         <div class="ctrl">
-          <label>Inclination <span class="v">&theta;</span> <b id="inclTv">30&deg;</b></label>
+          <label>Inclination <span class="m tex">\theta</span> <b id="inclTv">30&deg;</b></label>
           <input type="range" id="inclT" min="0" max="179" step="1" value="30">
         </div>
         <h4>Live readout</h4>
@@ -238,7 +239,7 @@
       <summary>Example 2 &mdash; inclination of a line with slope &minus;1</summary>
       <div class="body">
         <p>tan&#8315;&sup1;(&minus;1) = &minus;45&deg;. Since m &lt; 0, add 180&deg;:</p>
-        <div class="formula">&theta; = &minus;45&deg; + 180&deg; = <b>135&deg;</b></div>
+        <div class="formula tex tex">\theta = -45^{\circ} + 180^{\circ} = 135^{\circ}</div>
         <p>Check: tan 135&deg; = &minus;1. Correct, and 135&deg; is in [0&deg;, 180&deg;).</p>
       </div>
     </details>
@@ -247,7 +248,7 @@
       <summary>Example 3 &mdash; inclination of y = (1/&radic;3)x</summary>
       <div class="body">
         <p>The slope is m = 1/&radic;3. We recognise tan 30&deg; = 1/&radic;3, so</p>
-        <div class="formula">&theta; = tan&#8315;&sup1;(1/&radic;3) = <b>30&deg;</b></div>
+        <div class="formula tex tex">\theta = \tan^{-1}(1/\sqrt{3}) = 30^{\circ}</div>
         <p>(No adjustment needed because m &gt; 0.)</p>
       </div>
     </details>
@@ -350,11 +351,9 @@
 
     <div class="reflect">
       <h3>Exit ticket</h3>
-      <p class="sub">Two minutes of honest reflection. This is what turns watching into learning &mdash; and it is saved privately on this device.</p>
-      <h4>1. In your own words: why is the slope of a line equal to the tangent of its inclination?</h4>
-      <div data-write="exit1" data-ph="Explain it as if to a friend who missed the lesson..." data-rows="4"></div>
-      <h4>2. What is still fuzzy, and what question would you ask your teacher?</h4>
-      <div data-write="exit2" data-ph="I am still unsure about..." data-rows="3"></div>
+      <p class="sub">Answer the questions. Each wrong answer names the exact wrong idea and fixes it — results are saved privately on this device.</p>
+      
+      <div data-exit></div>
     </div>
 
     <div class="conf" data-conf></div>
@@ -371,6 +370,10 @@
   </div>
 </footer>
 
+<script src="assets/katex/katex.min.js"></script>
+<script src="assets/tex.js"></script>
+<script src="assets/concept-data.js"></script>
+<script src="assets/concept.js"></script>
 <script src="assets/plot.js"></script>
 <script src="assets/anim.js"></script>
 <script src="assets/app.js"></script>
