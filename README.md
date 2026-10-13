@@ -15,12 +15,8 @@ and it works with the internet switched off.
 
 Most resources hand you a formula and ask you to use it. This one does the opposite:
 
-- **See · Think · Wonder** case study on every content page — you observe, interpret and question *first*, then compare
-  with a model response, and only then read the mathematics.
-- **Concept checks, not essay boxes.** Each See / Think / Wonder column is a short **True / False** check. Every false
-  statement is built around a mistake real students make, so a wrong answer is worth more than a right one: it names
-  the exact wrong idea and repairs it. When you retry, you are only served the ones you missed, and the summary lists
-  the misconception you fell for.
+- **A short case study opens every page** — a real situation and its graph, so the mathematics that follows answers
+  something you have already looked at.
 - **Exit tickets are maths, not paragraphs.** Two marked questions per page, with distractors built from the usual
   slips — inverted slope, dropped minus sign, swapped coordinates, intercept confused with slope.
 - **Every formula is real LaTeX**, typeset offline by a vendored copy of KaTeX. No network, no fallback fonts.
@@ -69,16 +65,20 @@ assets/style.css              design system (light + dark)
 assets/plot.js                SVG plotting engine + algebra formatting
 assets/app.js                 nav, prev/next, progress, note saving, quiz engine
 assets/tex.js                 LaTeX hook — renders anything marked .tex through KaTeX
-assets/concept.js             See/Think/Wonder concept checks + exit ticket engine
-assets/concept-data.js        the question bank: 12 pages x (9 True/False + 2 maths)
+assets/concept.js             exit-ticket engine (LaTeX-aware, marks and explains)
+assets/concept-data.js        the bank: 2 maths questions per page + retired T/F sets
 assets/katex/                 KaTeX, vendored so the site needs no network
 ```
 
 Everything is vanilla HTML, CSS and JavaScript. `assets/app.js` holds the single course map that drives the
 navigation, the progress bar and the prev/next buttons on every page, so adding a page is a one-line change.
 
-To add or edit concept-check questions, open `assets/concept-data.js`. Each page is one entry keyed by its filename
+To add or edit exit-ticket questions, open `assets/concept-data.js`. Each page is one entry keyed by its filename
 without the extension. Wrap any maths in `$...$` and it is handed to KaTeX automatically.
+
+The `exit` array drives the exit ticket. The `see` / `think` / `wonder` arrays are a **retired** True/False bank from
+an earlier See-Think-Wonder layout — they are kept because they are finished work, but nothing mounts them. To bring
+them back, drop `<div data-concept="see"></div>` (and `think`, `wonder`) into a page.
 
 ## Deploy
 

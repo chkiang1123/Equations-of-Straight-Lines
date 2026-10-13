@@ -20,7 +20,16 @@
    `no` = feedback shown when they get it wrong — this is where the
           misconception is named and repaired.
 
-   Every false statement below is a mistake real students make.
+   NOTE ON see / think / wonder
+   ------------------------------------------------------------
+   Those three arrays are RETIRED. The See-Think-Wonder columns were
+   removed from the pages, so nothing mounts them — concept.js only
+   renders a bank if the page contains a matching host:
+
+       <div data-concept="see"></div>
+
+   Drop those three hosts back into a page and the True/False checks
+   come straight back with no other change. The `exit` array is live.
    ============================================================ */
 window.WB_BANK = {
 

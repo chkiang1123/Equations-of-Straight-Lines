@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What an equation of a line actually means — Equations of Straight Lines</title>
-<meta name="description" content="A line drawn on a grid and its equation like y = 2x + 1 are two descriptions of one object. A See-Think-Wonder case study, the locus idea, a click-to-test grid and a table of values.">
+<meta name="description" content="A line drawn on a grid and its equation like y = 2x + 1 are two descriptions of one object. the locus idea, a click-to-test grid and a table of values.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
@@ -19,7 +19,7 @@
     <p class="lead">A line you draw on a grid and an equation like <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1 look like different things. They are not. They are two descriptions of the <em>same</em> object. This page is about the link between the picture and the symbols — and it is the idea the whole chapter rests on.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 19 minutes</b></span>
-      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Case study: <b>The taut wire</b></span>
       <span><b>2</b> interactive panels</span>
     </div>
   </div>
@@ -43,64 +43,13 @@
     <div class="case">
       <div class="case-top">
         <span class="case-badge">Case study</span>
-        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+        
       </div>
       <h3>The taut wire</h3>
       <p class="scene">A steel wire is stretched dead straight across a workshop coordinate grid. It passes through <b>(0, 1)</b> and <b>(2, 5)</b>. An apprentice says: &ldquo;the wire <em>is</em> the equation <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1&rdquo;. A second apprentice is not so sure — isn&rsquo;t one of those a picture and the other just symbols?</p>
 
       <div id="boardWire"></div>
 
-      <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look.</p>
-
-      <div class="stw">
-        <div class="stw-col see">
-          <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
-          <div data-concept="see"></div>
-          <details class="sol model"><summary>Compare with what I noticed</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>The wire is a <b>straight line</b> drawn on a grid.</li>
-                <li>It passes exactly through the lattice points (0,&nbsp;1), (1,&nbsp;3), (2,&nbsp;5), (3,&nbsp;7)&hellip;</li>
-                <li>Each step right of 1 seems to add 2 upward — it climbs steadily.</li>
-                <li>Two points are clearly <b>off</b> the wire: (2,&nbsp;1) and (1,&nbsp;2).</li>
-                <li>The equation <span class="m tex">y</span> = 2<span class="m tex">x</span> + 1 is written beside it as symbols.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col think">
-          <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
-          <div data-concept="think"></div>
-          <details class="sol model"><summary>Compare with what I thought</summary>
-            <div class="body">
-              <p>What would it <em>mean</em> to test whether a point belongs to the wire? You would put its coordinates into the equation and see whether the two sides <b>balance</b>.</p>
-              <p>For (3,&nbsp;7): 2&middot;3 + 1 = 7, which equals the <span class="m tex">y</span>. It fits. For (2,&nbsp;1): 2&middot;2 + 1 = 5, but the point&rsquo;s <span class="m tex">y</span> is 1 — it does not fit, so it is off the wire.</p>
-              <p>That means a formula <em>decides membership</em> for every point. So there must be a precise way to link &ldquo;the picture&rdquo; and &ldquo;the symbols&rdquo;. <b>This page is that link.</b></p>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col wonder">
-          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
-          <div data-concept="wonder"></div>
-          <details class="sol model"><summary>Some wonders worth chasing</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>Are &ldquo;the line&rdquo; and &ldquo;the equation&rdquo; really the <em>same</em> thing?</li>
-                <li>How many points are actually on the wire — a few, or many?</li>
-                <li>Can one equation really describe a whole infinite shape?</li>
-                <li>What is the rule that decides which points count as &ldquo;on&rdquo;?</li>
-                <li>What about a vertical wire — does an equation still describe it?</li>
-              </ul>
-              <p class="small muted">Keep these. By the end of the page you will answer every one.</p>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -114,7 +63,7 @@
 
     <h3>The test</h3>
     <p>To decide whether <span class="m tex">(x, y)</span> lies on the line, <b>substitute</b> and check the balance:</p>
-    <div class="formula tex tex">\text{\text{for}} (3, 7):\; 2(3) + 1 = 7 \;\checkmark \;\;\; \text{\text{for}} (2, 1):\; 2(2) + 1 = 5 \neq 1 \;\times</div>
+    <div class="formula tex">\text{\text{for}} (3, 7):\; 2(3) + 1 = 7 \;\checkmark \;\;\; \text{\text{for}} (2, 1):\; 2(2) + 1 = 5 \neq 1 \;\times</div>
     <div class="note tip">
       <div class="h">How to say it</div>
       <p>We say the point <b>satisfies the equation</b>. The coordinates of a point on the line are just a pair that makes the statement true.</p>
@@ -201,7 +150,7 @@
       <summary>Example 2 &mdash; find k so that (4, k) lies on 3x + 2y = 6</summary>
       <div class="body">
         <p>Substitute x = 4, y = k:</p>
-        <div class="formula tex tex">3(4) + 2k = 6 \;\Rightarrow\; 12 + 2k = 6 \;\Rightarrow\; 2k = -6 \;\Rightarrow\; k = -3</div>
+        <div class="formula tex">3(4) + 2k = 6 \;\Rightarrow\; 12 + 2k = 6 \;\Rightarrow\; 2k = -6 \;\Rightarrow\; k = -3</div>
         <p>So the point (4, &minus;3) lies on the line.</p>
       </div>
     </details>

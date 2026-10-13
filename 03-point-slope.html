@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Point-slope form — Equations of Straight Lines</title>
-<meta name="description" content="Build the equation of a straight line from one point and a slope. A See-Think-Wonder case study, animated step-by-step graphs and a live playground.">
+<meta name="description" content="Build the equation of a straight line from one point and a slope. animated step-by-step graphs and a live playground.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
@@ -19,7 +19,7 @@
     <p class="lead">One point and one slope. That is genuinely all a straight line needs — and once you see <em>why</em>, the formula stops being something to memorise and becomes something you could have invented yourself.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 18 minutes</b></span>
-      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Case study: <b>The draining water tank</b></span>
       <span><b>3</b> animated boards</span>
     </div>
   </div>
@@ -43,7 +43,7 @@
     <div class="case">
       <div class="case-top">
         <span class="case-badge">Case study</span>
-        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+        
       </div>
       <h3>The draining water tank</h3>
       <p class="scene">A school water tank is being emptied for cleaning. A sensor logs the volume of water left, once a minute. The caretaker plots the readings and gets <b>one perfectly straight line</b>: at the moment the tap is opened there are <b>40 litres</b>, and the volume falls by exactly <b>5 litres every minute</b>.</p>
@@ -52,56 +52,6 @@
 
       <p class="small muted">Watch it once all the way through. You can replay any step, or press <b>Autoplay</b> and just watch. Do not do any algebra yet — just look.</p>
 
-      <div class="stw">
-        <div class="stw-col see">
-          <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
-          <div data-concept="see"></div>
-          <details class="sol model"><summary>Compare with what I noticed</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>It is <b>one straight line</b> — not a curve, not broken.</li>
-                <li>It <b>starts</b> at the point (0,&nbsp;40): zero minutes, 40 litres.</li>
-                <li>It passes through (1,&nbsp;35), (2,&nbsp;30), (3,&nbsp;25), (4,&nbsp;20) &hellip;</li>
-                <li>Every minute it goes down by the <b>same</b> amount: 5 litres.</li>
-                <li>It <b>cuts the horizontal axis</b> at t = 8.</li>
-                <li>Past t = 8 the line would give <b>negative</b> litres — which cannot happen in real life.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col think">
-          <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
-          <div data-concept="think"></div>
-          <details class="sol model"><summary>Compare with what I thought</summary>
-            <div class="body">
-              <p>A straight line means the change is <b>constant</b> — the same drop every minute. That constant change is the <b>slope</b>.</p>
-              <p>The point (0,&nbsp;40) is where the line was <em>at the start</em>. So the whole graph is being carried by just two pieces of information: <b>one point</b>, and <b>one slope</b>.</p>
-              <p>If that really is all the information there is, then there ought to be a formula that takes <em>(a point, a slope)</em> and hands you back the whole line. <b>That formula is what this page is about.</b></p>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col wonder">
-          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
-          <div data-concept="wonder"></div>
-          <details class="sol model"><summary>Some wonders worth chasing</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>Where exactly does the &minus;5 appear in the equation?</li>
-                <li>Would (2,&nbsp;30) work just as well as (0,&nbsp;40) as my starting point?</li>
-                <li>Could I read the slope off <em>any</em> two points, or only neighbouring ones?</li>
-                <li>Can the equation answer new questions — like the volume at t = 3.5 minutes?</li>
-                <li>What would the graph look like if the tank drained faster at the beginning?</li>
-              </ul>
-              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -116,10 +66,10 @@
 
     <ol class="steps">
       <li>You already know the slope formula. Using <b>A</b> and <b>P</b> as the two points:
-        <div class="formula tex tex">m = \frac{y - y_1}{x - x_1}</div>
+        <div class="formula tex">m = \frac{y - y_1}{x - x_1}</div>
       </li>
       <li>Multiply both sides by (<span class="m tex">x</span> &minus; <span class="m tex">x_1</span>). The denominator disappears:
-        <div class="formula big tex tex">y - y_1 = m(x - x_1)</div>
+        <div class="formula big tex">y - y_1 = m(x - x_1)</div>
       </li>
       <li>That is the whole derivation. Two lines of algebra — you could have found it.</li>
     </ol>
@@ -136,7 +86,7 @@
 
     <h3>Back to the tank</h3>
     <p>Slope <span class="m tex">m</span> = &minus;5 (it is going <em>down</em>, so the slope is negative) and the known point is (0,&nbsp;40), so <span class="m tex">x_1</span> = 0 and <span class="m tex">y_1</span> = 40:</p>
-    <div class="formula tex tex">V - 40 = -5(t - 0) \;\;\Rightarrow\;\; V = 40 - 5t</div>
+    <div class="formula tex">V - 40 = -5(t - 0) \;\;\Rightarrow\;\; V = 40 - 5t</div>
     <p>And now the equation can answer new questions. Volume after 3.5 minutes? <span class="m tex">V</span> = 40 &minus; 5(3.5) = <b>22.5 litres</b>. When is the tank empty? <span class="m tex">V</span> = 0 gives <span class="m tex">t</span> = 8 — exactly where the line cut the axis.</p>
   </section>
 
@@ -163,9 +113,9 @@
       <div class="body">
         <p><b>Step 1.</b> Write down what you have: <span class="m tex">m</span> = 3, and (<span class="m tex">x_1</span>,&nbsp;<span class="m tex">y_1</span>) = (2,&nbsp;5).</p>
         <p><b>Step 2.</b> Put them straight into the form.</p>
-        <div class="formula tex tex">y - 5 = 3(x - 2)</div>
+        <div class="formula tex">y - 5 = 3(x - 2)</div>
         <p><b>Step 3.</b> Expand if the question wants it tidier: <span class="m tex">y</span> &minus; 5 = 3<span class="m tex">x</span> &minus; 6, so</p>
-        <div class="formula tex tex">y = 3x - 1 \;\;\text{\text{or}}\;\; 3x - y - 1 = 0</div>
+        <div class="formula tex">y = 3x - 1 \;\;\text{\text{or}}\;\; 3x - y - 1 = 0</div>
         <p class="small muted">Both answers are correct. Unless the question says otherwise, the point-slope form on its own is a complete answer.</p>
       </div>
     </details>
@@ -174,10 +124,10 @@
       <summary>Example 2 &mdash; slope &minus;&frac12; through the point (&minus;3, 4)</summary>
       <div class="body">
         <p>Substitute directly: <span class="m tex">m</span> = &minus;&frac12;, <span class="m tex">x_1</span> = &minus;3, <span class="m tex">y_1</span> = 4.</p>
-        <div class="formula tex tex">y - 4 = -\frac{1}{2}(x + 3)</div>
+        <div class="formula tex">y - 4 = -\frac{1}{2}(x + 3)</div>
         <p class="small">Notice the trap: <span class="m tex">x</span> &minus; (&minus;3) became <b>x + 3</b>. Two minus signs in a row make a plus.</p>
         <p><b>Tidying up.</b> Multiply every term by 2 to clear the fraction: 2<span class="m tex">y</span> &minus; 8 = &minus;(<span class="m tex">x</span> + 3) = &minus;<span class="m tex">x</span> &minus; 3. So 2<span class="m tex">y</span> + <span class="m tex">x</span> &minus; 5 = 0, or</p>
-        <div class="formula tex tex">x + 2y - 5 = 0</div>
+        <div class="formula tex">x + 2y - 5 = 0</div>
       </div>
     </details>
 
@@ -185,10 +135,10 @@
       <summary>Example 3 &mdash; the two awkward slopes: 0 and undefined</summary>
       <div class="body">
         <p><b>(a)</b> Slope 0 through (5,&nbsp;&minus;2). Substituting gives <span class="m tex">y</span> + 2 = 0(<span class="m tex">x</span> &minus; 5), so <span class="m tex">y</span> + 2 = 0. The equation of the line is</p>
-        <div class="formula tex tex">y = -2</div>
+        <div class="formula tex">y = -2</div>
         <p>which is a sentence about <span class="m tex">y</span> only — every point with height &minus;2 is on it, whatever its <span class="m tex">x</span>. That is a horizontal line.</p>
         <p><b>(b)</b> A vertical line through (5,&nbsp;&minus;2). Here the slope does not exist, because <span class="m tex">x</span> &minus; <span class="m tex">x_1</span> would be zero and you cannot divide by zero. So the point-slope form cannot describe it — and we must write it directly:</p>
-        <div class="formula tex tex">x = 5</div>
+        <div class="formula tex">x = 5</div>
         <p class="small muted">Remember this exception. It is the single most common reason an exam answer loses a mark.</p>
       </div>
     </details>
@@ -197,7 +147,7 @@
       <summary>Example 4 &mdash; describing the slope in words (&minus;2, 6), rises 2 for every 3 to the right</summary>
       <div class="body">
         <p>The phrase &ldquo;rises 2 for every 3 to the right&rdquo; is the slope, written in English: <span class="m tex">m</span> = <span class="m tex">\frac{2}{3}</span>.</p>
-        <div class="formula tex tex">y - 6 = \frac{2}{3}(x + 2)</div>
+        <div class="formula tex">y - 6 = \frac{2}{3}(x + 2)</div>
         <p>Multiply by 3: 3<span class="m tex">y</span> &minus; 18 = 2<span class="m tex">x</span> + 4 &nbsp;&rArr;&nbsp; 2<span class="m tex">x</span> &minus; 3<span class="m tex">y</span> + 22 = 0.</p>
       </div>
     </details>
@@ -242,10 +192,10 @@
       <p class="small">Four quick questions. Write your answers down first — then open each one.</p>
       <ol>
         <li>Write the point-slope form of the line with slope 4 through (3,&nbsp;&minus;1).
-          <details class="sol"><summary>Answer</summary><div class="body"><div class="formula tex tex">y + 1 = 4(x - 3)</div><p class="small">The two minuses: <span class="m tex">y</span> &minus; (&minus;1) = <span class="m tex">y</span> + 1.</p></div></details>
+          <details class="sol"><summary>Answer</summary><div class="body"><div class="formula tex">y + 1 = 4(x - 3)</div><p class="small">The two minuses: <span class="m tex">y</span> &minus; (&minus;1) = <span class="m tex">y</span> + 1.</p></div></details>
         </li>
         <li>Rewrite <span class="m tex">y</span> &minus; 7 = &minus;2(<span class="m tex">x</span> + 3) in slope-intercept form.
-          <details class="sol"><summary>Answer</summary><div class="body"><p>Expand: <span class="m tex">y</span> &minus; 7 = &minus;2<span class="m tex">x</span> &minus; 6, so</p><div class="formula tex tex">y = -2x + 1</div></div></details>
+          <details class="sol"><summary>Answer</summary><div class="body"><p>Expand: <span class="m tex">y</span> &minus; 7 = &minus;2<span class="m tex">x</span> &minus; 6, so</p><div class="formula tex">y = -2x + 1</div></div></details>
         </li>
         <li>A line has slope &frac13; and passes through (&minus;6,&nbsp;2). Does it also pass through (0,&nbsp;4)?
           <details class="sol"><summary>Answer</summary><div class="body"><p><span class="m tex">y</span> &minus; 2 = &frac13;(<span class="m tex">x</span> + 6), so <span class="m tex">y</span> = &frac13;<span class="m tex">x</span> + 2 + 2 = &frac13;<span class="m tex">x</span> + 4.</p><p>At <span class="m tex">x</span> = 0, <span class="m tex">y</span> = 4 — so <b>yes</b>, the line passes through (0,&nbsp;4). (Notice: this is its <span class="m tex">y</span>-intercept.)</p></div></details>

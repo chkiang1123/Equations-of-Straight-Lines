@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slope and inclination — Equations of Straight Lines</title>
-<meta name="description" content="Slope is a number, but it is also an angle. Connect the two with m = tan θ, a See-Think-Wonder case study, a landmark table and two interactive panels.">
+<meta name="description" content="Slope is a number, but it is also an angle. Connect the two with m = tan θ, a landmark table and two interactive panels.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
@@ -19,7 +19,7 @@
     <p class="lead">Slope is a number, but it is also an <em>angle</em>. Connecting the two makes both ideas easier to picture &mdash; and it explains why a vertical line has no slope at all.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 20 minutes</b></span>
-      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Case study: <b>The surveyor&rsquo;s two roads</b></span>
       <span><b>2</b> interactive panels</span>
     </div>
   </div>
@@ -46,7 +46,7 @@
     <div class="case">
       <div class="case-top">
         <span class="case-badge">Case study</span>
-        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+        
       </div>
       <h3>The surveyor&rsquo;s two roads</h3>
       <p class="scene">A surveyor records the angle each of two new roads makes with the horizontal: <b>road A is at 30&deg;</b> and <b>road B is at 135&deg;</b>. The figure draws both lines through the origin with their angles marked.</p>
@@ -62,54 +62,6 @@
         <svg class="plot static" id="plotRoads" aria-label="Two lines through the origin: one at 30 degrees climbing gently to the right, one at 135 degrees climbing to the left"></svg>
       </div>
 
-      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
-
-      <div class="stw">
-        <div class="stw-col see">
-          <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
-          <div data-concept="see"></div>
-          <details class="sol model"><summary>Compare with what I noticed</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>One road <b>climbs gently</b> as it goes right &mdash; it is closer to flat than to upright.</li>
-                <li>The other road <b>climbs to the left</b> (equivalently, it descends as you move right).</li>
-                <li>Both angles are measured from the <b>positive horizontal direction</b>, swinging <b>anticlockwise</b>.</li>
-                <li>135&deg; is <em>past</em> a right angle &mdash; it has gone beyond 90&deg;.</li>
-                <li>Both roads start from the same point (the origin) in the diagram.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col think">
-          <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
-          <div data-concept="think"></div>
-          <details class="sol model"><summary>Compare with what I thought</summary>
-            <div class="body">
-              <p>A bigger angle near 90&deg; should mean a <b>steeper</b> road. If 45&deg; is exactly halfway between flat and upright, its slope ought to be <b>1</b> (rise equals run). And once the angle passes 90&deg;, the road is going <em>down</em> to the right &mdash; so its slope must become <b>negative</b>. The angle and the slope are two views of the same tilt.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col wonder">
-          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
-          <div data-concept="wonder"></div>
-          <details class="sol model"><summary>Some wonders worth chasing</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>What is the slope at <em>exactly</em> 30&deg;?</li>
-                <li>Why does 135&deg; give a <em>negative</em> number for the slope?</li>
-                <li>What happens at exactly 90&deg; &mdash; straight up?</li>
-                <li>Can I go backwards: given a slope, find its angle?</li>
-              </ul>
-              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -120,7 +72,7 @@
 
     <h3>Definition of inclination</h3>
     <p>The <b>inclination</b> <span class="m tex">\theta</span> of a line is the angle measured <b>anticlockwise</b> from the positive direction of the x-axis to the line:</p>
-    <div class="formula big tex tex">0^{\circ} \leq \theta &lt; 180^{\circ}</div>
+    <div class="formula big tex">0^{\circ} \leq \theta &lt; 180^{\circ}</div>
     <p class="small muted">Note the strict upper bound: an angle of 180&deg; would point along the positive x-axis again, which is the same direction as 0&deg;, so we stop just short of it.</p>
 
     <h3>Why m = tan &theta;</h3>
@@ -138,7 +90,7 @@
         <p class="small muted center">rise / run = tan &theta; / 1 = tan &theta;.</p>
       </div>
     </div>
-    <div class="formula big tex tex">m = \tan \theta</div>
+    <div class="formula big tex">m = \tan \theta</div>
 
     <h3>The four cases</h3>
     <ul class="clean">
@@ -172,7 +124,7 @@
 
     <h3>Going backwards: &theta; = tan&#8315;&sup1;(m)</h3>
     <p>Given a slope, the inclination is the inverse tangent &mdash; but a calculator returns an angle between &minus;90&deg; and 90&deg;. For a negative slope that answer is <em>negative</em>, which is not a valid inclination. The fix:</p>
-    <div class="formula big tex tex">\theta = \tan^{-1}(m), \; \text{\text{then add}} 180^{\circ} \text{\text{if}} m &lt; 0</div>
+    <div class="formula big tex">\theta = \tan^{-1}(m), \; \text{\text{then add}} 180^{\circ} \text{\text{if}} m &lt; 0</div>
     <p>This lands the answer safely in the interval <span class="m tex">[0^{\circ}, 180^{\circ})</span>. For example, <span class="m tex">m = -1</span> gives tan&#8315;&sup1;(&minus;1) = &minus;45&deg;, and adding 180&deg; yields <b>135&deg;</b>.</p>
 
     <h3>Parallel and perpendicular, in this language</h3>
@@ -239,7 +191,7 @@
       <summary>Example 2 &mdash; inclination of a line with slope &minus;1</summary>
       <div class="body">
         <p>tan&#8315;&sup1;(&minus;1) = &minus;45&deg;. Since m &lt; 0, add 180&deg;:</p>
-        <div class="formula tex tex">\theta = -45^{\circ} + 180^{\circ} = 135^{\circ}</div>
+        <div class="formula tex">\theta = -45^{\circ} + 180^{\circ} = 135^{\circ}</div>
         <p>Check: tan 135&deg; = &minus;1. Correct, and 135&deg; is in [0&deg;, 180&deg;).</p>
       </div>
     </details>
@@ -248,7 +200,7 @@
       <summary>Example 3 &mdash; inclination of y = (1/&radic;3)x</summary>
       <div class="body">
         <p>The slope is m = 1/&radic;3. We recognise tan 30&deg; = 1/&radic;3, so</p>
-        <div class="formula tex tex">\theta = \tan^{-1}(1/\sqrt{3}) = 30^{\circ}</div>
+        <div class="formula tex">\theta = \tan^{-1}(1/\sqrt{3}) = 30^{\circ}</div>
         <p>(No adjustment needed because m &gt; 0.)</p>
       </div>
     </details>

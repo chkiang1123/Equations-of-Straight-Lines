@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The general form — Equations of Straight Lines</title>
-<meta name="description" content="One form that writes down every straight line: Ax + By + C = 0. A See-Think-Wonder case study, the slope and intercept formulas, and two interactive panels.">
+<meta name="description" content="One form that writes down every straight line: Ax + By + C = 0. the slope and intercept formulas, and two interactive panels.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
@@ -19,7 +19,7 @@
     <p class="lead">One form that can write down <em>every</em> straight line that exists &mdash; including the two troublemakers from the last page. No special cases, no &ldquo;except when&hellip;&rdquo;.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 20 minutes</b></span>
-      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Case study: <b>The machined-edge spec sheet</b></span>
       <span><b>2</b> interactive panels</span>
     </div>
   </div>
@@ -46,7 +46,7 @@
     <div class="case">
       <div class="case-top">
         <span class="case-badge">Case study</span>
-        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+        
       </div>
       <h3>The machined-edge spec sheet</h3>
       <p class="scene">A quality-control engineer is handed a spec that gives the tolerance boundary of a machined edge as <b>3x &minus; 4y + 12 = 0</b>. To set up the cutting machine she needs two things: (a) the <span class="role">slope</span>, to compare against the drawing&rsquo;s value of 0.75, and (b) <span class="role">both intercepts</span>, to position the cutting head. The figure shows the boundary line on a grid with its two intercepts marked.</p>
@@ -62,56 +62,6 @@
         <svg class="plot static" id="plotSpec" aria-label="The line 3x minus 4y plus 12 equals 0, crossing the x-axis at minus 4 and the y-axis at 3"></svg>
       </div>
 
-      <p class="small muted">Look at the graph carefully before you read on. Do not do any algebra yet. Just look.</p>
-
-      <div class="stw">
-        <div class="stw-col see">
-          <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
-          <div data-concept="see"></div>
-          <details class="sol model"><summary>Compare with what I noticed</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>The equation has an <b>x</b> term, a <b>y</b> term and a plain number all on the <em>same</em> side &mdash; nothing is isolated on its own.</li>
-                <li>The line cuts the <b>x-axis</b> somewhere to the left of the origin and the <b>y-axis</b> somewhere above it.</li>
-                <li>It is <b>sloping upwards</b> as it goes to the right &mdash; so its slope is positive.</li>
-                <li>The two marked intercepts are the places where it crosses each axis.</li>
-                <li>Every term is a simple whole number &mdash; no fractions, no decimals.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col think">
-          <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
-          <div data-concept="think"></div>
-          <details class="sol model"><summary>Compare with what I thought</summary>
-            <div class="body">
-              <p>She <em>could</em> rearrange it into <span class="m tex">y = mx + c</span> every single time, like this:</p>
-              <div class="formula tex">3x - 4y + 12 = 0 \;\Rightarrow\; -4y = -3x - 12 \;\Rightarrow\; y = \frac{3}{4}x + 3</div>
-              <p>That works, but it is <b>work every time</b> &mdash; and it hides the slope and intercepts behind a wall of algebra. There <em>should</em> be a way to read the slope and both intercepts straight off the <span class="m tex">A</span>, <span class="m tex">B</span> and <span class="m tex">C</span> that are already sitting there. <b>This page is that formula.</b></p>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col wonder">
-          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
-          <div data-concept="wonder"></div>
-          <details class="sol model"><summary>Some wonders worth chasing</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>Is there a formula for the slope using just <span class="m tex">A</span>, <span class="m tex">B</span> and <span class="m tex">C</span>?</li>
-                <li>What happens if <span class="m tex">B = 0</span>? Then there is no <span class="m tex">y</span> term at all.</li>
-                <li>Why would anyone choose to write equations in this untidy-looking form instead of <span class="m tex">y = mx + c</span>?</li>
-                <li>Can two different-looking equations describe the <em>same</em> line?</li>
-              </ul>
-              <p class="small muted">Keep these. By the end of the page you will be able to answer every one.</p>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -353,8 +303,7 @@
     <div class="reflect">
       <h3>Exit ticket</h3>
       <p class="sub">Answer the questions. Each wrong answer names the exact wrong idea and fixes it — results are saved privately on this device.</p>
-      
-      
+
       <div data-exit></div>
     </div>
 

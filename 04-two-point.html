@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The two-point form — Equations of Straight Lines</title>
-<meta name="description" content="With two points you never need to be told the slope. A See-Think-Wonder case study, the two-point form, a draggable line builder and a collinearity checker.">
+<meta name="description" content="With two points you never need to be told the slope. the two-point form, a draggable line builder and a collinearity checker.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/katex/katex.min.css">
 </head>
@@ -19,7 +19,7 @@
     <p class="lead">With two points you never need to be told the slope — you can always work it out. This page turns that simple fact into a reliable method for pinning down any non-vertical line.</p>
     <div class="pagemeta">
       <span>&#9201; <b>about 20 minutes</b></span>
-      <span>Case study: <b>See &middot; Think &middot; Wonder</b></span>
+      <span>Case study: <b>Two readings from the same journey</b></span>
       <span><b>2</b> interactive panels</span>
     </div>
   </div>
@@ -43,63 +43,13 @@
     <div class="case">
       <div class="case-top">
         <span class="case-badge">Case study</span>
-        <span class="routine-badge">See &middot; Think &middot; Wonder</span>
+        
       </div>
       <h3>Two readings from the same journey</h3>
       <p class="scene">A cyclist&rsquo;s tracker logs her distance from home: <b>12&nbsp;km</b> at <b>1 hour</b> after setting off, and <b>33&nbsp;km</b> at <b>2.5 hours</b>. The data are just two dots, but if her pace is steady the graph is a straight line through them. The figure plots those two points and the line they force.</p>
 
       <div id="boardJourney"></div>
 
-      <p class="small muted">Look at the graph carefully before you read on. No algebra yet — just look.</p>
-
-      <div class="stw">
-        <div class="stw-col see">
-          <div class="stw-t"><span class="stw-n">1</span>See</div>
-          <p class="stw-p">Read each statement and decide whether it is true or false. No algebra needed yet — judge it against what the picture actually shows.</p>
-          <div data-concept="see"></div>
-          <details class="sol model"><summary>Compare with what I noticed</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>There are only <b>two dots</b>: (1,&nbsp;12) and (2.5,&nbsp;33).</li>
-                <li>A <b>straight line</b> has been drawn through them.</li>
-                <li>The line <b>climbs</b> from left to right.</li>
-                <li>It is <b>steeper than 45&deg;</b> — it rises more than it runs.</li>
-                <li>The two points are the only hard data; everything else is inferred.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col think">
-          <div class="stw-t"><span class="stw-n">2</span>Think</div>
-          <p class="stw-p">Judge each claim about what the picture means. Every false one here is a mistake that real students make, so a wrong answer is worth more than a right one.</p>
-          <div data-concept="think"></div>
-          <details class="sol model"><summary>Compare with what I thought</summary>
-            <div class="body">
-              <p>If the pace is constant the graph really is straight, so <b>two points fix the steepness</b> — and once you know the steepness you only need one point to place the whole line.</p>
-              <p>So there must be a method that takes <em>(two points)</em> and hands back the equation. And it must be unique: those two dots allow exactly one line (as long as they are not lined up vertically). <b>This page is that method.</b></p>
-            </div>
-          </details>
-        </div>
-
-        <div class="stw-col wonder">
-          <div class="stw-t"><span class="stw-n">3</span>Wonder</div>
-          <p class="stw-p">These are “what if” predictions. Decide whether each one would actually happen.</p>
-          <div data-concept="wonder"></div>
-          <details class="sol model"><summary>Some wonders worth chasing</summary>
-            <div class="body">
-              <ul class="clean">
-                <li>Can I predict the distance at <b>4 hours</b>?</li>
-                <li>What does the line give at time 0 — and does that make physical sense?</li>
-                <li>Would a straight line <em>always</em> be right, or only for steady pace?</li>
-                <li>What if the two readings shared the same time — could I still draw a line?</li>
-                <li>How do I know two different pairs aren&rsquo;t secretly on the same line?</li>
-              </ul>
-              <p class="small muted">Keep these. By the end you will answer every one.</p>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -118,7 +68,7 @@
 
     <h3>The two-point form</h3>
     <p>Put the slope straight into the point-slope formula and you get a form that uses only the two points:</p>
-    <div class="formula big tex tex">\frac{y - y_1}{y_2 - y_1} = \frac{x - x_1}{x_2 - x_1}</div>
+    <div class="formula big tex">\frac{y - y_1}{y_2 - y_1} = \frac{x - x_1}{x_2 - x_1}</div>
     <div class="note vio">
       <div class="h">It is just point-slope in disguise</div>
       <p>Replace <span class="m tex">m</span> in <span class="m tex">y</span> &minus; <span class="m tex">y</span>&#8321; = <span class="m tex">m</span>(<span class="m tex">x</span> &minus; <span class="m tex">x</span>&#8321;) with (<span class="m tex">y</span>&#8322; &minus; <span class="m tex">y</span>&#8321;)/(<span class="m tex">x</span>&#8322; &minus; <span class="m tex">x</span>&#8321;) and you get exactly the two-point form. Nothing new — just a shortcut.</p>
@@ -126,11 +76,11 @@
 
     <h3>The vertical exception</h3>
     <p>If <span class="m tex">x_1</span> = <span class="m tex">x_2</span> the denominator is zero, so there is <b>no two-point form</b> and no point-slope form: the line is simply</p>
-    <div class="formula tex tex">x = x_1</div>
+    <div class="formula tex">x = x_1</div>
 
     <h3>The collinearity test</h3>
     <p>Three points are <b>collinear</b> (on one line) exactly when the slope between each pair is the same. Compute two slopes and compare:</p>
-    <div class="formula tex tex">\text{\text{same line}} \;\Rightarrow\; \frac{y_2 - y_1}{x_2 - x_1} = \frac{y_3 - y_1}{x_3 - x_1}</div>
+    <div class="formula tex">\text{\text{same line}} \;\Rightarrow\; \frac{y_2 - y_1}{x_2 - x_1} = \frac{y_3 - y_1}{x_3 - x_1}</div>
     <p class="small muted">Watch the vertical case here too: if two pairs share an <span class="m tex">x</span>-coordinate, compare carefully rather than dividing.</p>
   </section>
 
@@ -200,7 +150,7 @@
       <div class="body">
         <p><b>Slope.</b> <span class="m tex">m</span> = (11 &minus; 3)/(6 &minus; 2) = 8/4 = 2.</p>
         <p><b>Using A(2, 3).</b> <span class="m tex">y</span> &minus; 3 = 2(<span class="m tex">x</span> &minus; 2) &rArr; <span class="m tex">y</span> = 2<span class="m tex">x</span> &minus; 1.</p>
-        <div class="formula tex tex">y = 2x − 1</div>
+        <div class="formula tex">y = 2x − 1</div>
         <p class="small muted">Using B instead gives <span class="m tex">y</span> &minus; 11 = 2(<span class="m tex">x</span> &minus; 6), which simplifies to the same line.</p>
       </div>
     </details>
@@ -210,7 +160,7 @@
       <div class="body">
         <p><b>Slope.</b> <span class="m tex">m</span> = (&minus;4 &minus; 4)/(3 &minus; (&minus;1)) = (&minus;8)/4 = &minus;2.</p>
         <p><b>Using A(&minus;1, 4).</b> <span class="m tex">y</span> &minus; 4 = &minus;2(<span class="m tex">x</span> + 1) &rArr; <span class="m tex">y</span> = &minus;2<span class="m tex">x</span> + 2.</p>
-        <div class="formula tex tex">y = −2x + 2</div>
+        <div class="formula tex">y = −2x + 2</div>
       </div>
     </details>
 
@@ -219,7 +169,7 @@
       <div class="body">
         <p><b>Slope.</b> <span class="m tex">m</span> = (5 &minus; 5)/(4 &minus; (&minus;2)) = 0/6 = 0.</p>
         <p>Zero slope means flat. Using A: <span class="m tex">y</span> &minus; 5 = 0&middot;(<span class="m tex">x</span> + 2), so</p>
-        <div class="formula tex tex">y = 5</div>
+        <div class="formula tex">y = 5</div>
       </div>
     </details>
 
@@ -228,7 +178,7 @@
       <div class="body">
         <p><b>Slope.</b> <span class="m tex">x</span>&#8322; &minus; <span class="m tex">x</span>&#8321; = 3 &minus; 3 = 0, so the slope does not exist.</p>
         <p>There is no two-point form and no point-slope form. The line is simply</p>
-        <div class="formula tex tex">x = 3</div>
+        <div class="formula tex">x = 3</div>
       </div>
     </details>
 
